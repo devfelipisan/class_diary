@@ -1,6 +1,24 @@
+"use client";
+
 import styles from "./page.module.css";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import { useMemo, useState } from "react";
+
+function factorialOf(n: string) {
+  console.log(n);
+  return n;
+}
 
 export default function Home() {
+  const [valueSearch, setValueSearch] = useState<string>("");
+
+  const memorizedCard = useMemo(() => factorialOf(valueSearch), [valueSearch]);
+
+  console.log("renderizado");
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -28,20 +46,29 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        {/* <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div> */}
+        <Paper
+          sx={{
+            p: "2px 4px",
+            display: "flex",
+            alignItems: "center",
+            width: 400,
+          }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="palavra chave"
+            inputProps={{ "aria-label": "palavra chave" }}
+            value={valueSearch}
+            onChange={(e: any) => setValueSearch(e.target.value)}
+          />
+          <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
       </div>
 
       <div className={styles.grid}>
+        <h3>{memorizedCard}</h3>
         {/* <a
           href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}

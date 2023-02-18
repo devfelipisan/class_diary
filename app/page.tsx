@@ -8,7 +8,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useMemo, useState } from "react";
 
 function factorialOf(n: string) {
-  console.log(n);
   return n;
 }
 

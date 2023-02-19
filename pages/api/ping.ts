@@ -9,6 +9,5 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).send("pong");
-  //json({ ping: "pong!" });
+  res.status(200).json({ ping: "pong!" });
 }

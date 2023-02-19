@@ -37,6 +37,8 @@ model competences {
   name           String
   created        DateTime
   apprendiceship apprendiceship[]
+  presences      presences[]
+  coefficients   coefficients[]
 }
 
 model units {
@@ -96,30 +98,38 @@ model group_years {
 }
 
 model students {
-  id        String      @id @default(uuid())
-  name      String
-  created   DateTime
-  presences presences[]
+  id           String         @id @default(uuid())
+  name         String
+  created      DateTime
+  presences    presences[]
+  coefficients coefficients[]
 }
 
-// A presença do aluno deve estar relacionada com uma matéria específica
-// O Aluno pode não estar 100% presente em todas as matérias.
 model presences {
-  id         String   @id @default(uuid())
-  student    students @relation(fields: [student_id], references: [id])
-  student_id String
-  presence   Boolean
-  created    DateTime
+  id            String      @id @default(uuid())
+  student       students    @relation(fields: [student_id], references: [id])
+  student_id    String
+  competence    competences @relation(fields: [competence_id], references: [id])
+  competence_id String
+  presence      Boolean
+  created       DateTime
+}
+
+model coefficients {
+  id            String      @id @default(uuid())
+  student       students    @relation(fields: [student_id], references: [id])
+  student_id    String
+  teacher       teachers    @relation(fields: [teacher_id], references: [id])
+  teacher_id    String
+  competence    competences @relation(fields: [competence_id], references: [id])
+  competence_id String
+  grade         Int
+  created       DateTime
 }
 
 model teachers {
-  id      String   @id @default(uuid())
-  name    String
-  created DateTime
-}
-
-model subjects {
-  id      String   @id @default(uuid())
-  name    String
-  created DateTime
+  id           String         @id @default(uuid())
+  name         String
+  created      DateTime
+  coefficients coefficients[]
 }

@@ -10,18 +10,116 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model apprendiceship {
+  id            String      @id @unique
+  competence    competences @relation(fields: [competence_id], references: [id])
+  competence_id String
+  group_year    group_years @relation(fields: [group_year_id], references: [id])
+  group_year_id Int
+  unit          units       @relation(fields: [unit_id], references: [id])
+  unit_id       Int
+  object        objects     @relation(fields: [object_id], references: [id])
+  object_id     Int
+  skill         skills      @relation(fields: [skill_id], references: [id])
+  skill_id      Int
+  comment       comments    @relation(fields: [comment_id], references: [id])
+  comment_id    String
+  resume        resumes     @relation(fields: [resume_id], references: [id])
+  resume_id     Int
+  field         fields      @relation(fields: [field_id], references: [id])
+  field_id      Int
+  axis          axes        @relation(fields: [axis_id], references: [id])
+  axis_id       Int
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+model competences {
+  id             String           @id @unique
+  name           String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model units {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model skills {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model resumes {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model axes {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model fields {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model comments {
+  id             String           @id @default(uuid())
+  comment        String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model objects {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model group_years {
+  id             Int              @id @default(autoincrement())
+  description    String
+  created        DateTime
+  apprendiceship apprendiceship[]
+}
+
+model students {
+  id        String      @id @default(uuid())
+  name      String
+  created   DateTime
+  presences presences[]
+}
+
+// A presença do aluno deve estar relacionada com uma matéria específica
+// O Aluno pode não estar 100% presente em todas as matérias.
+model presences {
+  id         String   @id @default(uuid())
+  student    students @relation(fields: [student_id], references: [id])
+  student_id String
+  presence   Boolean
+  created    DateTime
+}
+
+model teachers {
+  id      String   @id @default(uuid())
+  name    String
+  created DateTime
+}
+
+model subjects {
+  id      String   @id @default(uuid())
+  name    String
+  created DateTime
 }

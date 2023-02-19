@@ -6,7 +6,6 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useMemo, useState } from "react";
-import useSWR from "swr";
 
 interface student_dto {
   id: string;

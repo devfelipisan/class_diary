@@ -5,16 +5,35 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import useSWR from "swr";
 
-function factorialOf(n: string) {
+interface student_dto {
+  id: string;
+  name: string;
+}
+
+type students_dto = Array<student_dto>;
+
+function factorialOf(n: students_dto | null) {
   return n;
 }
 
 export default function Home() {
-  const [valueSearch, setValueSearch] = useState<string>("");
+  const [students, setStudents] = useState<students_dto | null>(null);
+  const memorizedCard: students_dto | null = useMemo(
+    () => factorialOf(students),
+    [students]
+  );
 
-  const memorizedCard = useMemo(() => factorialOf(valueSearch), [valueSearch]);
+  useEffect(() => {
+    async function fetchUsers() {
+      const response = await fetch("/api/studentsList");
+      const data = await response.json();
+      setStudents(data);
+    }
+    fetchUsers();
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -55,18 +74,18 @@ export default function Home() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="palavra chave"
             inputProps={{ "aria-label": "palavra chave" }}
-            value={valueSearch}
-            onChange={(e: any) => setValueSearch(e.target.value)}
           />
           <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
         </Paper>
       </div>
-
-      <div className={styles.grid}>
-        <h3>{memorizedCard}</h3>
-      </div>
+      {memorizedCard &&
+        memorizedCard.map((item: student_dto) => (
+          <div className={styles.grid} key={item.id}>
+            {item.name}
+          </div>
+        ))}
     </main>
   );
 }

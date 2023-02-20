@@ -15,7 +15,7 @@ model apprendiceship {
   competence    competences @relation(fields: [competence_id], references: [id])
   competence_id String
   group_year    group_years @relation(fields: [group_year_id], references: [id])
-  group_year_id Int
+  group_year_id String
   unit          units       @relation(fields: [unit_id], references: [id])
   unit_id       Int
   object        objects     @relation(fields: [object_id], references: [id])
@@ -93,7 +93,7 @@ model objects {
 }
 
 model group_years {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @unique()
   description    String
   created        DateTime
   apprendiceship apprendiceship[]

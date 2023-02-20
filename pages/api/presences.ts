@@ -7,19 +7,21 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const studentsList = await prisma.students.findMany();
-    return res.status(200).json(studentsList);
+    const presencesList = await prisma.presences.findMany();
+    return res.status(200).json(presencesList);
   }
 
   if (req.method == "POST") {
-    const { name } = req.body;
-    const newStudents = await prisma.students.create({
+    const { student_id, competence_id, presence } = req.body;
+    const newPresence = await prisma.presences.create({
       data: {
         id: uuidv4(),
-        name: name,
+        student_id,
+        competence_id,
+        presence,
         created: new Date(Date()).toISOString(),
       },
     });
-    return res.status(201).json(newStudents);
+    return res.status(201).json(newPresence);
   }
 }

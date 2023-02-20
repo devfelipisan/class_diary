@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch("/api/studentsList");
+      const response = await fetch("/api/students");
       const data = await response.json();
       setStudents(data);
     }

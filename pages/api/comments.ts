@@ -1,4 +1,5 @@
 import { prisma } from "@/prisma/client";
+import { v4 as uuidv4 } from "uuid";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -14,6 +15,7 @@ export default async function handler(
     const { comment } = req.body;
     const newComment = await prisma.comments.create({
       data: {
+        id: uuidv4()
         comment,
         created: new Date(Date()).toISOString(),
       },

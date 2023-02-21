@@ -17,19 +17,19 @@ model apprendiceship {
   group_year    group_years @relation(fields: [group_year_id], references: [id])
   group_year_id String
   unit          units       @relation(fields: [unit_id], references: [id])
-  unit_id       Int
+  unit_id       String
   object        objects     @relation(fields: [object_id], references: [id])
-  object_id     Int
+  object_id     String
   skill         skills      @relation(fields: [skill_id], references: [id])
-  skill_id      Int
+  skill_id      String
   comment       comments    @relation(fields: [comment_id], references: [id])
   comment_id    String
-  resume        resumes     @relation(fields: [resume_id], references: [id])
-  resume_id     Int
-  field         fields      @relation(fields: [field_id], references: [id])
-  field_id      Int
-  axis          axes        @relation(fields: [axis_id], references: [id])
-  axis_id       Int
+  resume        resumes?    @relation(fields: [resume_id], references: [id])
+  resume_id     String?
+  field         fields?     @relation(fields: [field_id], references: [id])
+  field_id      String?
+  axis          axes?       @relation(fields: [axis_id], references: [id])
+  axis_id       String?
   created       DateTime
 }
 
@@ -44,35 +44,35 @@ model competences {
 
 //rever id autoincremet, pois do 3 pula para o 13
 model units {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model skills {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model resumes {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model axes {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model fields {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
@@ -86,7 +86,7 @@ model comments {
 }
 
 model objects {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]

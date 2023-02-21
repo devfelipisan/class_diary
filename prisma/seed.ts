@@ -1,0 +1,6031 @@
+import { prisma } from "./client";
+
+interface portuguesDto {
+  id: string;
+  competences: string;
+  group_year_id: string;
+  group_years: string;
+  field: string;
+  unit: string;
+  object: string;
+  skill: string;
+  comment?: string;
+  resume?: string;
+}
+
+const portuguesSeed: Array<portuguesDto> = [
+  {
+    id: "EF01LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Protocolos de leitura",
+    skill:
+      "(EF01LP01) Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+    comment:
+      "O momento de leitura em voz alta de materiais impressos e digitais, feita pelo professor, terá o papel de modelizar procedimentos de leitura, entre eles, o que se refere a esta habilidade. Esta habilidade também é parte do processo de aquisição do sistema de escrita, porque o procedimento de apontar o que está sendo lido oferece pistas sobre a relação entre fala e escrita.",
+    resume:
+      "Para contextualizar o desenvolvimento dessa habilidade, o currículo pode orientar que a prática de leitura se desenvolva em situações significativas, em que o ato de refletir sobre as características do sistema de escrita (por exemplo, saber a direção em que se lê) aconteça de modo a trazer para os estudantes o papel da leitura na vida. Nesse processo, podem ajudar projetos e/ou sequências didáticas que proponham, por exemplo, a oralização de textos (como preparar-se para apresentar ou gravar uma leitura — cantiga, poema etc. —  para pais ou colegas). Os objetivos poderão orientar atividade de leitura feita pelo professor e acompanhada pelo aluno em material impresso ou projetada por aparelhos eletrônicos.",
+  },
+  {
+    id: "EF01LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Correspondência fonema-grafema",
+    skill:
+      "(EF01LP02) Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
+    comment:
+      "A escrita espontânea deve acontecer a partir de textos (listas, trechos de parlendas etc.) desde o início do 1º ano, de modo permanente. Escrevendo e analisando suas produções, pensando como grafar determinadas palavras, tendo escritas convencionais como referência, os estudantes vão, progressivamente, utilizando as letras que representam os fonemas. É possível chegar à compreensão da base alfabética até o final do 2º ano.",
+    resume:
+      "Na elaboração do currículo, pode-se contextualizar esta habilidade com temas de interesse dos alunos. É possível prever, nas salas de alfabetização, em projetos e/ou sequências didáticas, o funcionamento da biblioteca de classe, o estudo sobre um povo indígena do Brasil, a elaboração de uma receita culinária, a produção de orientações para uma brincadeira. Ainda, esta habilidade pode ser aprofundada nos currículos com a previsão da escrita situada em textos cuja unidade mínima seja a palavra, como títulos e legendas com uma ou mais palavras, modo de preparo de receitas culinárias, estrofe de uma cantiga, por exemplo, de acordo com as possibilidades e necessidades dos estudantes. As habilidades propostas no currículo podem contemplar situações de análise em grupos, em duplas e individualmente.",
+  },
+  {
+    id: "EF01LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Construção do sistema alfabético/ Convenções da escrita",
+    skill:
+      "(EF01LP03) Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
+    comment:
+      "A observação e análise de escritas acontece tanto para reconhecer partes iguais de duas palavras (na lista de nomes: MARIANA e MARIA) quanto para identificar semelhanças gráficas em partes de textos que se relacionam do ponto de vista sonoro, como as rimas de um poema. Os textos de referência para atividades como estas devem ser conhecidos pelos estudantes. O procedimento de comparação é recurso a ser utilizado na produção de novas escritas.",
+    resume:
+      "Na elaboração do currículo, cada região poderá pensar em propor habilidades que favoreçam a prática de leitura e escrita de modo permanente nas salas de alfabetização, valorizando a análise de referenciais estáveis de escrita, como o nome próprio e os textos da tradição oral, que possibilitam um avanço na compreensão das relações grafema-fonema. É importante indicar a progressão de habilidades que envolvam análise de unidades menores que a palavra, considerando que os alunos terão melhores condições de realizá-la após a compreensão da base alfabética. Para que essa análise seja possível, é preciso criar condições para a realização de comparação entre escritas: um procedimento a ser aprendido para potencializar a reflexão sobre o sistema de escrita.",
+  },
+  {
+    id: "EF01LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Conhecimento do alfabeto do português do Brasil",
+    skill:
+      "(EF01LP04) Distinguir as letras do alfabeto de outros sinais gráficos.",
+    comment:
+      "Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras (princípio acrofônico) acontece gradualmente, com reorganizações constantes até a produção de escritas ortográficas. O princípio acrofônico é compreendido em atividades de escrita, quando a escolha da letra e a sua nomeação o evidenciam.",
+    resume:
+      "Na elaboração do currículo, pode-se contextualizar esta habilidade com a indicação de textos da tradição oral regionais que, ao serem utilizados em atividades de leitura e escrita, contribuem para a compreensão da relação existente entre fala e escrita. As habilidades propostas no currículo podem sinalizar relações progressivas que vão desde um registro gráfico não convencional (ainda que relacionado à fala) para uma representação convencional que contemple a escrita de todos os fonemas.O princípio acrofônico é um indicador de possibilidades de som da letra, não oferecendo referências para todos os fonemas, pois a escrita brasileira é também ortográfica. O uso de apenas essa ideia pode trazer dificuldades para o estudante; assim, não convém que um currículo dissocie esta e outras habilidades que tratam das relações entre letras e fonemas da prática de ler e escrever textos — ainda que sejam aqueles em que a organização estrutural facilite a memorização —, visto que é por meio dessas práticas que a compreensão do princípio acrofônico acontece.",
+  },
+  {
+    id: "EF01LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético",
+    skill:
+      "(EF01LP05) Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
+    comment:
+      "A associação de uma marca gráfica (seja letra ou não) a cada emissão sonora de uma palavra (sílaba oral) já representa indícios do processo de fonetização que, neste momento, não compreende a reanálise da sílaba em unidades menores nem, portanto, o estabelecimento de relação entre fonema-letra/grafema. Aos poucos, por meio da reflexão reiterada sobre a escrita, será possível que isso aconteça, chegando-se ao uso das letras convencionais.",
+    resume:
+      "Na elaboração do currículo, recomenda-se propor habilidades que contemplem, no 1º e 2º ano, a análise de palavras e suas partes a partir do trabalho com textos da tradição oral e listas, progredindo para uma análise cada vez mais ajustada de partes menores da palavra, no que se refere: à quantidade (quantas letras e sons a compõem); à qualidade (quais letras correspondem a quais sons); à ordem das letras na escrita de cada palavra. Podem ser criados espaços de reflexão a respeito da correspondência fonema-grafema (do princípio alfabético à construção da ortografia), por meio da comparação reflexiva entre palavras — habilidade (EF01LP03) — de modo progressivamente autônomo, a partir de textos genuínos do repertório local que atendam interesses temáticos dos estudantes.",
+  },
+  {
+    id: "EF01LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill: "(EF01LP06) Segmentar oralmente palavras em sílabas.",
+    comment:
+      "Essa habilidade compreende a identificação das emissões vocais que compõem a palavra falada — as sílabas —, o que acontece, no processo de compreensão do sistema, tão logo o estudante compreende a relação entre a fala e a escrita, sendo conhecimento fonológico precoce no processo de alfabetização. Em situações de leitura e escrita, essa habilidade funciona como procedimento de controle do registro e ajuste do falado ao escrito.",
+    resume:
+      "Na elaboração do currículo, é possível que as habilidades propostas orientem a segmentação oral das palavras em sílabas em situações significativas com o uso de cantigas, parlendas do repertório local e nacional, de modo a contribuir para a constituição proficiente desta habilidade. Após a compreensão do sistema de escrita, essa habilidade será uma ferramenta para a compreensão de outros aspectos da linguagem verbal (tonicidade e acentuação).",
+  },
+  {
+    id: "EF01LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill: "(EF01LP07) Identificar fonemas e sua representação por letras.",
+    comment:
+      "Trata-se de habilidade desenvolvida progressivamente, pelo uso da linguagem em situações de leitura e escrita de textos diversos, especialmente as parlendas, os poemas e as cantigas. À medida em que os estudantes avançam na compreensão do sistema de escrita, vão realizando análises fonológicas cada vez mais ajustadas, tanto na palavra quanto na sílaba, até chegar ao fonema.",
+    resume:
+      "Na elaboração do currículo, as habilidades propostas podem prever análises fonológicas a partir de textos conhecidos, até chegar-se a orientar análises de palavras e partes delas, culminando com a análise da relação fonema-grafema, em situações de reflexão sobre a grafia correta, o que só deverá ocorrer após a compreensão do sistema de escrita pelos estudantes. Além disso, essas habilidades são conhecimento fundamental para realizar procedimentos de translineação.",
+  },
+  {
+    id: "EF01LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF01LP08) Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
+    comment:
+      "Trata-se de habilidade desenvolvida, progressivamente, pelo uso da linguagem em situações de leitura e escrita de textos diversos. À medida que os estudantes avançam na compreensão do sistema de escrita, vão realizando análises fonológicas cada vez mais ajustadas, tanto na palavra quanto na sílaba, até chegar ao fonema.",
+    resume:
+      "Na elaboração do currículo, as habilidades propostas podem prever análises fonológicas a partir de textos conhecidos, até chegar a orientar análises de palavras e partes delas, culminando com a análise da relação fonema-grafema, em situações de reflexão sobre a grafia correta. Neste último caso, isso só deverá ocorrer após a compreensão do sistema de escrita pelos estudantes, não sendo conveniente que um currículo oriente o trabalho com esta habilidade de modo separado da leitura e escrita de textos. Além disso, esta habilidade é conhecimento fundamental para realizar procedimentos de translineação.",
+  },
+  {
+    id: "EF01LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF01LP09) Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas iniciais.",
+    comment:
+      "Esta habilidade remete à análise fonológica que deve ser orientada no processo de alfabetização. A progressão evolui da análise de palavras presentes em textos conhecidos para refletir sobre as características do sistema de escrita, para a análise de palavras que compõem, por exemplo, um acervo selecionado para discutir determinada regularidade ortográfica, de modo que a reflexão acontece no âmbito dos estudos sobre a convenção da escrita.",
+    resume:
+      "Na elaboração do currículo, as habilidades propostas podem prever análises fonológicas de palavras e partes delas, a partir de textos conhecidos (lista de nomes da sala, de objetos, textos como: parlendas, cantigas), culminando com a análise da relação fonema-grafema, em situações de reflexão sobre a grafia correta, que deve ocorrer apenas após a compreensão da base alfabética. Esse procedimento é importante para a compreensão da base alfabética do sistema de escrita, assim como das questões ortográficas.",
+  },
+  {
+    id: "EF01LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Conhecimento do alfabeto do português do Brasil",
+    skill:
+      "(EF01LP10) Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+    comment:
+      "Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras acontece, gradualmente, com reorganizações constantes até a produção de escritas ortográficas.",
+    resume:
+      "Na elaboração do currículo, pode-se contextualizar esta habilidade com a indicação de textos da tradição oral regionais que, ao serem utilizados em atividades de leitura e escrita, contribuem para a compreensão da relação existente entre fala e escrita. As habilidades propostas podem sinalizar relações progressivas que vão desde um registro gráfico não convencional (ainda que relacionado à fala) para uma representação convencional que contemple a escrita de todos os fonemas. O princípio acrofônico é um indicador de possibilidades de som da letra, não oferecendo referências para todos os fonemas, pois a escrita brasileira é também ortográfica. O uso de apenas essa ideia pode trazer dificuldades para o estudante; assim, não convém que um currículo dissocie esta e outras habilidades que tratam das relações entre letras e fonemas da prática de ler e escrever textos — ainda que sejam aqueles em que a organização estrutural facilite a memorização —, visto que é por meio dessas práticas que a compreensão do princípio acrofônico acontece.",
+  },
+  {
+    id: "EF01LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    skill:
+      "(EF01LP11) Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
+    comment:
+      "O trabalho formal com essa habilidade acontece após o momento em que os estudantes compreendem as regras de geração do sistema de escrita. Contudo, no contato com os textos impressos e digitais há uma aproximação a essas habilidades.",
+    resume:
+      "Na elaboração do currículo, a orientação a ser dada para o desenvolvimento da habilidade refere-se, sobretudo, à disponibilização de diversos materiais impressos e digitais que, certamente, apresentarão tipos de letra diferentes, tematizando esse aspecto das atividades de ensino. Recomenda-se que, inicialmente, a prática em alfabetização seja orientada com o uso de letra maiúscula de imprensa tanto em atividades de leitura quanto de escrita. Posteriormente, os materiais como livros, revistas, jornais impressos e digitais permitem o acesso a outros tipos de letra, favorecendo a análise e reconhecimento de situações de uso dos diferentes tipos, além da letra cursiva, de uso mais frequente no contexto escolar.",
+  },
+  {
+    id: "EF01LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object:
+      "Segmentação de palavras/Classificação de palavras por número de sílabas",
+    skill:
+      "(EF01LP12) Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+    comment:
+      "Para segmentar o texto em palavras, o aprendiz deverá articular as referências de palavras que constituiu a partir da fala — baseadas na prosódia — com as referências obtidas a partir dos textos escritos — conjunto de letras delimitado por espaços em branco ou sinais de pontuação. É nessa articulação que se constituem os critérios de segmentação pelo estudante.",
+    resume:
+      'A construção da habilidade de segmentar o texto em palavras acontece pela prática da leitura e escrita (ler e segmentar textos conhecidos escritos de modo aglutinado, contar as palavras e comparar os resultados com os colegas). Na elaboração do currículo, pode-se enfatizar processos que levem o aprendiz a, progressivamente, superar ideias como: a) artigos definidos, preposições, conjunções, pronomes átonos não devem ser representados por escrito;  b) pronunciar "vemcácomigo" ou "afoto" junto não torna esses segmentos palavras; c) na escrita se enxerga agrupamentos de letras — as palavras — separados por espaços em branco ou sinais de pontuação, o que não acontece na fala. A complexificação do trabalho com esta habilidade deve prever a superação dessas ideias, de modo que o aluno compreenda, progressivamente, que escrita e fala possuem critérios diferentes para segmentar as palavras.',
+  },
+  {
+    id: "EF01LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético",
+    skill:
+      "(EF01LP13) Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+    comment:
+      "Esta habilidade remete à análise fonológica que deve ser orientada no processo de alfabetização. A progressão evolui da análise de palavras presentes em textos conhecidos para refletir sobre as características do sistema de escrita, para a análise de palavras que compõem, por exemplo, um acervo selecionado para discutir determinada regularidade ortográfica, de modo que a reflexão acontece no âmbito dos estudos sobre a convenção da escrita.",
+    resume:
+      "Na elaboração do currículo, as habilidades propostas podem prever análises fonológicas de palavras e partes delas, a partir de textos conhecidos — no caso da reflexão sobre as características do sistema alfabético —, culminando com a análise da relação fonema-grafema, em situações de reflexão sobre a grafia correta, desde que os estudantes já tenham compreendido o sistema alfabético. Esse procedimento é importante para a compreensão da base alfabética do sistema de escrita, assim como das questões ortográficas, não sendo indicado que aconteça de modo desarticulado do trabalho com a prática de leitura e de escrita.",
+  },
+  {
+    id: "EF01LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Pontuação",
+    skill:
+      "(EF01LP14) Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
+    comment:
+      "Apesar de esta habilidade não se referir aos sinais gráficos de acentuação, é possível inclui-los junto com os sinais de pontuação, como outras marcas gráficas que um texto/palavra apresenta e que o aluno deve reconhecer. Trata-se do início de ampliação organizada do olhar do aluno para além do sistema alfabético de escrita.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, na escola, o estudo da pontuação acontece de duas maneiras: na leitura, ao analisar os efeitos de sentido produzidos pelo uso feito no texto; e na escrita, de modo epilinguístico, no uso da linguagem, ao discutir possibilidades de pontuar, analisar os efeitos de sentido produzidos pelas diversas possibilidades que se colocam (ponto final, de interrogação, de exclamação) e selecionar as mais adequadas às intenções de significação. As situações de revisão processual coletiva do texto potencializam a reflexão sobre aspectos textuais como esse. A progressão está prevista pela ampliação gradativa dos sinais a serem utilizados, mas também deve-se considerar o nível de autonomia do estudante.",
+  },
+  {
+    id: "EF01LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Sinonímia e antonímia/Morfologia/Pontuação",
+    skill:
+      "(EF01LP15) Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
+    comment:
+      "Esta habilidade prevê reconhecer relações de sinonímia e antonímia por comparação de palavras a partir de uma determinada relação. É importante que a relação seja apresentada em textos, para que o sentido das palavras seja apreendido na acepção adequada.",
+    resume:
+      "Na elaboração do currículo, é preciso que o movimento metodológico a ser empregado nesse estudo corresponda à análise comparativa e à reflexão com base em inventários. Assim, a proposta é estudar dois grupos de palavras: um que contenha uma lista de palavras com seus sinônimos e outro que contenha a mesma lista de palavras com seus antônimos. A tarefa é identificar o critério de agrupamento de cada uma das listas. Depois disso, dada uma lista de palavras, pode-se elaborar um grupo que contenha os sinônimos destas, a partir de um rol dado; depois, elaborar outro grupo que contenha os seus antônimos, a partir de outro rol. No currículo escolar, a progressão pode organizar-se a partir da complexidade lexical e do nível de autonomia requerido do aluno.",
+  },
+  {
+    id: "EF01LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF01LP16) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos.  Atentar para o fato de que o trabalho previsto é em colaboração, e não de modo autônomo.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar, na definição das habilidades, as características dos textos selecionados e dos gêneros previstos. As parlendas, por exemplo, são textos da tradição oral. Organizam-se em versos rimados, ritmados e, por vezes, repetitivos, nem sempre com significado lógico. Podem ter várias finalidades: ensinar (a contar, por exemplo); arreliar o adversário; escolher participantes de jogos; adivinhar; ninar; brincar (pular corda, por exemplo); finalizar ou começar histórias, entre outras. Podem ser acompanhadas por movimentos corporais. Nas atividades de estudo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças.",
+  },
+  {
+    id: "EF01LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF01LP17) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero em foco e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser trabalhadas separadamente, e significam organizar as ideias para depois colocá-las no papel. Os gêneros a serem trabalhados englobam aqueles relativos ao campo da vida cotidiana.",
+    resume:
+      "Na elaboração do currículo, podem-se indicar situações de produção, nos dois primeiros anos, tendo o professor como escriba; e, considerando-se a complexidade da tarefa, propor habilidades que envolvam tanto produzir uma parte (inicial/final) de um texto conhecido quanto um texto completo. Portanto, considerando-se o ano, a ajuda do professor pode se dar de duas formas: como escriba do texto ditado pela turma e/ou intervindo no processo de planejamento e produção, coletivamente e em duplas. Assim, as habilidades podem contemplar a produção pelo ditado ao professor e pela parceria com colegas, de acordo com a complexidade do gênero. Para a introdução de gêneros mais complexos do campo de atuação da vida cotidiana, podem ser propostas, nos anos finais, habilidades que prevejam o trabalho em colaboração.",
+  },
+  {
+    id: "EF01LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF01LP18) Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "O registro realizado coletivamente pelo professor, quando o texto é ditado pelos estudantes, permite observar tanto características do sistema de escrita quanto da textualidade (em especial no caso dos textos que não se sabe de cor). Quando situado em um projeto de escrita, também o contexto de produção e as implicações para o texto são tematizados. O trabalho coletivo e em grupo modeliza procedimentos de escrita e otimiza a circulação de informações.",
+    resume:
+      "Na elaboração do currículo, pode-se contextualizar, aprofundar e complementar esta habilidade considerando que: no registro colaborativo de textos que se sabe de cor, é pertinente que o conteúdo focal sejam as características do sistema de escrita (variedade de letras e palavras, relação do falado com o escrito), uma vez que não há decisões a tomar sobre o que será escrito. Alguns aspectos textuais podem ser tratados, como a organização em versos: escrita de cada um em uma linha, o que implica saber onde começam e terminam. Já no registro coletivo de textos que não se sabe de cor (reescrita/ditado ao professor), o foco pode estar nos aspectos textuais (sequência dos fatos, relação entre eles, articulação dos trechos, realização de concordância nominal e verbal etc.), pois os estudantes, embora possam conhecer o conteúdo, têm que elaborar um texto que não está previamente definido, situação que é fundamental para o desenvolvimento do aluno como produtor de textos, mesmo antes de saber grafá-los.",
+  },
+  {
+    id: "EF01LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF01LP19) Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.",
+    comment:
+      "Trata-se de habilidade que envolve a leitura e a compreensão do texto a ser recitado, para que o estudante, conhecendo os sentidos do texto, possa ler/recitar/declamar com maior fluência, entonação adequada e utilização de recursos paratextuais. A habilidade favorece, ainda, a reflexão sobre o sistema de escrita, pois a busca pelas rimas propicia o ajuste entre aspectos sonoros e escritos.",
+    resume:
+      "Na elaboração do currículo, é possível articular a habilidade ao eixo de reflexão sobre o sistema de escrita. Para tanto, pode-se prever que, antes de recitar, seja feita leitura, em colaboração com os colegas ou o professor, garantindo-se que os estudantes acompanhem com os textos em mãos. Além disso, é possível estudar recitações gravadas, analisando as diferentes performances, de modo a constituir um repertório de recursos e condições que permitam um desempenho de melhor qualidade. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR17), da Arte, no que se refere a recitar textos ritmados com a entonação adequada.",
+  },
+  {
+    id: "EF01LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que, no 1º ano, esta habilidade deve ser desenvolvida na forma de uma intensa frequentação dos estudantes a textos organizados em tais gêneros. Projetos de coletâneas de jogos e/ou brincadeiras (de roda, de corda, de correr etc.) — com as respectivas instruções — impressos ou digitais, em vídeo ou áudio, podem viabilizar esse trabalho. Na organização do currículo, a progressão pode dar-se a partir da diversificação de textos, da extensão e complexidade deles, assim como o nível de autonomia requerido do aluno.",
+  },
+  {
+    id: "EF01LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo da vida pública",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita compartilhada",
+    skill:
+      "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo da atuação cidadã em jogo e dois vetores do processo de escrita (situação/tema ou assunto). A habilidade prevê a colaboração dos colegas e professores na produção do texto, que envolve organizar as ideias e utilizar a consciência do que significa viver em comunidade para depois escrevê-las em formato de lista.",
+    resume:
+      "Na elaboração do currículo, pode-se orientar a análise de leis, como o Estatuto da Criança e do Adolescente, entre outras, de modo a constituir repertório temático. É possível propor habilidades que prevejam: a) o planejamento coletivo da situação comunicativa e do texto; b) a análise da forma composicional dos gêneros do campo da atuação cidadã e dos portadores que as integram, para identificar suas características; c) o estudo dos elementos típicos de tais textos para decidir sobre a pertinência de sua utilização, considerando as intenções de significação;  d) a textualização e revisão processual e final. A progressão horizontal pode tomar como referência o grau de complexidade dos textos a serem abordados. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF12EF04), da Educação Física; (EF01HI04), da História; e (EF01GE04), da Geografia, associadas à identificação, discussão e produção de textos sobre regras de convivência e sua importância.",
+  },
+  {
+    id: "EF01LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Produção de textos",
+    skill:
+      "(EF01LP22) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, diagramas, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo investigativo e três vetores do processo de escrita (situação/tema ou assunto/finalidade). E envolve ao menos duas operações distintas: planejar e produzir, que podem ser tratadas em separado, e significam organizar as ideias para depois colocá-las no papel. A ajuda do professor refere-se à atuação como escriba do texto, podendo orientar o trabalho das duplas.",
+    resume:
+      "Na elaboração do currículo, pode-se pensar em propor habilidades que envolvam o uso de procedimentos de consulta a ambientes digitais em colaboração. É possível, ainda, propor atividades que: a) envolvam análise de textos dos gêneros em questão para extrair as suas características; b) orientem a revisão coletiva durante a produção;  c) desmembrem a habilidade, separando os gêneros e especificando algumas de suas características. Pode-se, por exemplo, propor a produção de conteúdo de diagramas estabelecidos previamente. No caso da entrevista, a aproximação ao gênero poderá ser articulada, regionalmente, a estudos das culturas locais, por meio de entrevistas aos parentes e amigos mais velhos dos alunos.",
+  },
+  {
+    id: "EF01LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Planejamento de texto oral Exposição oral",
+    skill:
+      "(EF01LP23) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "O foco desta habilidade é a produção de áudios ou vídeos de gêneros investigativos a serem veiculados em mídias digitais. E envolve duas operações complexas sucessivas — planejar e produzir textos desses gêneros — articuladas com três vetores da produção textual: a situação comunicativa; o tema ou assunto; a finalidade da produção. Observar que o trabalho é em colaboração e com a ajuda do professor, tanto para a pesquisa e estudos realizados quanto para a produção do texto oral.",
+    resume:
+      "A habilidade pode prever tanto a oralização de textos escritos produzidos quanto a produção diretamente oral, por meio de gravações em áudio e/ou em vídeo dos textos previstos, utilizando-se esquemas de apoio escritos. É possível desmembrá-la, prevendo: a) a pesquisa do conteúdo temático; b) o estudo das principais características de textos orais no gênero selecionado para produção;  c) o planejamento e a elaboração do texto a ser produzido. Na elaboração do currículo, pode-se prever um trabalho com a habilidade organizado em sequências ou em projetos didáticos com temática que envolva, por exemplo, entrevistar as famílias para resgate da história do local em que vivem; participar em rádios comunitárias para divulgar campanhas realizadas pelos estudantes; entre outras possibilidades.",
+  },
+  {
+    id: "EF01LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object:
+      "Forma de composição dos textos/Adequação do texto às normas de escrita",
+    skill:
+      "(EF01LP24) Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade pode acontecer por meio da frequentação dos estudantes a textos organizados nos gêneros previstos, o que pode ser sugerido na elaboração dos currículos. A atividade de leitura colaborativa e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos. Projetos que prevejam a elaboração de blogs, vlogs, canais digitais ou jornais — digitais ou impressos — nos quais sejam apresentadas entrevistas e/ou curiosidades viabilizam o trabalho, pois incluem a leitura de estudo e a produção dos textos. Na organização do currículo, a progressão pode dar-se pela diversificação do tema abordado, pela complexidade dos textos e pelo nível de autonomia do aluno, que pode se efetivar pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.",
+  },
+  {
+    id: "EF01LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo artístico-literário",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF01LP25) Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor, histórias imaginadas ou baseadas em livros de imagens, observando a forma de composição de textos narrativos (personagens, enredo, tempo e espaço).",
+    comment:
+      "Esta habilidade diz respeito a produzir recontagens de histórias, ou seja, a partir das informações previamente adquiridas, elaborar narrativas. Ela prevê que o professor seja o responsável pelo registro das histórias dos alunos. O desenvolvimento dessa pode ser iniciada antes de o aluno saber escrever.",
+    resume:
+      "Na elaboração do currículo, é preciso levar em conta que a atividade de recontagem de histórias prevê a elaboração de um texto cujo conteúdo já é conhecido pelo aluno, sendo, mesmo assim, importante prever habilidades que indiquem o planejamento da situação comunicativa e do texto parte a parte, tarefa que poderá ser coletiva. Dessa forma, o currículo pode focalizar, nessa atividade, a capacidade de textualização, ou seja, de redigir o enunciado, considerando a sua organização interna: sequência temporal de ações, relações de causalidade estabelecidas entre os fatos, emprego de articuladores adequados entre os trechos do enunciado, utilização do registro literário, manutenção do tempo verbal, estabelecimento de coerência e coesão entre os trechos do texto, entre outros aspectos. A progressão horizontal pode apoiar-se na extensão e/ou na complexidade das histórias programadas e no foco nesse ou naquele aspecto da composição (personagens/enredo/tempo/espaço).",
+  },
+  {
+    id: "EF01LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "01",
+    group_years: "1º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Formas de composição de narrativas",
+    skill:
+      "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.",
+    comment:
+      "Esta habilidade refere-se a reconhecer — na leitura ou escuta — elementos básicos constitutivos dos textos narrativos do campo artístico-literário. Seu desenvolvimento permite ao aluno aprofundar a compreensão de narrativas e desenvolver capacidades de análise e crítica.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento dessa habilidade venha associado à frequentação dos estudantes a textos organizados nos gêneros previstos. Enquanto eles não compreenderem a base alfabética do sistema de escrita, é importante que os currículos prevejam atividades de leitura colaborativa de estudo, capazes de propiciar a análise dos recursos indicados, assim como a roda de leitura. O texto exposto para que os estudantes possam ver onde o professor está lendo e acompanhar as suas indicações é recurso de grande relevância. A progressão horizontal pode se dar pela complexidade dos textos escutados e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa. Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF15AR18), da Arte; e (EF01HI06), da História, associadas à identificação de elementos narrativos em textos lidos, escutados e, também, encenados.",
+  },
+  {
+    id: "EF12LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Decodificação/Fluência de leitura",
+    skill:
+      "(EF12LP01) Ler palavras novas com precisão na decodificação, no caso de palavras de uso frequente, ler globalmente, por memorização.",
+    comment:
+      "A habilidade pode orientar a leitura de duas maneiras: a) quando se trata de alunos que estão em processo de construção do sistema, por meio da leitura colaborativa de textos conhecidos de memória, realizando ajuste do texto falado ao seu registro gráfico; b) quando se trata dos alunos que já compreenderam o sistema (o que pode ocorrer até o final do 2º ano), com precisão na decodificação.",
+    resume:
+      "Na elaboração do currículo, a indicação de habilidades de leitura de textos da tradição oral, como cantigas regionais e nacionais, poemas, letra de músicas, entre outros textos cuja organização estrutural facilite a memorização, é importante para a construção dessa habilidade. Em documentos de orientações didáticas, é possível prever a explicitação das modalidades de trabalho com a leitura (leitura em voz alta pelo professor, leitura autônoma, leitura colaborativa, entre outras) que podem contribuir para a organização do ensino de leitura, que deve acontecer com a construção das habilidades de compreensão do sistema de escrita.",
+  },
+  {
+    id: "EF12LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação de leitor",
+    skill:
+      "(EF12LP02) Buscar, selecionar e ler, com a mediação do professor (leitura compartilhada), textos que circulam em meios impressos ou digitais, de acordo com as necessidades e interesses.",
+    comment:
+      "No trabalho com leitura, é preciso ensinar procedimentos e comportamentos leitores: ambos implicam a mobilização das diversas habilidades de leitura.A leitura compartilhada é uma atividade que potencializa esse trabalho: explicita como agem os leitores proficientes na leitura.Ao selecionar temas pertinentes para o ensino, convém considerar os que são do interesse dos alunos e os que são relevantes para a compreensão da realidade vivida.",
+    resume:
+      "Na elaboração do currículo, é possível prever a leitura colaborativa, que é, inclusive no que diz respeito à seleção de textos, a atividade na qual se estuda um texto por meio de questões problematizadoras feitas pelo professor após uma leitura inicial do texto (ou sem realizá-la, de acordo com o objetivo). A progressão do trabalho com leitura se dá a partir do nível de complexidade dos textos e do nível de autonomia do aluno (trabalho coletivo, grupos, duplas, autônomo).",
+  },
+  {
+    id: "EF12LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Todos os campos de atuação",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object:
+      "Construção do sistema alfabético/ Estabelecimento de relações anafóricas na referenciação e construção da coesão",
+    skill:
+      "(EF12LP03) Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação.",
+    comment:
+      "Esta habilidade consiste em observar e reproduzir pequenos textos, e é útil como recurso para chamar a atenção do aluno para aspectos como pontuação, acentuação, presença de letra maiúscula, paragrafação e distribuição gráfica de suas partes, entre outros.",
+    resume:
+      "Na elaboração do currículo, é possível prever que o desenvolvimento desta habilidade supõe: a) a mobilização da atenção do aluno para com todas as características gráficas do texto: pontuação (medial e final), paragrafação, acentuação, presença de letras maiúsculas, distribuição gráfica de suas partes, translineação; b) a constante mediação do professor em todas as etapas das atividades propostas. Convém que, no currículo, seja sublinhada a necessidade de os textos selecionados serem curtos ou trechos significativos de um texto mais longo. A progressão horizontal pode dar-se pela extensão e complexidade dos textos e pelo nível de autonomia do aluno.",
+  },
+  {
+    id: "EF12LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF12LP04) Ler e compreender, em colaboração com os colegas e com a ajuda do professor ou já com certa autonomia, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o desenvolvimento de habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos.No que se refere à progressão da aprendizagem, atentar para o fato de que a formulação da habilidade já implica um critério: o grau de autonomia do aluno (leitura em colaboração; leitura autônoma).",
+    resume:
+      "Na elaboração do currículo, pode-se considerar, na previsão de atividades, as características dos textos selecionados para leitura e dos gêneros previstos. Uma receita, por exemplo, organiza-se pela presença de: título, quantidades dos ingredientes, modo de fazer. Pode conter ainda: rendimento, grau de dificuldade e tempo de trabalho. Adequa-se ao portador e espaço de circulação: se for para crianças, as quantidades podem vir indicadas por imagens (xícara, colher etc.) e a linguagem será menos complexa, em especial no 'modo de fazer'. Nas atividades de estudo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças. Além do grau de autonomia do aluno, a progressão da aprendizagem pode apoiar-se no grau de complexidade dos textos e dos temas.",
+  },
+  {
+    id: "EF12LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita compartilhada",
+    skill:
+      "(EF12LP05) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "Esta é uma habilidade diretamente relacionada à construção da textualidade. Articula a produção do texto com o gênero do campo artístico-literário e dois vetores do processo de escrita (situação/finalidade), comportando ao menos duas etapas — planejamento e escrita, que significam organizar as ideias para depois colocá-las no papel — passíveis de tratamento em etapas sucessivas. Poderá ser desmembrada em habilidades que prevejam: a) planejar e recontar histórias; b) planejar e produzir escrita das histórias recontadas, por ditado ao professor e/ou colegas; c) planejar e escrever textos versificados conhecidos de memória (coletivamente, em duplas ou de modo autônomo), como letras de canção, quadrinhas e cordel. Todas as habilidades podem indicar a revisão processual do texto.",
+    resume:
+      "Na elaboração do currículo, é possível articular esta habilidade a outras que prevejam conteúdos relacionados à participação em situações comunicativas, como saraus, rodas de leitura de poemas e oralização de quadrinhas/cordel, em dia da família na escola, prevendo a observação e o planejamento da situação comunicativa com os alunos. É preciso ressaltar que a atividade de recontagem de histórias prevê a elaboração de um texto cujo conteúdo é conhecido. Dessa forma, é focalizada nessa atividade a capacidade de textualização, ou seja, de redigir o enunciado. Já a atividade de escrita de textos conhecidos de memória envolve apenas o registro gráfico do texto que, nesse caso, é tão conhecido quanto o conteúdo temático. A progressão pode apoiar-se no grau de complexidade dos gêneros mencionados e/ou da autonomia a ser desenvolvida pelo aluno em diferentes etapas de cada um dos dois primeiros anos.",
+  },
+  {
+    id: "EF12LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF12LP06) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, recados, avisos, convites, receitas, instruções de montagem, dentre outros gêneros do campo da vida cotidiana, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula escrita e oralização da escrita, considerando, ainda, o gênero do campo da vida cotidiana a ser produzido e três vetores da produção, seja escrita, seja oral (situação/tema ou assunto/finalidade).",
+    resume:
+      "A habilidade requer planejar e produzir textos orais e/ou para oralizar, dependendo da situação comunicativa. É comum, por exemplo, que recados sejam produzidos oralmente; já as instruções de montagem costumam ser elaboradas por escrito, podendo ser oralizadas. Como o objetivo final é a transmissão oral dos textos, na elaboração do currículo, é possível prever que o estudante tanto pode saber o conteúdo de um recado e elaborar o texto quando falar ao destinatário (pessoalmente, por meio de mensagem de voz de aplicativos de celular etc.) quanto pode necessitar ter o texto produzido por escrito para poder ler para o interlocutor (como instruções de montagem e receitas etc.). Para o desenvolvimento desta habilidade, pode-se propor que haja: a) análise da situação comunicativa e dos gêneros com a finalidade de compreender as suas características, de modo a oferecer repertório para a produção; b) planejamento, produção e revisão dos textos, com apoio do registro escrito; c) acesso e utilização de ferramentas digitais que viabilizem a produção dos textos, em áudio ou vídeo. A progressão pode apoiar-se nas duas operações diferentes que a habilidade envolve. Assim, planejamento e produção podem ser programados para momentos sucessivos. Além disso, recomenda-se prever o trabalho em colaboração, desde o coletivo até o organizado em duplas/grupos.",
+  },
+  {
+    id: "EF12LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF12LP07) Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível reproduzi-los em atividades de escrita e reescrita, assim como de criá-los em atividades de produção de textos. Esta habilidade envolve, portanto, a oralização dos textos previstos, com o objetivo de evidenciar seus padrões rítmicos e sonoros.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que os textos previstos são ótimas referências para a realização de leituras de ajuste, posto que a sua organização versificada e o ritmo e melodia oferecem pistas sobre onde começam e terminam os versos, balizando o trabalho do aluno. Projetos de coletâneas de cantigas, parlendas, trava-línguas são sempre ótimas propostas que viabilizam esse trabalho. Na organização do currículo, a progressão pode dar-se a partir da diversificação de textos, da extensão e complexidade deles, assim como o nível de autonomia requerido do aluno. Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF15AR14), (EF15AR15) e (EF15AR17), da Arte, associadas à experimentação com fontes sonoras e identificação de elementos constitutivos da música.",
+  },
+  {
+    id: "EF12LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF12LP08) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo jornalístico (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê tanto a colaboração quanto a realização com autonomia, o que pode ser tomado, nos currículos locais, como critério para a progressão da aprendizagem ao longo dos dois primeiros anos.",
+    resume:
+      "O foco do trabalho são os textos jornalísticos. Assim, Na elaboração do currículo, recomenda-se começar o seu estudo pela especificidade dos portadores típicos (jornais e revistas — por exemplo — impressos e digitais), para que os alunos possam conhecer o local de publicação dos textos, contextualizando-os quanto à extensão, orientação de valores e características gráficas. As rodas de jornal são boas atividades para esse estudo. É preciso considerar as características dos diferentes gêneros que circulam no jornal (notícia, reportagem, carta de leitor etc), para orientar os alunos quanto a isso no processo de leitura. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para a realização desse trabalho, seja com textos impressos ou digitais.",
+  },
+  {
+    id: "EF12LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF12LP09) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo publicitário (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê apenas a realização em colaboração. Assim, pode-se considerar o movimento metodológico básico, excluindo-se a realização com autonomia. (trabalho coletivo ® grupos ® duplas).",
+    resume:
+      "No campo publicitário, circulam textos que buscam convencer os leitores/ouvintes a consumirem determinados produtos, serviços e ideias, como o anúncio publicitário. São multimodais, articulando imagem, texto verbal, cores e, quando radiofônicos, televisivos ou digitais, sons também. Na elaboração do currículo do trabalho com esses textos, dois aspectos são fundamentais: compreender as marcas linguísticas e recursos de outras linguagens no contexto da função dos gêneros e finalidade dos textos (como o uso do imperativo, metáforas etc) e tematizar as relações de consumo tal como estão constituídas na sociedade hoje, relacionando-as com a sustentabilidade. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para a realização desse trabalho.",
+  },
+  {
+    id: "EF12LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF12LP10) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, cartazes, avisos, folhetos, regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da atuação cidadã (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê apenas a realização em colaboração, excluindo-se a realização com autonomia.",
+    resume:
+      "Os gêneros que circulam no campo da atuação cidadã são diversos, com características bastantes distintas, incluindo de cartazes contendo avisos e orientações práticas de comportamento (multimodais, podendo conter diferentes linguagens) a regulamentos (como o escolar). Na elaboração do currículo, é possível prever que a leitura proficiente desses textos requer, além da mobilização das estratégias de leitura, a compreensão de suas características, na relação com a função do gênero e com a finalidade do texto, nas situações comunicativas em que circulam. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para a realização desse trabalho. A progressão da aprendizagem pode se estabelecer com base nas estratégias (trabalho coletivo, grupos, duplas) e nos procedimentos a serem adotados, assim como na complexidade dos gêneros e dos textos previstos.",
+  },
+  {
+    id: "EF12LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita compartilhada",
+    skill:
+      "(EF12LP11) Escrever, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, digitais ou impressos, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta é uma habilidade que articula a produção textual com os gêneros do campo jornalístico em foco e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, as habilidades podem ser ampliadas com: a) orientação para uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões na escrita, revisar no processo e ao final;  b) indicação de visitas a ambientes digitais para observação dos gêneros citados, de modo a explicitar suas características e construindo registros que possam repertoriar a produção. É possível, ainda, propor habilidades que orientem a análise de textos dos gêneros para compreender a multimodalidade que os constitui. A progressão — tanto horizontal quanto vertical — pode ser pensada com base no suporte (impresso/digital), na complexidade e/ou extensão do texto de referência e no grau de autonomia que se pretenda para o aluno a cada etapa do ensino.",
+  },
+  {
+    id: "EF12LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita compartilhada",
+    skill:
+      "(EF12LP12) Escrever, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção de textos dos gêneros do campo publicitário em foco a três vetores do processo de escrita (situação/tema ou assunto/finalidade). A habilidade prevê a colaboração dos colegas e professores na produção do texto, que envolve organizar as ideias e utilizar a criatividade para depois escrevê-las.",
+    resume:
+      "Na elaboração do currículo, a habilidade poderá ser articulada a temas relevantes para a região, como campanhas de preservação de parques, praças, de cuidado com os animais, entre outros, de modo a criar situações comunicativas em que faça sentido a conscientização de outros interlocutores da comunidade escolar. É possível sugerir habilidades que prevejam portadores para esses textos, como folhetos e cartazes que possam ser divulgados no entorno da escola. Nesse caso, é indicado que a habilidade oriente o estudo do portador e a reflexão sobre sua adequação de acordo com a situação comunicativa. É possível, ainda, propor habilidades que: a) envolvam análise de textos dos gêneros do campo publicitário, de modo a explicitar as suas características e construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final. A progressão — tanto horizontal quanto vertical — pode ser pensada com base na complexidade e/ou extensão do texto de referência e no grau de autonomia que se pretenda para o aluno a cada etapa do ensino.",
+  },
+  {
+    id: "EF12LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF12LP13) Planejar, em colaboração com os colegas e com a ajuda do professor, slogans e peça de campanha de conscientização destinada ao público infantil que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Esta habilidade incide sobre a produção de textos (orais/escritos) do gênero campanha de conscientização.  A habilidade articula as atividades escolares relativas a três vetores próprios da produção textual: situação de comunicação, tema ou assunto e finalidade. Além disso, requer duas operações: planejar e produzir os textos dos gêneros estudados.",
+    resume:
+      "É muito importante que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. As habilidades podem: a) envolver a análise de textos, no gênero determinado, para compreender suas características, de acordo com a situação comunicativa; b) orientar a produção/textualização, colaborativa, em mídia digital. Além disso, é preciso considerar que a habilidade prevê oralizar textos escritos na preparação de materiais gravados em vídeo (para exibição na TV, em vlogs, em canais de mídias digitais etc.), e em áudio (para exibição em rádio e canais das mídias digitais etc.). Por isso, é fundamental que sejam previstos estudos dos recursos a serem empregados nesses materiais, considerando a especificidade de cada mídia e ambiente. A progressão, tanto horizontal quanto vertical, pode pautar-se pelo grau de complexidade das peças publicitárias visadas, pela alternância no foco do ensino (o gênero e sua organização geral; as ferramentas digitais a serem mobilizadas; o planejamento; a elaboração) e pelo grau de autonomia a ser conquistada pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF12LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF12LP14) Identificar e reproduzir, em fotolegendas de notícias, álbum de fotos digital noticioso, cartas de leitor (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos de expressão que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade se dá por meio da frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa de estudo e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos, sendo fundamental a previsão dessas atividades na organização dos currículos. Projetos que prevejam a leitura de matérias de relevância social (local ou global) publicadas em revistas/jornais específicos, e elaboração de cartas de leitor a respeito destas, viabilizam o desenvolvimento da habilidade, pois incluem a leitura de estudo das características do gênero e a produção dos textos. Os currículos podem prever habilidades que orientem a realização de rodas de leitura de jornal que possibilitam ao aluno uma compreensão mais crítica das matérias. A progressão, tanto horizontal quanto vertical, pode apoiar-se no grau de complexidade dos gêneros e textos mencionados, assim como pelo nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF12LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF12LP15) Identificar a forma de composição de slogans publicitários.",
+    comment:
+      "Esta habilidade articula-se com a (EF12LP16) e só se desenvolve adequadamente no interior de práticas de leitura e análise de textos publicitários. Seu foco é reconhecer recursos linguístico-discursivos envolvidos em slogans, garantindo ao aluno não só compreender melhor as particularidades dos textos desse campo, mas, ainda, empregar os recursos correspondentes em suas próprias produções.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade está intimamente associado ao aprendizado da (EF12LP16), pois o slogan é constitutivo do anúncio publicitário. Recomenda-se, portanto, que a articulação entre elas seja contemplada nos currículos locais e que ambas venham sempre associadas a práticas de leitura e/ou produção de textos nos gêneros em questão. A progressão, tanto horizontal quanto vertical, pode apoiar-se no grau de complexidade dos textos publicitários selecionados para estudo, assim como pelo nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF12LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF12LP16) Identificar e reproduzir, em anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil (orais e escritos, digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros, inclusive o uso de imagens.",
+    comment:
+      "Estreitamente articulada à (EF12LP15), esta habilidade tem como foco que o aluno reconheça recursos gráficos próprios dos gêneros mencionados, com vistas à sua apropriação. Seu desenvolvimento só se dá no interior de práticas de leitura, análise e produção desses textos, permitindo que o aluno venha a empregá-los adequadamente em sua própria escrita.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade seja associado à frequentação dos estudantes a textos organizados nos gêneros previstos. A previsão curricular de projetos de elaboração de campanhas publicitárias (impressas ou digitais) relativas a questões de relevância social pode viabilizar o desenvolvimento da habilidade, pois inclui a leitura de estudo das características do gênero e a produção dos textos. A progressão pode dar-se pela complexidade dos textos lidos (em função, por exemplo, do tema) e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF12LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF12LP17) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, enunciados de tarefas escolares, diagramas, curiosidades, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, entre outros gêneros do campo investigativo, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros investigativos (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê tanto a colaboração quanto a realização autônoma. Assim, é preciso considerar a gradação ao longo dos dois anos.",
+    resume:
+      "Enunciados de tarefas escolares precisam ser lidos e estudados no cotidiano dos trabalhos, considerando suas características, a depender da disciplina a que se referem. Curiosidades, por exemplo, são textos que apresentam aspectos inusitados de animais, lugares, culturas, países etc., e que muitas vezes organizam-se a partir de uma pergunta como 'Você sabia que...?'.Na elaboração do currículo, é importante que se contemplem referências variadas dos gêneros em foco nessa habilidade, articulando a complexidade dos textos visados às possibilidades dos alunos no nível de ensino em jogo. Nas atividades de estudo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças.",
+  },
+  {
+    id: "EF12LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Apreciação estética/Estilo",
+    skill:
+      "(EF12LP18) Apreciar poemas e outros textos versificados, observando rimas, sonoridades, jogos de palavras, reconhecendo seu pertencimento ao mundo imaginário e sua dimensão de encantamento, jogo e fruição.",
+    comment:
+      "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos diferentes gêneros poéticos.  A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam da leitura colaborativa para a autônoma.",
+    resume:
+      "Atividades que favorecem o desenvolvimento dessa habilidade são, entre outras, a leitura colaborativa — para estudo dos textos e modelização de procedimentos e comportamentos leitores —, a roda de leitores e o diário de leitura — para socialização de impressões sobre leituras realizadas e circulação de critérios de apreciação utilizados pelos diferentes leitores, como na habilidade (EF35LP21). É importante que, na elaboração do currículo, considere-se a disponibilidade, nas escolas, de materiais impressos e/ou digitais, assim como gravações de poemas declamados e outros recursos de imagem e som. No desenvolvimento do currículo, a organização de saraus e de slams cria um espaço de socialização de poemas, selecionados de acordo com  critérios de apreciação ética, estética e afetiva constituídos pelos alunos. A complexidade dos gêneros e textos previstos, as marcas linguísticas dos poemas mencionados e o grau de autonomia do aluno proposta para o primeiro e o segundo anos podem ser bons critérios para a progressão da aprendizagem.",
+  },
+  {
+    id: "EF12LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "12",
+    group_years: "1º, 2º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Formas de composição de textos poéticos",
+    skill:
+      "(EF12LP19) Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações.",
+    comment:
+      "Esta habilidade refere-se a — no processo de leitura de textos — identificar recursos linguísticos e discursivos que constituem os gêneros poéticos previstos. Fundamental para o desenvolvimento dessa habilidade é a oralização de tais textos, sem o que os aspectos relacionados à sonoridade e ao ritmo não podem ser observados.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que esta habilidade relaciona-se com a (EF35LP31): ambas preveem identificar recursos típicos dos textos versificados, relacionando-os com impressões e sensações por eles provocadas, sendo que, na (EF35LP31), aprofunda-se o estudo, focalizando os efeitos de sentido provocados pelo uso de metáforas e recursos rítmicos (progressão vertical). O desenvolvimento desta habilidade demanda a programação de atividades de estudo coletivo, em especial no 1º e 2º ano, quando os estudantes ainda não se encontram alfabetizados. Convém, portanto, que a mediação do professor e o envolvimento sistemático do aluno em práticas colaborativas de leitura e escrita sejam contemplados já nesses momentos iniciais.",
+  },
+  {
+    id: "EF15LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Reconstrução das condições de produção e recepção de textos",
+    skill:
+      "(EF15LP01) Identificar a função social de textos que circulam em campos da vida social dos quais participa cotidianamente (a casa, a rua, a comunidade, a escola) e nas mídias impressa, de massa e digital, reconhecendo para que foram produzidos, onde circulam, quem os produziu e a quem se destinam.",
+    comment:
+      "Esta habilidade refere-se à necessidade de o aluno identificar que os textos possuem funções diretamente relacionadas aos diversos campos de atuação da vida social em que se inserem e às diferentes mídias. Trata-se, portanto, de uma habilidade mais ampla, na qual se estudam os textos para procurar características dos gêneros e para estabelecer relações entre eles, os campos de atuação e sua organização interna.",
+    resume:
+      "Na elaboração do currículo, é possível destacar que o desenvolvimento desta habilidade permite que o aluno reconheça que os textos se organizam em gêneros que possuem funções sociais relacionadas aos diferentes campos de atuação no qual circulam. Espera-se que o aluno reconheça que, para informar-se sobre a vacinação contra febre amarela, por exemplo, pode-se ler notícias publicadas em jornais impressos e digitais que circulam na esfera pública. Por outro lado, se quiser comentar uma matéria publicada em um jornal impresso, deve concluir que o melhor gênero é a carta de leitor. Ou seja, não é em qualquer gênero que se busca qualquer informação: para cada intenção de dizer, há um gênero que é mais adequado. A progressão horizontal e vertical da habilidade pode ser estabelecida com base nas esferas de atividades selecionadas, nos gêneros a serem estudados, nas mídias em que a produção circulará etc.",
+  },
+  {
+    id: "EF15LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill:
+      "(EF15LP02) Estabelecer expectativas em relação ao texto que vai ler (pressuposições antecipadoras dos sentidos, da forma e da função social do texto), apoiando-se em seus conhecimentos prévios sobre as condições de produção e recepção desse texto, o gênero, o suporte e o universo temático, bem como sobre saliências textuais, recursos gráficos, imagens, dados da própria obra (índice, prefácio etc.), confirmando antecipações e inferências realizadas antes e durante a leitura de textos, checando a adequação das hipóteses realizadas.",
+    comment:
+      "O foco é a realização de antecipações, inferências e verificações ao longo do processo de leitura, a partir tanto da recuperação do contexto de produção e de recepção do texto a ser lido quanto do universo temático em jogo. É possível articular essas informações com pistas fornecidas pelo próprio texto, para realizar previsões sobre o conteúdo. Durante a leitura do texto, essa articulação permite inferir dados implícitos e verificar antecipações e inferências realizadas.",
+    resume:
+      "Os vetores desta habilidade são: a) a antecipação de informações sobre o conteúdo do texto (posições, tratamento temático, visão do interlocutor, valores etc.); b) a realização de inferências, seja a partir de dados do texto, das informações trazidas pelo professor sobre o contexto de produção ou do conhecimento prévio do aluno; c) a verificação tanto das antecipações realizadas quanto das inferências. O uso dessas informações é importante durante todo o processo de leitura, pois permite uma melhor compreensão e maior fluência. Na elaboração do currículo, a progressão pode se dar com base nos gêneros abordados, no foco do trabalho didático (mobilização de conhecimentos prévios; recuperação do contexto de produção; antecipações; produção de inferências; verificação) e no grau de autonomia do aluno na etapa de ensino em jogo.",
+  },
+  {
+    id: "EF15LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill: "(EF15LP03) Localizar informações explícitas em textos.",
+    comment:
+      "As informações explícitas em um texto são aquelas que estão, literalmente, expressas no texto, seja ele oral ou escrito. Localizá-las, portanto, no caso do texto escrito, requer do aluno que leia o enunciado e a identifique. Muitos consideram essa habilidade como a menos complexa. É preciso considerar, no entanto, que localizar informações não ocorre no vazio, mas a partir do texto. Assim, é tarefa que pode ser tão complexa quanto o próprio texto.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar pode-se prever que a compreensão de um texto requer a mobilização simultânea de várias habilidades e a utilização de diversos procedimentos, de acordo com o grau de autonomia do aluno e a finalidade e o tipo de leitura a ser realizada. Assim, não convém que um currículo dissocie a localização de informação de outras igualmente relevantes, como a identificação da ideia central do texto. A progressão dessa habilidade pode considerar diferentes critérios: o gênero e/ou o tipo de texto em jogo; o objetivo proposto; o tipo de leitura (colaborativa ou autônoma); o procedimento a ser desenvolvido; etc.",
+  },
+  {
+    id: "EF15LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill:
+      "(EF15LP04) Identificar o efeito de sentido produzido pelo uso de recursos expressivos gráfico-visuais em textos multissemióticos.",
+    comment:
+      "Os textos das diferentes esferas de atividade costumam apresentar diferentes recursos gráfico-visuais: boxes de complementação, linkagem ou de remissão; infográficos; negrito, itálico, letra capitular; uso de notas de rodapé; hiperlinks; som e movimento; cores, imagens; entre outros. A compreensão adequada do texto depende da identificação dos efeitos de sentido produzidos pelo uso de tais recursos, o que implica articulá-los ao texto verbal.",
+    resume:
+      "Ao trabalhar com textos multissemióticos, é preciso considerar que os sentidos dependem da articulação entre texto verbal e recursos gráfico-editoriais. Ler o texto sem considerar essa relação é ignorar que posicionamentos político-ideológicos, religiosos, valores éticos e estéticos também podem se apresentar nos recursos gráfico-visuais. Dessa forma, é preciso prever, na elaboração do currículo, situações de aprendizagem nas quais aconteçam a explicitação reflexiva e colaborativa da maneira como o leitor proficiente realiza essa operação. Há recursos que estão mais presentes em textos de determinado campo de atuação, como boxes nos textos de pesquisa e estudo; infográficos em reportagens e notícias; notas de rodapé em textos acadêmicos etc.A progressão curricular pode ser estabelecida com base na quantidade e no tipo de recurso gráfico-visual mobilizado pelo texto; na complexidade do texto e/ou do gênero; no grau de autonomia do aluno em leitura a cada etapa do ensino.",
+  },
+  {
+    id: "EF15LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Planejamento de texto",
+    skill:
+      "(EF15LP05) Planejar, com a ajuda do professor, o texto que será produzido, considerando a situação comunicativa, os interlocutores (quem escreve/para quem escreve); a finalidade ou o propósito (escrever para quê); a circulação (onde o texto vai circular); o suporte (qual é o portador do texto); a linguagem, organização e forma do texto e seu tema, pesquisando em meios impressos ou digitais, sempre que for preciso, informações necessárias à produção do texto, organizando em tópicos os dados e as fontes pesquisadas.",
+    comment:
+      "O foco da habilidade é o planejamento, entendido como etapa inicial do processo de produção do texto. Planejar diz respeito, então, a organizar ideias da pré-escrita levando em conta diversos fatores, como o objetivo do texto final, o público leitor etc. Trata-se de uma habilidade fundamental para que o aluno reconheça e considere os diferentes vetores da escrita. A habilidade pode ser desmembrada, nesse caso, envolvendo os dois tipos de planejamento e prevendo progressão (com e sem ajuda): a) planejar o conteúdo do texto de acordo com o gênero: criação do conteúdo temático (gêneros como: contos em geral, crônicas etc.) ou de pesquisa desse conteúdo (textos nos gêneros: notícia, verbetes, artigos em geral etc.); b) planejar o texto parte a parte, na ordem demandada pelo gênero trabalhado.",
+    resume:
+      "É possível prever, na elaboração do currículo, uma progressão do ensino com base nos gêneros a serem abordados na prática de produção de textos, ao longo dos anos, de modo a contemplar demandas locais, nacionais e universais de forma espiral: um mesmo gênero pode aparecer mais de uma vez em textos e/ou se podem demandar tarefas cada vez mais complexas (produzir o final de um conto de aventura lido, produzir um livro com contos de aventura etc.). Além disso, podem-se propor atividades que contemplem o ato de planejar com autonomia progressiva. Ainda, é possível pensar em agrupamentos didáticos, como, por exemplo, habilidades que envolvam gêneros literários e requerem a criação de conteúdo temático e habilidades que envolvam gêneros de outras ordens, como argumentar e expor, contemplando-se a ação de planejar de modo progressivo ao longo dos anos.",
+  },
+  {
+    id: "EF15LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Revisão de textos",
+    skill:
+      "(EF15LP06) Reler e revisar o texto produzido com a ajuda do professor e a colaboração dos colegas, para corrigi-lo e aprimorá-lo, fazendo cortes, acréscimos, reformulações, correções de ortografia e pontuação.",
+    comment:
+      "O foco da habilidade está nas etapas finais do processo de produção escrita, necessárias ao aprimoramento do texto. Reler e revisar diz respeito a observar a própria produção com atenção a detalhes de edição e aprimoramento do texto. Pode-se desmembrar a habilidade para contemplar a revisão processual e final, com e sem colaboração. É indicado hierarquizar a revisão de aspectos ligados à coerência (informações livres de contradições, completude de ideias etc.) e ao uso de elementos coesivos, como pontuação e organizadores textuais (presença de marcadores de tempo e outros que indiquem a progressão do texto), assim como dos aspectos ortográficos.",
+    resume:
+      "Na elaboração do currículo, pode-se ampliar a habilidade de revisão de textos produzidos, articulando-a, por exemplo, ao uso de ferramentas digitais, além de prever a familiarização dos alunos com as ferramentas em questão. A progressão do ensino pode apoiar-se na complexidade dos gêneros e dos textos, assim como no grau de autonomia do aluno a cada etapa da aprendizagem pretendida.",
+  },
+  {
+    id: "EF15LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Edição de textos",
+    skill:
+      "(EF15LP07) Editar a versão final do texto, em colaboração com os colegas e com a ajuda do professor, ilustrando, quando for o caso, em suporte adequado, manual ou digital.",
+    comment:
+      "O foco da habilidade incide sobre os cuidados com a circulação/publicação do texto em suportes impressos ou digitais. Editar, nesse caso, consiste em dar os toques finais à versão final de um texto produzido no que diz respeito à sua estruturação e também nos elementos que o rodeiam, seja em suporte manual ou digital. A habilidade pode ser antecipada por outras, que prevejam a edição do texto em parceria.",
+    resume:
+      "Na elaboração do currículo, a progressão pode ser pensada com base em critérios como o suporte em jogo, os recursos e as ferramentas de edição a serem utilizados, o grau de autonomia do aluno na realização da tarefa etc. Quando for o caso, podem ser previstas habilidades específicas, que envolvam conhecimentos procedimentais necessários ao uso de ferramentas digitais. Há, ainda, a possibilidade de complementação da habilidade, envolvendo a análise do projeto gráfico em materiais impressos e o design em materiais digitais.",
+  },
+  {
+    id: "EF15LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Utilização de tecnologia digital",
+    skill:
+      "(EF15LP08) Utilizar software, inclusive programas de edição de texto, para editar e publicar os textos produzidos, explorando os recursos multissemióticos disponíveis.",
+    comment:
+      "O foco desta habilidade é o conhecimento e o domínio de ferramentas digitais na edição e publicação de textos. Assim, está estreitamente associada à habilidade (EF15LP07), na medida em que pressupõe a atividade de edição de texto (o que significa realizar a observação atenta de sua produção, fazendo as revisões e ajustes necessários) e de publicação do texto (ou seja, deixar a produção disponível para o acesso do leitor). Esta habilidade envolve a previsão de habilidades específicas para uso do software e para o gênero produzido/editado, considerando cada ano, assim como a utilização do software com ou sem ajuda do professor.",
+    resume:
+      "Na elaboração do currículo, é possível prever habilidades específicas, envolvendo conhecimentos procedimentais necessários ao uso do software, que podem ser articulados à habilidade em projetos de elaboração de textos encontrados em: folhetos com orientações sobre questões/problemas locais; guias, pesquisas sobre povos indígenas/africanos; entre outros. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR26), da Arte, no que se refere à utilização de diferentes tecnologias e recursos digitais nos processos de criação. A habilidade pode, ainda, ser articulada a outras que proponham a contextualização da prática de produção de textos.",
+  },
+  {
+    id: "EF15LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Oralidade pública/Intercâmbio conversacional em sala de aula",
+    skill:
+      "(EF15LP09) Expressar-se em situações de intercâmbio oral com clareza, preocupando-se em ser compreendido pelo interlocutor e usando a palavra com tom de voz audível, boa articulação e ritmo adequado.",
+    comment:
+      "O desenvolvimento da habilidade requer a indicação dos discursos que devem ser aprendidos, de modo que as especificidades dos textos orais que circulam nessas situações tornem-se objeto de ensino. Considerar que expor oralmente o resultado de pesquisa realizada requer saberes diferenciados daqueles em que a proposta é opinar para tomar decisão coletiva, ou mesmo debater sobre aspectos controversos de um tema.",
+    resume:
+      "Na elaboração do currículo, pode-se indicar a análise das situações comunicativas e dos gêneros que nelas circulam, podendo organizar habilidades que prevejam a articulação entre o planejamento e: a) a produção de textos orais: expor os resultados de uma pesquisa para uma audiência, participar de debates sobre questões controversas, apresentar indicações literárias em uma roda, realizar/participar de entrevistas, entre outras; b) a oralização de textos escritos: apresentar poemas em saraus, ler textos produzidos para programas de rádio;c) o desenvolvimento da proficiência em gêneros orais mais produtivos e culturalmente relevantes na região. A progressão ao longo dos cinco anos iniciais pode apoiar-se no grau de complexidade do gênero oral estudado, no foco em habilidade de planejamento ou produção e no grau de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF15LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Escuta atenta",
+    skill:
+      "(EF15LP10) Escutar, com atenção, falas de professores e colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    comment:
+      "Esta é uma habilidade muito relevante como suporte para a progressão nos estudos. E, ao contrário do que muitos supõem, pode e deve ser ensinada. A escuta atenta poderá ser desenvolvida em situações comunicativas (seminários, mesas-redondas, entre outras) que envolvam gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
+    resume:
+      "Na elaboração do currículo, é possível articular esta habilidade à organização de sequências didáticas para ensino de textos orais que envolvam procedimentos e comportamentos próprios desse tipo de situação comunicativa, como tomar notas e escutar atentamente, com solicitação formal de pedido de turno. As habilidades podem orientar um conjunto de ações que envolvam o estudo e a análise: a) da situação comunicativa; b) do gênero envolvido e suas marcas linguísticas; c) da audiência na escuta. A progressão no desenvolvimento desta habilidade pode pautar-se pelo grau de complexidade do gênero em foco (conversa para tirar dúvida, debate, aula expositiva, seminário etc.); pelo foco no planejamento ou na atuação; pelo aspecto da atenção a ser trabalhado (os gestos e expressões faciais, a entonação, as noções, conceitos e seus termos, as definições, as teses, os argumentos etc.); pelo grau de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF15LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Características da conversação espontânea",
+    skill:
+      "(EF15LP11) Reconhecer características da conversação espontânea presencial, respeitando os turnos de fala, selecionando e utilizando, durante a conversação, formas de tratamento adequadas, de acordo com a situação e a posição do interlocutor.",
+    comment:
+      "Fundamental para o convívio cotidiano, fora e dentro da escola, esta habilidade refere-se a saber organizar a sua fala no gênero indicado, considerando as características do contexto no qual está sendo produzida: a) que se organiza em tantos turnos quantos forem os interlocutores; b) que a efetividade da compreensão mútua depende da escuta efetiva do outro, como balizador da organização da próxima fala; c) que as escolhas dos recursos textuais e paratextuais precisam ser adequadas às intenções de significação e ao contexto da situação de comunicação.",
+    resume:
+      "Na elaboração do currículo, pode-se prever estudar diferentes tipos de conversação, em diferentes situações comunicativas. Gravações em áudio e/ou vídeo dessas conversas permitem a análise dos mais variados fatores que podem interferir na fluidez e na eficácia dos eventos registrados. Do ponto de vista da progressão, recomenda-se o trabalho em colaboração realizado coletivamente, progredindo para o trabalho em grupos/duplas, até o autônomo, a depender da complexidade do gênero, do tema e do texto.",
+  },
+  {
+    id: "EF15LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Aspectos não linguísticos (paralinguísticos) no ato da fala",
+    skill:
+      "(EF15LP12) Atribuir significado a aspectos não linguísticos (paralinguísticos) observados na fala, como direção do olhar, riso, gestos, movimentos da cabeça (de concordância ou discordância), expressão corporal, tom de voz.",
+    comment:
+      "A habilidade envolve o reconhecimento e a análise das expressões corporais associadas à fala, com o objetivo de determinar seu papel na construção dos sentidos dos textos orais.",
+    resume:
+      "Na elaboração do currículo, pode-se prever o estudo de diversas situações de comunicação oral no que se refere aos recursos paralinguísticos, de modo a: a) analisar os efeitos de sentido produzidos por eles;b) reconhecer a adequação (ou não) das escolhas do locutor;c) constituir um repertório de recursos possíveis de serem utilizados; d) selecionar os recursos mais adequados às intenções de significação do discurso a ser produzido. A habilidade poderá também ser prevista de modo articulado à análise de textos orais, em uma determinada situação comunicativa, de modo a aproximar os estudantes das características desses textos e da diversidade de recursos paralinguísticos que compõem a sua multimodalidade. É interessante, do ponto de vista da progressão, prever uma trajetória que vá do trabalho coletivo em colaboração até aproximar-se do autônomo. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR19), da Arte, no que se refere à identificação de elementos teatrais na vida cotidiana.",
+  },
+  {
+    id: "EF15LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Relato oral/Registro formal e informal",
+    skill:
+      "(EF15LP13) Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.).",
+    comment:
+      "Fundamental para o desenvolvimento da proficiência oral, esta habilidade efetiva-se em situações como: solicitar informações em espaços públicos, seminários, mesas-redondas, rodas de conversas etc. E envolve  gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
+    resume:
+      "Na elaboração do currículo, pode-se organizar habilidades que envolvam as finalidades indicadas, articuladas aos seus respectivos gêneros, além de expor ideias sobre temas estudados e argumentar a respeito de aspectos controversos de temas em geral. A solicitação de informações pode referir-se a espaços como: biblioteca ou secretaria da escola, sobre passeios previstos no calendário escolar, como visitas a exposições de arte e distintos museus. Trata-se de uma situação comunicativa na qual o aluno precisa estar preparado, saber o tipo de informação a ser solicitada em cada ocasião e o modo de fazê-lo naquele espaço. A habilidade pode orientar ações que envolvam: a) o estudo da situação comunicativa; b) o planejamento e a análise do gênero envolvido e suas marcas linguísticas;  c) o papel da audiência no contexto específico. A progressão no desenvolvimento desta habilidade pode pautar-se pelo foco na análise ou na prática de escuta do gênero previsto; pelo grau de complexidade do gênero e/ou do texto oral envolvido; pela situação comunicativa em jogo; pelo grau de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF15LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Leitura de imagens em narrativas visuais",
+    skill:
+      "(EF15LP14) Construir o sentido de histórias em quadrinhos e tirinhas, relacionando imagens e palavras e interpretando recursos gráficos (tipos de balões, de letras, onomatopeias).",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características dos gêneros quadrinho e tirinha (organização interna; marcas linguísticas; conteúdo temático) dos textos a serem lidos. Quanto ao nível de autonomia, considera-se que é uma habilidade prevista para os 5 anos iniciais; assim, o ideal é prever leituras e análise em colaboração e, gradativamente, alcançar a autonomia.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar as características dos gêneros mencionados e dos textos a serem sugeridos. É importante tomar como objeto de estudo as características das tirinhas e das histórias em quadrinhos. Ambos os gêneros supõem ficcionalização; organização interna que articula recursos verbais aos gráfico-visuais; eixo temporal; linguagem coloquial; entre outros aspectos. A tirinha contém crítica aos valores sociais; provoca efeitos de humor; organiza-se em tira de poucos quadrinhos; é publicada em jornais e revistas. A HQ é mais extensa; trata-se de histórias com trama mais complexa e de diferentes tipos; é publicada em revistas e livros. Convém que o trabalho proposto pelos currículos locais seja dialógico e reflexivo, utilizando análise e comparação por diferenças e semelhanças. Critérios para a progressão podem ser: a complexidade do gênero em foco, a extensão e a complexidade dos textos e/ou dos recursos e o grau de autonomia do aluno a cada etapa do ensino.  Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR04), da Arte, no que se refere a conhecer quadrinhos e tirinhas como uma expressão artística.",
+  },
+  {
+    id: "EF15LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação do leitor literário",
+    skill:
+      "(EF15LP15) Reconhecer que os textos literários fazem parte do mundo do imaginário e apresentam uma dimensão lúdica, de encantamento, valorizando-os, em sua diversidade cultural, como patrimônio artístico da humanidade.",
+    comment:
+      "A habilidade incide sobre a distinção entre textos literários e não literários, o que envolve a compreensão da natureza e dos objetivos das diferentes práticas de leitura, assim como dos pactos de leitura que se estabelecem. No que se refere ao nível de autonomia, atentar para o fato de que a formulação da habilidade prevê a progressão de sua aprendizagem ao longo dos anos iniciais.",
+    resume:
+      "Para o desenvolvimento dessa habilidade, é fundamental que, na elaboração do currículo, sejam propostos critérios para a seleção de textos, livros e sites que: possuam qualidade estética; não subestimem a capacidade do leitor; abordem adequadamente os temas, do ponto de vista dos alunos; sejam representativos de diferentes culturas, inclusive as menos prestigiadas. É ainda necessário prever o desenvolvimento de projetos de leitura por autores, por gênero e por região, valorizando a cultura de diferentes grupos sociais.",
+  },
+  {
+    id: "EF15LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Leitura colaborativa e autônoma",
+    skill:
+      "(EF15LP16) Ler e compreender, em colaboração com os colegas e com a ajuda do professor e, mais tarde, de maneira autônoma, textos narrativos de maior porte como contos (populares, de fadas, acumulativos, de assombração etc.) e crônicas.",
+    comment:
+      "Trata-se de uma habilidade complexa, que envolve tanto o trabalho com as habilidades de leitura como um todo quanto as características dos gêneros e dos textos literários narrativos de maior extensão. No que se refere ao nível de autonomia, atentar para o fato de que a formulação da habilidade prevê a progressão de sua aprendizagem ao longo dos anos iniciais.",
+    resume:
+      "Na elaboração do currículo, pode-se prever uma progressão vertical que articule leitura com produção coletiva e autônoma de um gênero no ano, e uma progressão horizontal que garanta uma variedade de gêneros, ao longo dos anos, considerando a complexidade dos textos e gêneros.  É possível pensar, também, a progressão em um mesmo gênero, a partir da escolha de textos mais complexos: a habilidade poderá ser a mesma em dois anos seguidos, por exemplo, e a progressão se dará pela complexidade do texto.",
+  },
+  {
+    id: "EF15LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Apreciação estética/Estilo",
+    skill:
+      "(EF15LP17) Apreciar poemas visuais e concretos, observando efeitos de sentido criados pelo formato do texto na página, distribuição e diagramação das letras, pelas ilustrações e por outros efeitos visuais.",
+    comment:
+      "Estreitamente associada à habilidade (EF12LP18), esta é uma habilidade complexa. Envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos poemas visuais e concretos.   A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
+    resume:
+      "Atividades que podem favorecer o desenvolvimento dessa habilidade são, entre outras, a leitura colaborativa — para estudo dos textos e modelização de procedimentos e comportamentos leitores —, a roda de leitores e o diário de leitura — para socialização de impressões sobre leituras realizadas e circulação de critérios de apreciação utilizados pelos diferentes leitores, como na habilidade (EF35LP21). É importante que, na elaboração do currículo, considere-se a disponibilidade de materiais digitais nas escolas, com recursos como som, movimento e imagem. No desenvolvimento do currículo, a organização de saraus e de slams cria um espaço de socialização de poemas, selecionados de acordo com os critérios de apreciação ética, estética e afetiva constituídos pelos alunos. A complexidade dos gêneros e textos previstos, as marcas linguísticas dos poemas mencionados e o grau de autonomia do aluno proposta para cada ano podem ser bons critérios para a progressão da aprendizagem.",
+  },
+  {
+    id: "EF15LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação do leitor literário/Leitura multissemiótica",
+    skill:
+      "(EF15LP18) Relacionar texto com ilustrações e outros recursos gráficos.",
+    comment:
+      "Esta é uma habilidade complexa, que envolve o desenvolvimento das habilidades de leitura como um todo e as características de gêneros e textos diversos, incluindo recursos gráficos ou ilustrações. É especialmente importante na leitura de textos literários.  A formulação da habilidade supõe a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
+    resume:
+      "Na elaboração do currículo, é possível propor atividades de leitura colaborativa coletiva, destinadas a modelizar procedimentos de articulação entre texto verbal e visual, analisando, inclusive, o projeto gráfico-editorial como um todo. Propostas de apreciações estéticas e afetivas colaboram para a percepção, pelo aluno, das diferentes perspectivas pelas quais uma obra pode ser vista. A progressão pode basear-se em critérios como a complexidade do gênero e dos textos previstos, o tipo de ilustração e/ou recurso gráfico a ser abordado, a maior ou menor relevância da ilustração para a compreensão do texto ou o grau de autonomia do aluno a cada etapa do ensino.",
+  },
+  {
+    id: "EF15LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "15",
+    group_years: "1º; 2º; 3º; 4º; 5º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Contagem de histórias",
+    skill:
+      "(EF15LP19) Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor.",
+    comment:
+      "A habilidade envolve a leitura compreensiva e o estudo da obra a ser recontada, visando a apropriação de recursos como a entonação expressiva e a prosódia, que ajustam os discursos orais ao contexto.",
+    resume:
+      "Nos anos iniciais, a atividade de reconto também possibilita a aprendizagem de conteúdos como: a) características típicas do registro literário; b) organização dos fatos em ordem temporal, linear ou não, reconhecendo que a escolha por uma ou outra acarreta diferenças no texto para garantir a coerência e a coesão; c) estabelecimento de relações de causalidade entre os fatos — quando houver — utilizando os articuladores adequados. Assim, na elaboração do currículo, pode-se prever o reconto coletivo, capaz de propiciar seja o resgate de aspectos relevantes do texto original eventualmente omitidos ou mal realizados, seja a discussão de soluções possíveis.  Sempre que possível, a recontagem deve acontecer a partir de textos originais e integrais, escritos em registro literário. Além disso, convém que os currículos definam situações comunicativas específicas para a contação de histórias, como rodas com familiares e /ou colegas, saraus etc.  A progressão no ensino da habilidade pode apoiar-se no grau de complexidade dos textos e/ou gêneros literários propostos, nos diferentes tipos de imagem a serem usados e no foco no planejamento ou na execução das atividades. Pode, ainda, considerar o grau de autonomia que se pretende levar o aluno a atingir a cada etapa.",
+  },
+  {
+    id: "EF02LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Construção do sistema alfabético/ Convenções da escrita",
+    skill:
+      "(EF02LP01) Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação.",
+    comment:
+      "A habilidade envolve diferentes conhecimentos gramaticais. Em relação ao uso da letra maiúscula em substantivos próprios, a análise da ocorrência nos nomes da turma e nos textos lidos pelo professor e acompanhado pelo grupo, e/ou lidos autonomamente, pode ser orientada. Já o uso da pontuação pode ser facilitado pelo ensino organizado em sequências didáticas que envolvam a análise das ocorrências e o uso da pontuação primeiro em situação de produção de texto e, em um segundo momento, de revisão textual.",
+    resume:
+      "Na elaboração do currículo, as orientações em relação à ortografia podem indicar a realização do ditado diagnóstico, seguido de levantamento das necessidades de aprendizagem, para seleção de objetivos da escola/professor e trabalho com erros mais frequentes da turma. Os conhecimentos sobre a convenção ortográfica, ao longo dos anos, podem prever o uso do dicionário, além de orientar o ensino de procedimentos como: rever a escrita para conferir a ortografia; recorrer a fontes confiáveis; anotar as regularidades descobertas. Os conhecimentos sobre ortografia são diferentes daqueles relacionados à construção da base alfabética. Assim, convém que os objetivos estabeleçam, em ortografia, uma progressão que se inicie apenas após a compreensão da base alfabética. No caso da pontuação, é indicado que os currículos organizem habilidades específicas, considerando que ela faz parte do ato de textualizar/escrever, não se resumindo ao estudo dos sinais de pontuação. A compreensão do sistema de pontuação acontece pela análise da ocorrência em textos e pela reflexão sobre os sentidos provocados sobre os textos em diferentes situações de escrita.",
+  },
+  {
+    id: "EF02LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF02LP02) Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras.",
+    comment:
+      "Atividades para analisar partes de palavras e montar outras podem acontecer com textos conhecidos pelos estudantes, como os nomes da classe, situação em que a segmentação é favorecida pelo aspecto da contextualização e compreensão do princípio do sistema alfabético de que, ao mudar determinada parte de um nome, muda-se o nome (MARIO/MARI/ARI/IAM, RIAM).",
+    resume:
+      "Na elaboração do currículo, as habilidades propostas podem orientar o trabalho com esta habilidade, ao longo dos anos , contemplando, no 1º ano, tanto a análise de partes de palavras a partir de textos conhecidos do repertório local quanto a reflexão sobre a convenção da escrita, respeitando-se a condição de os estudantes já terem compreendido o sistema de escrita.",
+  },
+  {
+    id: "EF02LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF02LP03) Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra).",
+    comment:
+      "No que envolve as regulares diretas, o desenvolvimento da habilidade acontece pela prática da leitura e escrita de modo permanente. No caso das regulares contextuais, é pertinente a construção de regras de observação das semelhanças e diferenças; portanto, a habilidade pressupõe outras distintas, que envolvem procedimento de análise e registro das descobertas.",
+    resume:
+      "Na elaboração do currículo, as orientações em relação à ortografia podem indicar a realização do ditado diagnóstico, seguido de levantamento das necessidades de aprendizagem, para seleção de habilidades e trabalho com erros mais frequentes da turma. Os conhecimentos sobre a convenção ortográfica, ao longo dos anos, podem prever o uso do dicionário, além de orientar o ensino de procedimentos como: rever o que escreveu para conferir a ortografia; recorrer a fontes confiáveis; anotar as regularidades descobertas. Os conhecimentos sobre ortografia são diferentes daqueles relacionados à construção da base alfabética devendo, portanto, ser tematizados apenas após a construção desta última.",
+  },
+  {
+    id: "EF02LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF02LP04) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, identificando que existem vogais em todas as sílabas.",
+    comment:
+      "Esta habilidade faz parte da compreensão do sistema de escrita e envolve a compreensão da ordem das letras na palavra e na sílaba, o que não costuma ser evidente para os estudantes. Recomenda-se que se priorize a análise e comparação entre escritas estáveis e as do aluno e, além disso, a análise de escritas diferentes de uma mesma palavra, realizadas em momentos distintos pelo aluno.",
+    resume:
+      "Na elaboração do currículo, pode-se aprofundar esta habilidade enfatizando procedimentos de análise comparativa da escrita, que potencializam as possibilidades de compreensão e avanço do estudante. É preferível que os textos a serem oferecidos aos estudantes para leitura — assim como os solicitados para produção — sejam genuínos; dessa forma, as palavras que os constituem não serão selecionadas por grau de complexidade de sua composição, colocando ao aluno a tarefa de lidar com todos os níveis de complexidade ao mesmo tempo.",
+  },
+  {
+    id: "EF02LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF02LP05) Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).",
+    comment:
+      "Essa habilidade envolve conhecimento das ocorrências de nasalização em grande parte das palavras da língua portuguesa. A análise, comparação e estabelecimento de diferenças são recomendadas neste caso, além das atividades de leitura e escrita.",
+    resume:
+      "Na elaboração do currículo, as orientações em relação à ortografia podem indicar a realização do ditado diagnóstico, seguido de levantamento das necessidades de aprendizagem, para seleção de habilidades e trabalho com erros mais frequentes da turma. Os conhecimentos sobre a convenção ortográfica, ao longo dos anos, podem prever o uso do dicionário, além de orientar o ensino de procedimentos como: rever o que escreveu para conferir a ortografia; recorrer a fontes confiáveis; anotar as regularidades descobertas. Os conhecimentos sobre ortografia são diferentes daqueles relacionados à construção da base alfabética, devendo, portanto, ser tematizados apenas após a construção desta última.",
+  },
+  {
+    id: "EF02LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Conhecimento do alfabeto do português do Brasil",
+    skill:
+      "(EF02LP06) Perceber o princípio acrofônico que opera nos nomes das letras do alfabeto.",
+    comment:
+      "Parei Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante, quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras acontece, gradualmente, com reorganizações constantes até a produção de escritas ortográficas. O princípio acrofônico é compreendido em atividades de escrita, quando a escolha da letra e a sua nomeação o evidenciam.",
+    resume:
+      "Na elaboração do currículo, pode-se contextualizar esta habilidade com a indicação de textos da tradição oral regionais que, ao serem utilizados em atividades de leitura e escrita, contribuem para a compreensão da relação existente entre fala e escrita. As habilidades propostas podem sinalizar relações progressivas que vão desde um registro gráfico não convencional (ainda que relacionado à fala) para uma representação convencional que contemple a escrita de todos os fonemas. O princípio acrofônico é um indicador de possibilidades de som da letra, não oferecendo referências para todos os fonemas, pois a escrita brasileira é também ortográfica. O uso de apenas essa ideia pode trazer dificuldades para o estudante,  assim, não convém que um currículo dissocie esta e outras habilidades que tratam das relaçõe entre letras e fonemas da prática de ler e escrever textos — ainda que sejam aqueles em que a organização estrutural facilite a memorização —, visto que é por meio dessas práticas que a compreensão do princípio acrofônico acontece.",
+  },
+  {
+    id: "EF02LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    skill:
+      "(EF02LP07) Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.",
+    comment:
+      "Esta habilidade implica no reconhecimento das diferentes formas de registro gráfico das letras. Trata-se de habilidade a ser desenvolvida tão logo a compreensão do sistema de escrita tenha acontecido, e não antes disso. Na leitura, o reconhecimento da letra de imprensa maiúscula e minúscula é fundamental; mas, na escrita, a solicitação deve envolver apenas o uso de maiúscula. Na letra cursiva, a escrita deve envolver as duas modalidades.",
+    resume:
+      "Esta habilidade requer que o estudante, após a compreensão do sistema de escrita, adquira proficiência na grafia de textos com os dois tipos de letra: imprensa e cursiva. Na elaboração do currículo, é importante considerar que o uso da letra cursiva requer maior cuidado, pois implica emendar as letras, além de precisão no movimento a ser feito. A progressão, a ser prevista pelas redes, pode acontecer no 2º ano, visando-se, inicialmente, a agilidade no registro e, depois, a precisão no desenho das letras.",
+  },
+  {
+    id: "EF02LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object:
+      "Segmentação de palavras/Classificação de palavras por número de sílabas",
+    skill:
+      "(EF02LP08) Segmentar corretamente as palavras ao escrever frases e textos.",
+    comment:
+      "Para segmentar o texto em palavras, o aluno deverá articular as referências de palavras que constituiu a partir da fala — baseadas na prosódia — com as obtidas a partir dos textos escritos — conjunto de letras delimitado por espaços em branco e/ou sinais de pontuação. É nessa articulação que se constituem os critérios a serem mobilizados pelo estudante nas práticas de leitura e escrita.",
+    resume:
+      'Na elaboração do currículo, a construção da habilidade de segmentar o texto em palavras acontece em situações de prática de leitura e escrita. Os currículos podem enfatizar processos que levem o aprendiz a refletir e superar, progressivamente, ideias como: a) artigos definidos, preposições, conjunções, pronomes átonos não devem ser representados por escrito; b) pronunciar "vemcácomigo" ou "afoto" junto não torna esses segmentos palavras; c) na escrita, se enxerga agrupamentos de letras — as palavras — separados por espaços em branco ou sinais de pontuação, o que não acontece na fala. A progressão horizontal do trabalho com esta habilidade deve avançar de modo que o aluno compreenda que escrita e fala possuem critérios diferentes para segmentar as palavras.',
+  },
+  {
+    id: "EF02LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Pontuação",
+    skill:
+      "(EF02LP09) Usar adequadamente ponto final, ponto de interrogação e ponto de exclamação.",
+    comment:
+      "Esta habilidade inclui os seguintes aspectos: identificar os sinais gráficos que chamamos de sinais de pontuação; reconhecer — na leitura — sua função; usar, na produção escrita, esses sinais, para garantir legibilidade e provocar os efeitos de sentido desejados. Considerar, ainda, que este é um momento propício à organização inicial desse saber: pela análise dos efeitos de sentido provocados na leitura de textos, especialmente os conhecidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, na escola, o estudo da pontuação acontece de duas maneiras: a) na leitura: analisar os efeitos de sentido produzidos pelo uso feito no texto; b) na escrita: de modo epilinguístico, no uso da linguagem, discutir possibilidades de pontuar, analisar os efeitos de sentido produzidos pelas diversas possibilidades que se colocam (ponto final, de interrogação, de exclamação) e selecionar a mais adequada às intenções de significação. As situações de revisão processual coletiva do texto potencializam a reflexão sobre aspectos textuais como esses. Orienta-se que a progressão curricular seja prevista pela ampliação gradativa dos sinais a serem utilizados, de modo coerente com os efeitos de sentido propostos. Convém, ainda, que os currículos considerem o nível de autonomia do estudante, a ser construído ao longo dos anos.",
+  },
+  {
+    id: "EF02LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Sinonímia e antonímia/Morfologia/Pontuação",
+    skill:
+      "(EF02LP10) Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-.",
+    comment:
+      "Esta habilidade avança em relação à (EF01LP15), pois, por um lado, propõe analisar a diferença entre os sinônimos no que se refere ao contexto de uso; por outro, solicita formar o antônimo por prefixação definida. Essa tarefa supõe desconstruir a ideia de que os sentidos entre sinônimos são sempre idênticos. Além disso, apresenta ao aluno uma das possibilidades de formação do antônimo, a partir do acréscimo de um prefixo dado.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que a progressão vertical já está definida, posto que esta habilidade avança em relação à (EF01LP15). É fundamental, ainda, que os currículos associem o seu desenvolvimento às práticas de leitura de textos, conforme indicado. No que se refere à progressão horizontal, pode-se pensar no estudo de diferentes prefixos possíveis para se formar o antônimo. Do ponto de vista metodológico, é possível que os currículos orientem a continuidade da reflexão a partir de inventários (nesse caso, um inventário de antônimos constituídos por prefixos variados — in, im, des, anti, por exemplo — e também sem prefixação). No que tange aos sinônimos, o grau de complexidade lexical (palavras mais difíceis) também pode definir a progressão. Além disso, é preciso considerar o nível de autonomia requerido do estudante para realizar a tarefa, que deve ser progressivamente alcançada.",
+  },
+  {
+    id: "EF02LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Morfologia",
+    skill:
+      "(EF02LP11) Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho.",
+    comment:
+      "Esta habilidade implica em compreender os conceitos de aumentativo e diminutivo e do modo como são constituídos lexicalmente na sua forma regular: com as terminações -ão/-zão; -inho/-zinho.",
+    resume:
+      "Na elaboração do currículo, a progressão no que se refere a esta habilidade deve prever diminutivos e aumentativos não regulares (com outras terminações). Além disso, é importante analisar os usos do diminutivo e aumentativo nos textos, que podem acarretar sentidos depreciativos, pejorativos e afetivos. Na progressão, é preciso considerar, ainda, o nível de autonomia do estudante ao realizar o estudo, sendo possível propor habilidades que orientem o trabalho em colaboração, inicialmente, e, na sequência, o desempenho autônomo na oralidade e na escrita.",
+  },
+  {
+    id: "EF02LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF02LP12) Ler e compreender com certa autonomia cantigas, letras de canção, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com certa autonomia, o que supõe a possibilidade de trabalho em colaboração.",
+    resume:
+      "Cantigas e canções são gêneros que estão ligados às materialidades: letra e melodia. Na cantiga, a letra é escrita em versos e estrofes e sempre há rimas, o que nem sempre vale para as canções. Há vários tipos de cantigas: de ninar, de roda, de natal, a cada um correspondendo finalidades específicas. A estrutura rítmica das cantigas e canções permite que se estabeleçam relações entre o que se canta e o que está escrito, o que cria condições para uma leitura de ajuste, possibilitando a reflexão sobre o sistema de escrita. Na elaboração do currículo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças. Podem ser indicadas habilidades que envolvam a leitura em colaboração e autônoma.",
+  },
+  {
+    id: "EF02LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF02LP13) Planejar e produzir bilhetes e cartas, em meio impresso e/ou digital, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo da vida cotidiana e três vetores da produção do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser abordadas em separado, e significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, a habilidade pode ser ampliada com outras que contemplem a aprendizagem de procedimentos de consulta a ambientes digitais em colaboração e/ou com a ajuda do professor. É possível propor habilidades que: a) envolvam análise de textos dos gêneros do campo da vida cotidiana, extraindo as suas características e construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como reler o que está escrito para continuar escrevendo, consultar o planejamento para tomar decisões e revisar no processo e ao final.A progressão horizontal pode acontecer a partir de dois critérios: o nível de autonomia do aluno para realizar as atividades propostas ou a complexidade do texto a ser elaborado.",
+  },
+  {
+    id: "EF02LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF02LP14) Planejar e produzir pequenos relatos de observação de processos, de fatos, de experiências pessoais, mantendo as características do gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero de relatos de observação de processos e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser tratadas em momentos sucessivos, e significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, é possível prever, por exemplo, projetos de elaboração de livros contendo diferentes relatos pessoais temáticos, diários das atividades desenvolvidas na classe, relatos de passeios realizados pela escola, entre outras possibilidades. É possível propor habilidades que: a) envolvam análise de textos dos gêneros de relato, explicitando as suas características e construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final. A progressão horizontal pode acontecer a partir de dois critérios: o nível de autonomia do aluno para realizar as atividades propostas ou a complexidade do texto a ser elaborado.",
+  },
+  {
+    id: "EF02LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF02LP15) Cantar cantigas e canções, obedecendo ao ritmo e à melodia.",
+    comment:
+      "Trata-se de habilidade que envolve a oralização de textos. Deve ser antecedida pela leitura compreensiva, de modo que, tendo entendido o texto, o estudante possa cantar obedecendo ao ritmo e à melodia. A habilidade favorece, ainda, o desenvolvimento da fluência leitora, fundamental neste ano do ciclo.",
+    resume:
+      "Na elaboração do currículo, as habilidades podem prever a cantoria acompanhando a letra da canção. Pode-se articular a habilidade ao eixo de reflexão sobre o sistema de escrita. Para tanto, pode-se prever que, antes de cantar, seja feita leitura das letras das canções, em colaboração com os colegas ou o professor, garantindo que os estudantes acompanhem com os textos em mãos. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR14), da Arte, no que se refere à identificação e exploração de elementos constitutivos da música (ritmo e melodia) por meio de cantigas e canções.",
+  },
+  {
+    id: "EF02LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF02LP16) Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails, receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, na escola, o desenvolvimento dessa habilidade pode se dar por meio da intensa frequentação dos estudantes a textos organizados nos gêneros previstos. Projetos de troca de cartas em classes de escolas diferentes, de sessões de degustação de pratos da região, acompanhados de um livro de receitas ou de um vlog que as apresenta podem ser boas propostas para viabilizar esse trabalho. Na organização do currículo, a progressão pode se dar a partir da diversificação de textos, da extensão e complexidade deles, assim como do nível de autonomia requerido do aluno.",
+  },
+  {
+    id: "EF02LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF02LP17) Identificar e reproduzir, em relatos de experiências pessoais, a sequência dos fatos, utilizando expressões que marquem a passagem do tempo (“antes”, “depois”, “ontem”, “hoje”, “amanhã”, “outro dia”, “antigamente”, “há muito tempo” etc.), e o nível de informatividade necessário.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, no 2º ano, a atividade de leitura colaborativa cria bons espaços para o estudo das marcas temporais do texto. Já a de revisão coletiva, processual e final possibilita a análise da adequação delas em textos produzidos. Projetos para elaborar as memórias do grupo podem ser ótimas oportunidades para a produção desses textos; sites como o do Museu da Pessoa oferecem boas referências. Na organização do currículo, a progressão pode dar-se pela diversificação temática dos textos, da extensão e complexidade deles, assim como do nível de autonomia do aluno. É possível propor habilidades que orientem o trabalho com a leitura colaborativa em um bimestre, progredindo para leitura mais autônoma em outro.",
+  },
+  {
+    id: "EF02LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida pública",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita compartilhada",
+    skill:
+      "(EF02LP18) Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros de divulgação de eventos nos formatos em questão e dois vetores do processo de escrita (situação/tema ou assunto). A habilidade envolve duas operações distintas, que podem ser trabalhadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, as habilidades locais poderão orientar: a) o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita, revisar no processo e ao final; b) a pesquisa dos temas que sejam relevantes para a região e permitam o uso da linguagem persuasiva. É possível, ainda, propor habilidades que: a) prevejam o planejamento coletivo da situação comunicativa e do texto; b) envolvam análise dos portadores e gêneros que os integram para explicitar suas características e elaborar registros; c) analisem os elementos presentes nos textos (imagens, textos, tipo de letra, tamanho, cor etc.). A progressão horizontal pode tomar como referência a complexidade relativa dos textos a serem abordados e o grau de autonomia do aluno.",
+  },
+  {
+    id: "EF02LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF02LP19) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, notícias curtas para público infantil, para compor jornal falado que possa ser repassado oralmente ou em meio digital, em áudio ou vídeo, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "O foco da habilidade é a produção de gêneros jornalísticos, como a notícia, visando-se a transmissão oral direta ou em ambientes digitais. A habilidade articula a produção prevista a dois vetores (situação comunicativa; tema ou assunto) e requer duas operações sequenciadas: planejar e produzir texto para ser oralizado.",
+    resume:
+      "É fundamental que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. Pode-se propor: a) análise da situação comunicativa e dos gêneros indicados, na modalidade oral, com a finalidade de compreender suas características, para repertoriar a produção; b) planejamento, produção e revisão dos textos, com apoio do registro escrito;  c) previsão da oralização do texto produzido. Como se trata de oralização de textos escritos, convém que os currículos prevejam a realização de adaptações para compor o jornal falado, como, por exemplo: prever uma abertura que contenha uma saudação ao público e contextualize o assunto; anunciar a atividade seguinte; entre outras especificidades da situação. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros jornalísticos previstos, no foco do ensino (a organização geral do texto; as ferramentas digitais a serem mobilizadas; o planejamento; a elaboração) e no grau de autonomia a ser conquistada pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF02LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Imagens analíticas em textos",
+    skill:
+      "(EF02LP20) Reconhecer a função de textos utilizados para apresentar informações coletadas em atividades de pesquisa (enquetes, pequenas entrevistas, registros de experimentações).",
+    comment:
+      "Trata-se de reconhecer que os textos utilizados para apresentar informações coletadas em atividades de pesquisa possuem funções relacionadas ao campo de atuação ao qual pertencem. Assim, é necessário caracterizar o campo de atuação dos textos referidos e sua respectiva função, analisar o tipo de informações que os textos apresentam e identificar a função específica de cada gênero. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
+    resume:
+      "A pesquisa, estudo ou investigação é um conjunto de atividades planejadas para obter informações sobre determinada realidade, documentando-as e oferecendo recursos para a compreensão e resolução de problemas. Ela pode apresentar novas perspectivas sobre a realidade investigada ou confirmar perspectivas já consolidadas. Na elaboração do currículo, é possível ao aluno deduzir, sabendo qual é a função desse campo de atuação — por meio da análise das características dos textos indicados —, que papel tais gêneros possuem no estudo e desenvolvimento da pesquisa. As questões a serem respondidas pelos estudantes, então, seriam: qual a contribuição que uma enquete/entrevista/relato de pesquisa pode oferecer à pesquisa? Sendo assim, qual a sua função?",
+  },
+  {
+    id: "EF02LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Pesquisa",
+    skill:
+      "(EF02LP21) Explorar, com a mediação do professor, textos informativos de diferentes ambientes digitais de pesquisa, conhecendo suas possibilidades.",
+    comment:
+      "Trata-se de estudar textos informativos de ambientes digitais, como revistas, jornais, sites especializados e orientados para crianças e blogs confiáveis. O objetivo é a exploração de recursos, como hiperlinks para outros textos e para vídeos, o modo de organização das informações e as possibilidades e limites dos recursos próprios da ferramenta e do site específico.",
+    resume:
+      "Na elaboração do currículo, a rede pode organizar a progressão horizontal a partir do grau de autonomia, da complexidade dos textos e dos ambientes. Por exemplo: inicia-se o trabalho com o manuseio da ferramenta com o texto já aberto em trabalho colaborativo, no coletivo. Aos poucos, passa-se do coletivo para duplas e para o trabalho autônomo. Depois, pode-se iniciar o trabalho a partir do acesso ao ambiente e, no final, considerar textos e ambientes mais complexos. O mesmo movimento pode ser utilizado na progressão entre os anos (vertical), norteando-se pelo repertório dos alunos.",
+  },
+  {
+    id: "EF02LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Produção de textos",
+    skill:
+      "(EF02LP22) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo investigativo em foco e dois vetores do processo de escrita (tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, pode-se desmembrar a habilidade propondo atividades que indiquem a ação de planejar de modo coletivo a textualização em colaboração com os colegas. Podem ser propostas, ainda, habilidades que orientem procedimentos de consulta a ambientes digitais em colaboração. É possível propor também habilidades que: a) envolvam análise de textos dos gêneros do campo investigativo, de modo a explicitar as suas características; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões e revisar no processo e ao final.",
+  },
+  {
+    id: "EF02LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma",
+    skill:
+      "(EF02LP23) Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero de registro de observação de resultados de pesquisa. Envolve ao menos duas operações distintas — planejar e produzir —,  que podem ser tratadas em separado, e significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, a habilidade permite uma progressão ao longo do ano, prevendo o planejamento e a produção coletiva, pelo ditado ao professor e em parceria com os colegas e a ajuda do professor. É possível propor habilidades que: a) indiquem situações de pesquisa e tomada de notas coletivas antes da produção de registros autônomos, propondo também, dessa forma, uma progressão no ano; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final.",
+  },
+  {
+    id: "EF02LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Planejamento de texto oral Exposição oral",
+    skill:
+      "(EF02LP24) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, relatos de experimentos, registros de observação, entrevistas, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    comment:
+      "O foco desta habilidade é a (re)produção oral, para mídias digitais, de textos de gêneros investigativos. E envolve duas operações complexas sucessivas — planejar e produzir textos desses gêneros — articuladas com três vetores da produção textual: a situação comunicativa; o tema ou assunto; a finalidade da produção. A habilidade requer a análise de textos orais do gênero previsto, além de duas operações de produção de textos: planejar e produzir.",
+    resume:
+      "Na elaboração do currículo, podem ser propostos procedimentos de estudo e pesquisa sobre temas relacionados a serem tratados de modo interdisciplinar, como: destacar informações relevantes; realizar leitura inspecional na busca de materiais; etc. As habilidades podem: a) envolver a análise de textos, no gênero determinado, para extrair suas características, de acordo com a situação comunicativa; a) prever o planejamento do texto a ser produzido, oralmente, considerando a situação em que irá circular (tipo de mídia); c) orientar a produção/textualização. É preciso considerar que a habilidade inclui tanto elaborar textos orais quanto oralizar textos escritos. É possível, por exemplo, preparar um relato oral de uma viagem de estudo do meio, organizando previamente um esquema orientador, e selecionando recursos a serem empregados na apresentação (esquemas, imagens, gráficos). Da mesma forma, é possível escrever um relato e lê-lo em voz alta na gravação de um vídeo, selecionando recursos da mídia utilizada (som, imagem, movimento etc.).",
+  },
+  {
+    id: "EF02LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object:
+      "Forma de composição dos textos/Adequação do texto às normas de escrita",
+    skill:
+      "(EF02LP25) Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade pode acontecer por meio da frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos. Projetos que prevejam a elaboração de dossiês dos experimentos realizados em determinada disciplina viabilizam o trabalho, pois incluem a leitura de estudo e a produção dos textos. A progressão pode dar-se pela complexidade dos textos e pelo nível de autonomia do aluno, que, nos currículos, se efetiva pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.",
+  },
+  {
+    id: "EF02LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação do leitor literário",
+    skill:
+      "(EF02LP26) Ler e compreender, com certa autonomia, textos literários, de gêneros variados, desenvolvendo o gosto pela leitura.",
+    comment:
+      "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características de gêneros literários diversos, inclusive dramáticos e poéticos. Está estreitamente relacionada à habilidade (EF35LP21), podendo-se dizer que se trata da mesma habilidade considerada em um grau menor de autonomia por conta do nível de ensino em jogo.  A formulação da habilidade supõe a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
+    resume:
+      "Na elaboração do currículo, o trabalho com essa habilidade supõe a constituição de critérios de apreciação estética e afetiva de materiais de leitura. Para tanto, é preciso garantir: oferta de material de leitura de qualidade estética, ética, temática e linguística; espaços nos quais diferentes leitores possam trocar informações sobre materiais lidos (físicos ou digitais). A progressão da aprendizagem pode apoiar-se no grau de complexidade dos gêneros e textos previstos (assim como dos seus respectivos temas), nos autores selecionados e no grau de autonomia que se pretende atingir a cada etapa do ensino.",
+  },
+  {
+    id: "EF02LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo artístico-literário",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF02LP27) Reescrever textos narrativos literários lidos pelo professor.",
+    comment:
+      "Esta habilidade diz respeito a escrever textos baseados em narrativas literárias lidas pelo professor, ou seja, a partir das informações previamente adquiridas. Ela está estreitamente relacionada à habilidade (EF01LP25), estabelecendo com ela uma relação de progressão: o que aprendeu a produzir coletivamente e com a intervenção do professor como escriba no ano anterior, o aluno começa a empreender individualmente e com alguma autonomia.",
+    resume:
+      "Na elaboração do currículo, é preciso levar em conta que a atividade de recontagem de histórias prevê a elaboração de um texto cujo conteúdo já é conhecido pelo aluno, sendo, mesmo assim, importante prever habilidades que indiquem o planejamento da situação comunicativa e do texto parte a parte, tarefa que poderá ser coletiva. Dessa forma, o currículo pode focalizar, nessa atividade, a capacidade de textualização, ou seja, de redigir o enunciado, considerando a sua organização interna: sequência temporal de ações, relações de causalidade estabelecidas entre os fatos, emprego de articuladores adequados entre os trechos do enunciado, utilização do registro literário, manutenção do tempo verbal, estabelecimento de coerência e coesão entre os trechos do texto, entre outros aspectos. A progressão horizontal da habilidade pode tomar como referência a extensão e/ou complexidade dos textos narrativos focalizados, assim como o grau de autonomia a ser conquistada pelo aluno a cada etapa. As atividades podem, ainda, prever uma progressão da habilidade ao longo do ano, indicando a produção em duplas ou autônoma.",
+  },
+  {
+    id: "EF02LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Formas de composição de narrativas",
+    skill:
+      "(EF02LP28) Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes.",
+    comment:
+      "Esta habilidade articula-se com a (EF01LP26), referindo-se a aspectos semelhantes aos nela definidos. Além disso, implica em identificar trechos de textos lidos que possam caracterizar elementos das narrativas ficcionais literárias. Seu desenvolvimento permite ao aluno aprofundar a compreensão de narrativas e desenvolver capacidades de análise e crítica.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade articula-se à (EF01LP26), representando uma progressão vertical. O trabalho a ser desenvolvido é o mesmo que o previsto para a habilidade (EF01LP26), considerando-se que, no 2º ano, é possível que os alunos já tenham compreendido a base alfabética do sistema de escrita e, dessa maneira, possam ler os textos junto com o professor, no momento do estudo, até utilizando recursos de ressaltar trechos relevantes. A progressão horizontal pode se dar pela complexidade dos textos escutados e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF02LP29",
+    competences: "Língua Portuguesa",
+    group_year_id: "02",
+    group_years: "2º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Alfabetização)",
+    object: "Formas de composição de textos poéticos visuais",
+    skill:
+      "(EF02LP29) Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais.",
+    comment:
+      "O foco desta habilidade é perceber — no processo de leitura e estudo de poemas visuais — as figuras que o poema compõe no espaço que ocupa, verificando se o formato e/ou a disposição das letras provocam efeitos de sentido peculiares.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade demanda a previsão de práticas de leitura e de estudo de poemas visuais, para que as suas características fundamentais sejam identificadas: a presença de ilustração realizada por meio das letras e palavras; a criação de efeitos visuais incomuns (direção de escrita; linearização original; efeitos rotativos, inversões, por exemplo); a ocupação figurativa do espaço disponível. As atividades colaborativas são mais adequadas para o desenvolvimento da habilidade, em especial as coletivas, com mediação do professor. Como pode haver alunos ainda não alfabetizados no início do 2º ano, é fundamental a exposição do texto aos alunos, com indicações explícitas da leitura que está sendo feita. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos propostos, no tipo de recurso a ser estudado e no nível de autonomia do estudante a ser conquistado a cada etapa.",
+  },
+  {
+    id: "EF03LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF03LP01) Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n).",
+    comment:
+      "Esta habilidade trata dos casos em que o contexto interno da palavra é que determina que letra usar em sua grafia nos casos citados pela habilidade. Levar o aluno a construir regras é a estratégia indicada, e pode ocorrer pela análise comparativa das ocorrências em listas de palavras, favorecendo a antecipação do contexto em que é correto usar uma ou outra letra (ex: M/P/B), o que o contribui para a compreensão da regra.",
+    resume:
+      "Na elaboração do currículo, a escolha de qual regularidade trabalhar depende do diagnóstico a ser realizado com os estudantes. Os currículos podem orientar a realização de ditado inicial para verificar e organizar as intervenções necessárias com os diferentes tipos de ocorrências regulares contextuais (aquelas em que o contexto define a letra a ser utilizada), ampliando-se a habilidade para ocorrências irregulares: som do S (auxílio, cidade); do Z; do LH (família e toalha etc.). Nesse caso, a habilidade se articulará com outras que tratam da ortografia, como a (EF03LP03) e (EF35LP13). É possível, ainda, propor habilidades que orientem a análise de grupos de palavras do tipo das previstas na habilidade, para levantamento de semelhanças e diferenças, seguido do registro das conclusões. Ainda que não se chegue a formalizar as regras, esses registros poderão ser consultados até que a grafia correta esteja automatizada. Deve-se observar que a construção da ortografia só se inicia após a aquisição da base alfabética.",
+  },
+  {
+    id: "EF03LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF03LP02) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.",
+    comment:
+      "Para desenvolver esta habilidade, que diz respeito a reconhecer, compreender e registrar palavras com diferentes esquemas silábicos, é indicado que não haja controle das escritas espontâneas dos alunos desde o 1º ano. Durante o processo de produção, escrevendo o que desejam, eles entram em contato com dúvidas ortográficas, o que é positivo para a aprendizagem.",
+    resume:
+      "Na elaboração do currículo, pode-se observar que a construção da ortografia inicia-se apenas após a aquisição da base alfabética. Esta habilidade pode ser articulada às demais que tratam da ortografia, respeitando a orientação de realizar ditado inicial para verificar e organizar as intervenções com os diferentes tipos de ocorrências que se fizerem necessárias. A habilidade poderá prever, no primeiro semestre, a escrita convencional de palavras de uso frequente e, no segundo, sem essa observação, o que permite uma progressão na aprendizagem.",
+  },
+  {
+    id: "EF03LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF03LP03) Ler e escrever corretamente palavras com os dígrafos lh, nh, ch.",
+    comment:
+      "Para a efetivação da habilidade, que consiste em compreender e registrar a grafia de diferentes palavras, é preciso analisar listas de palavras com ocorrências que possam gerar dúvidas, seja por grafia semelhantes (nh/lh), seja por sons semelhantes (ch/x).",
+    resume:
+      "Na elaboração do currículo, pode-se orientar a análise comparativa de ocorrências, para favorecer a observação de semelhanças e diferenças. Exemplo: comparar as diferentes formas de marcar a nasalização. Os casos previstos pela habilidade podem aparecer em ano anterior, observando-se a restrição de que a construção da ortografia só se inicia após a aquisição da base alfabética, com habilidades que prevejam a colaboração.",
+  },
+  {
+    id: "EF03LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    skill:
+      "(EF03LP04) Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.",
+    comment:
+      "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
+    resume:
+      "É importante, na elaboração do currículo, considerar que o desenvolvimento desta habilidade deve acontecer depois que o estudante construir uma certa proficiência na escrita. Todo esse trabalho pode ser realizado sem o uso da metalinguagem (utilizar terminologia da gramática para se referir às questões abordadas, por exemplo, substantivo, adjetivo, concordância verbal etc.). No entanto, é preciso ressaltar que o uso torna a linguagem mais econômica, podendo facilitar a reflexão. No processo de ensino, o recurso à metalinguagem é posterior à compreensão do fato discutido, e orienta-se que: a) a progressão da acentuação inicie-se com as pautas de memorização, nas quais palavras são afixadas em cartazes que o aluno possa consultar ao escrever; b) ao longo dos anos, as regularidades sejam discutidas por meio de um movimento dialógico de análise e reflexão, seguido de emprego na produção textual.",
+  },
+  {
+    id: "EF03LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Segmentação de palavras/Classificação de palavras por número de sílabas",
+    skill:
+      "(EF03LP05) Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas.",
+    comment:
+      "Esta habilidade requer ao aluno reconhecer e dividir as sílabas das palavras, classificando-as conforme orientação.",
+    resume:
+      "Na elaboração do currículo, convém que se programe o desenvolvimento desta habilidade para uma etapa posterior à da construção de uma certa proficiência na escrita. É preciso ressaltar que o uso da metalinguagem torna a linguagem mais econômica, podendo facilitar a reflexão. No processo de ensino, o recurso à metalinguagem é posterior à compreensão do fato discutido. Trata-se de habilidade a ser proposta na progressão do trabalho com acentuação.",
+  },
+  {
+    id: "EF03LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético",
+    skill:
+      "(EF03LP06) Identificar a sílaba tônica em palavras, classificando-as em oxítonas, paroxítonas e proparoxítonas.",
+    comment:
+      "Esta habilidade requer a análise de grupos de palavras, com reconhecimento e separação das sílabas existentes, para identificar aquela que é pronunciada com maior intensidade. O objetivo visado é o de proceder a uma classificação das palavras que é fundamental para a compreensão de algumas das regras da acentuação gráfica.",
+    resume:
+      "Na elaboração do currículo, convém que o trabalho com essa habilidade: a) venha previsto para etapas em que o estudante já apresente uma certa proficiência na escrita; b) seja antecedido pelos estudos de separação das palavras em sílabas. Todo esse trabalho pode ser realizado sem o uso da metalinguagem. No entanto, é preciso ressaltar que o seu uso torna a linguagem mais econômica, podendo facilitar a reflexão. Considere-se que a previsão de recurso à metalinguagem é mais adequada e produtiva se for posterior à compreensão do fato discutido.",
+  },
+  {
+    id: "EF03LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Pontuação",
+    skill:
+      "(EF03LP07) Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão.",
+    comment:
+      "Esta habilidade prevê a ampliação do estudo dos recursos de pontuação em relação à habilidade (EF02LP09), incluindo a pontuação de discurso direto — dois pontos e travessão. Da mesma forma, o estudo prevê: identificar os sinais gráficos que estão sendo incluídos; reconhecer — na leitura — a sua função; usá-los no texto para apresentar expressividade, legibilidade e provocar os efeitos de sentido desejados.",
+    resume:
+      "Na elaboração do currículo, convém que o estudo da pontuação aconteça de duas maneiras (como na habilidade EF02LP09): na leitura, ao analisar os efeitos de sentido produzidos pelo uso no texto; e na escrita, ao discutir possibilidades e analisar os efeitos de sentido produzidos (nesse caso, elaborar discurso direto ou indireto) e selecionar a mais adequada às intenções de significação. A pontuação de discurso direto inclui o emprego de verbos dicendi — que indicam quem está falando e de que modo: por exemplo, disse o rapaz; respondeu prontamente; entre outros — em diversos locais do enunciado (antes, no interior ou depois da fala). A progressão pode se dar pela ampliação dos recursos, mas os aspectos citados precisam ser considerados, assim como o nível de autonomia do estudante a cada etapa do processo.",
+  },
+  {
+    id: "EF03LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF03LP08) Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação.",
+    comment:
+      "A habilidade prevê aprender as classes gramaticais das palavras indicadas (substantivos e verbos) e identificar as funções sintáticas que elas podem assumir nos enunciados. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
+    resume:
+      "Na elaboração do currículo, o trabalho com esta habilidade deve prever não os áridos exercícios de análise sintática, mas a utilização instrumental desse saber para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva. Nesse momento, é possível antecipar problemas de compreensão que o interlocutor possa vir a ter e ajustar o texto, garantindo escolhas adequadas às intenções de significação. Na progressão curricular, pode-se considerar organizações sintáticas progressivamente mais complexas, garantindo sempre o trabalho em colaboração (coletivo e em duplas).",
+  },
+  {
+    id: "EF03LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfossintaxe",
+    skill:
+      "(EF03LP09) Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.",
+    comment:
+      "A habilidade prevê reconhecer o adjetivo como a classe de palavra que atribui características aos substantivos. É interessante prever um trabalho reflexivo, com base em inventários, de observação, análise, comparação e levantamento de regularidades que caracterizem essa classe de palavras; usar os saberes gramaticais como ferramentas de constituição da legibilidade do texto.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que a progressão curricular vertical já está definida na BNCC, já que esta habilidade avança em relação ao estudo das classes gramaticais. Pode-se também pensar na ampliação de recursos possíveis para a qualificação de processos, de personagens e de locais em que as ações de histórias acontecem nos textos, tanto ao longo dos anos quanto no interior de um mesmo ano. Na progressão, pode-se considerar, ainda, o nível de autonomia do estudante.",
+  },
+  {
+    id: "EF03LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF03LP10) Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.",
+    comment:
+      "Trata-se de reconhecer — ainda que de modo não sistematizado — que há palavras que derivam de outras e que têm o seu sentido modificado pelo acréscimo de afixos ou no início ou no final delas. Esses afixos possuem sentidos regulares, sendo possível identificar o significado de uma palavra derivada se a primitiva e o afixo forem conhecidos.",
+    resume:
+      "Na elaboração do currículo, é interessante a reflexão a partir de inventários, prevendo: a) observação, análise e comparação, com levantamento de regularidades de forma e de sentido no uso dos afixos; b) o uso desse saber para resolver problemas de compreensão vocabular.A progressão curricular vertical já está definida na BNCC, se considerarmos que a habilidade (EF05LP08) avança em relação a esta. No que se refere à progressão horizontal, pode-se pensar na ampliação de afixos possíveis (e os seus respectivos sentidos) para o processo de derivação. Na progressão, pode-se, ainda, considerar o grau de complexidade lexical  (palavras mais difíceis) e o nível de autonomia do estudante.",
+  },
+  {
+    id: "EF03LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF03LP11) Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico- visuais, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos injuntivos instrucionais a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar, na proposição das habilidades, as características dos textos selecionados para leitura e dos gêneros previstos. As instruções de montagem, por exemplo, organizam-se pela presença de: apresentação e nomeação de todas as peças; esquema gráfico de montagem; instruções, propriamente. Podem conter também uma relação de cuidados relacionados ao uso, a depender da especificidade do produto. Caracterizam-se pela presença do imperativo ou infinitivo nas instruções. Nas atividades de estudo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças.",
+  },
+  {
+    id: "EF03LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF03LP12) Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características dos gêneros carta pessoal e diário (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Diários pessoais são muito bem recebidos pelas crianças. Embora relatos curtos em 1ª pessoa sejam o registro mais comum nesse gênero, também são admitidos poemas, crônicas etc. que atendam à finalidade de expressar e relatar sentimentos, opiniões e acontecimentos da vida pessoal. O elemento fixo do texto é a data em cada registro. A linguagem costuma ser informal, mas também pode tender para o literário. O diário — assim como as cartas — pode ser real ou fictício, quer dizer, ser o relato de um personagem de uma história determinada. Isso coloca a possibilidade de que, na elaboração do currículo, sejam previstas atividades com ou a partir de obras literárias lidas. O desenvolvimento da habilidade favorece o trabalho com projetos de leitura envolvendo os gêneros citados.",
+  },
+  {
+    id: "EF03LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF03LP13) Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero de cartas pessoais e diário e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, passíveis de abordagem em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, a habilidade pode ser ampliada com a referência à produção em parceria e de modo autônomo, garantindo, assim, uma progressão no ano. É possível propor habilidades que: a) envolvam análise de textos dos gêneros de carta pessoal e diário, de modo a explicitar as suas características, construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final. É possível especificar o desenvolvimento de habilidades relativas às cartas pessoais ficcionais, a partir de obras literárias de relevância (como O Gato Malhado e a Andorinha Sinhá, de Jorge Amado).",
+  },
+  {
+    id: "EF03LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF03LP14) Planejar e produzir textos injuntivos instrucionais, com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico-visuais, considerando a situação comunicativa e o tema/ assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero injuntivo instrucional e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel. A habilidade ainda prevê que, na produção, levem-se em conta aspectos gráfico-visuais que possam ajudar na compreensão do texto.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento da habilidade deve prever a contextualização em projetos temáticos, como, por exemplo, exposição de origamis preferidos da classe (apresentados com as devidas instruções escritas em espaço reservado para que o visitante possa arriscar-se a produzi-los), mural de dobraduras e as devidas instruções, espaço do brinquedo, no qual visitantes são instigados e orientados a montar brinquedos antigos, a partir de um modelo e de instruções escritas, com assessoria dos alunos. É possível propor habilidades que: a) envolvam análise de textos do gênero injuntivo instrucional, de modo a explicitar as suas características, construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar ao longo do processo e ao final. A progressão horizontal pode acontecer a partir de dois critérios: o nível de autonomia do aluno para realizar as atividades propostas ou a complexidade do texto a ser elaborado.",
+  },
+  {
+    id: "EF03LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF03LP15) Assistir, em vídeo digital, a programa de culinária infantil e, a partir dele, planejar e produzir receitas em áudio ou vídeo.",
+    comment:
+      "A habilidade envolve a recepção atenta e a análise de receitas transmitidas em mídia digital, além de duas outras operações complexas e articuladas entre si: planejar e produzir textos do mesmo gênero.",
+    resume:
+      "A habilidade poderá envolver tanto a escrita quanto a oralização de uma receita conhecida, conforme orientação. Nesse caso, as habilidades podem ser ampliadas. A oralização não envolve produção de conteúdo, mas a leitura expressiva de textos já produzidos. Na elaboração do currículo, pode-se prever, ainda, um bloco de habilidades que envolvam procedimentos de utilização das ferramentas digitais a serem utilizadas na produção de textos orais em ambientes digitais. Além disso, pode-se propor: a) análise de textos, no gênero receita, para extrair as suas características, de acordo com a situação  comunicativa; b) planejamento do texto a ser produzido, considerando a situação em que irá circular;  c) orientação da produção/textualização deste. A progressão horizontal pode apoiar-se na extensão e complexidade das receitas, assim como nas operações sucessivas que a habilidade envolve.",
+  },
+  {
+    id: "EF03LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição do texto",
+    skill:
+      '(EF03LP16) Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução – "modo de fazer").',
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que a progressão vertical desta habilidade já está garantida, considerando-se a habilidade (EF02LP16). Se, no 2º ano, o trabalho poderia se dar apenas por frequentação, no 3º ano, o aprofundamento pode ser realizado por sequências didáticas. A atividade de leitura colaborativa possibilita estudar os recursos previstos, enquanto a de revisão processual e final possibilita analisar a adequação dos textos produzidos. Um projeto a ser realizado, por exemplo, é a criação de vlog, com apresentação de receitas da região, o que pode ser previsto no currículo local. Além disso, na organização do currículo, a progressão horizontal pode dar-se pela diversificação temática dos textos, da extensão e complexidade deles, assim como do nível de autonomia do aluno. Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF03MA02), (EF03MA08) e (EF03MA09), da Matemática, para a leitura, compreensão e utilização de números decimais e divisão em receitas.",
+  },
+  {
+    id: "EF03LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF03LP17) Identificar e reproduzir, em gêneros epistolares e diários, a formatação própria desses textos (relatos de acontecimentos, expressão de vivências, emoções, opiniões ou críticas) e a diagramação específica dos textos desses gêneros (data, saudação, corpo do texto, despedida, assinatura).",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade já representa um aprofundamento em relação à (EF02LP16). No 2º ano, o trabalho acontece por frequentação; no 3º, o aprofundamento pode ser realizado por sequências didáticas, o que pode ser explicitado nas habilidades. A atividade de leitura colaborativa possibilita estudar os recursos previstos, enquanto a de revisão processual e final possibilita analisar a adequação dos textos produzidos. Uma proposta de trabalho interessante pode ser escrever para pessoas de diferentes estados para saber como é a vida delas. É possível, ainda, produzir um blog ou enviar e-mails. A progressão horizontal pode dar-se pela leitura de cartas pessoais ficcionais, assim como pelo nível de autonomia do aluno, que, no currículo, se efetiva pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.",
+  },
+  {
+    id: "EF03LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF03LP18) Ler e compreender, com autonomia, cartas dirigidas a veículos da mídia impressa ou digital (cartas de leitor e de reclamação a jornais, revistas) e notícias, dentre outros gêneros do campo jornalístico, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "O foco dessa habilidade é a compreensão de textos de diferentes gêneros do campo jornalístico (com destaque para as cartas à redação e para as notícias). As convenções de cada gênero, a situação comunicativa e o tema/assunto do texto constituem-se como vetores da compreensão visada. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas de leitura e produção de textos do campo jornalístico/midiático, nas quais possa observar os vetores mencionados em ação, assim como refletir a respeito de seu papel na (re)construção dos sentidos do texto.",
+    resume:
+      "Recomenda-se que o tratamento dessa habilidade, nos currículos locais, associe o seu desenvolvimento a práticas de leitura e produção próprias do campo jornalístico. Convém, portanto, que os currículos orientem as escolas a respeito de como garantir ao aluno amplo acesso à mídia impressa e digital. A progressão horizontal pode combinar diferentes critérios: a) o gênero visado; b) o vetor a ser considerado; c) o grau de complexidade dos gêneros e textos selecionados; d) o nível de complexidade que se pretende levar o aluno a conquistar.",
+  },
+  {
+    id: "EF03LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF03LP19) Identificar e discutir o propósito do uso de recursos de persuasão (cores, imagens, escolha de palavras, jogo de palavras, tamanho de letras) em textos publicitários e de propaganda, como elementos de convencimento.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos publicitários e de propaganda a serem lidos. No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
+    resume:
+      "O trabalho com esta habilidade supõe: a identificação do interlocutor privilegiado, a localização dos recursos persuasivos apresentados no texto, o reconhecimento dos efeitos de sentido provocados nos textos por tais recursos, a análise da adequação dos recursos empregados, considerando-se o interlocutor pretendido, a função do gênero e a finalidade do texto.  Na elaboração do currículo, é possível organizar a progressão considerando a complexidade dos textos e o grau de autonomia do aluno ao realizar a tarefa. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para a realização desse trabalho.",
+  },
+  {
+    id: "EF03LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF03LP20) Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campopo lítico-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com os gêneros de cartas em questão e dois vetores do processo de escrita (situação/tema ou assunto). Pode ser articulada à análise das matérias a serem comentadas nas cartas. A habilidade prevê a produção de textos do campo político-cidadão, que envolvem organizar as ideias e utilizar a consciência cidadã para depois escrevê-las.",
+    resume:
+      "Na elaboração do currículo, pode-se prever atividades que ampliem a habilidade, orientando o estudo das características dos espaços dos leitores em mídias impressas e digitais, bem como as regras de uso desses ambientes. É possível propor habilidades que prevejam a análise de participações de leitores nesses ambientes, para refletir sobre: a) a diferença entre argumentar e divulgar discurso de ódio; b) o respeito à diversidade de opinião sobre temas atuais. É possível, ainda, propor habilidades que: a) envolvam análise de textos dos gêneros em questão, de modo a explicitar suas características e elaborar registros; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final.",
+  },
+  {
+    id: "EF03LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF03LP21) Produzir anúncios publicitários, textos de campanhas de conscientização destinados ao público infantil, observando os recursos de persuasão utilizados nos textos publicitários e de propaganda (cores, imagens, slogan, escolha de palavras, jogo de palavras, tamanho e tipo de letras, diagramação).",
+    comment:
+      "Trata-se de uma habilidade que articula a produção de gêneros publicitários ao uso de recursos de persuasão apropriados e diz respeito a organizar as ideias e utilizar a criatividade para depois escrevê-las. A habilidade pode ser desmembrada para incluir a análise dos gêneros, o estudo dos recursos de persuasão e outros aspectos relacionados à característica multimodal dos textos desses gêneros.",
+    resume:
+      "Na elaboração do currículo, convém prever o trabalho contextualizado em projetos interdisciplinares que abordem temáticas relevantes para a comunidade local, como a conservação do patrimônio público, a preservação de recursos naturais, a conscientização sobre a necessidade de consumo sustentável, o repúdio ao preconceito, a valorização da cultura local, entre outros. Poderão ser propostas atividades em que a produção aconteça em colaboração e de modo mais autônomo, prevendo, desse modo, uma progressão vertical no ano.",
+  },
+  {
+    id: "EF03LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Planejamento e produção de texto",
+    skill:
+      "(EF03LP22) Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.",
+    comment:
+      "O foco da habilidade está na oralização de textos destinados a telejornais infantis. A produção visada está articulada a quatro vetores: a situação comunicativa, o plano geral do texto próprio do gênero visado, o tema e a finalidade. Além disso, as atividades previstas compreendem duas operações sequenciais complexas: o planejamento e a execução.  A habilidade requer, ainda, a análise da mídia e dos textos/gêneros que nela circulam.",
+    resume:
+      "É muito importante que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. As habilidades podem prever: a) a seleção e estudo dos textos a serem produzidos para compreender suas características, de acordo com o contexto; b) o planejamento/pesquisa do conteúdo temático e, considerando a situação em que irá circular, o tipo de mídia; c) a orientação do trabalho em colaboração. Além disso, é importante considerar que a habilidade pode referir-se tanto à produção oral quanto à oralização de textos escritos a serem gravados em vídeo. Essa situação coloca as seguintes condições básicas para a adequação do texto:  a) produzir a escrita do texto a ser lido; e/ou b) organizar esquema do texto a ser produzido oralmente, o que requer muito ensaio coletivo, com análise crítica; c) estudar os recursos a serem empregados nesse material, considerando a especificidade da mídia e ambiente no qual será veiculado o material. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros jornalísticos envolvidos, no foco do ensino (a organização geral do texto; as ferramentas e recursos a serem mobilizados; o planejamento; a elaboração) e no grau de autonomia a ser conquistada pelo aluno a cada etapa. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF15AR26), da Arte; e (EF35EF03), da Educação Física, no que se refere à comunicação de informações por múltiplas linguagens.",
+  },
+  {
+    id: "EF03LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos",
+    skill:
+      "(EF03LP23) Analisar o uso de adjetivos em cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), digitais ou impressas.",
+    comment:
+      "Esta habilidade articula-se às (EF35LP16) e (EF12LP14), que também envolvem gêneros do jornalismo impresso ou digital. Visa identificar e analisar, no processo de leitura, o papel dos adjetivos na (re)construção de sentidos de cartas do leitor ou de reclamação, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade venha associado a diferentes práticas de leitura e escrita de cartas dirigidas a mídias impressas ou digitais. Essas práticas permitem a contextualização da habilidade, fornecendo ao aluno experiências e materiais variados para a observação e a reflexão. A progressão horizontal pode se dar pela complexidade dos textos lidos e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF03LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF03LP24) Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos de relatos e pesquisas a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Relatos de experimentos e de pesquisas são textos úteis no trabalho com temas que remetam diretamente a questões sociais, como relações estabelecidas entre crianças e o celular; o impacto das redes sociais na vida da criança; a presença da violência no cotidiano da cidade; entre outros. Na elaboração do currículo, as habilidades podem orientar a pesquisa desses textos na internet para montar um dossiê e elaborar uma carta de reclamação, ou de leitor, organizado em um projeto de leitura e escrita.  Convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27), (EF03MA28), da Matemática (EF03CI06), (EF03CI09), da Ciência; (EF03HI03), da História; e (EF03GE01), da Geografia, associadas a coleta, leitura, comparação e interpretação de dados de pesquisas.",
+  },
+  {
+    id: "EF03LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Produção de textos",
+    skill:
+      "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta é uma habilidade que articula a produção textual com o gênero de apresentação de resultados de observações e pesquisas e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, podem-se organizar habilidades que prevejam trabalho em parceria entre as turmas, articulando-o com o estudo dos gêneros envolvidos na apresentação, como a exposição oral. As pesquisas podem assumir caráter interdisciplinar, com temas como: povos originários do Brasil, imigrantes, entre outros. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27), (EF03MA28), da Matemática; (EF03CI06), (EF03CI09), de Ciências; (EF03HI03), da História; e (EF03GE01), da Geografia, associadas à coleta, leitura, comparação e interpretação de dados, com apoio de recursos multissemióticos, incluindo gráficos e tabelas. É possível, ainda, propor habilidades que: a) definam o gênero a ser produzido nos resultados de observações e pesquisas apresentados e proponham análise de textos para explicitar suas características, construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões na escrita e revisar no processo e ao final.",
+  },
+  {
+    id: "EF03LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Forma de composição dos textos\nAdequação do texto às normas de escrita",
+    skill:
+      "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade pode acontecer por meio da frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos, sendo fundamental que os currículos prevejam habilidades que indiquem o trabalho com essas atividades. Projetos que prevejam a elaboração de pesquisas sobre questões sociais relevantes a serem divulgadas em seminários viabilizam o trabalho. A progressão curricular pode dar-se pela complexidade dos textos e pelo nível de autonomia do aluno, o que se traduz em um trabalho inicialmente colaborativo e, progressivamente, mais autônomo. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27) e (EF03MA28), da Matemática; (EF03CI06) e (EF03CI09), da Ciência; (EF03GE01), da Geografia; e (EF03HI03), da História, associadas a coleta, leitura, comparação e interpretação de dados, com apoio de recursos multissemióticos (listas, tabelas, ilustrações, gráficos).",
+  },
+  {
+    id: "EF03LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "03",
+    group_years: "3º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Performances orais",
+    skill:
+      "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.",
+    comment:
+      "Trata-se de habilidade que envolve a leitura e compreensão do texto a ser recitado, para que o aluno, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com maior fluência, ritmo e entonação adequada.",
+    resume:
+      "Na elaboração do currículo, pode-se orientar, para além dos gêneros mencionados, estudos de textos poéticos da cultura local ou nacional, assim como aqueles referentes às culturas periféricas, especialmente os mais relevantes para as culturas locais.  Podem ser previstas também habilidades que indiquem o trabalho em colaboração, de modo a favorecer o desenvolvimento da fluência e observação do ritmo entre os estudantes. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF15AR14) e (EF15AR17), da Arte, associadas a improvisação, composição e sonorização de histórias e exploração dos elementos constitutivos da música.",
+  },
+  {
+    id: "EF35LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Decodificação/Fluência de leitura",
+    skill:
+      "(EF35LP01) Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado.",
+    comment:
+      "Ler fluentemente requer do aluno um conjunto de habilidades que vão das relativas à aquisição do sistema de escrita às de compreensão, apreciação e réplica do leitor aos textos. Não se trata de oralizar o texto rapidamente e sem erro na articulação dos sons, mas de ler um texto em voz alta sem embaraço e com compreensão. A leitura se dá na relação entre texto e leitor; assim, o texto precisa ser adequado às possibilidades e interesses do leitor.",
+    resume:
+      "As atividades que mais potencializam o desenvolvimento da fluência leitora são aquelas em que o leitor estuda textos que lerá em voz alta, em colaboração com outro leitor mais proficiente. A leitura precisa ser contextualizada em uma situação comunicativa genuína, como uma leitura dramática (situação em que atores fazem a leitura de um texto teatral para uma audiência, interpretando os personagens). Na elaboração do currículo, podem-se prever atividades em que os alunos: estudam o texto no coletivo, com mediação do professor, em especial os personagens; depois da divisão dos papéis, em duplas, estudam em voz alta, ajustando interpretações; fazem um ensaio da apresentação, com avaliação das performances para novos ajustes; performam a leitura dramática para a audiência.A progressão curricular pode jogar com a complexidade dos textos, o foco do trabalho (substituições lexicais ou pronominais; diferentes tipos de substituição em cada um dos casos), os procedimentos didáticos programados e o grau de autonomia do aluno.",
+  },
+  {
+    id: "EF35LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação de leitor",
+    skill:
+      "(EF35LP02) Selecionar livros da biblioteca e/ou do cantinho de leitura da sala de aula e/ou disponíveis em meios digitais para leitura individual, justificando a escolha e compartilhando com os colegas sua opinião, após a leitura.",
+    comment:
+      "A habilidade trata de comportamentos leitores fundamentais, que implicam tanto saber frequentar espaços nos quais circulem materiais de leitura — impressos e/ou digitais — quanto estabelecer critérios de apreciação estética desses materiais, para possibilitar a socialização das opiniões com terceiros. Para o desenvolvimento desta habilidade, são fundamentais a frequentação de espaços destinados à leitura e a participação em atividades como a roda de leitores.",
+    resume:
+      "Na elaboração do currículo, quatro aspectos podem ser considerados: a seleção de materiais de leitura; o uso de espaços nos quais esses materiais circulam; a apreciação e o compartilhamento da leitura. O primeiro aspecto implica em utilizar critérios pessoais de apreciação (estética, tema etc.). O segundo, envolve frequentar salas de leitura e bibliotecas físicas e digitais, sabendo solicitar ou encontrar materiais de leitura. O terceiro e o quarto envolvem utilizar os critérios de apreciação pessoal para divulgar sua opinião a respeito de materiais lidos, em espaços escolares, como uma roda de leitores, ou digitais, como sites de comentários sobre livros lidos. A progressão do ensino-aprendizagem pode apoiar-se no grau de complexidade dos procedimentos de seleção, dos materiais de leitura visados e do tipo de justificativa pretendida, assim como no grau de autonomia do aluno.",
+  },
+  {
+    id: "EF35LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão",
+    skill:
+      "(EF35LP03) Identificar a ideia central do texto, demonstrando compreensão global.",
+    comment:
+      "Trata-se de uma habilidade complexa, de redução do conteúdo do texto. Por meio dela, o aluno articula as informações dos diferentes trechos, identifica as partes mais relevantes com base em pistas fornecidas pelo próprio texto e, por meio desse processo de sumarização, identifica a ideia central.Para realizar essa tarefa, é necessário mobilizar outras habilidades, como as de localização, inferenciação e construção de informações.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que esta é uma habilidade que envolve várias outras: localização de informação, inferenciação, articulação de trechos do texto, (re)construção de informações. No entanto, é preciso considerar ainda que o desenvolvimento de cada uma dessas habilidades pode ser mais difícil em um gênero e/ou tipo de texto do que em outros, dependendo da complexidade em questão. Localizar informações pode envolver, entre outros aspectos, a articulação de trechos diferentes de um mesmo texto. Assim, a progressão curricular da habilidade (EF35LP03) pode apoiar-se tanto no desenvolvimento conexo de outras quanto na complexidade do gênero ou tipo de texto a ser estudado.",
+  },
+  {
+    id: "EF35LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill: "(EF35LP04) Inferir informações implícitas nos textos lidos.",
+    comment:
+      "Os sentidos dos textos são compostos também por informações subentendidas e/ou pressupostas, que, mesmo não estando explícitas, significam. Portanto, pode-se afirmar que é impossível compreender os textos sem realizar inferências.Realizar uma inferência é estabelecer, no processo de leitura, uma ligação entre uma ideia expressa no texto e outra que o leitor pode ativar com base em conhecimentos prévios ou no contexto.",
+    resume:
+      "Na elaboração do currículo, considere-se que, para  estabelecer inferências é necessário explicitar as pistas textuais e/ou as informações prévias, articulando-as entre si. Além disso, é a leitura colaborativa que pode  potencializar o trabalho com as estratégias de leitura (antecipação, inferenciação, verificação, localização, construção de informações pela articulação de trechos dos textos, generalização).A leitura colaborativa  (conferir EF12LP02) permite a criação de um espaço de circulação de informações no qual pistas textuais e conhecimentos prévios podem ser articulados coletivamente pelos alunos, o que possibilita a apropriação desses procedimentos e a ampliação da competência leitora.A progressão curricular pode considerar a complexidade dos diferentes tipos de textos, dos gêneros e do grau de autonomia do aluno a cada etapa do ensino.",
+  },
+  {
+    id: "EF35LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill:
+      "(EF35LP05) Inferir o sentido de palavras ou expressões desconhecidas em textos, com base no contexto da frase ou do texto.",
+    comment:
+      "Esta é uma habilidade diretamente relacionada ao desenvolvimento da competência lexical, ou seja, do domínio do aluno sobre os sentidos, a forma, as funções e os usos das palavras. É uma habilidade fundamental tanto para a oralidade quanto para a escrita, seja do ponto de vista da compreensão, seja em termos de produção.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que o desenvolvimento desta habilidade é conexo ao das demais habilidades responsáveis pela compreensão leitora, especialmente as inferenciais, ou seja, aquelas que consistem em (re)construir sentidos com base em pistas do texto. Fatores a serem considerados na progressão curricular: a complexidade dos textos (inclusive em termos de gênero e tipo de texto), o grau de autonomia do aluno na etapa de ensino em questão; os procedimentos didáticos previstos: leitura individual ou coletiva, entre pares ou com a mediação do professor; o recurso sistemático ou eventual a dicionários na verificação de hipóteses.",
+  },
+  {
+    id: "EF35LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Estratégia de leitura",
+    skill:
+      "(EF35LP06) Recuperar relações entre partes de um texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos) que contribuem para a continuidade do texto.",
+    comment:
+      "Esta habilidade consiste em utilizar os conhecimentos gramaticais e textuais já internalizados para, em situações epilinguísticas (de uso), constituir os sentidos do texto escrito, consolidá-los e/ou resolver problemas de compreensão. Os recursos citados garantem a coesão (e a coerência) do texto, contribuindo para estabelecer a continuidade dos enunciados por meio da recuperação do referente.",
+    resume:
+      "Todo falante de uma língua possui conhecimentos gramaticais internalizados no processo de aquisição da linguagem. Sem eles, não conseguiria comunicar-se oralmente. Na elaboração do currículo, pode-se prever que esses saberes possibilitam a análise e o estudo dos textos, em especial quando se trata das atividades epilinguísticas: aquelas nas quais se analisa o uso dos recursos textuais, e não a sua sistematização em categorias. Esta irá acontecendo gradativamente ao longo do Ensino Fundamental, depois da compreensão do sistema de escrita e da constituição de uma proficiência básica em leitura e escrita.Os recursos citados são os que possibilitam a coesão textual. Ex.: Hoje Ana lembrou-se de seu avô. Ela não o vê há quase três anos (ELA retoma ANA; O recupera AVÔ; SEU retoma ANA.).A progressão curricular pode jogar com a complexidade dos textos, o foco do trabalho (substituições lexicais ou pronominais; os diferentes tipos de substituição em cada um dos casos), os procedimentos didáticos programados e o grau de autonomia do aluno.",
+  },
+  {
+    id: "EF35LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Construção do sistema alfabético/ Convenções da escrita",
+    skill:
+      "(EF35LP07) Utilizar, ao produzir um texto, conhecimentos linguísticos e gramaticais, tais como ortografia, regras básicas de concordância nominal e verbal, pontuação (ponto final, ponto de exclamação, ponto de interrogação, vírgulas em enumerações) e pontuação do discurso direto, quando for o caso.",
+    comment:
+      "Trata-se de uma habilidade complexa, que envolve todo um conjunto de habilidades de análise linguística (ortográfica, morfossintática, sintática e semântica) e de conhecimentos específicos a elas associados, para serem adequadamente colocadas em produções textuais dos alunos. A habilidade poderá ser antecedida por outras, que envolvam a análise dos recursos citados em textos lidos de modo independente (por exemplo, ao analisar a presença de pontuação e os efeitos de sentido decorrentes do seu uso). O trabalho pode ser previsto tanto em colaboração quanto com autonomia, progressivamente, a partir do momento em que os alunos compreendam as regras do sistema de escrita.",
+    resume:
+      "Na elaboração do currículo, recomenda-se a previsão, para os dois primeiros anos, de desenvolver habilidades de análise e aprendizagem dos conhecimentos linguísticos aqui implicados. No caso da ortografia, os currículos locais poderão propor habilidades que envolvam a análise, reflexão e utilização das regularidades diretas e contextuais nos anos iniciais, após a aquisição da base alfabética; e as regularidades morfológico-gramaticais nos anos finais. Paralelamente, podem ser propostas habilidades que envolvam familiarização com as ocorrências ortográficas irregulares ao longo do Ensino Fundamental.",
+  },
+  {
+    id: "EF35LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object:
+      "Construção do sistema alfabético/ Estabelecimento de relações anafóricas na referenciação e construção da coesão",
+    skill:
+      "(EF35LP08) Utilizar, ao produzir um texto, recursos de referenciação (por substituição lexical ou por pronomes pessoais, possessivos e demonstrativos), vocabulário apropriado ao gênero, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível suficiente de informatividade.",
+    comment:
+      "Esta é uma habilidade fundamental para a construção do texto, especialmente no que diz respeito à coesão e à coerência. Seu foco é usar o recurso da referenciação em situação de produção de textos. Assim, é possível propor habilidades que antecedam a autonomia no uso dos recursos de produção textual e envolvam, por exemplo, analisar a presença de referenciação em textos lidos, observando os efeitos de sentido produzidos. É possível desmembrar a habilidade propondo habilidades específicas para o uso da referenciação e dos organizadores textuais (tempo, causa etc.).",
+    resume:
+      "Na elaboração do currículo, pode-se tratar esta habilidade visando contextualizar as atividades de revisão processual e final, quando se analisa a pertinência da utilização de recursos coesivos em função das intenções de significação, procurando tanto evitar problemas de compreensão pelo leitor quanto garantir a coerência do texto.",
+  },
+  {
+    id: "EF35LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Planejamento de texto/Progressão temática e paragrafação",
+    skill:
+      "(EF35LP09) Organizar o texto em unidades de sentido, dividindo-o em parágrafos segundo as normas gráficas e de acordo com as características do gênero textual.",
+    comment:
+      "Esta é uma habilidade fundamental para a construção do texto, especialmente no que diz respeito à articulação entre suas partes. Envolve conhecer as características do gênero para organizar o texto em unidades de sentido de modo coeso e coerente, ou seja, dividir o texto em parágrafos, respeitando as normas da pontuação, o encadeamento das ideias e a hierarquia das informações presentes, de acordo com as características do gênero e a finalidade comunicativa.",
+    resume:
+      "Na elaboração do currículo, pode-se propor uma progressão desta habilidade tanto vertical quanto horizontal, indicando habilidades que prevejam a ação de organizar os textos em unidades de sentido de modo coletivo. Isso pode ser feito inicialmente com a ajuda do professor e em grupos, até chegar ao trabalho autônomo.",
+  },
+  {
+    id: "EF35LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Forma de composição de gêneros orais",
+    skill:
+      "(EF35LP10) Identificar gêneros do discurso oral, utilizados em diferentes situações e contextos comunicativos, e suas características linguístico-expressivas e composicionais (conversação espontânea, conversação telefônica, entrevistas pessoais, entrevistas no rádio ou na TV, debate, noticiário de rádio e TV, narração de jogos esportivos no rádio e TV, aula, debate etc.).",
+    comment:
+      "Necessária à compreensão da lógica e da dinâmica dos intercâmbios orais, esta habilidade efetiva-se em situações como seminários, mesas-redondas, rodas de conversa, programas de TV etc., que envolvam gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade deve considerar resgatar e/ou articular as atividades propostas com as habilidades orais desenvolvidas nos dois anos anteriores, especialmente as que se estendem por todos os anos iniciais.  A habilidade pode prever: a) o estudo da situação comunicativa (como assistir a entrevistas); b) o planejamento e análise do gênero e suas marcas linguísticas (identificar o recurso de considerar a resposta e reelaborar a próxima pergunta, por exemplo). Além disso, embora a habilidade não preveja, recomenda-se o trabalho em colaboração realizado coletivamente, progredindo para situações em que a autonomia é cada vez mais requerida. A complexidade dos gêneros e/ou dos textos, assim como das situações comunicativas em foco, também pode funcionar como critério para a progressão da aprendizagem.",
+  },
+  {
+    id: "EF35LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Oralidade",
+    object: "Variação linguística",
+    skill:
+      "(EF35LP11) Ouvir gravações, canções, textos falados em diferentes variedades linguísticas, identificando características regionais, urbanas e rurais da fala e respeitando as diversas variedades linguísticas como características do uso da língua por diferentes grupos regionais ou diferentes culturas locais, rejeitando preconceitos linguísticos.",
+    comment:
+      "Esta é uma habilidade fundamental para a construção da ética necessária ao convívio republicano, na medida em que estimula a curiosidade, o reconhecimento e o respeito relativos à variação linguística local e nacional. Pressupõe a eleição de gêneros que circulem em variadas situações de comunicação. Pode haver impregnação com a escrita, como ouvir canções com legendas, participar de saraus lendo e oralizando textos etc. Tais situações devem contemplar produções locais e de diferentes regiões do país, favorecendo o convívio respeitoso com a diversidade linguística, de modo a legitimar os diferentes falares do Brasil, sem sobrepor uma variedade à outra.",
+    resume:
+      "Na elaboração do currículo, pode-se resgatar práticas de letramento/produtos culturais locais para legitimá-los, e explorar a gramática das variedades linguísticas usadas em comparação (e não oposição) com outros produtos culturais não locais para que os alunos possam compreender as diferenças e as similaridades como constitutivas das identidades de seus falantes. Pode-se prever, ainda, refletir sobre as situações comunicativas em que os textos circulam, de modo a identificar as mais apropriadas para o uso de determinada variedade linguística. Os tipos de variação, o foco sobre esse ou aquele aspecto da variedade, no simples convívio ou na análise às semelhanças e diferenças entre variedades, por exemplo, podem ser bons critérios para a progressão curricular. Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF03GE01), da Geografia; (EF03HI07) e (EF03HI08), da História, no que se refere à identificação de características regionais, urbanas e rurais da fala, respeitando as diversas variedades linguísticas.",
+  },
+  {
+    id: "EF35LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF35LP12) Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema.",
+    comment:
+      "A habilidade implica no uso do dicionário para resolver problemas de ortografia, o que pode ou não envolver a identificação da acepção correspondente ao uso que gerou a busca. Utilizar o dicionário requer a familiarização com procedimentos de busca.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar as orientações apresentadas na habilidade (EF04LP03), tanto no que se refere aos aspectos conceituais quanto ao nível de autonomia do estudante para realizá-la. Considera-se, ainda, que se trata de resolver problemas de ortografia e não de elucidar uma acepção da palavra. Sendo assim, poderá ou não ser necessário que o aluno considere esse aspecto na consulta ao verbete, visto que o foco da busca será a conferência da grafia correta da palavra. A habilidade pode prever procedimentos como: a) recorrer à ordem alfabética, reiteradamente, para ajustar o caminho de busca da palavra almejada; b) levantar hipóteses sobre a grafia da palavra antes da busca pela grafia correta.",
+  },
+  {
+    id: "EF35LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF35LP13) Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial que não representa fonema.",
+    comment:
+      "A habilidade diz respeito a reconhecer e lembrar dos registros corretos das grafias de algumas das ocorrências irregulares presentes na língua. O tratamento pela memorização permite aos estudantes reter imagens visuais das palavras.",
+    resume:
+      "Na elaboração do currículo, pode-se orientar a realização de ditado inicial para verificar e organizar as intervenções com os diferentes tipos de ocorrências irregulares que se fizerem necessários, podendo ampliar a habilidade para enfocar: som do S (auxílio, cidade); do Z; do L e H (família e toalha etc.). É possível propor habilidades que orientem as ações necessárias à memorização, como participar de atividade de leitura de listas de palavras para destacar o H inicial, ter uma frequência de leitura articulada à tarefa de destacar/buscar palavras com determinada letra; fazer exercícios de pesquisa e registro para consulta posterior até chegar à memorização; participar de jogos que favoreçam a memorização; etc. Deve-se observar que a construção da ortografia inicia-se após a aquisição da base alfabética.",
+  },
+  {
+    id: "EF35LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF35LP14) Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico.",
+    comment:
+      "A habilidade prevê aprender as classes gramaticais das palavras indicadas (pronomes pessoais, possessivos e demonstrativos) e identificar os papéis que desempenham na constituição da coesão do texto. É essencial prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
+    resume:
+      "Na elaboração do currículo, o trabalho com esta habilidade deve prever a utilização instrumental desse saber para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva. Nesse momento, é possível antecipar problemas de compreensão que o interlocutor possa vir a ter e ajustar o texto, garantindo escolhas adequadas às intenções de significação. Na progressão curricular, pode-se considerar a variedade de recursos anafóricos possíveis de serem utilizados, progressivamente mais complexos, garantindo sempre o trabalho em colaboração (coletivo e em duplas) em situações de leitura (identificação), produção e revisão de texto.",
+  },
+  {
+    id: "EF35LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo da vida pública",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF35LP15) Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta habilidade consiste em expressar pontos de vista sobre temas controversos da vivência do aluno (como o bullying, o uso da tecnologia na sala de aula etc.) e argumentar para legitimar essas opiniões. A habilidade articula a produção de textos opinativos a dois vetores do processo de escrita (situação/tema ou assunto) e ao uso adequado do registro formal e dos recursos de argumentação. Convém considerar que a análise de diferentes pontos de vista sobre temas/questões polêmicas precede a emissão de opinião.",
+    resume:
+      "Na elaboração do currículo, pode-se prever a participação dos alunos em interações verbais que requeiram a argumentação, como debates, seminários, mesas-redondas, assembleias, entre outras. Para tanto, é preciso que os alunos: a) informem-se sobre as questões temáticas em foco, estudando-as e identificando posições apresentadas a respeito delas; b) discutam essas posições em rodas de discussão organizadas em classe, de modo a irem constituindo sua posição pessoal a respeito; c) conheçam as situações comunicativas e gêneros envolvidos na atividade que será realizada, de modo a poderem preparar-se para dela participar; d) identifiquem procedimentos que precisam ser adotados para terem uma participação mais efetiva na discussão. Além disso, as atividades específicas a serem propostas podem: a) definir o gênero da produção escrita (comentário/carta de leitor no jornal escolar, carta aberta à comunidade etc.), prever a análise do gênero e orientar sua produção; b) propor estudo de textos com temas polêmicos para identificar variados posicionamentos e marcadores argumentativos que possam repertoriar as produções. A progressão curricular pode apoiar-se no foco a ser dado a cada etapa do trabalho (pesquisa sobre tema polêmico/produção de textos opinativos), na complexidade do gênero visado (comentário/carta do leitor etc.) e no grau de autonomia do aluno a cada etapa.",
+  },
+  {
+    id: "EF35LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos",
+    skill:
+      "(EF35LP16) Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    comment:
+      "Relacionada à (EF03LP23), esta habilidade tem como foco reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem alguns gêneros jornalísticos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade só se dá de forma adequada em práticas de leitura e escrita de textos organizados nos gêneros previstos. A atividade de leitura colaborativa de estudo e a de revisão processual e final da escrita possibilitam estudar os recursos e analisar a adequação dos textos produzidos. Projetos que prevejam a elaboração de cartas de reclamação (de serviços, de produtos etc.) para serem publicadas em revistas e jornais impressos ou em sites específicos viabilizam o desenvolvimento da habilidade. A progressão pode dar-se pela complexidade dos textos lidos e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF35LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Pesquisa",
+    skill:
+      "(EF35LP17) Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais.",
+    comment:
+      "Esta habilidade focaliza o trabalho de busca e seleção de textos sobre fenômenos sociais e naturais digitais e impressos. Isso supõe a discussão de procedimentos e de critérios de seleção dos textos nos diferentes ambientes, sempre com auxílio do professor, considerando tanto a especificidade de salas de leitura, bibliotecas escolares, públicas e pessoais, quanto ambientes digitais.",
+    resume:
+      "Na elaboração do currículo, no que diz respeito à progressão, pode-se considerar o grau de autonomia dos alunos e a complexidade dos procedimentos envolvidos, assim como a finalidade da busca e da seleção. É importante considerar, ainda, se nos ambientes físicos é possível procurar diretamente nas prateleiras ou é necessário recorrer ao encarregado, bibliotecário ou computador: os procedimentos a serem previstos serão específicos em cada caso. Indicar assunto, foco e autores e material de leitura possível. Nos ambientes digitais, convém não só considerar as características do ambiente e da ferramenta de busca para definir procedimentos, como, ainda, estabelecer critérios de confiabilidade dos sites. Podem ser propostas habilidades considerando a interação com os diferentes ambientes. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA18), da Matemática; (EF03HI02) e (EF03HI03), da História, associadas à realização de pesquisas.",
+  },
+  {
+    id: "EF35LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Escuta de textos orais",
+    skill:
+      "(EF35LP18) Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    comment:
+      "A habilidade tem como foco a escuta atenta e responsiva de apresentações orais em contexto escolar. A escuta — que tem como finalidade primeira a compreensão do texto oral — dá suporte tanto à formulação de perguntas para esclarecimentos, por exemplo, quanto à construção de respostas/explicações, considerando o uso progressivo de justificativas para a emissão de opinião.",
+    resume:
+      "Na elaboração do currículo, a habilidade de escuta de textos orais pode prever: a) procedimentos de registro de informações consideradas importantes e de dúvidas a serem apresentadas ao final da exposição; b) elaboração de questões a serem feitas ao locutor, ao final da exposição, para esclarecimentos, posicionamentos em relação à fala etc.;  c) trabalho em colaboração inicial até chegar, progressivamente, ao autônomo. Tal habilidade é fundamental para a formação do estudante; os currículos podem procurar desenvolvê-la na discussão de temas sociais relevantes para a comunidade local.",
+  },
+  {
+    id: "EF35LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Compreensão de textos orais",
+    skill:
+      "(EF35LP19) Recuperar as ideias principais em situações formais de escuta de exposições, apresentações e palestras.",
+    comment:
+      "Trata-se de habilidade que envolve a escuta atenta e responsiva de apresentações orais em contexto escolar.",
+    resume:
+      "Na elaboração do currículo, pode-se prever o trabalho com esta habilidade em situações comunicativas de discussão de questões interdisciplinares e interculturais que impliquem o estudo de temas sociais relevantes para a comunidade local. É possível orientar para que a recuperação do conteúdo ouvido aconteça por meio de esquemas ou tabelas, prevendo, portanto, habilidades que envolvam diferentes situações formais de escuta e induzam ao ensino das formas de registro que possibilitem a recuperação da fala. A progressão pode ser pensada com base em critérios como os diferentes tipos de situações formais, a complexidade e/ou a extensão dos textos orais e o grau de autonomia a ser conquistado pelo aluno a cada etapa desse ensino.",
+  },
+  {
+    id: "EF35LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Planejamento de texto oral\nExposição oral",
+    skill:
+      "(EF35LP20) Expor trabalhos ou pesquisas escolares, em sala de aula, com apoio de recursos multissemióticos (imagens, diagrama, tabelas etc.), orientando-se por roteiro escrito, planejando o tempo de fala e adequando a linguagem à situação comunicativa.",
+    comment:
+      "A habilidade tem como foco a exposição oral de pesquisas em contexto escolar. E requer o estudo de textos desse gênero, de modo a permitir ao aluno reconhecer a articulação entre a fala e o uso de roteiro escrito e recursos multissemióticos próprios ou compatíveis com o gênero previsto.",
+    resume:
+      "Na elaboração do currículo, a habilidade pode ser desenvolvida no interior de projetos e/ou sequências que articulem a especificidade dos textos no gênero exposição oral ao trabalho interdisciplinar, prevendo, por exemplo, temas como alimentação saudável; brinquedos/brincadeiras de ontem e de hoje; povos do Brasil; entre outros. É possível prever atividades destinadas a familiarizar o aluno com habilidades que envolvam o acesso aos recursos multissemióticos presentes nos textos e a pesquisa de conteúdo temático. A progressão, tanto horizontal quanto vertical, pode pautar-se pelo grau de complexidade dos trabalhos e/ou pesquisas, na alternância do foco do ensino (o gênero e sua organização geral; os recursos a serem mobilizados; a produção do roteiro; etc.) e o grau de autonomia a ser conquistada pelo aluno a cada etapa.  Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27), (EF03MA28), da Matemática; (EF03CI06), (EF03CI09), de Ciências; (EF03HI03), da História; e (EF03GE01), da Geografia, associadas à coleta, leitura, comparação e interpretação de dados, com apoio de recursos multissemióticos (listas, tabelas, ilustrações, gráficos).",
+  },
+  {
+    id: "EF35LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação do leitor literário",
+    skill:
+      "(EF35LP21) Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores.",
+    comment:
+      "Trata-se de uma habilidade complexa. Para o seu desenvolvimento, é importante considerar:  a) o trabalho com as habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários;  c) as características de gêneros literários diversos, inclusive dramáticos e poéticos. A formulação da habilidade pressupõe o planejamento curricular de níveis menores de autonomia nos dois primeiros anos e de estratégias didáticas capazes de conduzir à autonomia nos três últimos.",
+    resume:
+      "Na elaboração do currículo, o trabalho com essa habilidade supõe a constituição de critérios de apreciação estética e afetiva de materiais de leitura. Para tanto, é preciso garantir: oferta de material de leitura de qualidade estética, ética, temática e linguística; espaços nos quais diferentes leitores possam trocar informações sobre materiais lidos (físicos ou digitais). Três atividades potencializam esse trabalho: a roda de leitores (na qual os alunos comentam livros de escolha pessoal lidos); o diário pessoal de leitura (na qual os alunos registram as impressões que vão tendo sobre o que leem e que socializam com os colegas); a leitura programada (na qual livros de maior extensão são lidos e estudados coletivamente, com mediação do professor). A progressão da aprendizagem pode apoiar-se no grau de complexidade dos gêneros e textos previstos (assim como dos seus respectivos temas), nos autores selecionados e no grau de autonomia que se pretende atingir a cada etapa do ensino.",
+  },
+  {
+    id: "EF35LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Formação do leitor literário/ Leitura multissemiótica",
+    skill:
+      "(EF35LP22) Perceber diálogos em textos narrativos, observando o efeito de sentido de verbos de enunciação e, se for o caso, o uso de variedades linguísticas no discurso direto.",
+    comment:
+      "O foco dessa habilidade é a apreensão, pelo aluno leitor, dos efeitos de sentido produzidos em textos narrativos por: a) verbos introdutórios da fala de terceiros (verbos de enunciação ou dicendi) em casos de discurso citado (discurso direto; indireto; indireto livre); b) uso de variedades linguísticas na representação dessas falas no discurso direto. O desenvolvimento dessa habilidade é fundamental para a compreensão do caráter e da dinâmica de personagens numa trama, assim como da organização  textual da narrativa. Mas pressupõe um trabalho prévio tanto com o discurso citado quanto com variação linguística.",
+    resume:
+      "No desenvolvimento dessa habilidade, os diálogos precisam ser reconhecidos não apenas pelas marcas gráficas que os apresentam (dois pontos-travessão; dois pontos-aspas, por exemplo), ou pela presença dos verbos dicendi (introdutórios das falas de terceiros), mas também — e sobretudo — a partir da significação do texto. Na elaboração do currículo, pode-se, por exemplo, propor projetos que organizem uma exposição de diálogos famosos (de personagens de livros lidos); ou a produção de vídeos, em duplas, contendo um diálogo selecionado pelos alunos. A complexidade dos gêneros e textos previstos pelos currículos, as marcas linguísticas dos diálogos e o grau de autonomia do aluno proposta para cada ano podem ser bons critérios para a progressão da aprendizagem.",
+  },
+  {
+    id: "EF35LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Apreciação estética/Estilo",
+    skill:
+      "(EF35LP23) Apreciar poemas e outros textos versificados, observando rimas, aliterações e diferentes modos de divisão dos versos, estrofes e refrões e seu efeito de sentido.",
+  },
+  {
+    id: "EF35LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Textos dramáticos",
+    skill:
+      "(EF35LP24) Identificar funções do texto dramático (escrito para ser encenado) e sua organização por meio de diálogos entre personagens e marcadores das falas das personagens e de cena.",
+    comment:
+      "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos diferentes gêneros dramáticos.   A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam da leitura colaborativa para a autônoma, ao longo dos três últimos anos.",
+    resume:
+      "Atividades que favorecem o desenvolvimento dessa habilidade são, entre outras, a leitura colaborativa — para estudo dos textos e modelização de procedimentos e comportamentos leitores —, e a roda de leitores, como na habilidade (EF35LP21). Na elaboração do currículo, a organização de leituras dramáticas de textos teatrais (leituras feitas por um grupo de pessoas que assumem os diferentes papéis da peça teatral, representando-os) cria um espaço de socialização dos textos, além de possibilitar o desenvolvimento da fluência leitora, como na habilidade (EF35LP01). A complexidade dos gêneros e textos previstos, as marcas linguísticas dos textos dramáticos e o grau de autonomia do aluno proposta para os três anos em jogo podem ser bons critérios para a progressão da aprendizagem.",
+  },
+  {
+    id: "EF35LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF35LP25) Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens.",
+    comment:
+      "Esta habilidade é mais complexa, pois envolve produzir narrativas de conteúdo temático, o que pode ser planejado de forma coletiva ou mais autônoma, garantindo progressão vertical no ano. Ela prevê que o aluno se utilize de recursos de descrição e narração para criar esses textos. A habilidade se relaciona à (EF15LP05) e (EF02LP27).",
+    resume:
+      "Na elaboração do currículo, é importante considerar que a criação de narrativas ficcionais difere da recontagem por solicitar a criação de conteúdo temático, sendo, portanto, mais complexa. É possível prever o estudo de narrativas representativas da cultura local, nacional e universal (culturas africana e latino-americana, por exemplo), além de ampliar a habilidade com a criação parcial (produzir parte desconhecida de um conto lido) e/ou colaboração no planejamento. Pode-se, ainda, analisar as características dos gêneros, a partir do estudo dos recursos presentes nos textos e prever a progressão horizontal e vertical (ampliando a complexidade do gênero ou texto proposto nos diferentes anos), começando com produção coletiva, seguida de trabalho em duplas/grupos para chegar à produção autônoma.",
+  },
+  {
+    id: "EF35LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita autônoma e compartilhada",
+    skill:
+      "(EF35LP26) Ler e compreender, com certa autonomia, narrativas ficcionais que apresentem cenários e personagens, observando os elementos da estrutura narrativa: enredo, tempo, espaço, personagens, narrador e a construção do discurso indireto e discurso direto.",
+    comment:
+      "O foco dessa habilidade é a apreensão, por meio da leitura compreensiva, da organização discursiva e textual de gêneros narrativos, especialmente no que diz respeito aos aspectos mencionados. Trata-se, portanto, de uma habilidade complexa, que: a) articula a produção de gêneros narrativos a sua leitura e análise prévias; b) toma o estudo e/ou análise desses gêneros como pré-requisito para a escrita de textos narrativos.",
+    resume:
+      "Nos currículos locais, convém que o desenvolvimento dessa habilidade venha sempre associado a práticas articuladas e sequenciadas de leitura/análise e produção de gêneros narrativos, com ênfase sobre sua organização discursiva e textual. A progressão — tanto horizontal quanto vertical — pode combinar critérios como: a) o foco nesse ou naquele elemento organizacional da narrativa (enredo/ personagem/discurso reportado etc.); b) a complexidade dos gêneros e/ou textos programados para estudo; c) o grau de autonomia que se pretenda levar o aluno a atingir em cada etapa do ensino.",
+  },
+  {
+    id: "EF35LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita autônoma",
+    skill:
+      "(EF35LP27) Ler e compreender, com certa autonomia, textos em versos, explorando rimas, sons e jogos de palavras, imagens poéticas (sentidos figurados) e recursos visuais e sonoros.",
+    comment:
+      "O foco dessa habilidade é a apreensão, por meio da leitura compreensiva, de recursos expressivos – inclusive visuais e sonoros –  próprios de gêneros poéticos. Trata-se, portanto, de uma habilidade complexa, que: a) articula a produção de gêneros poéticos a sua leitura e análise prévias; b) toma o estudo e/ou análise desses gêneros como pré-requisito para a escrita de textos narrativos.",
+    resume:
+      "Nos currículos locais, convém que o desenvolvimento dessa habilidade venha sempre associado a práticas articuladas e sequenciadas de leitura/análise e produção de gêneros poéticos, com ênfase sobre seus recursos expressivos. A progressão — tanto horizontal quanto vertical — pode combinar critérios como: a) o foco nesse ou naquele recurso expressivo (rimas/jogos de palavras/sentidos figurados/recursos visuais etc.); b) a complexidade dos gêneros e/ou textos programados para estudo; c) o grau de autonomia que se pretenda levar o aluno a atingir em cada etapa do ensino.",
+  },
+  {
+    id: "EF35LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Declamação",
+    skill:
+      "(EF35LP28) Declamar poemas, com entonação, postura e interpretação adequadas.",
+    comment:
+      "Trata-se de habilidade que envolve leitura e compreensão dos textos selecionados, para que o estudante, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com fluência, ritmo e entonação adequados. Sugere-se que a atividade esteja inserida em projeto/sequência de estudo de textos nos gêneros citados para apresentação em sarau, slam etc.",
+    resume:
+      "Na elaboração do currículo, pode-se orientar estudos de textos poéticos da cultura local, nacional, tradicionais e aqueles referentes às culturas periféricas, especialmente os mais representativos e vivos nas culturas locais. Podem ser propostas também habilidades que prevejam a colaboração, de modo a favorecer a ampliação da fluência dos estudantes. A progressão curricular pode ter como critério a complexidade dos textos e gêneros poéticos, o aspecto da declamação a ser focalizado (entonação; postura; fluência etc.), o planejamento ou a execução da atividade.",
+  },
+  {
+    id: "EF35LP29",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Formas de composição de narrativas",
+    skill:
+      "(EF35LP29) Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas.",
+    comment:
+      "Esta habilidade articula-se com a (EF01LP26) e com a (EF35LP28), na medida em que também visa narrativas literárias. Seu foco, no entanto, está no reconhecimento global da organização da narrativa e, em particular, do ponto de vista em que os textos lidos/escutados foram narrados, assim como na identificação da pessoa do discurso que os sustenta.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha associado à frequentação dos estudantes a textos organizados nos gêneros previstos. O trabalho a ser desenvolvido é o mesmo que o previsto para a (EF01LP26), observando-se que, do 3º ao 5º ano, os alunos já estarão alfabetizados, sendo capazes de ler por si mesmos. No que se refere à identificação de pontos de vista, são muito produtivas as leituras de obras que apresentam textos clássicos narrados do ponto de vista de outro personagem da história base. Esta habilidade representa uma progressão vertical em relação à (EF01P26). A progressão horizontal pode dar-se pela complexidade dos textos e pelo nível de autonomia a ser conquistado pelo estudante a cada etapa (em colaboração: coletiva e em duplas, até o trabalho autônomo).",
+  },
+  {
+    id: "EF35LP30",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Discurso direto e indireto",
+    skill:
+      "(EF35LP30) Diferenciar discurso indireto e discurso direto, determinando o efeito de sentido de verbos de enunciação e explicando o uso de variedades linguísticas no discurso direto, quando for o caso.",
+    comment:
+      "Esta habilidade refere-se a reconhecer as diferenças e semelhanças entre discurso direto e indireto, focalizando não apenas a pontuação, mas o uso dos verbos dicendi em cada caso; e implica compreender que a presença, na fala de personagens, de variedades linguísticas diferentes daquela em que o texto é narrado produz efeitos de sentido relevantes.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o foco da habilidade é a separação gráfica que, no discurso direto, se estabelece entre o discurso do narrador e o do personagem, o que não ocorre no discurso indireto. Por outro lado, a fala de um personagem pode vir organizada em uma variedade linguística diferente do texto do narrador: trata-se de recurso de caracterização de personagem, ou de suas intenções. O importante é analisar a coerência desse fato no interior do texto. Nesse sentido, recomenda-se que os currículos locais associem o desenvolvimento desta habilidade a práticas de leitura e escrita de textos em que o discurso citado tenha um papel relevante. Esta habilidade representa uma progressão vertical em relação à (EF04LP05) e (EF03LP07). A progressão entre o terceiro e o quinto ano, em termos tanto horizontais quanto verticais, pode dar-se pelo grau de complexidade dos gêneros e/ou dos textos, assim como pelo nível de autonomia a ser atingido pelo estudante a cada etapa.",
+  },
+  {
+    id: "EF35LP31",
+    competences: "Língua Portuguesa",
+    group_year_id: "35",
+    group_years: "3º, 4º, 5º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição de textos poéticos",
+    skill:
+      "(EF35LP31) Identificar, em textos versificados, efeitos de sentido decorrentes do uso de recursos rítmicos e sonoros e de metáforas.",
+    comment:
+      "Esta é uma habilidade diretamente relacionada à (EF12LP19). Trata-se de — no processo de leitura e estudo de textos poéticos — reconhecer recursos linguísticos e discursivos que constituem os gêneros mencionados. Seu desenvolvimento demanda o recurso a práticas de oralização dos textos mencionados, sem o que os aspectos relacionados à sonoridade e ao ritmo não podem ser observados.",
+    resume:
+      "Na elaboração do currículo, é importante que o desenvolvimento desta habilidade venha associado a atividades colaborativas de leitura, oralização e análise. Convém, portanto, que a mediação do professor e o envolvimento sistemático do aluno em práticas de leitura e escrita sejam contemplados nos dois primeiros anos. A progressão pode apoiar-se no grau de complexidade dos gêneros e/ou textos poéticos programados para o estudo e pelo nível de autonomia a ser atingido pelo estudante a cada etapa do trabalho.",
+  },
+  {
+    id: "EF04LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF04LP01) Grafar palavras utilizando regras de correspondência fonema--grafema regulares diretas e contextuais.",
+    comment:
+      "Esta habilidade consiste em entender e registrar corretamente os tipos de palavras previstas. As regulares diretas são (P, B, F, V, T, D) aquelas cujos sons são parecidos. As contextuais são aquelas em que o contexto interno da palavra é que determina que letra usar (R/RR, M/N, NH).",
+    resume:
+      "Na elaboração do currículo, é possível prever uma progressão horizontal que contemple, no primeiro semestre, a análise das ocorrências regulares contextuais em colaboração e, no segundo, a grafia correta e autônoma. Nesse caso, a habilidade pode ser articulada com outras que tratam da construção de regularidades, como a (EF03LP01), sempre prevendo a realização de ditado inicial para identificar as necessidades de aprendizagem dos estudantes. O trabalho de análise dos casos previstos pode ser proposto logo que os alunos compreendem o sistema de escrita, garantindo uma progressão com habilidades que prevejam a construção da autonomia da escrita convencional. As habilidades podem, ainda, propor a construção de regras pela análise comparativa das ocorrências.",
+  },
+  {
+    id: "EF04LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF04LP02) Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou).",
+    comment:
+      "Relacionada à aprendizagem da ortografia, essa atividade pressupõe que o aluno já saiba escrever alfabeticamente. Seu foco é o domínio de convenções e normas relacionadas à grafia de vogais como /e/ e /o/ que, na língua oral, são reduzidas a /i/ e /u/ em final de sílabas VV e CVV. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas significativas de leitura e/ou escrita em que a grafia de palavras também seja objeto de observação e reflexão.",
+    resume:
+      "Recomenda-se que o desenvolvimento dessa habilidade, nos currículos locais, a) esteja sempre articulado ao das demais habilidades de apreensão e domínio da ortografia; b) venha associado a práticas de leitura e escrita; c) envolva observação, reflexão e apropriação. A progressão horizontal pode apoiar-se nos itens programados para estudo, assim como no grau de autonomia que se pretenda levar o aluno a atingir.",
+  },
+  {
+    id: "EF04LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Conhecimento do alfabeto do português do Brasil/Ordem alfabética/Polissemia",
+    skill:
+      "(EF04LP03) Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta.",
+    comment:
+      "Localizar palavras em um dicionário é uma habilidade estreitamente associada a práticas de leitura e produção de textos. Trata-se de uma habilidade instrumental, que visa responder a problemas tanto de compreensão quanto relativos à repetição inadequada de palavras no texto produzido, garantindo a coesão e a coerência. É, ainda, fundamental para o prosseguimento dos estudos, considerando a necessidade de leitura de textos de todos os demais componentes curriculares. Seu desenvolvimento demanda o convívio cotidiano com dicionários e atividades de análise, estudo e uso desse instrumento.",
+    resume:
+      "É fundamental garantir, na elaboração do currículo, o domínio desta habilidade. Aspectos a serem considerados na progressão do trabalho: familiarização com o gênero verbete (impresso e/ou digital), reconhecendo suas partes e o tipo de informações que apresentam, e com o portador e sua organização interna: ordem alfabética progressiva (letra inicial; inicial e 2ª letra etc.); forma de apresentação das palavras (verbos no infinitivo, substantivos e adjetivos no masculino singular etc.); apresentação das várias acepções possíveis da palavra. Esses aspectos podem constituir a progressão vertical e horizontal do trabalho associados ao nível de autonomia do estudante. É importante que os currículos orientem, ainda, sobre a importância de buscar o significado do vocábulo também pelo contexto, pela releitura do trecho em que ele foi encontrado, especialmente no caso dos textos da esfera literária, de modo a garantir a familiarização com esse procedimento antes da busca no dicionário.",
+  },
+  {
+    id: "EF04LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    skill:
+      "(EF04LP04) Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s).",
+    comment:
+      "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
+    resume:
+      "Na elaboração do currículo, convém que se programe o desenvolvimento desta habilidade para uma etapa posterior à da construção de uma certa proficiência na escrita. Todo esse trabalho pode ser realizado sem o uso da metalinguagem (utilizar terminologia da gramática para se referir às questões abordadas, por exemplo, substantivo, adjetivo, concordância verbal etc.). No entanto, é preciso ressaltar que o seu uso torna a linguagem mais econômica, podendo facilitar a reflexão, e que o recurso à metalinguagem é posterior à compreensão do fato discutido. A progressão da acentuação inicia-se com as pautas de memorização, nas quais palavras são afixadas em cartazes que o aluno pode consultar ao escrever. Depois, ao longo dos anos, propor que as regularidades sejam discutidas por meio de um movimento dialógico de análise e reflexão, seguido de emprego na produção textual. As pautas permanecem para o caso das irregularidades.",
+  },
+  {
+    id: "EF04LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Pontuação",
+    skill:
+      "(EF04LP05) Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto.",
+    comment:
+      "Em relação à habilidade (EF03LP07), esta prevê a ampliação do estudo dos recursos de pontuação, incluindo o uso de vírgula em enumerações e em separação de vocativo e aposto. Da mesma forma, o estudo prevê: identificar os novos sinais gráficos; reconhecer — na leitura — a sua função; usá-los no texto para garantir legibilidade e para provocar os efeitos de sentido desejados.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, na escola, o estudo da pontuação acontece de duas maneiras (como na habilidade EF02LP09): na leitura, ao analisar os efeitos de sentido produzidos pelo uso no texto; e na escrita, ao discutir possibilidades e analisar os efeitos de sentido correspondentes (nesse caso, empregar a vírgula em enumerações — ou usar preposição e/ou ponto e vírgula —, para separar vocativo e aposto, que também pode ser delimitado por travessões ou indicado por dois pontos) e selecionar a que mais se adequar às intenções de significação. A progressão vertical está prevista pela ampliação gradativa dos sinais a serem utilizados de modo convencional, mas também deve-se considerar a complexificação dos textos e o nível de autonomia do estudante.",
+  },
+  {
+    id: "EF04LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia/Morfossintaxe",
+    skill:
+      "(EF04LP06) Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal).",
+    comment:
+      "Intimamente relacionada à (EF05LP06), esta habilidade envolve trabalhar com substantivos e pronomes pessoais ligados ao verbo, assim como identificar a necessidade de estabelecer a concordância verbal entre eles na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras e suas funções no enunciado; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o trabalho com esta habilidade deve prever a utilização instrumental desse saber para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva. Nesse momento, é possível antecipar problemas de compreensão que o interlocutor possa vir a ter e ajustar o texto, garantindo escolhas adequadas às intenções de significação. Na organização curricular, pode-se considerar a especificidade da concordância verbal (número e pessoa), garantindo sempre o trabalho em colaboração (coletivo e em duplas).",
+  },
+  {
+    id: "EF04LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfossintaxe",
+    skill:
+      "(EF04LP07) Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal).",
+    comment:
+      "A habilidade prevê reconhecer a necessidade de estabelecer a concordância nominal na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e levantamento de regularidades que caracterizem as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade do texto.",
+    resume:
+      "Na elaboração do currículo, o trabalho com esta habilidade deve prever a utilização instrumental desse saber para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva e final. Nesse momento, é possível antecipar problemas de compreensão que o interlocutor possa vir a ter e ajustar o texto, garantindo escolhas adequadas às intenções de significação. Na organização curricular, pode-se considerar a especificidade da concordância nominal (gênero e número), garantindo sempre o trabalho em colaboração (coletivo e em duplas).",
+  },
+  {
+    id: "EF04LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF04LP08) Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas).",
+    comment:
+      "Corresponde às regularidades morfológicas abordadas na habilidade EF05LP01.",
+    resume:
+      "Na elaboração do currículo, pode-se articular esta habilidade com outras, que prevejam o conhecimento morfológico gramatical em uma progressão que poderá acontecer no ano e entre os anos do Ensino Fundamental. É indicado que sejam realizados ditados diagnósticos de modo a identificar as possíveis ocorrências que ainda não são grafadas convencionalmente pelos estudantes, de modo a planejar intervenções adequadas. Nesse caso, a habilidade se conecta com todas as demais que tratam do ensino de ortografia.",
+  },
+  {
+    id: "EF04LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF04LP09) Ler e compreender, com autonomia, boletos, faturas e carnês, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero (campos, itens elencados, medidas de consumo, código de barras) e considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Parei Na elaboração do currículo, convém focalizar as características/elementos que forem importantes para a compreensão do texto, articular a existência dessas características à finalidade do texto, prever um trabalho dialógico e reflexivo no estudo dos textos, assim como a comparação entre textos do mesmo gênero e de gêneros diferentes, estabelecendo semelhanças e diferenças.  Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF04MA10) e (EF04MA25), da Matemática, no que se refere à leitura de valores monetários e reflexões sobre consumo consciente.",
+  },
+  {
+    id: "EF04LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF04LP10) Ler e compreender, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo cotidiano (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "As cartas de reclamação circulam em situações de comunicação em que um cidadão procura manifestar insatisfação ou resolver algum problema que pode relacionar-se a um serviço ou a um produto adquirido, por exemplo. Trata-se de um gênero que possibilita o exercício da cidadania, daí a importância do seu ensino. Podem ser enviadas diretamente ao responsável pelo problema ou serem publicadas em jornais e revistas em seções específicas. A linguagem é sempre mais formal e polida. Organizam-se a partir dos seguintes elementos: local e data; destinatário; cumprimento; apresentação do problema; despedida; remetente. Na elaboração do currículo, convém articular essas características à finalidade do texto, assim como prever um trabalho dialógico e reflexivo.",
+  },
+  {
+    id: "EF04LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida cotidiana",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF04LP11) Planejar e produzir, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e com a estrutura própria desses textos (problema, opinião, argumentos), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero de cartas pessoais e de reclamação e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, esta habilidade pode ser ampliada com atividades que prevejam a utilização de procedimentos de busca e consulta a ambientes/espaços impressos e digitais de publicação das cartas de reclamação, tanto em colaboração quanto de modo autônomo, para o exercício pleno da cidadania. É possível, portanto, propor habilidades que: a) envolvam análise de textos dos gêneros em questão, para explicitar as suas características; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões e revisar no processo e ao final; c) ampliem para análise dos ambientes de publicação das cartas. Deve-se, ainda, observar que a habilidade fala em dois gêneros: carta pessoal e carta de reclamação, e não carta pessoal de reclamação, como parece.",
+  },
+  {
+    id: "EF04LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF04LP12) Assistir, em vídeo digital, a programa infantil com instruções de montagem, de jogos e brincadeiras e, a partir dele, planejar e produzir tutoriais em áudio ou vídeo.",
+    comment:
+      "A habilidade envolve a recepção atenta e a compreensão de textos instrucionais veiculados em mídia digital, além de duas outras operações complexas: planejar e produzir tutoriais.",
+    resume:
+      "É importante que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. É possível propor habilidades que: a) envolvam análise de textos, dos gêneros previstos para extrair as suas características, de acordo com a situação comunicativa; b) prevejam o planejamento do texto a ser produzido, considerando a situação em que irá circular;  c) orientem a produção/textualização deste. A progressão horizontal pode apoiar-se na extensão e complexidade das instruções previstas, assim como nas operações sucessivas que a habilidade envolve. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF15AR24), da Arte; e (EF35EF01) da Educação Física, voltadas à experimentação e compreensão de jogos e brincadeiras.",
+  },
+  {
+    id: "EF04LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF04LP13) Identificar e reproduzir, em textos injuntivos instrucionais (instruções de jogos digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e formato específico dos textos orais ou escritos desses gêneros (lista/ apresentação de materiais e instruções/passos de jogo).",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade já representa um aprofundamento em relação à habilidade (EF01LP20). No 1º ano, o trabalho acontece por frequentação; no 4º, o aprofundamento pode ser realizado por sequências didáticas. A atividade de leitura colaborativa possibilita estudar os recursos previstos, enquanto a de revisão processual e final possibilita analisar a adequação dos textos produzidos. Um projeto interessante pode ser elaborar um blog, vlog ou revista temática de jogos: indígenas, da década de 50, de diferentes regiões do país, da América Latina etc. A progressão horizontal pode dar-se pela complexidade dos jogos (e dos textos), assim como pelo nível de autonomia do aluno que, no currículo, se efetiva pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.  Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF15AR24), da Arte; e (EF35EF01) da Educação Física, voltadas à experimentação e compreensão de jogos e brincadeiras.",
+  },
+  {
+    id: "EF04LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF04LP14) Identificar, em notícias, fatos, participantes, local e momento/tempo da ocorrência do fato noticiado.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características da notícia (organização interna; marcas linguísticas; conteúdo temático). No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
+    resume:
+      "Trata-se de uma habilidade de leitura que requer a mobilização de  outras competências, como a construção de informações, a inferenciação e a ativação de repertório prévio. Na elaboração do currículo, pode-se buscar organizar a progressão considerando a complexidade dos textos e o grau de autonomia do aluno ao realizar a tarefa. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para a realização desse trabalho.",
+  },
+  {
+    id: "EF04LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF04LP15) Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.).",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com outras habilidades de leitura quanto as características dos textos mencionados (organização interna; marcas linguísticas; conteúdo temático). No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
+    resume:
+      "Esta habilidade de leitura requer a mobilização de outras competências, como a localização e a redução de informações, a articulação de informações de diferentes partes do texto, a inferenciação e a ativação de repertório prévio. Além disso, requer também a identificação de valores éticos e/ou políticos no texto e de elaboração de apreciações relativas a esses e a outros valores. Na elaboração do currículo, pode-se buscar organizar a progressão considerando a complexidade dos textos e o grau de autonomia do aluno ao realizar a tarefa. A leitura colaborativa, trabalhada na habilidade (EF12LP02), é atividade fundamental para o desenvolvimento dessa habilidade.",
+  },
+  {
+    id: "EF04LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida pública",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF04LP16) Produzir notícias sobre fatos ocorridos no universo escolar, digitais ou impressas, para o jornal da escola, noticiando os fatos e seus atores e comentando decorrências, de acordo com as convenções do gênero notícia e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta habilidade articula a produção de notícias a dois vetores do processo de escrita (situação/tema ou assunto) e ao tratamento da matéria de acordo com as convenções do gênero. Ela prevê a produção de textos do gênero notícia, o que envolve organizar as ideias e utilizar informações coletadas por pesquisa para depois escrever fatos do entorno do aluno (como coisas relevantes socialmente que aconteceram na escola ou na comunidade).",
+    resume:
+      "Na elaboração do currículo, pode-se prever o trabalho contextualizado a partir de temáticas relevantes para a comunidade local e para o interesse dos alunos, como eventos da comunidade, ações comunitárias em desenvolvimento, propostas do governo local e da escola, realização de campeonatos esportivos, notícias a respeito de funcionamento de bibliotecas e espaços culturais, funcionamento de espaços públicos, problemas que a cidade/comunidade vivencia, entre outros. A habilidade requer a análise de textos no gênero em questão para explicitar suas principais características e repertoriar a produção. Assim, a habilidade pode ser desmembrada, prevendo-se o estudo do gênero e da situação comunicativa em que a produção irá circular. Recomenda-se uma progressão horizontal que se inicie com o trabalho colaborativo coletivo e avance para as atividades em grupo/duplas e autônomas.",
+  },
+  {
+    id: "EF04LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Planejamento e produção de texto",
+    skill:
+      "(EF04LP17) Produzir jornais radiofônicos ou televisivos e entrevistas veiculadas em rádio, TV e na internet, orientando-se por roteiro ou texto e demonstrando conhecimento dos gêneros jornal falado/televisivo e entrevista.",
+    comment:
+      "A habilidade focaliza a produção de materiais jornalísticos (orais e/ou escritos) para diferentes mídias. A produção visada está articulada às características dos gêneros previstos. A habilidade requer a análise da mídia e dos textos/gêneros que nele circulam. Embora vise diretamente a produção, implica o planejamento necessário das atividades.",
+    resume:
+      "Na elaboração do currículo, é preciso considerar que a habilidade prevê tanto a produção oral quanto a oralização de textos escritos. Essa situação coloca as seguintes condições básicas para a adequação do texto: a) produzir a escrita do texto a ser lido; e/ou b) organizar esquema do texto a ser produzido oralmente, o que requer muito ensaio coletivo, com análise crítica; c) estudar os recursos a serem empregados nesse material, considerando a especificidade da mídia e ambiente no qual será veiculado o material. Além disso, as habilidades podem  prever:a) a seleção e estudo dos textos a serem produzidos para compreender suas características, de acordo com a situação comunicativa; b) o planejamento/pesquisa do conteúdo temático e considerando a situação em que irá circular o tipo de mídia. Do ponto de vista da progressão, é possível propor habilidades que orientem a produção/revisão colaborativa e que estejam inseridas em projetos de produção de jornais editados para circular em blogs e rádios comunitárias da escola. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF15AR19), da Arte, no que se refere à identificação de elementos teatrais na vida cotidiana, no caso, nos gêneros jornal falado/televisivo e entrevista.",
+  },
+  {
+    id: "EF04LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos",
+    skill:
+      "(EF04LP18) Analisar o padrão entonacional e a expressão facial e corporal de âncoras de jornais radiofônicos ou televisivos e de entrevistadores/entrevistados.",
+    comment:
+      "Esta habilidade relaciona-se com a (EF05LP21), na medida em que prevê o estudo de aspectos relativos a comunicações orais (algumas entrevistas, vídeos de vloggers) ou oralizadas (fala de âncora ou locutor de notícias, por exemplo). Seu desenvolvimento possibilita a compreensão mais crítica e aprofundada dos textos ouvidos pelo aluno e põe em jogo a relação entre entonação, gesticulação, olhares, tom de voz, expressões faciais, meneios de cabeça, de um lado, e, de outro, os efeitos de sentido assim produzidos, evidenciando valores éticos, estéticos e políticos veiculados na fala.",
+    resume:
+      "Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade venha associado a diferentes práticas de escuta atenta e crítica de entrevistas e jornais radiofônicos e/ou televisivos, para que os alunos possam perceber e se familiarizar com os padrões denotacionais e a expressão corporal próprios de âncoras e entrevistadores nesses meios. Convém prever, ainda, que as atividades sejam realizadas com base em gravações de discursos autênticos (registrados nessas situações), tornando possível assistir, analisar, reassistir e tirar dúvidas relativas ao estudo. A progressão horizontal pode se dar pela complexidade dos textos lidos (em função, por exemplo, do tema) e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF04LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF04LP19) Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos expositivos de divulgação científica para crianças a serem lidos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
+    resume:
+      "Textos expositivos de divulgação científica são fundamentais na vida escolar: é por meio deles que o conhecimento produzido em diversas áreas é registrado e divulgado. Por isso, a leitura destes vai sempre ser solicitada nas diversas disciplinas, e o prosseguimento dos estudos pode depender da proficiência constituída pelo aluno. A leitura colaborativa, proposta na habilidade (EF12LP02), é atividade fundamental para a realização desse tipo de leitura, que é a de estudo. Na elaboração do currículo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, prever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças.",
+  },
+  {
+    id: "EF04LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Imagens analíticas em textos",
+    skill:
+      "(EF04LP20) Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações.",
+    comment:
+      "Esta habilidade refere-se à necessidade de o aluno reconhecer que os textos podem ser compostos por diferentes recursos semióticos, os quais também compõem os sentidos do texto, caracterizando-o como multissemiótico.  O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
+    resume:
+      "Nos textos de divulgação científica, acadêmicos, de pesquisa e também nos de imprensa (reportagens, artigos de divulgação científica, artigos acadêmicos, relatórios de pesquisa etc.), é comum a presença de infográficos que sintetizem dados, esquemas visuais que simulem uma situação descrita, tabelas que apresentem dados coletados e gráficos que os agrupem, oferecendo uma visão geral e comparada de respostas a uma enquete, por exemplo. Na elaboração do currículo, é preciso, então, prever que os alunos compreendam que esses recursos podem conter dados não apresentados no texto verbal que sejam importantes para uma melhor compreensão da questão discutida no texto. É importante tematizar a presença desses dados por meio de perguntas que os coloquem em jogo. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27), (EF03MA28), da Matemática (EF03CI06), (EF03CI09), da Ciência; (EF03HI03), da História; e (EF03GE01), da Geografia, associadas a coleta, leitura, comparação e interpretação de dados de pesquisas, com apoio de recursos multissemióticos.",
+  },
+  {
+    id: "EF04LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Produção de textos",
+    skill:
+      "(EF04LP21) Planejar e produzir textos sobre temas de interesse, com base em resultados de observações e pesquisas em fontes de informações impressas ou eletrônicas, incluindo, quando pertinente, imagens e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o tema do interesse do aluno, que seja baseado em fontes de informação e pesquisa confiáveis, e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, é possível organizar as habilidades em temáticas significativas para o país ou região, como ambiente e sustentabilidade (tratamento do lixo, água etc.), aspectos relacionados à saúde etc., articulados de modo interdisciplinar em projetos que prevejam situações comunicativas orais em interação com alunos de outros períodos do Ensino Fundamental. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF04MA27) e (EF04MA28), da Matemática, no que se refere à utilização de gráficos e tabelas para a realização de pesquisas e análise de dados. É possível, ainda, propor habilidades que: a) envolvam análise de textos com temáticas de interesse baseados em outras fontes para explicitar suas características, construindo registros que possam repertoriar a produção; b) orientem procedimentos escritores, como: reler o que está escrito para continuar escrevendo, consultar o planejamento para tomar decisões e revisar no processo e ao final.",
+  },
+  {
+    id: "EF04LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita autônoma",
+    skill:
+      "(EF04LP22) Planejar e produzir, com certa autonomia, verbetes de enciclopédia infantil, digitais ou impressos, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    comment:
+      "Esta habilidade articula a produção textual com o gênero verbete de enciclopédia e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, podem-se prever: a) a consulta a enciclopédias eletrônicas e impressas a partir da pesquisas em biblioteca escolar ou ambientes digitais, com análise de verbetes, de modo a explicitar as suas características e construindo registros que possam repertoriar a produção; b) a pesquisa do conteúdo temático em fontes impressas e digitais, com tomada coletiva de notas ou em grupos; c) o estudo de ambientes digitais que recebem verbetes de enciclopédia para publicação. É possível, ainda, propor habilidades que orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final. A progressão horizontal pode apoiar-se no grau de complexidade dos verbetes de enciclopédias disponíveis na sala de leitura e/ou biblioteca da escola.",
+  },
+  {
+    id: "EF04LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos\nCoesão e articuladores",
+    skill:
+      "(EF04LP23) Identificar e reproduzir, em verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica desse gênero (título do verbete, definição, detalhamento, curiosidades), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade pode acontecer por meio da intensa frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos. Elaborar verbetes para enciclopédias digitais ou produzir um dossiê impresso sobre um tema estudado pela classe, que contenha verbetes a respeito dos conteúdos relativos a esse tema, são possibilidades de concretizar o trabalho, que podem ser sugeridas nas habilidades a serem propostas pelas redes. Na organização do currículo, a progressão pode dar-se pela diversificação do tema, pela complexidade dos textos, assim como pelo nível de autonomia do aluno, que pode se efetivar pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, de modo autônomo.",
+  },
+  {
+    id: "EF04LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Forma de composição dos textos\nAdequação do texto às normas de escrita",
+    skill:
+      "(EF04LP24) Identificar e reproduzir, em seu formato, tabelas, diagramas e gráficos em relatórios de observação e pesquisa, como forma de apresentação de dados e informações.",
+    comment:
+      "Esta habilidade articula-se com a (EF03LP26) e refere-se — no processo de leitura de estudo — a reconhecer recursos discursivos definidos nos gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade representa uma progressão em relação à (EF03LP26). O seu desenvolvimento pode se dar por meio da frequentação dos estudantes a textos organizados nos gêneros previstos, com aprofundamento leve. É importante que os currículos orientem a analisar a adequação do recurso às intenções de significação e à coerência do texto. A progressão pode dar-se pela complexidade do recurso a ser identificado e pelo nível de autonomia do aluno, sendo este um aspecto a ser previsto nos currículos: tarefas em colaboração que avancem para aquelas realizadas com mais autonomia.",
+  },
+  {
+    id: "EF04LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita autônoma",
+    skill:
+      "(EF04LP25) Representar cenas de textos dramáticos, reproduzindo as falas das personagens, de acordo com as rubricas de interpretação e movimento indicadas pelo autor.",
+    comment:
+      "O foco dessa habilidade está na oralização de textos dramatúrgicos de acordo com as indicações autorais constantes das rubricas. Pressupõe a leitura compreensiva e o estudo prévios do texto a ser representado, com ênfase sobre as relações que se podem estabelecer entre a escrita e a fala. Seu desenvolvimento demanda a participação do aluno em práticas de leitura e análise de textos dramáticos.",
+    resume:
+      "Nos currículos locais, convém que o desenvolvimento dessa habilidade venha sempre associado a práticas articuladas e sequenciadas de leitura/análise de textos dramáticos, com ênfase sobre as relações entre fala e escrita que se estabelecem nesses casos. A progressão horizontal pode combinar critérios como: a) a complexidade dos gêneros e/ou textos programados para estudo; b) o grau de autonomia que se pretenda levar o aluno a atingir em cada etapa do ensino.",
+  },
+  {
+    id: "EF04LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição de textos poéticos visuais",
+    skill:
+      "(EF04LP26) Observar, em poemas concretos, o formato, a distribuição e a diagramação das letras do texto na página.",
+    comment:
+      "Estreitamente relacionada à (EF02LP29), esta habilidade consiste no processo de leitura e estudo de textos, em: a) identificar a relação existente entre o poema concreto e o espaço no qual se insere, seja ele a página de um livro, de um site ou a tela de um projetor; b) analisar os efeitos de sentido produzidos pelo modo de ocupação desse espaço. O foco é a distribuição, o tipo e o tamanho das letras no espaço, assim como a diagramação.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade demanda a previsão de práticas de leitura e estudo de poemas concretos, para que as suas características fundamentais sejam identificadas: o tipo de ocupação do espaço no qual se insere, seja ele a página de um livro, a tela de um computador ou de um projetor. Incluem-se nessa ocupação a disposição, o tipo e tamanho das letras, a direção da escrita, o tipo de linha presumido e a diagramação. Convém esclarecer, ainda, que, nos poemas concretos, não há, necessariamente, figurativização nas representações. Assim, o texto verbal não precisa ser grafado de modo a representar figuras. As atividades colaborativas são mais adequadas para o desenvolvimento da habilidade, em especial as coletivas, com mediação do professor. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos propostos, no tipo de recurso gráfico a ser estudado e no nível de autonomia do estudante a ser conquistado a cada etapa.",
+  },
+  {
+    id: "EF04LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "04",
+    group_years: "4º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição de textos dramáticos",
+    skill:
+      "(EF04LP27) Identificar, em textos dramáticos, marcadores das falas das personagens e de cena.",
+    comment:
+      "Trata-se de habilidade que envolve a leitura e compreensão do texto a ser recitado, para que o aluno, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com maior fluência, ritmo e entonação adequada.",
+    resume:
+      "Na elaboração do currículo, pode-se orientar, para além dos gêneros mencionados, estudos de textos poéticos da cultura local ou nacional, assim como aqueles referentes às culturas periféricas, especialmente os mais relevantes para as culturas locais.  Podem ser previstas também habilidades que indiquem o trabalho em colaboração, de modo a favorecer o desenvolvimento da fluência e observação do ritmo entre os estudantes. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF15AR14) e (EF15AR17), da Arte, associadas a improvisação, composição e sonorização de histórias e exploração dos elementos constitutivos da música.",
+  },
+  {
+    id: "EF05LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Construção do sistema alfabético e da ortografia",
+    skill:
+      "(EF05LP01) Grafar palavras utilizando regras de correspondência fonema-grafema regulares, contextuais e morfológicas e palavras de uso frequente com correspondências irregulares.",
+    comment:
+      "A habilidade diz respeito a compreender e registrar corretamente os casos das palavras previstas. As contextuais são aquelas em que o contexto interno da palavra é que determina que letra usar, sendo necessária a análise de ocorrências para a construção da regra. As morfológicas são aquelas em que o conhecimento de determinado aspecto gramatical contribui para saber como grafar a palavra. Ex.: adjetivos como: manhoso/guloso e outros são grafados com S, entre outras. As palavras de uso frequente com correspondências irregulares devem ser memorizadas, conforme habilidade (EF35LP13).",
+    resume:
+      "Na elaboração do currículo, pode-se articular essa habilidade com outras, que prevejam o conhecimento morfológico gramatical, em uma progressão que poderá acontecer neste ano e entre anos do Ensino Fundamental. É indicado orientar a realização de ditados iniciais de modo a identificar as possíveis ocorrências que ainda não são grafadas convencionalmente pelos estudantes, de modo a planejar intervenções adequadas. Nesse caso, a habilidade se conecta com todas as demais que tratam do ensino de ortografia.",
+  },
+  {
+    id: "EF05LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Conhecimento do alfabeto do português do Brasil/Ordem alfabética/Polissemia",
+    skill:
+      "(EF05LP02) Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual.",
+    comment:
+      "A habilidade implica em saber que uma palavra pode ter vários significados, em função de vários aspectos relacionados com o contexto de uso: gíria, tempo, registro linguístico —  literário, usual, acadêmico, científico etc. Sendo assim, é fundamental considerar essas variáveis, seja na leitura de um texto (reconhecendo o sentido correspondente ao contexto), seja na elaboração de um texto (empregando-a de acordo com as intenções de significação).",
+    resume:
+      "Na elaboração do currículo, ao organizar sua progressão, é preciso considerar que a habilidade envolve dois aspectos: a) reconhecer que uma palavra pode ter vários sentidos, dependendo do contexto; b) comparar um uso comum com o da esfera acadêmico-científica. A intenção é, portanto, desenvolver a proficiência leitora acadêmico-científica. Sugere-se que a progressão deva acontecer em função dos conteúdos trabalhados nas diferentes áreas, em cada ano, prevendo tanto a complexificação a partir do texto selecionado, ou seja, prever trabalho com textos mais complexos a cada ano, quanto o grau de autonomia do aluno para realizar a tarefa, isto é, propor habilidades em que o trabalho aconteça em parceria, progredindo para o trabalho autônomo, tanto de modo vertical (entre os anos) quanto de modo horizontal (ao longo de um determinado ano).",
+  },
+  {
+    id: "EF05LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    skill:
+      "(EF05LP03) Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas.",
+    comment:
+      "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
+    resume:
+      "Na elaboração do currículo, convém que se programe o desenvolvimento desta habilidade para uma etapa posterior à da construção de uma certa proficiência na escrita. Todo esse trabalho pode ser realizado sem o uso da metalinguagem. No entanto, é preciso ressaltar que o seu uso torna a linguagem mais econômica, podendo facilitar a reflexão, e que o recurso à metalinguagem é mais efetivo e produtivo se for posterior à compreensão do fato discutido. A progressão da acentuação inicia-se com as pautas de memorização, nas quais palavras são afixadas em cartazes que o aluno pode consultar ao escrever. Depois, ao longo dos anos, as regularidades serão  discutidas por meio de um movimento dialógico de análise e reflexão, seguido de emprego na produção textual.",
+  },
+  {
+    id: "EF05LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Pontuação",
+    skill:
+      "(EF05LP04) Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses.",
+    comment:
+      "Esta habilidade prevê a ampliação do estudo dos recursos de pontuação previstos na habilidade (EF04LP05), contemplando o estudo de novos usos da vírgula, dos dois pontos, ponto e vírgula, reticências, aspas e parênteses. Da mesma forma, prevê: identificar os novos sinais gráficos; reconhecer, na leitura, a sua função; usá-los no texto para garantir legibilidade e para provocar os efeitos de sentido desejados.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que, na escola, o estudo da pontuação acontece de duas maneiras (como na habilidade EF02LP09): na leitura, ao analisar os efeitos de sentido produzidos pelo uso no texto; e na escrita, ao discutir possibilidades, analisar os efeitos de sentido correspondentes (nesse caso, comparando os efeitos de sentido de cada um dos novos recursos, ou seja, identificar as funções das reticências e das aspas) e selecionar a que mais se adequar às intenções de significação. As aspas podem ser utilizadas para assinalar discurso direto — ou para indicar pensamento de personagem, por exemplo —, o que representa uma ampliação na reflexão do 3º ano. A progressão vertical está prevista pela ampliação gradativa dos sinais a serem utilizados, mas também deve-se considerar a complexificação dos textos e o nível de autonomia do estudante, que poderá ser considerado nos currículos locais com a previsão do trabalho em colaboração no primeiro semestre e mais autônomo no segundo.",
+  },
+  {
+    id: "EF05LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF05LP05) Identificar a expressão de presente, passado e futuro em tempos verbais do modo indicativo.",
+    comment:
+      "No trabalho com esta habilidade, é interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com os tempos verbais e usar tais saberes como ferramentas de constituição da legibilidade do texto. Além disso, é possível propor que, na produção escrita, o estudante utilize esse saber para garantir a manutenção do tempo verbal predominante, o que confere coesão e coerência ao texto. Esses saberes devem servir de ferramenta para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva.",
+    resume:
+      "Na elaboração do currículo, o trabalho com esta habilidade deve considerar a especificidade da expressão do presente em português brasileiro, que prevê o uso regular da forma composta  [verbo no presente + gerúndio] — como em “estou fazendo”, por exemplo — em vez da conjugação simples no presente do indicativo — faço —, que mais parece se referir a uma ação costumeira do que à ação que está acontecendo no presente.",
+  },
+  {
+    id: "EF05LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF05LP06) Flexionar, adequadamente, na escrita e na oralidade, os verbos em concordância com pronomes pessoais/nomes sujeitos da oração.",
+    comment:
+      "Esta habilidade está estreitamente relacionada à (EF04LP06) e envolve trabalhar com verbos e pronomes pessoais sujeito, assim como identificar a necessidade de estabelecer a concordância verbal na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras e suas funções no enunciado; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
+    resume:
+      "Na elaboração do currículo, o trabalho com esta habilidade deve prever a utilização instrumental desse saber para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva. Nesse momento, é possível antecipar problemas de compreensão que o interlocutor possa vir a ter e ajustar o texto, garantindo escolhas adequadas às intenções de significação. Na organização curricular, pode-se considerar a especificidade da concordância verbal (número e pessoa), garantindo sempre o trabalho em colaboração (coletivo e em duplas).",
+  },
+  {
+    id: "EF05LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF05LP07) Identificar, em textos, o uso de conjunções e a relação que estabelecem entre partes do texto: adição, oposição, tempo, causa, condição, finalidade.",
+    comment:
+      "A habilidade prevê trabalhar com a compreensão das relações que as conjunções estabelecem entre segmentos do texto e analisar que o seu uso inadequado pode produzir sentidos não desejados. É essencial prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades de uso dessa classe de palavras; e usar tais saberes como ferramentas de constituição da legibilidade do texto.",
+    resume:
+      "Na elaboração do currículo, deve-se prever a análise da articulação entre trechos de enunciados, e avaliar os sentidos produzidos pelas conjunções empregadas e sua adequação às intenções de significação pretendidas. Por meio de atividades de uso da linguagem no texto, especialmente nos momentos de revisão processual e final, deve-se instrumentalizar o estudante para resolver problemas de compreensão que o interlocutor possa vir a ter. Na progressão curricular, pode-se considerar a variedade de recursos possíveis, progressivamente mais complexos, garantindo sempre o trabalho em colaboração.",
+  },
+  {
+    id: "EF05LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Morfologia",
+    skill:
+      "(EF05LP08) Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adição de prefixo e de sufixo.",
+    comment:
+      "Trata-se de reconhecer — com maior sistematização em relação à habilidade (EF03LP10) — que há palavras que derivam de outras e que têm o seu sentido modificado pelo acréscimo de afixos ou no início ou no final delas. Esses afixos possuem sentidos regulares, sendo possível identificar o significado de uma palavra derivada se a primitiva e o afixo forem conhecidos. Além disso, há, ainda, as palavras compostas por justaposição e aglutinação. É interessante a reflexão a partir de inventários, prevendo-se o uso desse saber para resolver problemas de compreensão vocabular.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que a progressão curricular vertical já está definida na BNCC se considerarmos que esta habilidade acrescenta o processo de composição de palavras à (EF03LP10). No que se refere à progressão horizontal, pode-se pensar tanto na ampliação de afixos possíveis (e os seus respectivos sentidos) para o processo de derivação quanto nos diferentes processos de composição (justaposição e aglutinação). Na progressão, pode-se considerar o grau de complexidade lexical  (palavras mais difíceis) e o nível de autonomia do estudante.",
+  },
+  {
+    id: "EF05LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF05LP09) Ler e compreender, com autonomia, textos instrucional de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos instrucionais de regras de jogo a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Na elaboração do currículo, convém considerar as características dos textos selecionados para leitura e dos gêneros previstos. As instruções de jogos, por exemplo, organizam-se pela presença de: título, jogadores, material para jogar, objetivo, regras. Pode-se indicar, ainda, o grau de dificuldade. O texto adequa-se ao portador e ao espaço de circulação, alterando a linguagem, apresentando imagens, por exemplo. Se for um jogo digital, haverá referências específicas desse espaço. Nas atividades de estudo, convém focalizar as características que forem importantes para a compreensão do texto, articular essas características à finalidade do texto, rever um trabalho dialógico e reflexivo, assim como a comparação entre textos por semelhanças e diferenças.",
+  },
+  {
+    id: "EF05LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF05LP10) Ler e compreender, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
+    resume:
+      "Na elaboração do currículo, convém considerar as características dos textos selecionados para leitura e dos gêneros previstos. Os cartuns, por exemplo, são textos humorísticos que articulam linguagem verbal e gráfico-visual, apresentando críticas ao comportamento humano e aos valores, referindo-se a situações genéricas e pessoas comuns. São textos em que a compreensão depende da articulação entre linguagem verbal e gráfico-visual. Assim como para as anedotas, a inferenciação é habilidade indispensável para a construção do sentido em cartuns. Os currículos podem prever projetos de leitura em que se organizem exposições de cartuns de autores específicos ou de temas relevantes em um determinado momento da vida social.",
+  },
+  {
+    id: "EF05LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF05LP11) Registrar, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "O foco dessa habilidade é o registro escrito de textos de gêneros orais lúdicos e/ou humorísticos da vida cotidiana. Trata-se de uma habilidade complexa, que: a) articula a produção desses gêneros a sua prévia escuta atenta; b) toma o estudo desses gêneros como pré-requisito para o registro escrito de piadas e cartuns, entre outros. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas orais e escritas nas quais esses gêneros: a) estejam envolvidos; b) sejam discutidos e analisados do ponto de vista dos objetivos em jogo nos textos, das situações a que estejam associados e das convenções discursivas e textuais que os configuram.",
+    resume:
+      "Nos currículos locais, convém que o desenvolvimento dessa habilidade venha sempre associado a práticas articuladas e sequenciadas de leitura/análise e produção de gêneros lúdicos e/ou humorísticos da vida cotidiana, com ênfase sobre a discussão de suas convenções de gênero, finalidades e situação de comunicação. Recomenda-se que a progressão horizontal se apoie numa combinação de critérios: a) o foco nesse ou naquele  gênero; b) a complexidade dos gêneros e/ou textos programados para estudo; c) o grau de autonomia que se pretenda levar o aluno a atingir em cada etapa do ensino.",
+  },
+  {
+    id: "EF05LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Escrita\n(compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF05LP12) Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero de textos instrucionais de regras de jogo e dois vetores do processo de escrita (situação/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento da habilidade deve prever a contextualização em projetos temáticos, como, por exemplo, estudo de jogos de diferentes culturas (indígenas, latino-americanas, africanas etc.), elaboração de um DVD com diversos jogos de tabuleiro da década de 1960, produção de um livro com jogos inventados pela classe, tarde de jogos na escola, contendo espaços com jogos da infância da comunidade escolar, entre outros. É possível propor habilidades que: a) envolvam análise de textos dos gêneros do campo da vida cotidiana em questão, de modo a explicitar suas características, construindo registros que possam repertoriar a produção; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final.",
+  },
+  {
+    id: "EF05LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Oralidade",
+    object: "Produção de texto oral",
+    skill:
+      "(EF05LP13) Assistir, em vídeo digital, a postagem de vlog infantil de críticas de brinquedos e livros de literatura infantil e, a partir dele, planejar e produzir resenhas digitais em áudio ou vídeo.",
+    comment:
+      "A habilidade envolve recepção atenta e compreensão de comentários críticos orais veiculados em vlogs infantis. Além disso, compreende duas outras operações complexas: planejar e produzir resenhas digitais.",
+    resume:
+      "É importante que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. Para o desenvolvimento desta habilidade, pode-se propor: a) a análise de vlogs, identificando os gêneros que nele circulem; b) a seleção do gênero mais indicado para a apresentação de críticas do tipo de produto a ser comentado; c) critérios de análise dos produtos focalizados;  d) estudo de recursos da mídia utilizada, assim como dos paratextuais que compõem a performance do locutor. As atividades a serem desenvolvidas, além das indicações já apresentadas, podem: a) envolver análise de textos do gênero resenha, para compreender as suas características, de acordo com a situação  comunicativa; b) prever o planejamento do texto a ser produzido, considerando a situação em que irá circular;  c) orientar a produção/textualização deste. A progressão horizontal pode apoiar-se na extensão e complexidade das resenhas previstas, assim como nas operações sucessivas que a habilidade envolve.",
+  },
+  {
+    id: "EF05LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida cotidiana",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição do texto",
+    skill:
+      "(EF05LP14) Identificar e reproduzir, em textos de resenha crítica de brinquedos ou livros de literatura infantil, a formatação própria desses textos (apresentação e avaliação do produto).",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade pode se dar por meio da intensa frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa e a de revisão processual e final possibilitam estudar os recursos e analisar a adequação dos textos produzidos. A participação de sites — ou blogs — em que são apresentadas resenhas de livros para os demais frequentadores, assim como a elaboração de um blog ou jornal de resenhas de livros e/ou brinquedos, viabilizam o trabalho. Na organização do currículo, a progressão pode dar-se pela diversificação do objeto cultural resenhado, pela complexidade dos textos e pelo nível de autonomia do aluno, que pode se efetivar pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.",
+  },
+  {
+    id: "EF05LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF05LP15) Ler/assistir e compreender, com autonomia, notícias, reportagens, vídeos em vlogs argumentativos, dentre outros gêneros do campo político-cidadão, de acordo com as convenções dos gêneros e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com outras habilidades de leitura e de oralidade (como a escuta atenta e crítica) quanto as características dos textos mencionados (organização interna; marcas linguísticas; conteúdo temático), inclusive quando forem multissemióticos. A habilidade prevê apenas desempenhos autônomos, o que confere maior importância, nos currículos locais, ao planejamento da progressão da aprendizagem no ensino da leitura.",
+    resume:
+      "O foco do trabalho são os textos do campo político-cidadão e jornalístico. Na elaboração do currículo, convém que se preveja o estudo da especificidade dos portadores (jornais e revistas impressos e digitais, blogs e vlogs), para que os alunos possam conhecer o local de publicação dos textos, contextualizando-os quanto à extensão, orientação de valores e características gráficas e também quanto aos recursos digitais disponíveis (como postagem imediata de comentários a respeito das matérias publicadas). A leitura proficiente desses textos requer a compreensão de suas características (recursos multimodais, marcas linguísticas) na relação com a função do gênero e a finalidade do texto, e com a situação comunicativa em que circulam.",
+  },
+  {
+    id: "EF05LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF05LP16) Comparar informações sobre um mesmo fato veiculadas em diferentes mídias e concluir sobre qual é mais confiável e por quê.",
+    comment:
+      "A habilidade envolve a análise de textos de diferentes mídias, considerando-se as especificações dos gêneros em que são organizados, bem como as finalidades e intencionalidades das mídias utilizadas. No que se refere ao nível de autonomia, convém que os currículos considerem o repertório inicial dos alunos para decidir se, ao final do quinto ano, alcançarão o trabalho autônomo ou não.",
+    resume:
+      "Essa habilidade supõe que, diante de textos que abordem o mesmo assunto, sejam encontradas informações distintas. Para discutir qual informação é mais confiável, é preciso definir critérios que podem abranger diferentes aspectos, como: indicação completa de fonte da matéria; autoria reconhecida em sua área de atuação; credibilidade do veículo (qual jornal, qual blog, qual revista); endereço idôneo do site; disponibilização de recursos  de comunicação com leitores; entre outros. Na elaboração do currículo, a progressão horizontal pode se dar pelo grau de autonomia do aluno na realização da tarefa e pela complexidade dos textos.",
+  },
+  {
+    id: "EF05LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Escrita colaborativa",
+    skill:
+      "(EF05LP17) Produzir roteiro para edição de uma reportagem digital sobre temas de interesse da turma, a partir de buscas de informações, imagens, áudios e vídeos na internet, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta habilidade articula a produção de roteiros de reportagem às convenções do gênero e a dois vetores do processo de escrita (situação/tema ou assunto). Ela prevê a produção de textos para reportagem digital, o que envolve organizar as ideias e utilizar as informações coletadas por pesquisa para depois escrevê-las.",
+    resume:
+      "Na elaboração do currículo, é possível prever a abordagem de temáticas relevantes socialmente e do interesse dos alunos, como eventos esportivos, espaços de lazer disponíveis para crianças na região, ações possíveis de serem realizadas pela população visando o desenvolvimento sustentável na cidade, o papel da tecnologia digital no município, a disponibilização de equipamentos públicos e o seu uso pelos cidadãos, a condição do transporte público local, entre outras. A habilidade requer a análise de textos no gênero indicado para explicitar suas principais características e repertoriar a produção. Assim, a habilidade pode ser desmembrada em: a) estudo do gênero e da situação comunicativa em que a produção irá circular; b) análise de ambientes digitais, como sites, blogs, páginas de jornais online, para repertoriar a produção; c) produção do roteiro. Recomenda-se uma progressão horizontal que se inicie com o trabalho colaborativo coletivo e avance para as atividades em grupo/duplas e autônomas.",
+  },
+  {
+    id: "EF05LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Planejamento e produção de texto",
+    skill:
+      "(EF05LP18) Roteirizar, produzir e editar vídeo para vlogs argumentativos sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    comment:
+      "Esta é uma habilidade complexa, que envolve três etapas distintas de produções orais argumentativas para vlogs. Ainda, articula esse trabalho com os gêneros visados e três vetores da produção: a situação comunicativa, o tema e a finalidade.",
+    resume:
+      "É muito importante que, na elaboração do currículo, preveja-se o acesso e a utilização de ferramentas digitais que viabilizem a produção dos textos em áudio ou vídeo. O tratamento dessa habilidade pode prever: a) análise de vlogs, identificando os gêneros que nele circulem; b) seleção do gênero mais indicado para a apresentação de críticas do tipo de produto a ser comentado; c) critérios de análise dos produtos focalizados;  d) estudo de recursos da mídia utilizada, assim como os paratextuais que compõem a performance do locutor. As atividades a serem desenvolvidas, além das indicações já apresentadas, podem: a) envolver análise de textos do gênero resenha, para compreender as suas características, de acordo com a situação comunicativa; b) supor a pesquisa do conteúdo temático; c) prever o planejamento do texto a ser produzido, considerando a situação em que irá circular; c) orientar a produção/textualização deste; d) orientar a revisão colaborativa. A progressão horizontal pode tomar como critério as diferentes etapas e operações envolvidas no desenvolvimento da habilidade, além do foco nos diversos aspectos em jogo nas atividades.  Do ponto de vista da progressão, é possível propor habilidades que orientem a produção/revisão colaborativa e que estejam inseridas em projetos de produção de jornais editados para circular em blogs e rádios comunitárias da escola.",
+  },
+  {
+    id: "EF05LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Oralidade",
+    object: "Produção de texto",
+    skill:
+      "(EF05LP19) Argumentar oralmente sobre acontecimentos de interesse social, com base em conhecimentos sobre fatos divulgados em TV, rádio, mídia impressa e digital, respeitando pontos de vista diferentes.",
+    comment:
+      "Muito relevante para a participação no espaço público e o exercício da cidadania, esta habilidade tem como foco a argumentação oral na discussão de questões controversas.",
+    resume:
+      "Na elaboração do currículo, pode-se formular habilidades que contemplem questões controversas sobre temas de interesse da região e/ou de temas recorrentes da realidade brasileira, como: demarcação de terras indígenas, uso sustentável de recursos naturais, entre outros. Pode-se, ainda, propor diferentes situações e gêneros em que a habilidade deva ser desenvolvida, assim como atividades de planejamento e de produção. A habilidade requer pesquisa de conteúdo temático e definição de situações comunicativas que envolvam o gênero a ser utilizado para argumentar (debate, discussão em roda etc.), de modo a proporem-se situações de ensino-aprendizagem desses textos e gêneros.",
+  },
+  {
+    id: "EF05LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos",
+    skill:
+      "(EF05LP20) Analisar a validade e força de argumentos em argumentações sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos.",
+    comment:
+      "O desenvolvimento desta habilidade está intimamente associado à recepção atenta e crítica a discursos sobre produtos de mídia para o público infantil. Compreende refletir e analisar os textos midiáticos referidos, com o objetivo de reconhecer a força dos argumentos e seu poder de persuasão na apresentação de tais produtos. Coloca-se como condição para o desenvolvimento dessa habilidade o conhecimento do produto pelo estudante.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha associado à frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa de estudo viabiliza a análise dos recursos indicados, assim como a roda de discussão. É importante analisar também o movimento argumentativo presente nos textos. A progressão horizontal pode se dar pela complexidade dos textos lidos e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF05LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo da vida pública",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos",
+    skill:
+      "(EF05LP21) Analisar o padrão entonacional, a expressão facial e corporal e as escolhas de variedade e registro linguísticos de vloggers de vlogs opinativos ou argumentativos.",
+    comment:
+      "Esta habilidade relaciona-se com a (EF04LP18), na medida em que prevê o estudo de aspectos relativos a comunicações orais (algumas entrevistas, vídeos de vloggers) ou oralizadas (fala de âncora ou locutor de notícias, por exemplo). Seu desenvolvimento permite ao aluno perceber e avaliar o papel persuasivo do padrão entonacional, da expressão corporal e da variedade linguística selecionada no discurso argumentativo de vloggers.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade envolve a previsão de práticas de escuta atenta, no interior das quais os alunos poderão observar, refletir e analisar os aspectos mencionados da produção oral, relacionando-os a seus efeitos de sentido. As falas de âncoras realizam-se de maneiras diferentes, dependendo do veículo: em alguns, os profissionais manifestam-se espontaneamente, reagindo a notícias apresentadas, entrevistas feitas; mas, em outros, limitam-se à leitura das notícias pelo teleprompter. No primeiro caso, teremos um misto de linguagem oral com oralização de texto lido; no segundo, apenas oralização de texto escrito. Em relação à (EF04LP18), esta habilidade representa um avanço na progressão vertical, já que os gêneros previstos são diferentes. A progressão horizontal pode se dar pela complexidade dos textos lidos (em função, por exemplo, do tema) e pelo nível de autonomia que se pretende levar o aluno a conquistar em cada etapa.",
+  },
+  {
+    id: "EF05LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Compreensão em leitura",
+    skill:
+      "(EF05LP22) Ler e compreender verbetes de dicionário, identificando a estrutura, as informações gramaticais (significado de abreviaturas) e as informações semânticas.",
+    comment:
+      "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos verbetes específicos a serem lidos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
+    resume:
+      "Verbetes de dicionário são ferramentas indispensáveis na vida escolar; por isso, é imprescindível que o aluno os conheça e seja proficiente na sua leitura. É composto por duas partes: cabeça (ou entrada) — palavra da qual se busca o significado — e corpo — informações lexicais e linguísticas sobre a cabeça. Na elaboração do currículo, deve-se considerar que, além de conhecer essa estrutura, o aluno precisa saber que, no dicionário: as entradas são organizadas por ordem alfabética; os verbos são apresentados no infinitivo; o singular e o masculino são a forma padrão de apresentação de substantivos e adjetivos. É preciso saber também o contexto da palavra para poder selecionar as acepções adequadas. Esse aprendizado deve acontecer no uso, em situações genuínas.",
+  },
+  {
+    id: "EF05LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura/escuta (compartilhada e autônoma)",
+    object: "Imagens analíticas em textos",
+    skill:
+      "(EF05LP23) Comparar informações apresentadas em gráficos ou tabelas.",
+    comment:
+      "Trata-se de ler e interpretar dados de gráficos e tabelas, compreendendo as diferenças e semelhanças de apresentação correspondentes a cada um. A habilidade supõe a leitura e interpretação dos dados de cada um dos gêneros mencionados, para, depois, realizar a comparação entre ambos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
+    resume:
+      "Na elaboração do currículo, é preciso garantir que os alunos saibam realizar a interpretação dos dados de gráficos, tabelas e outros recursos que compõem, sobretudo, os textos do campo de estudo e pesquisa. É importante orientá-los para ler, por exemplo, o título dos gráficos (pois indicam o que representam os dados), as legendas (pois esclarecem quais são os dados apresentados), os eixos (para verificar qual será a articulação) e comparar as sínteses que as colunas/fatias representam. Feita a leitura de um dos recursos, a ideia é que façam a do segundo e, depois, que realizem a articulação dos dados de cada recurso, sem esquecer que o foco é a compreensão do problema abordado. A leitura colaborativa é uma atividade que potencializa esse trabalho. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF03MA26), (EF03MA27), (EF03MA28), da Matemática (EF03CI06), (EF03CI09), da Ciência; (EF03HI03), da História; e (EF03GE01), da Geografia, associadas a coleta, leitura, comparação e interpretação de dados de pesquisas, com apoio de recursos multissemióticos.",
+  },
+  {
+    id: "EF05LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    object: "Produção de textos",
+    skill:
+      "(EF05LP24) Planejar e produzir texto sobre tema de interesse, organizando resultados de pesquisa em fontes de informação impressas ou digitais, incluindo imagens e gráficos ou tabelas, considerando a situação comunicativa e o tema/assunto do texto.",
+    comment:
+      "Esta é uma habilidade que articula a produção textual com o tema de interesse do aluno ao organizar resultados de pesquisa e dois vetores do processo de produção escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, podem-se organizar as habilidades em temáticas relevantes para o país ou região, como meio-ambiente e sustentabilidade (tratamento do lixo, água etc.), aspectos relacionados à saúde etc., articulados de modo interdisciplinar em projetos que prevejam situações comunicativas orais com outros alunos de períodos mais avançados do Ensino Fundamental. As habilidades podem ser articuladas com a prática de linguagem oral, prevendo exposição oral para outras turmas. Há possibilidade de desmembrar a habilidade, prevendo outras que orientem procedimentos de busca de informações em ambientes digitais e uso de programas que permitam a construção de tabelas e gráficos. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF05MA24) e (EF05MA25), da Matemática, no que se refere à utilização e interpretação de gráficos e tabelas em textos. É possível definir o gênero a ser estudado (verbete de curiosidade, texto expositivo) e propor habilidades que: a) envolvam análise de textos dos gêneros em questão para explicitar as suas características; b) orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões e revisar no processo e ao final.",
+  },
+  {
+    id: "EF05LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Performances orais",
+    skill:
+      "(EF05LP25) Planejar e produzir, com certa autonomia, verbetes de dicionário, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    comment:
+      "Trata-se de uma habilidade que articula a produção textual com o gênero verbete de dicionário e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
+    resume:
+      "Na elaboração do currículo, pode-se prever: a) o uso de procedimentos de consulta a portadores do gênero impressos e eletrônicos, com análise de textos de verbetes de dicionário para explicitar suas características, construindo registros que possam repertoriar a produção; b) pesquisas do conteúdo temático para os verbetes em fontes impressas e digitais com tomada de notas coletiva ou em grupos para uso posterior na produção; c) o estudo de ambientes digitais que recebem verbetes; d) temáticas significativas para a produção dos verbetes. É possível, ainda, propor habilidades que orientem o uso de procedimentos escritores, como: reler o que está escrito para continuar, consultar o planejamento para tomar decisões no momento da escrita e revisar no processo e ao final. A progressão horizontal pode apoiar-se no grau de complexidade dos verbetes e/ou dos dicionários distribuídos pelo PNLD para as escolas públicas desse nível de ensino (Dicionários de Tipo 1 e de Tipo 2).",
+  },
+  {
+    id: "EF05LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object:
+      "Forma de composição dos textos \nAdequação do texto às normas de escrita",
+    skill:
+      "(EF05LP26) Utilizar, ao produzir o texto, conhecimentos linguísticos e gramaticais: regras sintáticas de concordância nominal e verbal, convenções de escrita de citações, pontuação (ponto final, dois-pontos, vírgulas em enumerações) e regras ortográficas.",
+    comment:
+      "Esta habilidade refere-se a utilizar conhecimentos linguísticos e gramaticais, gerais e específicos, de gêneros que envolvem o uso tanto da norma quanto de citações padronizadas, como relatórios de experimentos, de observação e pesquisa, entrevistas etc. Seu desenvolvimento envolve o engajamento do aluno em práticas de leitura e/ou produção dos gêneros e textos mencionados; e demanda a aprendizagem prévia dos conhecimentos linguísticos relacionados.",
+    resume:
+      "Na elaboração do currículo, convém considerar que esta habilidade implica:a) utilizar conhecimentos linguísticos e gramaticais como ferramentas para garantir a coesão e a coerência; b) aprender e utilizar as convenções relativas à escrita de citações. O desenvolvimento da habilidade supõe a frequentação dos estudantes a textos organizados nos gêneros previstos. A atividade de leitura colaborativa de estudo de textos dos gêneros em jogo, assim como a revisão processual e final, possibilitam estudar os recursos e analisar a adequação dos textos produzidos. Orienta-se que os currículos prevejam habilidades que contemplem as referidas atividades.",
+  },
+  {
+    id: "EF05LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição dos textos \nCoesão e articuladores",
+    skill:
+      "(EF05LP27) Utilizar, ao produzir o texto, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível adequado de informatividade.",
+    comment:
+      "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos na habilidade (EF04LP23), de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade explicita os tipos de articuladores referidos pelas habilidades (EF05LP07) e (EF35LP14). Em consequência, elas podem vir articuladas nos currículos locais. Trata-se de utilizar, na produção dos textos, os recursos previstos. Para tanto, é necessário estudá-los, o que pode ser feito por meio das leituras colaborativas de estudo de texto. Na revisão coletiva processual e final, analisa-se a adequação do uso dos recursos, de modo a garantir a coerência e legibilidade do texto. Na progressão, pode-se considerar o nível de autonomia do estudante, que, no currículo, se efetiva pela organização de habilidades em que as tarefas sejam realizadas em colaboração e, progressivamente, com autonomia.",
+  },
+  {
+    id: "EF05LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "05",
+    group_years: "5º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica (Ortografização)",
+    object: "Forma de composição de textos poéticos visuais",
+    skill:
+      "(EF05LP28) Observar, em ciberpoemas e minicontos infantis em mídia digital, os recursos multissemióticos presentes nesses textos digitais.",
+    comment:
+      "Esta habilidade refere-se a — no processo de leitura e estudo de textos — identificar de que modo o espaço é ocupado por ciberpoemas e minicontos disponibilizados nas mídias digitais infantis, quais recursos multissemióticos os constituem e que efeitos de sentido foram por eles provocados.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade supõe a leitura e estudo de ciberpoemas e minicontos digitais, para que as suas características fundamentais sejam identificadas: o modo de ocupação do espaço — que pode não ser estático; a presença de recursos de áudio e movimento; o emprego de recursos de interação entre leitor e texto para definição — ou não — dos rumos do poema; etc. A constituição da proficiência do aluno na leitura de tais textos dependerá tanto da análise dos efeitos de sentido produzidos pela utilização dos recursos multissemióticos quanto do estudo da adequação destes para a legibilidade do texto e para a manutenção da sua coerência. As atividades colaborativas são mais adequadas para o desenvolvimento da habilidade, em especial as que são realizadas coletivamente, com a mediação do professor. A progressão horizontal pode dar-se pela complexidade dos textos e pelo nível de autonomia a ser atingido pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF06LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF06LP01) Reconhecer a impossibilidade de uma neutralidade absoluta no relato de fatos e identificar diferentes graus de parcialidade/ imparcialidade dados pelo recorte feito e pelos efeitos de sentido advindos de escolhas feitas pelo autor, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos e tornar-se consciente das escolhas feitas enquanto produtor de textos.",
+    comment:
+      'O desenvolvimento desta habilidade promove uma visão crítica de gêneros jornalísticos como a notícia e a reportagem, considerados mais objetivos. Por meio da análise de escolhas de palavras entre pares de alternativas como "manifestantes"/"baderneiros", "moleque"/"garoto", "parece"/"é", pode-se evidenciar a visão do jornalista sobre o fato relatado. Também cabe analisar imagens e recursos de outras linguagens que integram esses textos.',
+    resume:
+      "Na elaboração do currículo, para desenvolver esta habilidade, convém garantir formas de acesso a textos jornalísticos de diferentes jornais e revistas, impressos ou digitais. A comparação de notícias que se referem a um mesmo fato ou assunto, relatadas de formas diferentes, pode ser uma primeira forma de realizar essa reflexão sobre parcialidade/imparcialidade em textos dessa esfera. Atividades mais complexas podem se seguir ao longo do ano.Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (EF69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF06LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.",
+    comment:
+      "Esta habilidade refere-se ao fato de gêneros, como a crônica, a charge, a reportagem, o editorial, o artigo de opinião, a carta de leitor, entre outros, serem produções que dialogam (mantêm relação de intertextualidade) com o que foi noticiado: o aprofundamento sobre um fato ou assunto, uma opinião ou crítica são feitos em torno de algo que é/foi notícia. Supõe-se habilidades voltadas a reconhecer as características de cada um desses gêneros de textos.",
+    resume:
+      "Na elaboração do currículo, deve-se levar em consideração que o contato direto e frequente com os portadores (impressos ou digitais) e, em especial, a leitura de matérias correlacionadas, possibilita ao aluno perceber essas relações entre os gêneros. Prever um trabalho articulado e contínuo, envolvendo todas as áreas e a biblioteca, sala de leitura ou equivalente, favorece a inserção na prática de leitura de textos jornalísticos e possibilita ao aluno perceber essas relações, ao ser orientado a, por exemplo, acompanhar a seção de cartas de leitor de uma edição que faz remissão a uma notícia publicada em data anterior.",
+  },
+  {
+    id: "EF06LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Léxico/morfologia",
+    skill:
+      "(EF06LP03) Analisar diferenças de sentido entre palavras de uma série sinonímica.",
+    comment:
+      'Esta é uma habilidade bastante relevante para a compreensão das relações semânticas que podem se estabelecer entre as palavras da língua. Seu foco está no reconhecimento do sentido singular que cada palavra de uma série sinonímica pode aportar (como nas palavras "país", "pátria", "nação", "terra natal" etc.), em relação às demais da mesma série. Trata-se, portanto, de compreender a sinonímia como uma relação de proximidade de sentido, e não de equivalência.',
+    resume:
+      "Na elaboração do currículo, recomenda-se que esse estudo venha sempre associado à análise comparativa e à reflexão, com base em inventários que apresentem palavras em textos, para que cada uma delas possa ser compreendida na acepção adequada. Práticas de leitura e/ou produção de textos são, portanto, essenciais para a contextualização desse ensino. No que se refere à progressão, pode-se pensar: (a) no grau de complexidade lexical a ser contemplado (palavras mais fáceis/mais difíceis); (b) no grau de complexidade dos gêneros e textos envolvidos; (c) no nível de autonomia requerido do aluno para realizar a tarefa.",
+  },
+  {
+    id: "EF06LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP04) Analisar a função e as flexões de substantivos e adjetivos e de verbos nos modos Indicativo, Subjuntivo e Imperativo: afirmativo e negativo.",
+    comment:
+      "Esta habilidade pressupõe a construção prévia ou conexa de conhecimentos morfossintáticos relacionados a três classes de palavras (substantivos; adjetivos; verbos) e a modos verbais e categorias gramaticais a elas relacionadas. Convém lembrar, ainda, que as concordâncias verbal e nominal, assim como a manutenção e a correlação dos tempos verbais implicadas nesta habilidade colaboram para a coesão e a coerência. A habilidade é importante sobretudo na escrita, para efetivar intenções de significação. Demanda a análise dos tópicos mencionados em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos coesivos produzidos pelas funções e flexões de substantivos, adjetivos e verbos.",
+    resume:
+      'Na elaboração do currículo, convém considerar que o desenvolvimento desta habilidade demanda propostas em que o aluno possa: a) reconhecer o funcionamento das flexões e sua relevância para as concordâncias verbal e nominal;  b) entender a função dos tempos e modos verbais na organização dos textos; c) manter e articulá-los para não perder o "fio da meada"; d) reconhecer os efeitos de sentido que o emprego de um ou outro tempo/modo verbal pode provocar; e) conhecer as funções de cada classe de palavra na construção de diferentes tipos de texto, na qualificação das ações, na organização temporal dos textos de diferentes gêneros em diferentes condições de produção e circulação. A progressão pode associar-se aos gêneros previstos e às três classes de palavras envolvidas na habilidade. Um terceiro critério é o nível de autonomia que se pretende levar o aluno a atingir em cada proposta.',
+  },
+  {
+    id: "EF06LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP05) Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.",
+    comment:
+      "A habilidade refere-se ao estudo dos modos verbais — indicativo, subjuntivo e imperativo — de forma que o aluno consiga identificar os sentidos essenciais de cada um. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos esteja relacionada aos efeitos produzidos pelos modos verbais.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento da habilidade pode organizar-se com base em dois pontos articulados: 1) resolver, na produção ou na leitura, algum problema de compreensão/redação, considerando o sentido provocado pelo uso inadequado ou incoerente do modo de algum verbo; 2) sistematizar o conhecimento, depois de devidamente compreendida a etapa anterior (1). Em ambos os casos, sugere-se que as atividades sejam organizadas a partir de estudo comparativo (realizado a partir de inventários) de verbos empregados em textos lidos, buscando a especificidade do sentido de cada modo, ou seja, o traço de significado que os caracteriza como pertencentes ao mesmo modo, por meio da comparação para estabelecer diferenças e semelhanças.  Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo em cada momento.",
+  },
+  {
+    id: "EF06LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP06) Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).",
+    comment:
+      "Esta habilidade tem como foco as concordâncias nominal e verbal, na produção de textos orais ou escritos de qualquer campo de atuação ou gênero em que a norma-padrão é requerida. Requer discussões sobre variação linguística e práticas orais, de leitura e/ou produção de textos, especialmente em situações públicas e formais. Pressupõe, ainda, o domínio e/ou estudo conexo das regras dos dois tipos de concordância mencionados, de classes de palavras (nome e verbo) e de categorias gramaticais a ela relacionadas. (Estreitamente relacionada à EF69LP56, EF06LP11, EF07LP10 e EF08LP04).",
+    resume:
+      "Na elaboração do currículo, para um exercício reflexivo voltado para o uso da língua, convém que o estudo dos tópicos gramaticais referidos na descrição desta habilidade seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que o estudo das concordâncias nominal e verbal venha sempre: (a) programado para situações de comunicação em que a norma-padrão é requerida; (b) associado ao planejamento da fala em situações formais, à produção e à revisão de textos ou à análise, com vistas a compreender os efeitos de sentido produzidos por este ou aquele uso. Recomenda-se, ainda, articular esta habilidade com as de análise de gravações de palestras, debates etc., no caso das produções orais. A progressão horizontal pode adotar como critério os tópicos a serem abordados a cada momento (concordância nominal/concordância verbal), o grau de complexidade dos gêneros e textos previstos e o grau de autonomia que se pretende levar o aluno a atingir em cada ano e/ou etapa.",
+  },
+  {
+    id: "EF06LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP07) Identificar, em textos, períodos compostos por orações separadas por vírgula sem a utilização de conectivos, nomeando-os como períodos compostos por coordenação.",
+    comment:
+      "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na identificação e classificação de períodos compostos por  coordenação assindética (sem conectivos). Requer a observação da organização sintática do texto e reflexões a respeito, identificando períodos compostos por coordenação assindética, apreendendo o princípio de sua organização interna e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, para reflexão e análise linguística/semiótica, é necessário que o estudo dos tópicos gramaticais envolvidos seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que esses conteúdos sejam propostos sempre vinculados à leitura, à produção e à revisão, com vistas à compreensão de seu papel na (re)construção do texto e na produção de efeitos de sentido determinados. Recomenda-se: (a) que o foco do trabalho seja a resolução de problemas de compreensão e manutenção da legibilidade do texto, considerando-se as intenções de significação; (b) que a compreensão de cada aspecto anteceda a sistematização; (c) que a metalinguagem seja empregada de modo que o aluno compreenda o que se diz. Ao longo do ano, a progressão pode apoiar-se na complexidade dos gêneros e textos programados para o desenvolvimento da habilidade.",
+  },
+  {
+    id: "EF06LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP08) Identificar, em texto ou sequência textual, orações como unidades constituídas em torno de um núcleo verbal e períodos como conjunto de orações conectadas.",
+    comment:
+      "O foco desta habilidade está na percepção da oração e do período como unidades básicas da organização sintática do texto, assim como no reconhecimento da função do verbo como núcleo oracional. Requer a observação da organização sintática do texto e reflexões a respeito, identificando orações e períodos e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, para promover reflexão e análise linguística/semiótica, é necessário que o estudo dos tópicos gramaticais envolvidos seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que esses conteúdos sejam propostos sempre vinculados à leitura, à produção e à revisão, com vistas à compreensão de seu papel na (re)construção do texto e na produção de efeitos de sentido determinados. Recomenda-se: (a) que o foco seja a resolução de problemas de compreensão e manutenção da legibilidade do texto, considerando-se as intenções de significação; (b) que a compreensão de cada aspecto anteceda a sistematização; (c) que a metalinguagem seja empregada de modo que o aluno compreenda o que se diz. (Convém que o desenvolvimento desta habilidade anteceda, no currículo, o programado para EF06LP09 e para todas as demais habilidades que envolvam a sintaxe do período). Ao longo do ano, a progressão pode apoiar-se seja no foco da identificação (oração/período), seja na complexidade dos gêneros e textos programados para o desenvolvimento da habilidade.",
+  },
+  {
+    id: "EF06LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF06LP09) Classificar, em texto ou sequência textual, os períodos simples compostos.",
+    comment:
+      "O foco desta habilidade está na percepção dos períodos simples e dos períodos compostos como unidades da organização sintática do texto. Requer observação da organização do texto e reflexões a respeito, identificando períodos simples e compostos e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, para reflexão e análise linguística/semiótica, é necessário que o estudo dos tópicos gramaticais envolvidos seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que esses conteúdos sejam propostos sempre vinculados à leitura, à produção e à revisão, com vistas à compreensão de seu papel na (re)construção do texto e na produção de efeitos de sentido determinados. Recomenda-se: (a) que o foco seja a resolução de problemas de compreensão e manutenção da legibilidade do texto, considerando-se as intenções de significação; (b) que a compreensão de cada aspecto anteceda a sistematização; (c) que a metalinguagem seja empregada de modo que o aluno compreenda o que se diz. (Convém que o desenvolvimento desta habilidade, nos currículos, venha programado para depois do trabalho previsto para EF06LP08 e para antes de qualquer habilidade de análise de períodos). Ao longo do ano, a progressão pode apoiar-se seja no foco da identificação dos tipos de períodos (simples/compostos), seja na complexidade dos gêneros e textos envolvidos nas práticas de leitura/produção programadas para o desenvolvimento da habilidade.",
+  },
+  {
+    id: "EF06LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Sintaxe",
+    skill:
+      "(EF06LP10) Identificar sintagmas nominais e verbais como constituintes imediatos da oração.",
+    comment:
+      "Considerando a oração como uma unidade básica da organização sintática do texto, esta habilidade se refere à identificação dos constituintes imediatos (sujeito/predicado) que a estruturam. Trata-se, portanto, de uma habilidade fundamental para o desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção do texto e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que as estruturas sintáticas estudadas podem produzir.Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, identificando os efeitos de sentido assim produzidos, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode basear-se no grau de complexidade dos gêneros e textos programados para estudo.',
+  },
+  {
+    id: "EF06LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Elementos notacionais da escrita/morfossintaxe",
+    skill:
+      "(EF06LP11) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: tempos verbais, concordância nominal e verbal, regras ortográficas, pontuação etc.",
+    comment:
+      "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero, como utilização adequada dos tempos verbais, concordância, ortografia, pontuação etc. Pressupõe discussões sobre variação linguística e práticas de leitura e/ou produção de textos, especialmente em situações públicas e formais. Requer, ainda, domínio e/ou estudo conexo de tópicos de análise linguística como os mencionados. (Estreitamente relacionada à EF69LP56).",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento da habilidade venha sempre associado a práticas de leitura e/ou produção de textos dos mais diversos gêneros e campos de atuação. Recomenda-se, ainda, que as atividades propostas explicitem os conhecimentos a serem construídos nesse período e evitem a perspectiva do "erro gramatical", em favor de uma abordagem baseada na adequação do uso. A progressão vertical e horizontal pode adotar como critério os tópicos a serem abordados a cada momento, o grau de complexidade dos gêneros e textos previstos e o grau de autonomia do aluno pressuposto na execução da tarefa.',
+  },
+  {
+    id: "EF06LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "06",
+    group_years: "6º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Semântica Coesão",
+    skill:
+      "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).",
+    comment:
+      "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é o emprego de recursos de coesão (referencial) e semânticos na produção, escrita ou oral. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações; (4) ajudam a identificar as diferentes vozes do texto e a produzir efeitos de sentido, como o da impessoalidade. Ela demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento da habilidade seja programado em associação com práticas de oralidade, leitura ou escrita de textos dos gêneros previstos para estudo. Será nessas condições que o aluno poderá refletir sobre a adequação do(s) recurso(s) que pretenda empregar.  Em caso de produções escritas, recomenda-se que os currículos prevejam atividades de produção e revisão em que o foco seja o uso desses elementos coesivos na construção do texto de um determinado gênero. Em caso de textos orais, podem ser analisadas, coletivamente, apresentações previamente gravadas. A progressão, vertical ou horizontal, pode apoiar-se no tipo de recurso coesivo a ser abordado, no grau de complexidade dos gêneros ou textos a serem considerados e no nível de autonomia que se pretende levar o aluno a conquistar.",
+  },
+  {
+    id: "EF67LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF67LP01) Analisar a estrutura e funcionamento dos hiperlinks em textos noticiosos publicados na Web e vislumbrar possibilidades de uma escrita hipertextual.",
+    comment:
+      "A habilidade consiste em aprender que, no ambiente virtual, um texto pode apresentar, seja no corpo do texto, seja na página em que figura,  links que levam a outros conteúdos. Uma notícia, por exemplo, pode remeter a outras notícias e a reportagens anteriores, inserindo-se em uma série de textos jornalísticos sobre um mesmo fato; ou um link pode levar o leitor a outros textos de destaque do dia. Assim, matérias noticiosas se inserem em diferentes redes de relações. A análise sugerida pode ser associada a pequenos exercícios voltados à produção de hipertextos, em que será necessário que o aluno defina, em um texto produzido por ele, palavras-chave que levarão a outros links, observando a relevância e a relação dos textos que decidir linkar ao seu, a fim de vislumbrar essa possibilidade de escrita, como prevê a habilidade.",
+    resume:
+      "Na elaboração do currículo, é recomendável que a análise da escrita hipertextual seja acompanhada de um trabalho com procedimentos e estratégias próprios da leitura em ambiente digital, visando a uma formação de um leitor capaz de não perder o foco da leitura, quando definido previamente, em meio a tantas possibilidades. Por exemplo: tomar decisão sobre que link acessar ou não, considerando o objetivo de leitura. É importante estudar como viabilizar o acesso dos alunos à internet: por meio de parcerias, oferecer rede wi-fi para conexão de aparelhos móveis pessoais ou aparelhos móveis da escola conectados à internet ou, ainda, buscar espaços públicos ou privados que ofereçam rede wi-fi gratuita para serem espaços eleitos para aulas fora do ambiente escolar.",
+  },
+  {
+    id: "EF67LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Apreciação e réplica",
+    skill:
+      "(EF67LP02) Explorar o espaço reservado ao leitor nos jornais, revistas, impressos e on-line, sites noticiosos etc., destacando notícias, fotorreportagens, entrevistas, charges, assuntos, temas, debates em foco, posicionando-se de maneira ética e respeitosa frente a esses textos e opiniões a eles relacionadas, e publicar notícias, notas jornalísticas, fotorreportagem de interesse geral nesses espaços do leitor.",
+    comment:
+      "Esta habilidade favorece uma participação mais qualificada do adolescente nos espaços jornalísticos/midiáticos citados. Supõe investir em habilidades voltadas à análise de textos de gêneros próprios desse campo — dos mais informativos aos mais argumentativos —, na curadoria de textos fidedignos. Pode ser articulada com a produção de textos orais e escritos, visto que faz referência ao posicionamento do leitor frente ao que lê/escuta.",
+    resume:
+      "Na elaboração do currículo, ao propor esta habilidade, sugerindo que os leitores publiquem notícias e outros gêneros de interesse do público que frequenta esses espaços, pode-se propor atividades que conduzam à tomada de decisão quanto a não compartilhar textos duvidosos e/ou denunciar o tratamento ético e desrespeitoso que determinado veículo ou jornalista/autor tenha dado ao tema/assunto/fato.",
+  },
+  {
+    id: "EF67LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF67LP03) Comparar informações sobre um mesmo fato divulgadas em diferentes veículos e mídias, analisando e avaliando a confiabilidade.",
+    comment:
+      "Trata-se de uma habilidade complexa que consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados;2. apurar informações, desenvolvendo procedimentos de curadoria;3. e posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.Pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01).",
+    resume:
+      "Para viabilizar as práticas de leitura necessárias ao desenvolvimento desta habilidade convém que os currículos locais prevejam formas de acesso a textos jornalísticos de diferentes jornais e revistas, impressos ou digitais. A comparação de notícias que se referem a um mesmo fato ou assunto, relatado de formas diferentes, pode ser uma primeira forma de realizar essa reflexão sobre parcialidade/imparcialidade em textos dessa esfera. A progressão, tanto vertical quanto horizontal, pode apoiar-se: a) no tipo de veículo ou mídia abordado; b) nos procedimentos de curadoria a serem explorados; c) no grau de complexidade dos gêneros e textos previstos; d) no nível de autonomia que se pretende levar o aluno a atingir em cada etapa.",
+  },
+  {
+    id: "EF67LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Estratégia de leitura Distinção de fato e opinião",
+    skill:
+      "(EF67LP04) Distinguir, em segmentos descontínuos de textos, fato da opinião enunciada em relação a esse mesmo fato.",
+    comment:
+      'Diferenciar fato de opinião supõe habilidades de análise de marcas de subjetividade que o autor escolhe deixar no texto, como "pistas" que possibilitam identificar o que é apreciação e o que é fato. Por exemplo, o uso de adjetivos (inadmissível, louvável), advérbios (obviamente) e modos e tempos verbais, verbos modais (poder/dever etc.) podem ser "pistas" do exercício de modalização do autor.',
+    resume:
+      "Na elaboração do currículo, prever habilidades que associem este trabalho à discussão de temas e fatos do universo de interesse dos alunos pode mobilizá-los para o exercício implicado na habilidade. Antes de lidarem com textos de circulação social, por exemplo, pode-se apresentar um fato e promover uma discussão em que os alunos se posicionem sobre ele e, em seguida, refletir sobre em que os textos que construíram para opinar são diferentes do fato em si.",
+  },
+  {
+    id: "EF67LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Estratégia de leitura: identificação de teses e argumentos\nApreciação e réplica",
+    skill:
+      "(EF67LP05) Identificar e avaliar teses/opiniões/posicionamentos explícitos e argumentos em textos argumentativos (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), manifestando concordância ou discordância.",
+    comment:
+      "Esta habilidade diz respeito tanto às situações de leitura quanto às de produção de textos, na medida em que identificar e avaliar teses, opiniões e posicionamentos sobre o que se lê/ouve são essenciais ao posicionamento crítico que se expressa em textos orais e escritos sobre o que foi lido/escutado. Nos 6º e 7º anos, há a expectativa de que os alunos possam reconhecer, analisar e se posicionar em relação aos textos argumentativos de terceiros.",
+    resume:
+      "Na elaboração do currículo, é possível prever uma progressão tanto na seleção dos gêneros argumentativos propostos como na complexidade dos textos dos variados gêneros. Independentemente do tipo de progressão que se decida propor, é importante que os alunos tenham acesso a exemplares dos gêneros que tratem de questões controversas ou de objetos culturais (no caso da resenha crítica e do comentário, especialmente) com os quais tenham familiaridade e possam mobilizar conhecimentos prévios para apoiá-los, tanto na avaliação de posições e argumentos nos textos de terceiros quanto na manifestação de discordância, visto que não é possível avaliar nem posicionar-se a respeito do que não se conhece.",
+  },
+  {
+    id: "EF67LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF67LP06) Identificar os efeitos de sentido provocados pela seleção lexical, topicalização de elementos e seleção e hierarquização de informações, uso de 3ª pessoa etc.",
+    comment:
+      "Esta habilidade implica em reconhecer os efeitos de sentido provocados por recursos léxicos empregados em textos do campo jornalístico/midiático. Para isso, deve-se analisar a coerência desses efeitos tanto em relação às intenções presumidas do texto quanto à finalidade do gênero e características dos espaços de circulação do texto.",
+    resume:
+      'Na elaboração do currículo, sugere-se que o desenvolvimento da habilidade aconteça, sobretudo, na leitura e no estudo comparativo de textos, avaliando-se os efeitos de sentido decorrentes das diferentes escolhas. Por exemplo, se tomarmos duas manchetes como "Edifício é invadido na periferia de São Paulo" e "População ocupa prédio abandonado", é possível analisar os valores ideológicos que orientaram as escolhas lexicais e sintáticas em cada uma delas e, dessa maneira, compreender a posição implícita do veículo no qual cada uma foi publicada. Esse exercício possibilita a realização de uma leitura crítica. A progressão da habilidade pode se dar pela complexidade dos textos.',
+  },
+  {
+    id: "EF67LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF67LP07) Identificar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e perceber seus efeitos de sentido.",
+    comment:
+      "Esta habilidade envolve a observação e o reconhecimento do modo como os recursos linguísticos ou de outras linguagens são usados para construir os discursos persuasivos em textos argumentativos.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que identificar o uso de recursos persuasivos implica a capacidade de distinguir os traços característicos do discurso persuasivo. Por exemplo, reconhecer a força que um argumento de autoridade usado para sustentar uma opinião pode trazer ao texto. A progressão do desenvolvimento desta habilidade pode ser marcada pelo grau de complexidade da seleção dos textos argumentativos e pela variedade dos gêneros propostos, dentre eles, comentários, crônicas, artigos de opinião, charges, propagandas etc.",
+  },
+  {
+    id: "EF67LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido Exploração da multissemiose",
+    skill:
+      "(EF67LP08) Identificar os efeitos de sentido devidos à escolha de imagens estáticas, sequenciação ou sobreposição de imagens, definição de figura/fundo, ângulo, profundidade e foco, cores/tonalidades, relação com o escrito (relações de reiteração, complementação ou oposição) etc. em notícias, reportagens, fotorreportagens, foto-denúncias, memes, gifs, anúncios publicitários e propagandas publicados em jornais, revistas, sites na internet etc.",
+    comment:
+      'Esta habilidade refere-se à abordagem dos gêneros jornalísticos e publicitários citados, considerando o diálogo entre as linguagens que compõem cada um desses gêneros de textos. Estudar a relação entre o texto verbal que compõe uma notícia e a(s) foto(s) selecionada(s) para compor essa notícia pode levar à percepção das escolhas feitas nessa composição e dos efeitos de sentido que isso produz: por exemplo, se a notícia se refere a um acontecimento envolvendo uma personalidade e é acompanhada de uma foto dessa personalidade, o modo como a imagem é "captada" pode fazer com que ela pareça  vítima, dissimulada ou culpada de algo — imagem que pode reiterar ou se contrapor ao que é noticiado.',
+    resume:
+      "Na elaboração do currículo, como a descrição da habilidade faz referência a diferentes gêneros, dentre eles, alguns nos quais predomina a imagem em detrimento do texto verbal, como em fotorreportagens, foto-denúncias, memes e muitos anúncios publicitários, será necessário propor um estudo mais aprofundado dos recursos próprios da fotografia, como os citados. Uma articulação com Arte, por exemplo, pode promover um desenvolvimento produtivo para ambos. Também será possível definir uma progressão na proposição dos gêneros a serem trabalhados em cada ano. Por exemplo, pode-se começar abordando a fotografia em notícias, reportagens e anúncios publicitários para, em seguida, propor abordar os gêneros em que a imagem predomina e é potencialmente o que produz significados.",
+  },
+  {
+    id: "EF67LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Estratégias de produção: planejamento de textos informativos",
+    skill:
+      "(EF67LP09) Planejar notícia impressa e para circulação em outras mídias (rádio ou TV/vídeo), tendo em vista as condições de produção, do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do fato a ser noticiado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes, análise de documentos, cobertura de eventos etc.–, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc. e a previsão de uma estrutura hipertextual (no caso de publicação em sites ou blogs noticiosos).",
+    comment:
+      "Esta habilidade trata do processo implicado na prática de produzir notícias. Refere-se a procedimentos e ações necessários para planejar um texto, considerando as condições de produção e circulação, decisões quanto ao fato/assunto e seu recorte e os objetivos, além do uso de procedimentos e estratégias de curadoria de informação.",
+    resume:
+      "Na elaboração do currículo, sugere-se considerar que a habilidade (conexa à EF67LP10) se  articule às de revisão de textos e às de análise linguística e semiótica, sendo estas últimas fundamentais para avaliar a adequação dos recursos que se pretende utilizar em relação aos efeitos de sentido intencionados, o que constitui uma marca do gênero notícia. Uma progressão suposta, que pode ser explorada, é em relação às mídias selecionadas: produzir uma notícia impressa e uma notícia para rádio ou TV implica domínio de recursos de linguagens diferenciados e mais ou menos complexos. Planejar para uma ou outra mídia, em um ou outro gênero, também implica o uso de gêneros secundários, ou seja, aqueles mais elaborados, diferenciados: planejar, por exemplo, uma notícia para TV envolve a produção de um roteiro específico, que sinalize as entradas e articulações entre texto verbal e não verbal (efeitos sonoros, perspectiva da câmera, cortes de imagens etc.). Além disso, considerando-se que a habilidade envolve dois anos do ciclo, pode-se pensar em propor habilidades que orientem o planejamento em colaboração (alunos e professor), progredindo para a autonomia no ato de planejar a notícia.",
+  },
+  {
+    id: "EF67LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Textualização, tendo em vista suas condições de produção, as características do gênero em questão, o estabelecimento de coesão,\nadequação à norma-padrão e o uso adequado de ferramentas de edição",
+    skill:
+      "(EF67LP10) Produzir notícia impressa tendo em vista características do gênero – título ou manchete com verbo no tempo presente, linha fina (opcional), lide, progressão dada pela ordem decrescente de importância dos fatos, uso de 3ª pessoa, de palavras que indicam precisão –, e o estabelecimento adequado de coesão e produzir notícia para TV, rádio e internet, tendo em vista, além das características do gênero, os recursos de mídias disponíveis e o manejo de recursos de captação e edição de áudio e imagem.",
+    comment:
+      "A habilidade trata do processo implicado na prática de produzir notícias e está articulada à (EF69LP06), no que se refere à necessidade de planejar o texto a ser produzido. Para a elaboração do texto, conforme orienta esta habilidade, é preciso considerar o modo como se organiza a notícia e os recursos das diferentes linguagens que podem ser usadas (a verbal, a imagética – imagens estáticas e em movimento presentes em fotos, vídeos, infográficos etc. que compõem o gênero), tendo em vista a textualização (construção do texto).",
+    resume:
+      "Na elaboração do currículo, sugere-se considerar que a habilidade (conexa à EF67LP09) se  articula, ainda, às de revisão de textos e às de análise linguística e semiótica, sendo essas últimas fundamentais para avaliar a adequação dos recursos usados em relação aos efeitos de sentidos intencionados, o que constitui uma marca do gênero notícia. Uma progressão suposta, que pode ser explorada na organização dos currículos, é  em relação às mídias selecionadas: produzir uma notícia impressa e uma notícia para rádio ou TV implica domínio de recursos de linguagens diferenciados e mais ou menos complexos. A produção para uma ou outra mídia, em um ou outro gênero, também implica o uso de gêneros secundários, ou seja, aqueles mais elaborados, diferenciados: produzir uma notícia para TV envolve a criação de um roteiro específico, que sinalize as entradas e articulações entre texto verbal e não verbal (efeitos sonoros, perspectiva da câmera, cortes de imagens etc.). Além disso, considerando-se que a habilidade envolve dois anos do ciclo, pode-se pensar em propor habilidades que orientem o planejamento em colaboração (alunos e professor), progredindo para a autonomia no ato de produzir a noticia.",
+  },
+  {
+    id: "EF67LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Estratégias de produção: planejamento de textos argumentativos e apreciativos",
+    skill:
+      "(EF67LP11) Planejar resenhas, vlogs, vídeos e podcasts variados, e textos e vídeos de apresentação e apreciação próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), dentre outros, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha de uma produção ou evento cultural para analisar – livro, filme, série, game, canção, videoclipe, fanclipe, show, saraus, slams etc. – da busca de informação sobre a produção ou evento escolhido, da síntese de informações sobre a obra/evento e do elenco/seleção de aspectos, elementos ou recursos que possam ser destacados positiva ou negativamente ou da roteirização do passo a passo do game para posterior gravação dos vídeos.",
+    comment:
+      "A habilidade contempla uma das operações do processo de produção de textos – o planejamento, que deve ser realizado considerando o contexto de produção (interlocutores, intencionalidades etc.). Planejar, nesses gêneros, envolve: seleção de fato/assunto/objeto cultural a ser tratado, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte. Diferentemente dos textos noticiosos, aqui, trata-se de planejar textos que exigem posicionamento crítico; a preparação de argumentos; a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
+    resume:
+      'Na elaboração do currículo, deve-se considerar que a seleção de gêneros de natureza opinativa/argumentativa para esses anos se caracteriza por gêneros constituídos por múltiplas linguagens e mais voltados às práticas do universo cultural juvenil e de entretenimento. Nesses gêneros, a elaboração dos argumentos é orientada por apreciações estéticas sobre os produtos culturais, sempre pautadas por valores éticos e envolvendo habilidades de análise dos recursos linguísticos e semióticos próprios desses gêneros. É possível uma progressão horizontal (vários gêneros "visitados") e/ou vertical (alguns gêneros  que se repetirão) na escolha dos gêneros para os dois anos, orientada por critérios locais. Recomenda-se investir nos gêneros multimodais (vlogs, e-zines, por exemplo). Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF67EF01) e (EF67EF02), da Educação Física, no que se refere a experimentação, observação, produção e crítica especificamente no caso dos jogos eletrônicos.',
+  },
+  {
+    id: "EF67LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Textualização de textos argumentativos e apreciativos",
+    skill:
+      "(EF67LP12) Produzir resenhas críticas, vlogs, vídeos, podcasts variados e produções e gêneros próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), que apresentem/descrevam e/ou avaliem produções culturais (livro, filme, série, game, canção, disco, videoclipe etc.) ou evento (show, sarau, slam etc.), tendo em vista o contexto de produção dado, as características do gênero, os recursos das mídias envolvidas e a textualização adequada dos textos e/ou produções.",
+    comment:
+      "A habilidade envolve os procedimentos de produção de textos – definir contexto de produção, planejar, produzir e revisar –, com a diferença de que se tratam de gêneros argumentativos do campo jornalístico-midiático, que exigem posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
+    resume:
+      'Na elaboração do currículo, é interessante considerar que a seleção de gêneros de natureza opinativa/argumentativa para esses anos se caracteriza por gêneros constituídos por múltiplas linguagens e mais voltados às práticas do universo cultural juvenil e de entretenimento. Nesses gêneros, a elaboração dos argumentos é orientada por apreciações estéticas sobre os produtos culturais, sempre pautadas por valores éticos  e envolvendo habilidades de análise dos recursos linguísticos e semióticos próprios desses gêneros. É possível buscar uma progressão horizontal (vários gêneros "visitados") e/ou vertical (alguns gêneros que se repetirão) na escolha dos gêneros para os dois anos, orientada por critérios locais. Recomenda-se investir nos gêneros multimodais (vlogs, e-zines, por exemplo). Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF67EF01) e (EF67EF02), da Educação Física, no que se refere a experimentação, observação, produção e crítica especificamente no caso dos jogos eletrônicos.',
+  },
+  {
+    id: "EF67LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Produção e edição de textos publicitários",
+    skill:
+      "(EF67LP13) Produzir, revisar e editar textos publicitários, levando em conta o contexto de produção dado, explorando recursos multissemióticos, relacionando elementos verbais e visuais, utilizando adequadamente estratégias discursivas de persuasão e/ou convencimento e criando título ou slogan que façam o leitor motivar-se a interagir com o texto produzido e se sinta atraído pelo serviço, ideia ou produto em questão.",
+    comment:
+      "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes e mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e à produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte. ; (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros publicitários.",
+    resume:
+      "Na elaboração do currículo, recomenda-se discutir a relação entre as esferas publicitária e jornalística, conforme sinalizado nas orientações relativas à leitura. Sugere-se uma progressão ao longo dos 4 anos finais, considerando os gêneros arrolados e a maior ou menor familiaridade dos/as alunos/as com um ou outro. Além do trabalho articulado com profissionais que usam aplicativos de edição de textos, da disponibilização desses aplicativos para os/as alunos/as e do investimento no trabalho colaborativo, recomenda-se articular as propostas com a exploração dos documentos reguladores (campo da vida pública) da propaganda e publicidade, com vistas ao desenvolvimento de uma postura ética em relação à esfera publicitária. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF67LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object: "Planejamento e produção de entrevistas orais",
+    skill:
+      "(EF67LP14) Definir o contexto de produção da entrevista (objetivos, o que se pretende conseguir, porque aquele entrevistado etc.), levantar informações sobre o entrevistado e sobre o acontecimento ou tema em questão, preparar o roteiro de perguntar e realizar entrevista oral com envolvidos ou especialistas relacionados com o fato noticiado ou com o tema em pauta, usando roteiro previamente elaborado e formulando outras perguntas a partir das respostas dadas e, quando for o caso, selecionar partes, transcrever e proceder a uma edição escrita do texto, adequando-o a seu contexto de publicação, à construção composicional do gênero e garantindo a relevância das informações mantidas e a continuidade temática.",
+    comment:
+      'Esta habilidade trata do processo implicado na produção de entrevistas: planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação etc.), produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens e aos aplicativos necessários, em caso de textos em áudio e vídeo) e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que circulará, e realizar ajustes necessários, com ou sem aplicativos). A habilidade também refere-se a entrevistas que são coletadas em áudio e depois transcritas e retextualizadas como entrevista escrita, o que supõe, no processo de retextualização ("transformação" de um texto oral em um texto escrito), uma revisão voltada para eliminação de elementos próprios das situações de fala, como a repetição de certas palavras (como né, aí), a oscilação e reformulação etc.',
+    resume:
+      'Na elaboração do currículo, é possível propor uma progressão que contemple, em um ano, o trabalho com a entrevista feita oralmente para ser transcrita e retextualizada e, em outro, o trabalho com entrevistas que deverão ser finalizadas em áudio e em vídeo, envolvendo o uso de aplicativos de captação e edição de imagem e som. Também podem ser previstas entrevistas que aconteçam ao vivo — o que supõe um preparo que envolve ensaios e simulações que ajudem os alunos a avaliarem a qualidade das questões propostas no roteiro — se elas possibilitam ou não ao entrevistador ir além de uma resposta "sim" ou "não". Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF07LI02), da Língua Inglesa, no que se refere à condução de entrevistas.',
+  },
+  {
+    id: "EF67LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Estratégias e procedimentos de leitura em textos legais e normativos",
+    skill:
+      "(EF67LP15) Identificar a proibição imposta ou o direito garantido, bem como as circunstâncias de sua aplicação, em artigos relativos a normas, regimentos escolares, regimentos e estatutos da sociedade civil, regulamentações para o mercado publicitário, Código de Defesa do Consumidor, Código Nacional de Trânsito, ECA, Constituição, dentre outros.",
+    comment:
+      "A habilidade consiste em distinguir o que é proibição imposta do que são direitos garantidos e compreender os contextos de aplicação da norma ou direito em textos jurídicos, normativos e reguladores elaborados para diferentes âmbitos da vida em sociedade. A esta habilidade, articulam-se as de análise das características dos gêneros da natureza indicada, que passam, por exemplo, pelo reconhecimento de como se organizam (os títulos, capítulos, artigos, parágrafos, incisos etc.), dos recursos linguísticos usados para identificar o que é proibição e o que é direito (que implica observar a linguagem jurídica e o vocabulário recorrente — por exemplo, uso de palavras como garantia, direito, obrigação ou o uso predominante do tempo presente do indicativo e, em menor frequência, do futuro do indicativo, e os efeitos de sentido provocados por esses usos).",
+    resume:
+      "Na elaboração do currículo, é possível estabelecer progressão entre os anos previstos com base na seleção dos textos que serão propostos para leitura. Por exemplo, esta habilidade pode ser articulada ao trabalho com os gêneros da esfera publicitária, de modo que a seleção das regulamentações do mercado publicitário e do Código de Defesa do Consumidor seja destinada para os anos correspondentes. Do mesmo modo, as habilidades relativas ao trabalho com carta de reclamação e de solicitação podem ser integradas à abordagem desta habilidade. Vale a pena destacar a relevância de textos como o ECA e a Constituição, que podem ser previstos para exploração de recortes diferentes nos dois anos.",
+  },
+  {
+    id: "EF67LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Contexto de produção, circulação e recepção de textos e práticas relacionadas à defesa de direitos e à participação social",
+    skill:
+      "(EF67LP16) Explorar e analisar espaços de reclamação de direitos e de envio de solicitações (tais como ouvidorias, SAC, canais ligados a órgãos públicos, plataformas do consumidor, plataformas de reclamação), bem como de textos pertencentes a gêneros que circulam nesses espaços, reclamação ou carta de reclamação, solicitação ou carta de solicitação, como forma de ampliar as possibilidades de produção desses textos em casos que remetam a reivindicações que envolvam a escola, a comunidade ou algum de seus membros como forma de se engajar na busca de solução de problemas pessoais, dos outros e coletivos.",
+    comment:
+      "Esta habilidade consiste em conhecer as características dos espaços de circulação de gêneros que impliquem a solicitação e/ou reclamação de direitos, a participação na vida da comunidade, do estado ou país — e textos que possibilitem essas ações —, o que permite aos alunos que organizem o seu discurso (oral ou escrito) utilizando recursos adequados aos interlocutores, com vistas a atingir seus objetivos. É habilidade fundamental para o exercício da cidadania.",
+    resume:
+      "Na elaboração do currículo, é recomendável que se criem condições para o conhecimento dos espaços referidos, assim como dos textos dos gêneros que neles circulam. Nesse estudo, é de grande relevância o levantamento das características e procedimentos convencionados para a apresentação das solicitações e/ou reclamações. A progressão pode se dar tanto pelo modo de tratamento do conteúdo — por frequentação ou para aprofundamento — quanto pela complexidade dos textos.",
+  },
+  {
+    id: "EF67LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros (carta de solicitação, carta de reclamação, petição on-line, carta aberta, abaixo-assinado, proposta etc.)\nApreciação e réplica",
+    skill:
+      "(EF67LP17) Analisar, a partir do contexto de produção, a forma de organização das cartas de solicitação e de reclamação (datação, forma de início, apresentação contextualizada do pedido ou da reclamação, em geral, acompanhada de explicações, argumentos e/ou relatos do problema, fórmula de finalização mais ou menos cordata, dependendo do tipo de carta e subscrição) e algumas das marcas linguísticas relacionadas à argumentação, explicação ou relato de fatos, como forma de possibilitar a escrita fundamentada de cartas como essas ou de postagens em canais próprios de reclamações e solicitações em situações que envolvam questões relativas à escola, à comunidade ou a algum dos seus membros.",
+    comment:
+      'Esta é uma habilidade que vincula a leitura analítica de cartas de solicitação e de reclamação à produção posterior de textos dos mesmos gêneros. Seu foco é a análise tanto da forma de organização dessas cartas quanto de seus mecanismos argumentativos. E está diretamente relacionada à capacidade de (re)construção dos sentidos do texto e de sua coesão e coerência, em aspectos como a ordem de apresentação das informações e ideias e a sua "costura". O que envolve o estudo de diferentes tipos de organizadores textuais, com ênfase nos argumentativos.',
+    resume:
+      "Para viabilizar a análise das solicitações e reclamações mencionadas, convém que os currículos prevejam:a) o levantamento e a discussão de questões polêmicas locais;b) o debate a seu respeito;c) a eleição de critérios, no decorrer dos debates, para analisar-se a pertinência de reclamações e solicitações.Pode-se definir a abordagem dos dois gêneros nos dois primeiros anos; ou prever um gênero para cada ano. A progressão pode pautar-se, ainda, pelas operações envolvidas na habilidade (identificar/analisar); pelos procedimentos de pesquisa e debate necessários à análise; pelo grau de complexidade dos gêneros e textos a serem lidos; pelo foco na leitura/análise ou na produção de texto; pelo nível de autonomia que o aluno deverá atingir a cada etapa.",
+  },
+  {
+    id: "EF67LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Estratégias, procedimentos de leitura em textos reivindicatórios ou propositivos",
+    skill:
+      "(EF67LP18) Identificar o objeto da reclamação e/ou da solicitação e sua sustentação, explicação ou justificativa, de forma a poder analisar a pertinência da solicitação ou justificação.",
+    comment:
+      "Trata-se de uma habilidade complexa que envolve duas operações distintas: identificar e analisar, em textos reivindicatórios, a pertinência de reclamações ou pedidos. Supõe, portanto, a capacidade de:a) diferenciar “partes” essenciais do conteúdo desses textos: o objeto da reclamação ou do pedido, de um lado, e o/s argumento/s que os valida/m, de outro;b) reconhecer a pertinência da reclamação ou do pedido, considerando-se o contexto de produção: quem e para quem se reclama/solicita, quais os interesses em jogo etc.",
+    resume:
+      "O desenvolvimento dessa habilidade, nos currículos, demanda a definição de gêneros argumentativos capazes de veicular a) solicitação e b) reclamação, como as cartas mencionadas na habilidade EF67LP17. Para viabilizar a análise dessas solicitações e reclamações, convém que os currículos prevejam:a) o levantamento e a discussão de questões polêmicas locais;b) o debate a seu respeito;c) a eleição de critérios, no decorrer dos debates, para analisar-se a pertinência de reclamações e solicitações.Pode-se definir a abordagem dos dois gêneros nos dois primeiros anos; ou prever um gênero para cada ano.A progressão pode pautar-se, ainda, pelas operações envolvidas na habilidade (identificar/analisar); pelos procedimentos de pesquisa e debate necessários à análise; pelo grau de complexidade dos gêneros e textos a serem lidos; pelo nível de autonomia que o aluno deverá atingir a cada etapa.",
+  },
+  {
+    id: "EF67LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object:
+      "Estratégia de produção: planejamento de textos reivindicatórios ou propositivos",
+    skill:
+      "(EF67LP19) Realizar levantamento de questões, problemas que requeiram a denúncia de desrespeito a direitos, reivindicações, reclamações, solicitações que contemplem a comunidade escolar ou algum de seus membros e examinar normas e legislações.",
+    comment:
+      "A habilidade refere-se à investigação de problemas que levarão à produção de gêneros reivindicatórios ou propositivos. Entre esta habilidade, prevista para o 6º e o 7º ano, e a habilidade (EF89LP21), prevista para os dois últimos anos, e que também faz referência ao levantamento de questões ou problemas, há uma progressão suposta, (1) nos procedimentos envolvidos na investigação e na ampliação de alcance do público; (2) na geração de dados e na função deles para a produção de gêneros mais ou menos complexos. Supõe a leitura analítica de textos normativos e legais.",
+    resume:
+      "Na elaboração do currículo, é possível propor uma progressão para os dois anos indicados, em relação ao gênero a ser selecionado. Há articulação entre habilidades desse campo e do campo de práticas de estudo e pesquisa, quando as práticas deste último campo mobilizam habilidades que envolvem tomada de notas, sínteses de leituras, elaboração de entrevistas, enquetes etc. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (EF69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF67LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object: "Curadoria de informação",
+    skill:
+      "(EF67LP20) Realizar pesquisa, a partir de recortes e questões definidos previamente, usando fontes indicadas e abertas.",
+    comment:
+      "A habilidade refere-se à curadoria de informação no campo das práticas de estudo e pesquisa. Supõe o desenvolvimento das diferentes dimensões do pensamento científico, crítico e criativo. Por exemplo, para realizar uma pesquisa científica, é necessário pensar no objeto a ser investigado, no recorte temático (com elaboração de questões e hipóteses) que orientará a busca e seleção de informações que podem solucionar um problema proposto etc.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que esta habilidade se articula com habilidades definidas para o campo da vida pública no que se refere ao cuidado com a curadoria de informação. Aqui também, procedimentos como grifar, fazer anotações, bem como produções de textos que apoiem a compreensão como resumos, esquemas etc., serão importantes no processo de compreensão dos textos selecionados durante a pesquisa. Embora não especificado na habilidade, convém que cuidados com a verificação da fidedignidade das fontes também estejam no foco do trabalho proposto.Há, ainda, oportunidade para o trabalho interdisciplinar com a habilidade (EF06MA33), da Matemática, associada ao planeamento e coleta de dados para realização de pesquisas.",
+  },
+  {
+    id: "EF67LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos",
+    object: "Estratégias de escrita: textualização, revisão e edição",
+    skill:
+      "(EF67LP21) Divulgar resultados de pesquisas por meio de apresentações orais, painéis, artigos de divulgação científica, verbetes de enciclopédia, podcasts científicos etc.",
+    comment:
+      "Esta habilidade se refere à apropriação de diferentes modos de divulgar pesquisas realizadas. Supõe o estudo das especificidades dos gêneros e da adequação de um ou outro ao contexto de produção, com destaque para a natureza dos resultados, as intencionalidades e o público provável. Envolve as operações de planejamento, produção e revisão do texto no gênero escolhido (apresentação, painel, artigo etc) para divulgar os resultados.",
+    resume:
+      "Na elaboração do currículo, uma vez a proposição de pesquisa envolvendo as diferentes áreas pode acontecer no interior de projetos integradores, a divulgação de resultados pode culminar em feiras de ciências ou em eventos de fechamento do ano, possibilitando formas de divulgação que envolvam toda a comunidade escolar. Esses eventos podem ser planejados entre várias escolas de uma mesma cidade ou de regiões diferentes no interior de um determinado estado. Por exemplo, pode-se prever a criação de site ou blog em que se concentre a produções dos dois anos, que podem variar no gênero, visto que esses espaços suportam várias mídias. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF67LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos",
+    object: "Estratégias de escrita: textualização, revisão e edição",
+    skill:
+      "(EF67LP22) Produzir resumos, a partir das notas e/ou esquemas feitos, com o uso adequado de paráfrases e citações.",
+    comment:
+      "Esta habilidade supõe (1) capacidades de leitura para estudo (uso de grifos, produção de marginálias, notas, esquemas) e mobilização de capacidades de leitura como inferências e generalizações, (2) planejamento, produção e revisão de um gênero de apoio à compreensão de textos lidos/conceitos. Na textualização (elaboração do texto), promove o aprendizado de modos de incorporar ao texto as vozes de outros.",
+    resume:
+      "Na elaboração do currículo, vale considerar que os gêneros sugeridos na descrição da habilidade são conhecidos por gêneros de apoio à compreensão de textos. Comumente, são meios para se chegar a uma outra produção (a principal) ou para o estudo de apropriação de conceitos que serão aplicados em outros contextos. Recomenda-se que o trabalho com habilidades que favorecem o desenvolvimento desta habilidade e dos gêneros nela implicados seja realizado em todos os componentes e áreas do currículo. Promover momentos de planejamento integrado envolvendo profissionais de todas as áreas para se prepararem para práticas em comum potencializará o aprendizado pelos/as alunos/as.",
+  },
+  {
+    id: "EF67LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Conversação espontânea",
+    skill:
+      "(EF67LP23) Respeitar os turnos de fala, na participação em conversações e em discussões ou atividades coletivas, na sala de aula e na escola e formular perguntas coerentes e adequadas em momentos oportunos em situações de aulas, apresentação oral, seminário etc.",
+    comment:
+      "Esta habilidade supõe a participação nas diferentes situações orais propostas na BNCC e se articula com todos os campos de atuação. Visa a uma participação, nas interações, de um lado mais respeitosas e éticas, de outro, mais qualificadas (a esse respeito, ver EF89LP27).",
+    resume:
+      "Na elaboração do currículo, vale considerar que a participação mais qualificada como audiência (parte do público a que se dirige um apresentador ou debatedor) implica a capacidade de identificar as informações mais relevantes, fazer inferências sobre o que é dito e relacioná-las a outras informações para, a partir disso, elaborar perguntas sobre possíveis dúvidas ou se posicionar e argumentar em relação ao que foi dito. As anotações resultantes da tomada de notas podem servir de apoio, nessas situações. É importante garantir que essa participação qualificada seja solicitada frequentemente e que sejam propostos momentos de avaliação da turma sobre essas participações, no sentido de aprimorá-las.",
+  },
+  {
+    id: "EF67LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Procedimentos de apoio à compreensão Tomada de nota",
+    skill:
+      "(EF67LP24) Tomar nota de aulas, apresentações orais, entrevistas (ao vivo, áudio, TV, vídeo), identificando e hierarquizando as informações principais, tendo em vista apoiar o estudo e a produção de sínteses e reflexões pessoais ou outros objetivos em questão.",
+    comment:
+      "Nesta habilidade, a tomada de notas tem como finalidade principal o registro pessoal visando a reflexões pessoais sobre o registrado. Supõe a capacidade de identificar informações relevantes e sintetizá-las em notas de modo coerente, garantindo a possibilidade de retomada das ideias pelo(a) seu(sua) autor(a).",
+    resume:
+      "Na elaboração do currículo, pode ser proposta uma progressão quanto à situação em que a tomada de notas é solicitada: a partir de materiais gravados, até ser proposto para ser realizada durante as interações (reuniões, aulas, apresentações orais, seminários etc.). A progressão também pode ser pensada em termos de modos de organização dessa tomada de notas: uso de setas, itens, abreviaturas, pequenos esquemas etc., que podem ser compartilhados entre os colegas, em momentos a serem planejados pelo professor.",
+  },
+  {
+    id: "EF67LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object: "Textualização Progressão temática",
+    skill:
+      "(EF67LP25) Reconhecer e utilizar os critérios de organização tópica (do geral para o específico, do específico para o geral etc.), as marcas linguísticas dessa organização (marcadores de ordenação e enumeração, de explicação, definição e exemplificação, por exemplo) e os mecanismos de paráfrase, de maneira a organizar mais adequadamente a coesão e a progressão temática de seus textos.",
+    comment:
+      "Esta habilidade refere-se tanto ao reconhecimento de critérios utilizados na organização interna dos textos (dividir o texto em tópicos que permitam a compreensão do tema/assunto; utilizar uma ordem e uma hierarquia ao apresentá-los no texto; estabelecer as relações adequadas entre as informações), quanto à identificação das marcas linguísticas empregadas para tanto: em primeiro/segundo lugar; isto é, ou seja, por exemplo; para finalizar/concluindo etc. Além disso, refere-se à compreensão dos mecanismos de paráfrase (dizer o mesmo que foi dito anteriormente, de outra forma, em uma explicação, por exemplo), identificando as marcas linguísticas utilizadas para apresentá-la (dito de outra forma/em outras palavras). Esses aspectos contribuem para que o texto seja coeso e coerente. Esta habilidade refere-se, ainda, ao emprego dos aspectos indicados na elaboração dos textos próprios.",
+    resume:
+      "Na elaboração do currículo, convém considerar que esta habilidade envolve tanto leitura, quanto produção de textos. Na leitura — em especial na leitura colaborativa —, o estudo do texto possibilita o reconhecimento dos critérios empregados na organização dos tópicos, assim como a identificação das marcas linguísticas utilizadas para tanto. A produção dos textos próprios oferece a oportunidade de emprego dos aspectos estudados. A progressão pode ter como critério a complexidade dos textos organizados nos gêneros propostos; o grau de aprofundamento do tratamento a ser dado aos aspectos selecionados para cada ano; e o nível de autonomia do aluno ao realizar o trabalho (em colaboração — coletivo, em grupos e/ou duplas — e de modo autônomo).",
+  },
+  {
+    id: "EF67LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object: "Textualização",
+    skill:
+      "(EF67LP26) Reconhecer a estrutura de hipertexto em textos de divulgação científica e proceder à remissão a conceitos e relações por meio de notas de rodapés ou boxes.",
+    comment:
+      "Estreitamente associada à leitura, esta habilidade envolve o reconhecimento da estrutura do hipertexto em gêneros de divulgação científica veiculados em ambientes digitais, assim como a capacidade de acessar e articular textos periféricos, como notas de rodapé e boxes, com o texto principal. Consiste em compreender que notas de rodapé e boxes mantém relações de complementaridade e/ou contraponto com o texto principal, compondo com ele um todo solidário. Supõe, ainda, que a análise empreendida na leitura de hipertextos em ambiente digital pode favorecer a produção destes.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar que o desenvolvimento desta habilidade demanda propor práticas permanentes e regulares de leitura de textos de divulgação científica em ambientes digitais. É recomendável uma atividade interdisciplinar, com vistas a contemplar todas as áreas de conhecimento, de modo que, de um lado, o professor de Língua Portuguesa possa colaborar com os demais, no sentido de orientar, por exemplo, o ensino de procedimentos de leitura e de produção desses textos, e, de outro, os demais professores possam colaborar com o de Língua Portuguesa, orientando-o quanto aos recursos das linguagens específicas (cartografia, gráficos/infográficos, simulações, por exemplo) usados na construção de sentidos dos textos. É condição para isso a programação de estudos e planejamentos coletivos. O acesso à Internet e/ou a computadores também é relevante. A progressão, seja vertical, seja horizontal, pode tomar como referência: (a) a ênfase na leitura de estudo prévia ou na observação e análise de sua organização; (b) o grau de complexidade, tanto dos gêneros e textos a serem trabalhados quanto dos temas abordados e das estruturas de hipertexto correspondentes; (c) o nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF67LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF67LP27) Analisar, entre os textos literários e entre estes e outras manifestações artísticas (como cinema, teatro, música, artes visuais e midiáticas), referências explícitas ou implícitas a outros textos, quanto aos temas, personagens e recursos literários e semióticos",
+    comment:
+      "Esta habilidade refere-se ao estudo comparado de obras literárias entre si e delas com outras manifestações de arte: a análise das relações interdiscursivas e intertextuais (os diálogos) entre esses diferentes textos. Muitas obras literárias clássicas, por exemplo, sofrem adaptações para produções em outras linguagens, como Dom Casmurro, de Machado de Assis, que inspirou HQs, canções e minisséries contemporâneas, por exemplo, ou canções que inspiraram a produção de contos (como as canções de Chico Buarque que inspiraram um livro de contos). Essa habilidade de identificar e analisar os diálogos estabelecidos entre os vários produtos culturais favorece a ampliação de repertório, que contribui para que os alunos estabeleçam mais relações entre os textos e, portanto, construam mais sentidos sobre o que leem.",
+    resume:
+      'Na elaboração do currículo, a progressão pode ser formulada com base nos gêneros propostos, definindo, por exemplo, que serão trabalhadas as relações de intertextualidade entre textos de mesmo gênero (o diálogo entre dois romances ou poemas), para, em seguida, propor um estudo comparado entre um romance literário e um filme, uma peça ou novela, cujo roteiro foi criado a partir do romance. Esses estudos comparados podem ser associados a habilidades que coloquem em foco a percepção de que diferentes linguagens "combinadas" produzem diferentes sentidos, mesmo partindo de uma mesma história ou ideia. Supõe, portanto, o estudo dos recursos dessas diferentes linguagens usados na construção dos sentidos.Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF69AR30) e (EF69AR32), da Arte, no que se refere à exploração, análise e criação de diálogos entre textos literários e outras manifestações, de diferentes linguagens artísticas.',
+  },
+  {
+    id: "EF67LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object: "Estratégias de leitura Apreciação e réplica",
+    skill:
+      "(EF67LP28) Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes –, romances infantojuvenis, contos populares, contos de terror, lendas brasileiras, indígenas e africanas, narrativas de aventuras, narrativas de enigma, mitos, crônicas, autobiografias, histórias em quadrinhos, mangás, poemas de forma livre e fixa (como sonetos e cordéis), vídeo-poemas, poemas visuais, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    comment:
+      "A habilidade refere-se a procedimentos e estratégias que podem ser usados para compreender e apreciar diferentes gêneros literários, considerando as suas marcas específicas. Esse tipo de leitura favorece a fruição literária — que significa ler sem qualquer compromisso com avaliações ou apresentações formais sobre o lido. Entretanto, cabe lembrar que, para fruir melhor o texto, é essencial ter vivenciado experiências prazerosas de leitura e conversa sobre textos desses gêneros, em que  o caráter criativo dos discursos literários tenham sido evidenciados.",
+    resume:
+      "Na elaboração do currículo, uma forma de se colaborar para a motivação do aluno para leituras autônomas é:(1) acolher as mais variadas produções culturais, oferecendo um amplo e variado acervo de livros;(2) prever projetos que envolvam o cultivo da leitura de livre escolha;(3) rodas de conversa sobre obras lidas;(4) outros eventos culturais, como saraus, mostras de cinema, teatro, música etc.Ações dessa natureza favorecem a inserção dos alunos em práticas variadas, ampliando seu repertório cultural e consciência multicultural. Para um trabalho dessa dimensão, é necessária a articulação dos professores da área — o que possibilitará explorar as diferentes linguagens —, bem como a pessoa responsável pela sala de leitura e/ou biblioteca. Esta habilidade articula-se com a habilidade de mostrar interesse e envolvimento com a leitura de textos literários — no sentido de que envolver-se nas mais variadas práticas de leitura literária favorece o desenvolvimento da autonomia dos alunos.",
+  },
+  {
+    id: "EF67LP29",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução da textualidade\nEfeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    skill:
+      "(EF67LP29) Identificar, em texto dramático, personagem, ato, cena, fala e indicações cênicas e a organização do texto: enredo, conflitos, ideias principais, pontos de vista, universos de referência.",
+    comment:
+      'Esta habilidade supõe distinguir os elementos constitutivos do gênero texto dramático, seja em relação à sua forma e aos recursos usados nessa forma de se estruturar (as rubricas, a marcação das personagens, a divisão em cenas e atos etc.), seja em relação ao seu conteúdo (à história que quer "mostrar": quem são essas personagens, que ideias e visões de mundo defendem, como se relacionam, que conflitos são gerados nessa relação etc.).',
+    resume:
+      'Na elaboração do currículo, é importante considerar que o texto dramático é concebido para ser encenado no palco. As outras formas de realização são, em geral, tratadas como "roteiro" (de filme/cinema, de novela). Um estudo do texto dramático que se aproxime dessas últimas práticas, mais acessíveis aos alunos, pode ser mais significativo. Prever o trabalho com leituras dramáticas também pode ser uma forma mais motivadora de aproximar o leitor dos textos dramáticos. Além disso, essa possibilidade favorece o desenvolvimento da fluência leitora, uma vez que, para ler dramaticamente, o leitor deverá ensaiar a leitura para estudar a melhor forma de dizer a fala da personagem que lhe corresponde de modo que se possa atribuir a ela o sentido esperado, considerando as informações sobre a personagem e a cena (dadas pelas rubricas e pelas atuação das personagens na cena), o que ajuda a atribuir mais sentido ao texto dramático.Há, aqui, especial oportunidade de trabalho interdisciplinar com a habilidade (EF69AR30), da Arte, no que se refere à composição de improvisações e acontecimentos cênicos com base em textos dramáticos.',
+  },
+  {
+    id: "EF67LP30",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object: "Construção da textualidade Relação entre textos",
+    skill:
+      "(EF67LP30) Criar narrativas ficcionais, tais como contos populares, contos de suspense, mistério, terror, humor, narrativas de enigma, crônicas, histórias em quadrinhos, dentre outros, que utilizem cenários e personagens realistas ou de fantasia, observando os elementos da estrutura narrativa próprios ao gênero pretendido, tais como enredo, personagens, tempo, espaço e narrador, utilizando tempos verbais adequados à narração de fatos passados, empregando conhecimentos sobre diferentes modos de se iniciar uma história e de inserir os discursos direto e indireto.",
+    comment:
+      "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários narrativos. A produção, aqui, também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
+    resume:
+      'Na elaboração do currículo, é interessante considerar que esta habilidade supõe a análise dos recursos usados na produção de sentido dos textos oferecidos à leitura nos gêneros referidos. Sugere-se, então, uma progressão na proposição dos "subgêneros" narrativos. Recomenda-se que as produções experimentadas sejam efetivamente colocadas em circulação e alcancem os leitores previstos. É sugerido propor antecipadamente (1) a publicação de coletâneas para compor a biblioteca e/ou para distribuir para amigos e familiares; (2) a divulgação das produções em blogs literários criados para esse fim, e/ou páginas de Facebook; (3) a realização de concursos, desafios, saraus, clubes de leitura etc.',
+  },
+  {
+    id: "EF67LP31",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object: "Construção da textualidade Relação entre textos",
+    skill:
+      "(EF67LP31) Criar poemas compostos por versos livres e de forma fixa (como quadras e sonetos), utilizando recursos visuais, semânticos e sonoros, tais como cadências, ritmos e rimas, e poemas visuais e vídeo-poemas, explorando as relações entre imagem e texto verbal, a distribuição da mancha gráfica (poema visual) e outros recursos visuais e sonoros.",
+    comment:
+      "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários líricos. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
+    resume:
+      'Na elaboração do currículo, é interessante considerar que esta habilidade supõe a análise dos recursos usados na produção de sentido dos textos oferecidos à leitura nos gêneros referidos. Sugere-se, então, uma progressão na proposição dos "subgêneros" líricos. Recomenda-se que as produções experimentadas sejam efetivamente colocadas em circulação e alcancem os leitores previstos. É sugerido propor antecipadamente (1) a publicação de coletâneas para compor a biblioteca e/ou para distribuir para amigos e familiares; (2) a divulgação das produções em blogs literários criados para esse fim, e/ou páginas de Facebook; (3) a realização de concursos, desafios, saraus, clubes de leitura etc.',
+  },
+  {
+    id: "EF67LP32",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Fono-ortografia",
+    skill:
+      "(EF67LP32) Escrever palavras com correção ortográfica, obedecendo as convenções da língua escrita.",
+    comment:
+      "Esta é uma habilidade diretamente relacionada a contextos de produção e revisão de textos escritos. Seu foco é a obediência às convenções ortográficas do português, o que demanda o envolvimento sistemático em práticas de produção nas quais esse tipo de conhecimento seja requisitado e o domínio e/ou o estudo concomitante dessas convenções.",
+    resume:
+      "Na elaboração do currículo, sugere-se que o desenvolvimento desta habilidade venha sempre associado a práticas de produção e/ou revisão de textos, especialmente em situações públicas e formais em que a ortografia é requisito necessário. A progressão curricular pode se basear: (a) nos tópicos de ortografia a serem previstos para os dois anos em jogo, iniciando-se com as regularidades e prosseguindo com as irregularidades; (b) no grau de complexidade dos gêneros e textos programados para as práticas de produção e/ou revisão envolvidas nesse estudo; (c) no nível de autonomia que se pretende levar o aluno a conquistar a cada etapa.",
+  },
+  {
+    id: "EF67LP33",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Elementos notacionais da escrita",
+    skill: "(EF67LP33) Pontuar textos adequadamente.",
+    comment:
+      "Esta habilidade se refere ao emprego de regras e normas de pontuação em textos de qualquer gênero ou campo de atuação. Demanda o envolvimento frequente e sistemático em práticas públicas e formais de leitura e/ou produção de textos escritos em que a pontuação correta deve ser observada: e-mail de trabalho, entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática etc.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento da habilidade venha sempre associado a práticas de leitura e/ou produção de textos dos mais diversos gêneros e campos de atuação. A progressão vertical e horizontal pode adotar como critério os tópicos a serem abordados a cada momento, o grau de complexidade dos gêneros e textos previstos e o grau de autonomia do aluno pressuposto na execução da tarefa.",
+  },
+  {
+    id: "EF67LP34",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Léxico/morfologia",
+    skill:
+      "(EF67LP34) Formar antônimos com acréscimo de prefixos que expressam noção de negação.",
+    comment:
+      "Esta é uma habilidade  bastante relevante para a compreensão das relações semânticas que podem se estabelecer entre as palavras da língua. Trata-se de compreender a antonímia como um processo de estabelecimento de oposição de sentidos entre palavras; seu foco está no reconhecimento da função de certos prefixos nesse processo. (Relaciona-se com a habilidade EF06LP03 e todas as demais que envolvem processos de formação de palavras, especialmente os derivativos).",
+    resume:
+      "Na elaboração do currículo, recomenda-se que esse estudo venha sempre associado à análise comparativa e à reflexão, com base em inventários que apresentem palavras em textos, para que cada uma delas possa ser compreendida na acepção adequada. Práticas de leitura e/ou produção de textos são, portanto, essenciais para a contextualização desse ensino. A progressão pode apoiar-se: (a) nos tipos de prefixos a serem estudados; (b) no grau de complexidade dos gêneros e textos envolvidos; (c) no nível de autonomia requerido do aluno para realizar a tarefa.",
+  },
+  {
+    id: "EF67LP35",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Léxico/morfologia",
+    skill:
+      "(EF67LP35) Distinguir palavras derivadas por acréscimo de afixos e palavras compostas.",
+    comment:
+      "Esta é uma habilidade fundamental para a compreensão dos diferentes processos morfológicos e semânticos de formação das palavras. O foco está na distinção entre mecanismos de derivação e de composição, necessária a qualquer estudo e/ou análise do léxico. Pressupõe conhecimentos prévios relativos a classes de palavras e às categorias gramaticais a que elas se associam.",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha sempre associado a práticas de leitura, produção ou oralidade, de forma que o aluno possa observar esses processos em ação e refletir sobre como são produtivos e criativos. Portanto, a apropriação desses mecanismos pelo aluno é o seu foco, e não memorização da terminologia gramatical correspondente. Jogos de "mistura" de palavras para refletir sobre a significação resultante podem ser atividades muito produtivas e significativas para os/as alunos. Exemplo: formação de grupos que experimentem criar palavras usando os vários processos e, depois, desafiam os demais a dizer as palavras ou os afixos usados e o novo significado (Por exemplo, o que é "infoxicação"?). Propostas de produção de textos criativos, como os literários e os publicitários, também podem propiciar situações adequadas para esse estudo. A progressão curricular pode apoiar-se no tipo de mecanismo a ser estudado (derivação/composição), assim como no grau de complexidade dos gêneros e textos mobilizados.',
+  },
+  {
+    id: "EF67LP36",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Coesão",
+    skill:
+      "(EF67LP36) Utilizar, ao produzir texto, recursos de coesão referencial (léxica e pronominal) e sequencial e outros recursos expressivos adequados ao gênero textual.",
+    comment:
+      "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é a adequação expressiva, no emprego de recursos de coesão (referencial e sequencial), ao gênero textual produzido. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações. A habilidade também demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade seja programado em associação com práticas de oralidade, leitura ou escrita de textos dos gêneros previstos para estudo. Será nessas condições que o aluno poderá refletir sobre a adequação expressiva do(s) recurso(s) que pretenda empregar.  Em caso de produções escritas, recomenda-se que os currículos prevejam atividades de produção e revisão em que o foco seja o uso desses elementos coesivos na construção do texto de um determinado gênero. Em caso de textos orais, podem ser analisadas, coletivamente, apresentações previamente gravadas. A progressão, vertical ou horizontal, pode apoiar-se no tipo de recurso coesivo a ser abordado, no grau de complexidade dos gêneros ou textos a serem considerados e no nível de autonomia que se pretende levar o aluno a conquistar.",
+  },
+  {
+    id: "EF67LP37",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Sequências textuais",
+    skill:
+      "(EF67LP37) Analisar, em diferentes textos, os efeitos de sentido decorrentes do uso de recursos linguístico-discursivos de prescrição, causalidade, sequências descritivas e expositivas e ordenação de eventos.",
+    comment:
+      "A habilidade refere-se ao estudo necessário à resolução de problemas de compreensão, seja na leitura, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego dos recursos linguístico-discursivos mencionados referentes ao estabelecimento da progressão temática. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de recursos de prescrição, causalidade, sequências descritivas e expositivas e ordenação de eventos.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego dos recursos linguístico-discursivos mencionados; 2) sistematizar o conhecimento discutido em 1). Todos os recursos mencionados na formulação da habilidade referem-se ao estabelecimento da progressão temática, ou seja, da criação do fio condutor do texto. Sugere-se que a atividade proposta focalize tanto os efeitos de sentido produzidos na leitura, quanto a adequação do uso. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF67LP38",
+    competences: "Língua Portuguesa",
+    group_year_id: "67",
+    group_years: "6º, 7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Figuras de linguagem",
+    skill:
+      "(EF67LP38) Analisar os efeitos de sentido do uso de figuras de linguagem, como comparação, metáfora, metonímia, personificação, hipérbole, dentre outras.",
+    comment:
+      "O foco desta habilidade está na compreensão e análise de figuras de linguagem, como as mencionadas, em gêneros e textos de qualquer campo de atuação. Trata-se, portanto, de uma habilidade relevante não só para a compreensão, mas, ainda, para a interpretação de textos, na medida em que evidencia mecanismos de (re)construção do texto e de seus sentidos.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode ser contextualizado em projetos de produção de textos do campo literário; na elaboração de artigos de divulgação de conhecimento; em projetos de estudo das figuras de linguagem em textos literários ou de divulgação de conhecimento. Recomenda-se: a) que os aspectos referidos sejam estudados levando em consideração os efeitos de sentido que produzem e a relação que estabelecem entre os trechos do enunciado; b) que a terminologia gramatical e a sistematização só sejam abordadas depois que os aspectos em foco tiverem sido compreendidos. A progressão pode se dar com base na complexidade do gênero/texto ou do grau de autonomia do aluno. Sugere-se, inicialmente, atividades colaborativas (coletivas e em grupos/duplas), que progridam para o autônomo.",
+  },
+  {
+    id: "EF69LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Apreciação e réplica\nRelação entre gêneros e mídias",
+    skill:
+      "(EF69LP01) Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso.",
+    comment:
+      "Esta habilidade supõe discutir aspectos éticos envolvidos no modo de as pessoas se posicionarem e argumentarem sobre os assuntos ou fatos, com vistas à formação de um sujeito protagonista e ético frente a situações de conflito, em todas as situações de leitura — e também de produção de textos — que implicam posicionamentos e argumentos sobre fatos e assuntos diversos, mais ou menos polêmicos.",
+    resume:
+      "Na elaboração do currículo, é importante incluir projetos que abordem fatos e assuntos polêmicos específicos do estado e/ou município do aluno, bem como a possibilidade de os estudantes terem participação efetiva nas discussões dessas questões. Considerar as possibilidades de interação dos alunos com jornais e revistas locais, impressos ou digitais, por exemplo, e planejar a sua participação ativa nesses meios contribuirá para o desenvolvimento desta habilidade. Também favorece esse desenvolvimento discutir a diferença entre liberdade de expressão e discursos de ódio (que podem ser evidenciados em situações de bullying, por exemplo).Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (EF69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF69LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Apreciação e réplica\nRelação entre gêneros e mídias",
+    skill:
+      "(EF69LP02) Analisar e comparar peças publicitárias variadas (cartazes, folhetos, outdoor, anúncios e propagandas em diferentes mídias, spots, jingle, vídeos etc.), de forma a perceber a articulação entre elas em campanhas, as especificidades das várias semioses e mídias, a adequação dessas peças ao público-alvo, aos objetivos do anunciante e/ou da campanha e à construção composicional e estilo dos gêneros em questão, como forma de ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    comment:
+      "Esta habilidade supõe identificar os elementos da linguagem verbal e de outras linguagens e o modo como eles se articulam em diferentes peças publicitárias para produzir os sentidos desejados, considerando o produto em questão e o contexto de produção: quem são os interlocutores e quais as suas intencionalidades. Identificar e conhecer o potencial de significação dos recursos das diferentes linguagens e mídias implica o estudo dos recursos próprios dessas linguagens e mídias.",
+    resume:
+      "Na elaboração do currículo, é importante que a seleção parta de — mas não se restrinja a — peças publicitárias mais significativas para os alunos, que os tenham como público-alvo, de modo que compreendam seu caráter apelativo e percebam as estratégias e os argumentos usados para chamar a atenção. Por se tratar de uma habilidade prevista para ser desenvolvida ao longo dos quatro anos, a progressão pode ser definida tanto em relação à complexidade da seleção dos textos, no que se refere aos públicos e aos recursos mobilizados, quanto em relação aos gêneros a serem trabalhados. Cabe enfatizar a relevância de um trabalho com o discurso publicitário que favoreça a reflexão sobre a relação propaganda e consumo na adolescência, propaganda e ética, propaganda e padrões de beleza, entre outras relações possíveis, que favorecem o diálogo com disciplinas no interior da área de linguagens (como Arte e Educação Física) e da área de Ciências.",
+  },
+  {
+    id: "EF69LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Estratégia de leitura: apreender os sentidos globais do texto",
+    skill:
+      "(EF69LP03) Identificar, em notícias, o fato central, suas principais circunstâncias e eventuais decorrências; em reportagens e fotorreportagens o fato ou a temática retratada e a perspectiva de abordagem, em entrevistas os principais temas/subtemas abordados, explicações dadas ou teses defendidas em relação a esses subtemas; em tirinhas, memes, charge, a crítica, ironia ou humor presente.",
+    comment:
+      "O foco está no modo como se constrói o conteúdo de textos nesses gêneros, sempre relacionado às suas finalidades. Esta habilidade mobiliza outras, como identificar marcas de impessoalidade (mais esperada na notícia) e de subjetividade (que é aceitável nas reportagens e esperada nas entrevistas), diferenciar opinião de argumentos (que podem estar presentes em quaisquer dos gêneros citados na descrição da habilidade) e inferir informações acessando conhecimentos prévios sobre o tema/fato/assunto e relacionando com o conteúdo do texto para reconhecer o humor, a crítica e a ironia.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar que a progressão horizontal e vertical no trabalho com textos desses gêneros pode partir da leitura de textos com caráter mais informativo (como a notícia) para textos que implicam, em maior ou menor medida, o posicionamento crítico de quem escreve ou cria; bem como prever uma seleção de textos de diferentes graus de complexidade nos variados gêneros. O trabalho com os recursos linguísticos e semióticos é essencial para a identificação dos aspectos citados na habilidade, de modo a garantir que os alunos compreendam a relação de sentido entre imagem e texto verbal. Pode-se prever modalidades didáticas que garantam a regularidade dessa prática de leitura, como as rodas de jornais ou rodas de conversa e as leituras compartilhadas desses variados gêneros, cuidando para também dar acesso a jornais e revistas locais, o que favorecerá o desenvolvimento desta habilidade, uma vez que contribuem para que os alunos comparem as compreensões sobre os textos lidos e negociem sentidos.",
+  },
+  {
+    id: "EF69LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF69LP04) Identificar e analisar os efeitos de sentido que fortalecem a persuasão nos textos publicitários, relacionando as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados, como imagens, tempo verbal, jogos de palavras, figuras de linguagem etc., com vistas a fomentar práticas de consumo conscientes.",
+    comment:
+      'Esta habilidade contribui para a percepção da finalidade e do "poder" do discurso publicitário: estimular o consumo, podendo induzir ao consumismo, com consequências ambientais e sociais indesejáveis, como o valor do ter em detrimento do ser, que pode resultar em discriminações. Analisar como os recursos das várias linguagens atuam na construção do discurso persuasivo favorece o pensamento crítico em relação ao consumismo e suas consequências.',
+    resume:
+      'Na elaboração do currículo, é importante articular o estudo desses variados gêneros publicitários às discussões contemporâneas sobre propaganda e consumo, como a influência da propaganda no comportamento de adolescentes e jovens e a ética na propaganda. É comum que os alunos não reconheçam o teor da propaganda de cartazes de supermercado, por exemplo, que anunciam promoções do tipo "Compre 2, leve 3", entre outras. Discussões de situações cotidianas exemplares como essas são essenciais para que os alunos reflitam sobre o quanto elas influenciam o consumidor a consumir mais.',
+  },
+  {
+    id: "EF69LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF69LP05) Inferir e justificar, em textos multissemióticos – tirinhas, charges, memes, gifs etc. –, o efeito de humor, ironia e/ou crítica pelo uso ambíguo de palavras, expressões ou imagens ambíguas, de clichês, de recursos iconográficos, de pontuação etc.",
+    comment:
+      'Esta habilidade supõe o estudo dos recursos das diferentes linguagens envolvidas na constituição desses gêneros de textos multissemióticos e a compreensão dos efeitos de sentido que a "combinação" desses recursos produz. Envolve ativar conhecimentos prévios sobre o contexto de produção do texto (por exemplo, sobre o fato a que uma charge se refere) e relacioná-los às ideias expressas no texto para compreender as intencionalidades e construir sentido sobre o que se lê. Para justificar a inferência feita, será necessário explicar e demonstrar as relações estabelecidas.',
+    resume:
+      "Na elaboração do currículo, deve-se considerar que o desenvolvimento desta habilidade supõe o conhecimento prévio dos textos jornalísticos que motivaram a produção dos gêneros citados. Entender a crítica ou o humor de uma charge ou um meme, por exemplo, implica no conhecimento do fato ou assunto criticado ou humorizado. Ou seja, é preciso reconhecer o diálogo (intertextualidade e interdiscursividade) entre os textos. É importante prever ações e parcerias que possibilitem aos alunos acesso regular a jornais e revistas em diferentes mídias. A progressão no desenvolvimento desta habilidade pode se estabelecer a partir da oposição entre apenas inferir e também justificar o efeito de humor. Outro parâmetro para a progressão pode ser a complexidade e/ou a adequação (à faixa etária) do gênero em jogo. Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF69AR03), da Arte, no que se refere à identificação, inferência e justificativa de situações em que diferentes linguagens são integradas, como textos multissemióticos e artes visuais, por exemplo.",
+  },
+  {
+    id: "EF69LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Relação do texto com o contexto de produção e experimentação de papéis sociais",
+    skill:
+      "(EF69LP06) Produzir e publicar notícias, fotodenúncias, fotorreportagens, reportagens, reportagens multimidiáticas, infográficos, podcasts noticiosos, entrevistas, cartas de leitor, comentários, artigos de opinião de interesse local ou global, textos de apresentação e apreciação de produção cultural – resenhas e outros próprios das formas de expressão das culturas juvenis, tais como vlogs e podcasts culturais, gameplay, detonado etc.– e cartazes, anúncios, propagandas, spots, jingles de campanhas sociais, dentre outros em várias mídias, vivenciando de forma significativa o papel de repórter, de comentador, de analista, de crítico, de editor ou articulista, de booktuber, de vlogger (vlogueiro) etc., como forma de compreender as condições de produção que envolvem a circulação desses textos e poder participar e vislumbrar possibilidades de participação nas práticas de linguagem do campo jornalístico e do campo midiático de forma ética e responsável, levando-se em consideração o contexto da Web 2.0, que amplia a possibilidade de circulação desses textos e “funde” os papéis de leitor e autor, de consumidor e produtor.",
+    comment:
+      "O desenvolvimento da habilidade  implica a vivência de diferentes papéis sociais, como produtor de textos de variados gêneros do campo jornalístico/midiático. Analisar e considerar o contexto em que o texto será produzido e circulará é essencial para garantir a adequação da produção à situação. No que se refere à produção de quaisquer dos gêneros citados, o tratamento ético da informação e/ou a posição ética em relação a ela devem estar previstos.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta é uma habilidade que prevê a produção e publicação de textos em gêneros os mais diversos de seu campo. Dada a seleção de gêneros sugerida, espera-se, nos currículos, a definição de uma progressão, que poderá ser tanto horizontal (distribuição dos gêneros ao longo dos quatro anos) quanto vertical (uma seleção revisada algumas vezes ao longo dos quatro anos, com vistas ao aprofundamento no trabalho da produção). Para essa seleção, será necessário considerar os gêneros previstos pela BNCC e, ainda, discutir que outros gêneros, dentre a lista de possibilidades, poderiam ser mais significativos para o/a aluno/a (porque já fazem parte de suas práticas e caberia ampliar e aprimorar seu domínio) e também para a sua formação, considerando, especialmente, a relevância do trabalho com os gêneros multimidiáticos, no contexto da web 2.0. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados e orientem a realização das diferentes operações de produção de textos, quais sejam: a) contextualização: definição da situação comunicativa em que o texto será produzido (quem serão os leitores, onde circulará, com que finalidade, em qual gênero); b) planejamento: que envolve a elaboração do conteúdo temático (o que será dito) e a organização do texto parte a parte; c) elaboração do texto: o processo da construção do texto (textualização); d) revisão processual (durante a produção) e final. Essas operações podem, inicialmente, ser realizadas em situações coletivas e em grupos, com mais apoio do professor e, de modo gradual, envolver graus crescentes de autonomia do/a aluno para realizá-la. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF67EF01) e (EF67EF02), da Educação Física, no que se refere a experimentação, observação, produção e crítica especificamente no caso dos jogos eletrônicos.",
+  },
+  {
+    id: "EF69LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Textualização",
+    skill:
+      "(EF69LP07) Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc.",
+    comment:
+      "Esta habilidade refere-se à produção de textos de gêneros variados do campo jornalístico-midiático, levando sempre em conta o contexto de produção (interlocutores, intencionalidades etc.) e as especificidades do gênero escolhido para a produção. Implica apropriar-se dos procedimentos da escrita, envolvendo as operações de contextualização, planejamento, elaboração do texto (textualização) e revisão processual e final.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que, para o desenvolvimento desta habilidade, é necessário articulá-la a operações de contextualização, planejamento, elaboração do texto (o processo de textualização) e revisão, processual e final. Essas operações podem, inicialmente, ser realizadas em situações coletivas e em grupos, com mais apoio do professor e, de modo gradual, envolver graus crescentes de autonomia do/a aluno para realizá-la. É possível definir uma progressão horizontal com base nos gêneros propostos para cada ano, sempre cuidando de contemplar a diversidade de linguagens e mídias em que os gêneros sugeridos se constituem (impresso, rádio, tv. etc.).",
+  },
+  {
+    id: "EF69LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Revisão/edição de texto informativo e opinativo",
+    skill:
+      "(EF69LP08) Revisar/editar o texto produzido – notícia, reportagem, resenha, artigo de opinião, dentre outros –, tendo em vista sua adequação ao contexto de produção, a mídia em questão, características do gênero, aspectos relativos à textualidade, a relação entre as diferentes semioses, a formatação e uso adequado das ferramentas de edição (de texto, foto, áudio e vídeo, dependendo do caso) e adequação à norma culta.",
+    comment:
+      "Esta habilidade consiste na revisão e/ou edição de textos diversos, que deve se orientar sempre por critérios de adequação da produção ao contexto (interlocutores, intencionalidade, gênero, espaços/mídias em que circulará etc.), levando em conta, também, o uso das ferramentas de edição variadas em recursos e complexidade, em caso de gêneros multissemióticos (como as produções em vídeo, por exemplo).",
+    resume:
+      "Na elaboração do currículo, recomenda-se que seja proposto: (1) trabalho articulado com profissionais responsáveis pelas salas de informática, com conhecimento de aplicativos e ferramentas de edição; (2) a necessidade de se recorrer a ferramentas gratuitas de edição de imagens, áudios e textos impressos. É recomendável propor, ainda, o trabalho colaborativo nos processos de revisão/edição entre os/as alunos/as e entre alunos e professores. Em muitos casos, os adolescentes têm maior familiaridade com o uso de tecnologias digitais, o que pode colocar o professor no lugar de quem tem mais a aprender do que a ensinar. Recomenda-se que a equipe de gestão pedagógica preveja reflexões a esse respeito, junto à equipe docente.",
+  },
+  {
+    id: "EF69LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Planejamento de textos de peças publicitárias de campanhas sociais",
+    skill:
+      "(EF69LP09) Planejar uma campanha publicitária sobre questões/problemas, temas, causas significativas para a escola e/ou comunidade, a partir de um levantamento de material sobre o tema ou evento, da definição do público-alvo, do texto ou peça a ser produzido – cartaz, banner, folheto, panfleto, anúncio impresso e para internet, spot, propaganda de rádio, TV etc. –, da ferramenta de edição de texto, áudio ou vídeo que será utilizada, do recorte e enfoque a ser dado, das estratégias de persuasão que serão utilizadas etc.",
+    comment:
+      "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Destina-se ao procedimento de planejar o texto, que implica a curadoria de informação e a produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte, levando em conta as especificidades do gênero da campanha publicitária.",
+    resume:
+      "Na elaboração do currículo, recomenda-se discutir a relação entre as esferas publicitária e jornalística, conforme sinalizado nas orientações relativas à leitura. Sugere-se uma progressão ao longo dos 4 anos finais, considerando os gêneros arrolados e a maior ou menor familiaridade dos/as alunos/as da região com um ou outro. Além do trabalho articulado com profissionais que usam aplicativos de edição de textos, da disponibilização desses aplicativos para os/as alunos/as e do investimento no trabalho colaborativo, recomenda-se articular as propostas com a exploração dos documentos reguladores (campo da vida pública) da propaganda e publicidade, com vistas ao desenvolvimento de uma postura ética em relação à esfera publicitária. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF69LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    object: "Produção de textos jornalísticos orais",
+    skill:
+      "(EF69LP10) Produzir notícias para rádios, TV ou vídeos, podcasts noticiosos e de opinião, entrevistas, comentários, vlogs, jornais radiofônicos e televisivos, dentre outros possíveis, relativos a fato e temas de interesse pessoal, local ou global e textos orais de apreciação e opinião – podcasts e vlogs noticiosos, culturais e de opinião, orientando-se por roteiro ou texto, considerando o contexto de produção e demonstrando domínio dos gêneros.",
+    comment:
+      "Esta habilidade supõe o trabalho com as etapas de produção de notícias: planejamento, produção e revisão processual e final (em casos em que os textos são gravados previamente). Para o planejamento, será necessário considerar a mídia em que o gênero se realizará (uma notícia para TV, rádio ou ambiente digital), para que o roteiro seja feito considerando os recursos próprios da mídia em jogo.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que esta habilidade demanda seleção e progressão dos gêneros listados, do ponto de vista das mídias, das habilidades mobilizadas e do gênero em questão (dos mais informativos aos mais opinativos). Em oralidade, a produção de entrevistas (6º a 9º) e reportagem multimídia (8º e 9º) já estão previstas. Os demais gêneros da lista poderão ser distribuídos ao longo dos quatro anos: para 6º e 7º anos, gêneros que se realizam em áudio, que implicam uso de aplicativos menos complexos; para 8º e 9º anos, gêneros que envolvem o uso de aplicativos de vídeos. Também é possível selecionar gêneros que façam uso das várias mídias e abordar gradativamente os recursos dessas mídias. Por exemplo, para 6º e 7º anos, entrevistas em áudio e comentários em vídeo; para 8º e 9º anos, entrevistas e mesas de debate em áudio e em vídeo. Inicialmente, sugere-se que questões locais sejam prioridade sobre as globais.",
+  },
+  {
+    id: "EF69LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    object: "Produção de textos jornalísticos orais",
+    skill:
+      "(EF69LP11) Identificar e analisar posicionamentos defendidos e refutados na escuta de interações polêmicas em entrevistas, discussões e debates (televisivo, em sala de aula, em redes sociais etc.), entre outros, e se posicionar frente a eles.",
+    comment:
+      "Esta habilidade supõe a escuta e a produção de textos orais, sempre considerando o contexto. Essas operações cognitivas mobilizam habilidades de análise e de uso de recursos linguísticos e semióticos, como o reconhecimento da posição assumida pelo outro, o movimento argumentativo usado (se negocia com ou refuta outros; se apenas defende sua própria posição), a entonação dada ao que se fala, que sinaliza a apreciação sobre o que se fala etc.",
+    resume:
+      'Na elaboração do currículo, o exercício de identificar e analisar pode começar com materiais previamente gravados (debates, entrevistas etc.). Em seguida, pode-se prever participações face a face ou a distância, mediadas pela tecnologia, em situações variadas, como discussões, participação em debates, palestras e reuniões. Nesses casos, a habilidade de identificar e analisar é "solicitada" enquanto o outro fala, tendo em vista uma resposta imediata. Articular essa habilidade com as que envolvem tomada de notas — começando com material gravado, que pode ser revisto indefinidamente, para depois fazê-lo no ato da interação — favorecerá uma resposta mais qualificada de quem escuta. tentar para a seleção e progressão dos gêneros listados para a produção de textos orais. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.',
+  },
+  {
+    id: "EF69LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    object: "Planejamento e produção de textos jornalísticos orais",
+    skill:
+      "(EF69LP12) Desenvolver estratégias de planejamento, elaboração, revisão, edição, reescrita/ redesign (esses três últimos quando não for situação ao vivo) e avaliação de textos orais, áudio e/ou vídeo, considerando sua adequação aos contextos em que foram produzidos, à forma composicional e estilo de gêneros, a clareza, progressão temática e variedade linguística empregada, os elementos relacionados à fala, tais como modulação de voz, entonação, ritmo, altura e intensidade, respiração etc., os elementos cinésicos, tais como postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia etc.",
+    comment:
+      "Esta habilidade consiste em trabalhar, em todas as propostas de produção de textos orais, as etapas da produção, começando pelo planejamento, a partir da análise do contexto de produção (o que se quer dizer, para quem, com que finalidade e como dizer). Considerando os gêneros que podem ser gravados e assistidos/ouvidos posteriormente, é preciso prever o ensino/aprendizagem de uso de aplicativos de captação e edição de áudio e imagem.",
+    resume:
+      "Na elaboração do currículo, é importante diferenciar situações em que apenas oralizamos um texto escrito, como em geral acontece nos noticiários de TV ou rádio, das situações em que se planeja o texto e se produz materiais de apoio à fala mas, efetivamente, o texto só se realiza na interação (como acontece em um debate). Cada situação determina suas estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação dos textos. Por exemplo: se a proposta é a produção de um programa noticioso em vídeo, será necessário, depois de definido o fato/assunto: (1) usar câmeras de captação de vídeo e áudio e de aplicativos de edição do material gravado; (2) após pesquisa e seleção de informações, produzir roteiros com indicações do texto a ser lido pelo âncora/jornalista, das entradas de entrevistas ou outras imagens gravadas. Já na produção de um programa noticioso para rádio, haverá variação dos recursos para captação, do grau de detalhamento da notícia (que, para rádio, em geral, é menor), da presença ou não de efeitos sonoros de fundo etc. Atentar para seleção e progressão dos gêneros listados para a produção de textos orais.",
+  },
+  {
+    id: "EF69LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object:
+      "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
+    skill:
+      "(EF69LP13) Engajar-se e contribuir com a busca de conclusões comuns relativas a problemas, temas ou questões polêmicas de interesse da turma e/ou de relevância social.",
+    comment:
+      "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Articula-se com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito.",
+    resume:
+      "Na elaboração do currículo, sugere-se que esta habilidade seja vinculada a projetos interdisciplinares, como os de intervenção social, que também mobilizam habilidades do campo da vida pública (no estudo da questão problema/tema, caso ela envolva o conhecimento de normas e leis, por exemplo) e de práticas de estudo e pesquisa (como a realização de enquetes para coletar dados a serem tratados e usados na formulação de argumentos para apoiar uma posição assumida). Pode, também, ser mobilizada em um debate deliberativo sobre alguma questão do convívio escolar e associada às habilidades próprias de situações orais como essa, que implicam tomada de notas, uso de recursos de entonação, ritmo, expressão facial e corporal etc. Nos currículos locais, para motivar o engajamento do adolescente, pode ser prevista uma progressão que, inicialmente, mobilize os alunos para problemas do seu entorno imediato — turma, escola, comunidade, bairro, cidade — passando para problemas da natureza mais ampla, mas que, ainda assim, guardem relação com questões locais. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF69LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object:
+      "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
+    skill:
+      "(EF69LP14) Formular perguntas e decompor, com a ajuda dos colegas e dos professores, tema/questão polêmica, explicações e ou argumentos relativos ao objeto de discussão para análise mais minuciosa e buscar em fontes diversas informações ou dados que permitam analisar partes da questão e compartilhá-los com a turma.",
+    comment:
+      "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Articula-se com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito. Como envolve a busca de informação em fontes variadas, também se conecta às habilidades de curadoria da informação, que implica saber diferenciar sites e/ou fontes confiáveis de não confiáveis, por exemplo.",
+    resume:
+      "Na elaboração do currículo, sugere-se que esta habilidade seja vinculada a projetos interdisciplinares, como os de intervenção social, que também mobilizam habilidades do campo da vida pública (no estudo da questão problema/tema, caso ela envolva o conhecimento de normas e leis, por exemplo) e de práticas de estudo e pesquisa (como a realização de enquetes para coletar dados a serem tratados e usados na formulação de argumentos para apoiar uma posição assumida). Pode também ser mobilizada em um debate deliberativo sobre alguma questão do convívio escolar e associada às habilidades próprias de situações orais como essa, que implicam tomada de notas, uso de recursos de entonação, ritmo, expressão facial e corporal etc. Nos currículos locais, para motivar o engajamento do adolescente pode ser prevista uma progressão que, inicialmente, mobilize os alunos para problemas do seu entorno imediato — turma, escola, comunidade, bairro, cidade — passando para problemas da natureza mais ampla, mas que, ainda assim, guardem relação com questões locais. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (EF69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF69LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object:
+      "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
+    skill:
+      "(EF69LP15) Apresentar argumentos e contra-argumentos coerentes, respeitando os turnos de fala, na participação em discussões sobre temas controversos e/ou polêmicos.",
+    comment:
+      "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Essa habilidade se articula com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito. Também é conexa a habilidades de identificação e análise dos movimentos argumentativos que se pode adotar em uma situação de argumentação (sustentar, refutar, negociar), dos tipos de argumentação (exemplificação, autoridade etc.) e dos recursos linguísticos usados na apresentação e articulação desses argumentos, bem como de modos de participação respeitosa e ética, em situações de debate.",
+    resume:
+      "Na elaboração do currículo, sugere-se que esta habilidade seja vinculada a projetos interdisciplinares, como os de intervenção social, que também mobilizam habilidades do campo da vida pública (no estudo da questão problema/tema, caso ela envolva o conhecimento de normas e leis, por exemplo) e de práticas de estudo e pesquisa (como a realização de enquetes para coletar dados a serem tratados e usados na formulação de argumentos para apoiar uma posição assumida). Pode também ser mobilizada em um debate deliberativo sobre alguma questão do convívio escolar e associada às habilidades próprias de situações orais como essa, que implicam tomada de notas, uso de recursos de entonação, ritmo, expressão facial e corporal etc. Nos currículos locais, para motivar o engajamento do adolescente pode ser prevista uma progressão que, inicialmente, mobilize os alunos para problemas do seu entorno imediato — turma, escola, comunidade, bairro, cidade — passando para problemas da natureza mais ampla, mas que, ainda assim, guardem relação com questões locais. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF69AR15), (EF69AR33), da Arte; e (EF67EF17), da Educação Física, no que se refere à compreensão crítica de diferentes pontos de vista sobre temas controversos e de relevância social.",
+  },
+  {
+    id: "EF69LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Construção composicional",
+    skill:
+      "(EF69LP16) Analisar e utilizar as formas de composição dos gêneros jornalísticos da ordem do relatar, tais como notícias (pirâmide invertida no impresso X blocos noticiosos hipertextuais e hipermidiáticos no digital, que também pode contar com imagens de vários tipos, vídeos, gravações de áudio etc.), da ordem do argumentar, tais como artigos de opinião e editorial (contextualização, defesa de tese/opinião e uso de argumentos) e das entrevistas: apresentação e contextualização do entrevistado e do tema, estrutura pergunta e resposta etc.",
+    comment:
+      "O foco desta habilidade está no estudo da forma de composição dos gêneros jornalísticos narrativos e argumentativos, assim como de entrevistas. Implica relacionar as formas de composição do gênero mencionadas na habilidade às especificidades do campo de atuação em que circulam, assim como aos temas e finalidades dos gêneros e às peculiaridades da mídia em que são publicadas.",
+    resume:
+      "Na elaboração do currículo, recomenda-se propor, ao longo dos anos, um estudo baseado na comparação entre textos do mesmo gênero e de gêneros distintos. No primeiro caso, a intenção é propiciar a compreensão do que é típico do gênero em estudo. No segundo,  pretende-se o estabelecimento de semelhanças, o que permite tanto a reiteração das características identificadas no momento anterior, quanto o reconhecimento de características específicas, o que remete às possibilidades linguístico-textuais e ao estilo do autor. O desenvolvimento da habilidade requer práticas de leitura, produção e análise de textos, nas quais seja possível relacionar as formas de composição do gênero mencionadas às especificidades do campo de atuação em que circulam,  aos temas e finalidades dos gêneros e às peculiaridades da mídia em que são publicadas. A progressão pode se dar tanto pelo modo de tratamento do conteúdo (por frequentação ou para aprofundamento) quanto pela complexidade dos textos previstos para as práticas de leitura e produção. Sugere-se um trabalho colaborativo (coletivo mediado pelo professor, e em grupo/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF69LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Estilo",
+    skill:
+      "(EF69LP17) Perceber e analisar os recursos estilísticos e semióticos dos gêneros jornalísticos e publicitários, os aspectos relativos ao tratamento da informação em notícias, como a ordenação dos eventos, as escolhas lexicais, o efeito de imparcialidade do relato, a morfologia do verbo, em textos noticiosos e argumentativos, reconhecendo marcas de pessoa, número, tempo, modo, a distribuição dos verbos nos gêneros textuais (por exemplo, as formas de pretérito em relatos; as formas de presente e futuro em gêneros argumentativos; as formas de imperativo em gêneros publicitários), o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados (tempo verbal, jogos de palavras, metáforas, imagens).",
+    comment:
+      "Esta é uma habilidade bastante complexa, cujo foco são as características, o funcionamento e os recursos — linguísticos e semióticos — próprios de gêneros jornalísticos narrativos e argumentativos. Envolve, ainda, duas operações distintas e sucessivas: perceber e analisar os efeitos de sentido produzidos pelos recursos linguísticos e semióticos mencionados, assim como pelas estratégias persuasivas em jogo, de modo que se possa identificar intencionalidades variadas presentes em textos desses gêneros.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento da atividade venha sempre associado a práticas de leitura e/ou produção de textos dos gêneros jornalísticos e publicitários previstos. É possível desmembrar a habilidade, ainda, nas duas operações implicadas (perceber/analisar), assim como nos gêneros (jornalísticos/publicitários) e/ou nos recursos linguísticos e semióticos neles envolvidos. O desenvolvimento desta habilidade só pode se fazer, de forma adequada, no interior de atividades de leitura e/ou produção de textos desses gêneros, planejadas de forma a garantir que todos os vetores referidos estejam não só contemplados, mas articulados entre si. Esses mesmos fatores podem pautar a progressão curricular, combinados com outros, como o grau de complexidade dos gêneros e textos programados e o grau de autonomia que se pretende levar o aluno a atingir em cada etapa. A sistematização e o ensino da terminologia técnica só são recomendados se ocorrerem depois da compreensão do aspecto estudado.",
+  },
+  {
+    id: "EF69LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Estilo",
+    skill:
+      "(EF69LP18) Utilizar, na escrita/reescrita de textos argumentativos, recursos linguísticos que marquem as relações de sentido entre parágrafos e enunciados do texto e operadores de conexão adequados aos tipos de argumento e à forma de composição de textos argumentativos, de maneira a garantir a coesão, a coerência e a progressão temática nesses textos (“primeiramente, mas, no entanto, em primeiro/segundo/terceiro lugar, finalmente, em conclusão” etc.).",
+    comment:
+      'A habilidade envolve o uso de recursos textuais que estabeleçam relações adequadas entre as partes do texto, de modo a conferir-lhe legibilidade e tratamento adequado do conteúdo (discussão da questão polêmica, posicionamento assumido e razões apresentadas para tanto). Esta habilidade é necessária para estabelecer-se a progressão e a unidade temática — o "fio da meada" — do texto, assim como sua coesão e coerência.',
+    resume:
+      'Na elaboração do currículo, é importante prever situações de revisão processual e final do texto, para avaliar: (a) se as expressões utilizadas para ligar trechos do texto garantem o estabelecimento das relações necessárias para a compreensão adequada do que se quer dizer; (b) se a progressão das ideias garante que não se perca o "fio da meada" do conteúdo temático. A progressão pode se dar pela complexidade do texto e do gênero, pelo grau de autonomia do aluno ao realizar a atividade e, especialmente por se tratar de habilidade que abrange do 6º ao 9º ano, pelo tratamento dado ao conteúdo, que pode ser por frequentação ou para aprofundamento.',
+  },
+  {
+    id: "EF69LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Efeito de sentido",
+    skill:
+      "(EF69LP19) Analisar, em gêneros orais que envolvam argumentação, os efeitos de sentido de elementos típicos da modalidade falada, como a pausa, a entonação, o ritmo, a gestualidade e expressão facial, as hesitações etc.",
+    comment:
+      "Trata-se de habilidade que consiste em analisar os recursos típicos da fala do ponto de vista dos efeitos de sentido que, em uma dada situação comunicativa, podem provocar sobre a argumentação pretendida. Requer a observação dos recursos linguísticos em jogo e dos efeitos de sentido que produzem em diferentes situações de comunicação.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que o estudo do discurso oral implica a criação de condições que o possibilitem, como: gravações em vídeo para serem analisadas; discussão coletiva a respeito das impressões de cada aluno a respeito dos efeitos de sentido produzidos pelos elementos empregados na fala; participação em situações comunicativas orais diversas, com o intuito de estudar a performance do enunciador. A progressão pode se dar: (a) pela complexidade do texto e do gênero; (b) pelo grau de autonomia do aluno ao realizar as atividades; (c) pelo tratamento dado ao conteúdo, que pode ser por frequentação ou para aprofundamento.",
+  },
+  {
+    id: "EF69LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Reconstrução das condições de produção e circulação e adequação do texto à construção composicional e ao estilo de gênero\n(Lei, código, estatuto, código, regimento etc.)",
+    skill:
+      "(EF69LP20) Identificar, tendo em vista o contexto de produção, a forma de organização dos textos normativos e legais, a lógica de hierarquização de seus itens e subitens e suas partes: parte inicial (título – nome e data – e ementa), blocos de artigos (parte, livro, capítulo, seção, subseção), artigos (caput e parágrafos e incisos) e parte final (disposições pertinentes à sua implementação) e analisar efeitos de sentido causados pelo uso de vocabulário técnico, pelo uso do imperativo, de palavras e expressões que indicam circunstâncias, como advérbios e locuções adverbiais, de palavras que indicam generalidade, como alguns pronomes indefinidos, de forma a poder compreender o caráter imperativo, coercitivo e generalista das leis e de outras formas de regulamentação.",
+    comment:
+      "Esta habilidade refere-se ao reconhecimento das especificidades dos textos normativos e legais, marcados por um conteúdo de caráter coercitivo ou normativo: como se organizam? que recursos linguísticos são comuns nesses gêneros de textos? Além da presença de verbos no imperativo, advérbios ou locuções, pode ser observado o uso de verbos e substantivos que trazem uma carga semântica com esse caráter, como dever/poder/ser, obrigação/direito/garantia etc.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que, para desenvolver esta habilidade, é importante reconhecer as especificidades da esfera jurídica em que os textos mencionados são produzidos e circulam. Seria pertinente prever, ao longo de todo o segundo segmento, um estudo sistemático e progressivo sobre o campo da vida pública: Quem são os atores envolvidos? Quais os interesses dessa esfera? Que gêneros do discurso são produzidos nessa esfera? Quais suas finalidades de contratos, leis, regulamentos, estatutos, autorização de funcionamento, medida provisória, editais, dentre outros gêneros? De modo geral, são gêneros que normatizam e regulamentam direitos e deveres do cidadão nos mais variados papéis sociais e saber ler esses textos é fundamental para a vida pública.",
+  },
+  {
+    id: "EF69LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object: "Apreciação e réplica",
+    skill:
+      "(EF69LP21) Posicionar-se em relação a conteúdos veiculados em práticas não institucionalizadas de participação social, sobretudo àquelas vinculadas a manifestações artísticas, produções culturais, intervenções urbanas e práticas próprias das culturas juvenis que pretendam denunciar, expor uma problemática ou “convocar” para uma reflexão/ação, relacionando esse texto/produção com seu contexto de produção e relacionando as partes e semioses presentes para a construção de sentidos.",
+    comment:
+      "Esta habilidade supõe um trabalho de reconhecimento dessas práticas no entorno, na região e/ou em localidades remotas, bem como de análise das suas especificidades por meio do estudo dos recursos das diferentes linguagens em que se constituem os gêneros envolvidos, o que dará subsídios ao aluno para formar opiniões sobre seus conteúdos. Por exemplo: o grafitar, como uma prática de letramento, se caracteriza pelo quê? Que recursos utiliza e como pode usá-los para fazer a crítica?",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que o desenvolvimento dessa habilidade pode favorecer a participação dos jovens em movimentos de bairros, centros culturais comunitários etc., que promovem práticas culturais locais que se constituem como formas de resistência e de defesa de direitos de diferentes naturezas. Exemplos dessas manifestações são os saraus, as rodas de rap ou as batalhas de slam que acontecem nas periferias, cujo objetivo é promover o direito à cultura, em que se leem poemas, crônicas e se cantam raps de autoria, com conteúdos críticos em relação a algum aspecto da realidade. É recomendável que a escola acolha, problematize e legitime essas práticas e favoreça o empoderamento dos jovens para uma atuação cada vez mais qualificada.",
+  },
+  {
+    id: "EF69LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object: "Textualização, revisão e edição",
+    skill:
+      "(EF69LP22) Produzir, revisar e editar textos reivindicatórios ou propositivos sobre problemas que afetam a vida escolar ou da comunidade, justificando pontos de vista, reivindicações e detalhando propostas (justificativa, objetivos, ações previstas etc.), levando em conta seu contexto de produção e as características dos gêneros em questão.",
+    comment:
+      "Relacionada às habilidades (EF67LP19) e (EF89LP21), esta habilidade se refere à realização de uma investigação das necessidades da escola e/ou da comunidade para levantamento de questões, prioridades e problemas relevantes que levarão à produção colaborativa de textos reivindicatórios. Essa investigação fornecerá elementos para planejar ações e dará contexto para as produções de textos. As habilidades relativas à produção de textos argumentativos também são mobilizadas.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar que a prática de reivindicar direitos ou propor soluções para problemas favorece o engajamento dos/as alunos/as em questões de interesse público, em especial do seu entorno imediato. A implantação de projetos de intervenção pode favorecer essa prática e possibilita o desenvolvimento dessa habilidade em contextos significativos para os/as alunos/as. Projetos que integrem as diferentes áreas mobilizam uma gama de conhecimentos e habilidades, potencializando aprendizagens. Como já sinalizado em outros momentos, garantir tempos e espaços para o planejamento integrado é uma forma de viabilizar a elaboração de projetos dessa natureza. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF69LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object: "Textualização, revisão e edição",
+    skill:
+      "(EF69LP23) Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão.",
+    comment:
+      "Esta habilidade supõe a escrita colaborativa de textos normativos diretamente relacionados às práticas escolares, com seus atores previstos. Escritas dessa natureza implicam uma atuação protagonista dos/as alunos/as na apropriação do espaço escolar em diferentes dimensões e favorecem uma participação que envolve direitos e responsabilidades.",
+    resume:
+      "Na elaboração do currículo, recomenda-se incorporar práticas como assembleias de alunos com caráter deliberativo e formação de grupos de trabalho para organização de eventos, como os citados na descrição das habilidades. Essas práticas também favorecem vivências de leitura e de produção de textos variados, como atas de reunião, estatutos e regulamentos.Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados. Há, ainda, oportunidade de trabalho interdisciplinar com a habilidade (EF67EF09), da Educação Física, no que se refere à compreensão e contribuição com textos normativos e regramentos de convívio que viabilizem a participação de todos na prática de exercícios físicos.",
+  },
+  {
+    id: "EF69LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object: "Discussão oral",
+    skill:
+      "(EF69LP24) Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo.",
+    comment:
+      "Esta habilidade supõe a participação em situações (como discussões coletivas e em grupos, debates) em que esteja em foco analisar casos sob a ótica da legalidade e do direito. É pressuposto dessas situações o conhecimento e a compreensão de textos legais e normativos que servirão tanto para analisar o caso quanto para elaborar argumentos sólidos que apoiem a sua análise.",
+    resume:
+      "Na elaboração do currículo, recomenda-se que todas as situações de interação oral nesse campo (vida pública) sejam vinculadas a projetos interdisciplinares, para garantir a abordagem de maior número de documentos normativos e reguladores. Diante da lista aberta desses documentos, é possível propor projetos diferenciados para cada ano. Por exemplo, em uma discussão sobre meio ambiente e consumismo, pode-se propor a análise de uma propaganda, associando-a à leitura do Código Nacional do Consumidores, ao ECA e ao Código Brasileiro de Auto-regulamentação Publicitária. Propor exercícios de retextualização desses textos, como a reescrita de um artigo de lei em linguagem informal, pode colaborar para a  interpretação deles. É recomendável que o ECA seja um documento revisitado ao longo dos quatro anos, dada a sua relevância. Há, ainda, oportunidade de trabalho interdisciplinar com a habilidade (EF67EF09), da Educação Física, no que se refere à compreensão e contribuição com textos normativos e regramentos de convívio que viabilizam a participação de todos na prática de exercícios físicos.",
+  },
+  {
+    id: "EF69LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object: "Discussão oral",
+    skill:
+      "(EF69LP25) Posicionar-se de forma consistente e sustentada em uma discussão, assembleia, reuniões de colegiados da escola, de agremiações e outras situações de apresentação de propostas e defesas de opiniões, respeitando as opiniões contrárias e propostas alternativas e fundamentando seus posicionamentos, no tempo de fala previsto, valendo-se de sínteses e propostas claras e justificadas.",
+    comment:
+      "Esta habilidade supõe a participação em diferentes situações orais, em que se  espera o posicionamento crítico em relação à questão em foco. O uso de recursos linguísticos e semióticos (outras linguagens), como de palavras que explicitam a posição assumida (se de oposição ou negociação, por exemplo) e o uso de entonação que deixe em evidência a apreciação do falante em relação ao que é dito são algumas das competências mobilizadas.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que, em participações face a face ou a distância, mediadas pela tecnologia, em situações variadas, como discussões, participação em debates, palestras e reuniões, enquanto o outro fala, quem está na escuta analisa o que é dito e planeja uma resposta imediata. Articular essa habilidade com as que sugerem o procedimento de tomada de notas, começando por fazê-lo com material gravado, que pode ser revisto indefinidamente, para depois fazê-lo no ato da interação, favorecerá uma resposta mais qualificada de quem escuta.",
+  },
+  {
+    id: "EF69LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object: "Registro",
+    skill:
+      "(EF69LP26) Tomar nota em discussões, debates, palestras, apresentação de propostas, reuniões, como forma de documentar o evento e apoiar a própria fala (que pode se dar no momento do evento ou posteriormente, quando, por exemplo, for necessária a retomada dos assuntos tratados em outros contextos públicos, como diante dos representados).",
+    comment:
+      "Esta habilidade supõe o trabalho com a tomada de notas para diferentes fins: (1) para alimentar outras produções escritas com a finalidade de documentar processos e resultados de reuniões, tais como atas e notas de reunião; (2) para registro pessoal, visando a reflexão sobre o registrado; (3) como apoio à fala durante a participação em situações orais como discussões, debates, seminários.",
+    resume:
+      "Na elaboração do currículo, é válido levar em consideração que a tomada de notas como registro é considerada um gênero de apoio à compreensão do ouvido, assistido. Como procedimento, está vinculada a diferentes situações, em qualquer campo de atuação. É comum em práticas como debates, palestras, reuniões, aulas e suas variantes em outras mídias. Supõe a capacidade de identificar informações relevantes e sintetizá-las em notas, de modo coerente, garantindo a possibilidade de retomada das ideias pelo(a) seu(sua) autor(a). Pode ser proposta uma progressão que indique tanto a variação dos objetivos da tomada de notas, quanto a situação em que ela é solicitada — se a partir de materiais gravados ou se durante as interações (reuniões, aula etc.).",
+  },
+  {
+    id: "EF69LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object:
+      "Análise de textos legais/normativos, propositivos e reivindicatórios",
+    skill:
+      "(EF69LP27) Analisar a forma composicional de textos pertencentes a gêneros normativos/ jurídicos e a gêneros da esfera política, tais como propostas, programas políticos (posicionamento quanto a diferentes ações a serem propostas, objetivos, ações previstas etc.), propaganda política (propostas e sua sustentação, posicionamento quanto a temas em discussão) e textos reivindicatórios: cartas de reclamação, petição (proposta, suas justificativas e ações a serem adotadas) e suas marcas linguísticas, de forma a incrementar a compreensão de textos pertencentes a esses gêneros e a possibilitar a produção de textos mais adequados e/ou fundamentados quando isso for requerido.",
+    comment:
+      "Trata-se de habilidade de leitura para estudo das especificidades dos textos normativos jurídicos e reivindicatórios, visando à produção de textos dessa natureza, essenciais para a vida pública, especialmente em situações de defesa ou de debates sobre direitos do cidadão. Supõe-se o estudo desses gêneros no que diz respeito ao conteúdo — como pode se organizar e ser construído com os recursos linguísticos adequados, tendo em vista os objetivos pretendidos.",
+    resume:
+      "Na elaboração do currículo, é recomendável que o desenvolvimento de leitura e produção de textos dessa natureza tenha como contexto inicial as produções e questões locais. Já que esta habilidade é proposta para todos os anos, é possível, por exemplo, prever uma progressão para que a cada ano se abordem programas políticos de uma esfera diferente. Também para os textos reivindicatórios, é possível selecionar um gênero para cada ano, procurando articulá-los aos textos normativos jurídicos  trabalhados. Por exemplo, a petição pode estar associada a um trabalho com propostas e programas políticos de partidos que estão no poder: depois de analisar um programa político, pode-se chegar à constatação de que é necessário organizar uma petição pública para exercer pressão junto aos governantes quanto a alguma ação prometida e não cumprida, de acordo com o programa político. Cabe enfatizar, ainda, que a natureza dos textos reivindicatórios mobilizará habilidades propostas no campo jornalístico/midiático, visto que esses textos supõem o uso da argumentação.",
+  },
+  {
+    id: "EF69LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object: "Modalização",
+    skill:
+      "(EF69LP28) Observar os mecanismos de modalização adequados aos textos jurídicos, as modalidades deônticas, que se referem ao eixo da conduta (obrigatoriedade/permissibilidade) como, por exemplo: Proibição: “Não se deve fumar em recintos fechados.”; Obrigatoriedade: “A vida tem que valer a pena.”; Possibilidade: “É permitido a entrada de menores acompanhados de adultos responsáveis”, e os mecanismos de modalização adequados aos textos políticos e propositivos, as modalidades apreciativas, em que o locutor exprime um juízo de valor (positivo ou negativo) acerca do que enuncia. Por exemplo: “Que belo discurso!”, “Discordo das escolhas de Antônio.” “Felizmente, o buraco ainda não causou acidentes mais graves.”",
+    comment:
+      'Esta habilidade amplia a (EF89LP16). Além de identificar recursos empregados em textos dos gêneros citados que representam valores e posições, abrange modalidades deônticas, como "É proibido pisar na grama", "Saia, agora!", "Se quiser, pode usar o meu carro".  Envolve reconhecer os recursos linguísticos empregados nesses casos, compreender os efeitos de sentido produzidos por eles e analisar a coerência desses efeitos tanto com as intenções de significação pretendidas, quanto com a especificidade do gênero, considerando o campo de atuação, finalidade e espaço de circulação.',
+    resume:
+      "Na elaboração do currículo, tal como apontado para a habilidade (EF89LP16), sugere-se que o desenvolvimento se dê tanto por meio da leitura de estudo, quanto das atividades de revisão. A progressão pode se dar: (a) pela complexidade do texto e do gênero; (b) pelo tipo de tratamento didático — por frequentação (aos gêneros/textos) ou para aprofundamento; (c) pelo grau de autonomia do aluno (em colaboração — coletiva, em grupos, em duplas — e de modo autônomo); (d) e, especialmente por se tratar de habilidade que abrange do 6º ao 9º ano, pelo tratamento dado ao conteúdo — mais ou menos complexo, mais ou menos aprofundado, mais ou menos implicado à realidade cotidiana do aluno. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF67EF09), da Educação Física, no que se refere a compreensão e contribuição com textos normativos e regramentos de convívio que viabilizem a participação de todos na prática de exercícios físicos.",
+  },
+  {
+    id: "EF69LP29",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object:
+      "Reconstrução das condições de produção e recepção dos textos e adequação do texto à construção composicional e ao estilo de gênero",
+    skill:
+      "(EF69LP29) Refletir sobre a relação entre os contextos de produção dos gêneros de divulgação científica – texto didático, artigo de divulgação científica, reportagem de divulgação científica, verbete de enciclopédia (impressa e digital), esquema, infográfico (estático e animado), relatório, relato multimidiático de campo, podcasts e vídeos variados de divulgação científica etc. – e os aspectos relativos à construção composicional e às marcas linguística características desses gêneros, de forma a ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    comment:
+      "Esta habilidade promove o desenvolvimento de capacidades de leitura relativas à compreensão e apreciação dos textos, considerando o contexto de produção de textos de divulgação científica: interlocutores envolvidos, intencionalidades relativas ao gênero selecionado e apreciações implícitas e explícitas sobre o tema tratado, observáveis pela análise dos recursos das linguagens utilizadas. Esta habilidade favorece habilidades de produção de textos dessa esfera.",
+    resume:
+      "Na elaboração do currículo, para desenvolver esta habilidade, é altamente recomendável envolver diferentes áreas de conhecimento, uma vez que cada uma delas possui terminologia e recursos linguísticos próprios. Ler um infográfico de uma reportagem sobre uma descoberta arqueológica, por exemplo, é diferente de ler um texto do mesmo gênero sobre a variação do IDH ou do custo de vida de uma determinada localidade ao longo de um período específico. O fato de a natureza dos conhecimentos ser diversa, no exercício de uma inferência, por exemplo, leva o aluno a analisar (na leitura) ou mobilizar (na produção) recursos de linguagens comumente usados nas diferentes áreas de conhecimentos.",
+  },
+  {
+    id: "EF69LP30",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF69LP30) Comparar, com a ajuda do professor, conteúdos, dados e informações de diferentes fontes, levando em conta seus contextos de produção e referências, identificando coincidências, complementaridades e contradições, de forma a poder identificar erros/imprecisões conceituais, compreender e posicionar-se criticamente sobre os conteúdos e informações em questão.",
+    comment:
+      "A habilidade implica mobilizar/desenvolver estratégias e ferramentas de curadoria: busca e seleção de fontes confiáveis, uso de recursos de apoio à compreensão — como tomada de notas, produção de esquemas etc. —, bem como análise das informações e generalizações, visando à formulação de apreciações éticas e estéticas expressas em textos de gêneros diversos (comentários, reportagens de divulgação, resenhas críticas etc.).",
+    resume:
+      "Na elaboração do currículo, é importante considerar que, no campo das práticas de estudo e pesquisa, comparar informações entre diferentes fontes é essencial para o desenvolvimento das diversas dimensões do pensamento científico. O trabalho com projetos integrados interdisciplinares poderá potencializar o desenvolvimento dessas dimensões. É possível propor a progressão no grau de ajuda dada pelo professor (com vistas à construção da autonomia do aluno) e na complexidade do que comparar (quantidade e tipos de fontes, tipos de gêneros a comparar — dos predominantemente verbais aos multimidiáticos), que procedimentos, estratégias e ferramentas usar, considerando os gêneros selecionados para o ano, e em que gêneros os alunos tecerão suas apreciações a cada ano.",
+  },
+  {
+    id: "EF69LP31",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object: "Apreciação e réplica",
+    skill:
+      "(EF69LP31) Utilizar pistas linguísticas – tais como “em primeiro/segundo/terceiro lugar”, “por outro lado”, “dito de outro modo”, isto é”, “por exemplo” – para compreender a hierarquização das proposições, sintetizando o conteúdo dos textos.",
+    comment:
+      "A observação das pistas linguísticas referidas na habilidade pode favorecer a percepção das informações, ideias e/ou argumentos que o autor considera mais relevantes, bem como a identificação de ideias centrais e periféricas, orientando na produção de resumos, esquemas, gráficos etc.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que, embora esta habilidade figure no campo das práticas de estudo e pesquisa, na BNCC, também é requerida na leitura de textos de outros campos, em especial os dissertativo-argumentativos. Nesse sentido, pode-se propor o seu desenvolvimento do sexto ao nono ano. A articulação com a leitura de gêneros e textos de graus crescentes de complexidade pode ser um bom critério para a progressão curricular.",
+  },
+  {
+    id: "EF69LP32",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object:
+      "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
+    skill:
+      "(EF69LP32) Selecionar informações e dados relevantes de fontes diversas (impressas, digitais, orais etc.), avaliando a qualidade e a utilidade dessas fontes, e organizar, esquematicamente, com ajuda do professor, as informações necessárias (sem excedê-las) com ou sem apoio de ferramentas digitais, em quadros, tabelas ou gráficos.",
+    comment:
+      "A habilidade implica mobilizar/desenvolver estratégias e ferramentas de curadoria: busca e seleção de fontes confiáveis, uso de recursos de apoio à compreensão — como tomada de notas, produção de esquemas etc. —, bem como análise das informações e generalizações, visando à formulação de apreciações éticas e estéticas expressas em textos de gêneros diversos (comentários, reportagens de divulgação, resenhas críticas etc.).",
+    resume:
+      "Na elaboração do currículo, é importante levar em conta que, no campo das práticas de estudo e pesquisa, comparar informações entre diferentes fontes é essencial para o desenvolvimento das diversas dimensões do pensamento científico. O trabalho com projetos integrados interdisciplinares poderá potencializar o desenvolvimento dessas dimensões. É possível prever a progressão no grau de ajuda dada pelo professor (com vistas à construção da autonomia do aluno) e na complexidade do que comparar (quantidade e tipos de fontes, tipos de gêneros a comparar — dos predominantemente verbais aos multimidiáticos), que procedimentos, estratégias e ferramentas usar, considerando os gêneros selecionados para o ano, e em que gêneros os alunos tecerão suas apreciações a cada ano.Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF06LI09), no que se refere a identificar informações precisas em textos.",
+  },
+  {
+    id: "EF69LP33",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object:
+      "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
+    skill:
+      "(EF69LP33) Articular o verbal com os esquemas, infográficos, imagens variadas etc. na (re)construção dos sentidos dos textos de divulgação científica e retextualizar do discursivo para o esquemático – infográfico, esquema, tabela, gráfico, ilustração etc. – e, ao contrário, transformar o conteúdo das tabelas, esquemas, infográficos, ilustrações etc. em texto discursivo, como forma de ampliar as possibilidades de compreensão desses textos e analisar as características das multissemioses e dos gêneros em questão.",
+    comment:
+      'Esta habilidade supõe relacionar as partes verbais (texto verbal), não-verbais (imagens) e híbridas (imagens e textos verbais de um infográfico, por exemplo) que compõem um texto de divulgação, identificando a relação de sentidos que estabelecem entre as partes. Um gráfico, por exemplo, pode complementar uma informação dada pelo texto escrito, ou um esquema ou uma ilustração podem exemplificar a informação verbal. Também supõe o uso dessas linguagens não-verbais como formas de "retextualizar" o dito verbalmente. Ou seja, sugere um trabalho em que o aluno "transforme" em gráfico, por exemplo, um texto verbal e vice-versa, o que possibilita se apropriar de diferentes formas de dizer o que pretende recorrendo a diferentes linguagens.',
+    resume:
+      "Na elaboração do currículo, é recomendável propor uma progressão para estudo das formas de retextualizar, definindo, por exemplo a retextualização de tabelas e gráficos simples, para depois passar para gráficos e infográficos mais complexos. Pode-se iniciar com exercícios pequenos de retextualização de tabelas e depois de infográficos simples que compõem reportagens de divulgação para textos escritos, de modo a integrá-los na reportagem apenas na linguagem verbal e vice-versa. Esse exercício pode ir se complexificando ao longo dos anos, tanto em relação à quantidade de informação concentrada em um infográfico quanto na complexidade dos textos selecionados para a leitura. Como se trata de lidar com textos de divulgação científica, um desenvolvimento articulado com as diferentes áreas de conhecimento pode potencializar as aprendizagens do aluno.",
+  },
+  {
+    id: "EF69LP34",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Leitura",
+    object:
+      "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
+    skill:
+      "(EF69LP34) Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e",
+    comment:
+      'Esta habilidade refere-se ao uso de estratégias e procedimentos envolvidos na leitura para estudo (grifar, anotar nas margens etc.) que se desdobram na produção de diferentes tipos de textos, conhecidos na área como "gêneros de apoio à compreensão" (resumos, quadros, esquemas, resenhas, paráfrases etc.). As operações envolvidas na produção de um resumo a partir de uma artigo científico, por exemplo, são resultado de um exercício de retextualização.',
+    resume:
+      "Na elaboração do currículo, é recomendável propor uma progressão tanto para o ensino e a aprendizagem de procedimentos de leitura para estudo e das formas de retextualizar o que se lê (com a produção dos gêneros de apoio à compreensão) quanto para a complexidade dos textos selecionados para a leitura.",
+  },
+  {
+    id: "EF69LP35",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos",
+    object:
+      "Consideração das condições de produção de textos de divulgação científica \nEstratégias de escrita",
+    skill:
+      "(EF69LP35) Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados.",
+    comment:
+      "Esta habilidade se refere ao planejamento da produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros, considerando as especificidades dos textos de divulgação científica. Propõe projetos interdisciplinares.",
+    resume:
+      "Na elaboração do currículo, a progressão de gêneros poderá ser horizontal ou vertical, observando o grau de complexidade que pode estar relacionado (1) ao nível de aprofundamento da pesquisa, com busca de mais ou menos fontes para um tratamento do objeto de uma ou de diferentes perspectivas e uso de mais gêneros de apoio (entrevistas, roteiros etc.); (2) à quantidade de linguagens usadas na produção de sentidos. Por exemplo, na hipótese de uma progressão na vertical, pode-se eleger a reportagem de divulgação científica como um gênero a ser trabalhado no 8º e 9º anos, optando por uma produção impressa e/ou televisiva no 8º ano e uma produção para o ambiente virtual, com hiperlinks e infográficos com algum grau de interatividade, no 9º.",
+  },
+  {
+    id: "EF69LP36",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos",
+    object: "Estratégias de escrita: textualização, revisão e edição",
+    skill:
+      "(EF69LP36) Produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigos de divulgação científica, verbete de enciclopédia, infográfico, infográfico animado, podcast ou vlog científico, relato de experimento, relatório, relatório multimidiático de campo, dentre outros, considerando o contexto de produção e as regularidades dos gêneros em termos de suas construções composicionais e estilos.",
+    comment:
+      "Esta habilidade se refere à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros, considerando as especificidades dos textos de divulgação científica. Propõe projetos interdisciplinares.",
+    resume:
+      "Na elaboração do currículo, a progressão de gêneros poderá ser horizontal ou vertical, observando o grau de complexidade que pode estar relacionado (1) ao nível de aprofundamento da pesquisa, com busca de mais ou menos fontes para um tratamento do objeto de uma ou de diferentes perspectivas e uso de mais gêneros de apoio (entrevistas, roteiros etc.); (2) à quantidade de linguagens usadas na produção de sentidos. Por exemplo, na hipótese de uma progressão na vertical, pode-se eleger a reportagem de divulgação científica como um gênero a ser trabalhado no 8º e 9º anos, optando por uma produção impressa e/ou televisiva, no 8º ano, e uma produção para o ambiente virtual, com hiperlinks e infográficos com algum grau de interatividade, no 9º. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF69LP37",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Produção de textos",
+    object: "Estratégias de produção",
+    skill:
+      "(EF69LP37) Produzir roteiros para elaboração de vídeos de diferentes tipos (vlog científico, vídeo-minuto, programa de rádio, podcasts) para divulgação de conhecimentos científicos e resultados de pesquisa, tendo em vista seu contexto de produção, os elementos e a construção composicional dos roteiros.",
+    comment:
+      "Esta habilidade se refere à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros. Propõe projetos interdisciplinares.",
+    resume:
+      "Na elaboração do currículo, a progressão de gêneros poderá ser horizontal ou vertical, observando o grau de complexidade que pode estar relacionado (1) ao nível de aprofundamento da pesquisa, com busca de mais ou menos fontes para um tratamento do objeto de uma ou de diferentes perspectivas e uso de mais gêneros de apoio (entrevistas, roteiros etc.); (2) à quantidade de linguagens usadas na produção de sentidos. Por exemplo, na hipótese de uma progressão na vertical, pode-se eleger a reportagem de divulgação científica como um gênero a ser trabalhado no 8º e 9º anos, optando por uma produção impressa e/ou televisiva, no 8º ano, e uma produção para o ambiente virtual, com hiperlinks e infográficos com algum grau de interatividade, no 9º. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF69LP38",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object:
+      "Estratégias de produção: planejamento e produção de apresentações orais",
+    skill:
+      "(EF69LP38) Organizar os dados e informações pesquisados em painéis ou slides de apresentação, levando em conta o contexto de produção, o tempo disponível, as características do gênero apresentação oral, a multissemiose, as mídias e tecnologias que serão utilizadas, ensaiar a apresentação, considerando também elementos paralinguísticos e cinésicos e proceder à exposição oral de resultados de estudos e pesquisas, no tempo determinado, a partir do planejamento e da definição de diferentes formas de uso da fala – memorizada, com apoio da leitura ou fala espontânea.",
+    comment:
+      "Esta habilidade refere-se especificamente às etapas de planejamento, elaboração/preparação e realização de apresentações orais resultantes de pesquisas realizadas. Dá ênfase ao preparo do falante, em relação aos materiais que poderão funcionar como um apoio à audiência e/ou ao falante/apresentador, ajudando-o no encadeamento das ideias durante a realização da apresentação. Aprendizagens para o uso de aplicativos de apresentação devem ser previstas.",
+    resume:
+      "Na elaboração do currículo, é interessante lembrar que é parte do preparo de uma apresentação oral um ensaio com apoio do material preparado, de modo que o apresentador tenha ideia do tempo que gastará e dos recursos linguísticos e semióticos que usará em sua fala (como vai iniciar, como introduzirá cada dado, como finalizará, qual o ritmo e as entonações adequadas para prender a atenção da audiência, como se movimentará etc.). Na progressão, podem ser propostas apresentações iniciais breves, com apoio de texto a ser consultado/lido, até chegar às apresentações mais longas e elaboradas, com material de apoio à audiência mais sofisticado (com infográficos, vídeos etc.), com fala apoiada apenas no material oferecido à audiência, sem leitura da exposição, e, ainda, com previsão de participação da audiência/do público.",
+  },
+  {
+    id: "EF69LP39",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Oralidade",
+    object: "Estratégias de produção",
+    skill:
+      "(EF69LP39) Definir o recorte temático da entrevista e o entrevistado, levantar informações sobre o entrevistado e sobre o tema da entrevista, elaborar roteiro de perguntas, realizar entrevista, a partir do roteiro, abrindo possibilidades para fazer perguntas a partir da resposta, se o contexto permitir, tomar nota, gravar ou salvar a entrevista e usar adequadamente as informações obtidas, de acordo com os objetivos estabelecidos.",
+    comment:
+      "No contexto desta habilidade, diferentemente do que se verifica no campo jornalístico/midiático, a entrevista é mais um meio do que um fim. Nesse campo, em geral, o objetivo é usá-la como um instrumento para coletar dados no interior de uma pesquisa. Esse tipo de entrevista também envolve as etapas de planejamento (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de perguntas etc.) e de realização da entrevista.",
+    resume:
+      "Na elaboração do currículo, a progressão para o trabalho com as entrevistas, nos quatro anos, pode partir da definição de habilidades diferentes, começando por entrevistas com um profissional, para conhecer melhor o seu campo de atuação, numa apresentação para os colegas sobre a profissão do entrevistado, até chegar a entrevistas para coletar dados de um determinado grupo social, por meio da elaboração de enquetes (cujos resultados serão organizados em tabelas ou gráficos) ou roteiros mais elaborados que poderão fazer parte de artigos de divulgação, seminários etc. Vale ressaltar a importância de propor exercícios que simulem situações de entrevista em que os alunos sejam solicitados a propor novas perguntas a partir das respostas dadas, o que pode significar um material final mais rico. Há, aqui, oportunidade de trabalho interdisciplinar com a habilidade (EF07LI02), da Língua Inglesa, no que se refere à condução de entrevistas.",
+  },
+  {
+    id: "EF69LP40",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object:
+      "Construção composicional \nElementos paralinguísticos e cinésicos Apresentações orais",
+    skill:
+      "(EF69LP40) Analisar, em gravações de seminários, conferências rápidas, trechos de palestras, dentre outros, a construção composicional dos gêneros de apresentação – abertura/saudação, introdução ao tema, apresentação do plano de exposição, desenvolvimento dos conteúdos, por meio do encadeamento de temas e subtemas (coesão temática), síntese final e/ou conclusão, encerramento –, os elementos paralinguísticos (tais como: tom e volume da voz, pausas e hesitações – que, em geral, devem ser minimizadas –, modulação de voz e entonação, ritmo, respiração etc.) e cinésicos (tais como: postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia, modulação de voz e entonação, sincronia da fala com ferramenta de apoio etc.), para melhor performar apresentações orais no campo da divulgação do conhecimento.",
+    comment:
+      "O foco desta habilidade é a capacidade de analisar a construção composicional de gêneros de apresentação oral formal, com vistas à utilização desse conhecimento em apresentações próprias no campo da divulgação de conhecimento. Isso implica observação, reflexão e análise da organização geral de seminários, palestras ou conferências, tanto do ponto de vista linguístico quanto paralinguístico.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade, ao longo dos quatro anos em jogo, venha sempre associado ao uso de gravações de eventos como os mencionados. Recomenda-se que as atividades propostas: (a) articulem o estudo dos diferentes aspectos da construção composicional desses gêneros com sua adequação às intenções de significação em foco e à necessidade de compreensão do interlocutor; (b) prevejam e orientem as estratégias e técnicas de escuta atenta e de tomada de notas, necessárias à compreensão desses gêneros e à interação entre apresentador e ouvintes; (c) recomendem o uso da metalinguagem correspondente apenas depois de realizadas as atividades de compreensão, observação e análise. A progressão, tanto vertical quanto horizontal, pode tomar como critérios: (a) os diferentes elementos da construção composicional a serem estudados a cada momento; (b) a sequenciação entre escuta atenta, de um lado, e a análise de algum aspecto da construção composicional; (c) o grau de complexidade do gênero ou texto a ser analisado; (d) o nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF69LP41",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object: "Usar adequadamente ferramentas de apoio a apresentações orais",
+    skill:
+      "(EF69LP41) Usar adequadamente ferramentas de apoio a apresentações orais, escolhendo e usando tipos e tamanhos de fontes que permitam boa visualização, topicalizando e/ou organizando o conteúdo em itens, inserindo de forma adequada imagens, gráficos, tabelas, formas e elementos gráficos, dimensionando a quantidade de texto (e imagem) por slide, usando progressivamente e de forma harmônica recursos mais sofisticados como efeitos de transição, slides mestres, layouts personalizados etc.",
+    comment:
+      "Diretamente relacionada ao letramento digital e articulando oralidade e escrita, esta habilidade refere-se, fundamentalmente, ao emprego de aplicativos, como Powerpoint e Prezi, como suporte de apresentações orais (com textos condensados e em tópicos, imagens, gráficos, tabelas etc.) de estudos realizados nos diferentes componentes, por meio de práticas de apresentação oral que demandem o uso desses recursos.",
+    resume:
+      "Na elaboração do currículo, convém programar, para todos os anos, atividades de apresentação oral que envolvam o uso das ferramentas em foco. É importante que as ferramentas sejam utilizadas como recurso orientador da apresentação e não como simples reprodução da fala do apresentador. Recomenda-se que a seleção dos recursos de cada ferramenta seja orientada por sua adequação à especificidade da questão discutida, às intenções de significação do produtor e às possibilidades de compreensão do interlocutor. Sugere-se, ainda, que sejam consideradas outras ferramentas, como retroprojetor, cartazes e flipchart, por exemplo, não apenas para o caso de não haver recursos disponíveis para as ferramentas digitais, mas também porque podem ser adequadas ao trabalho: o registro de uma apresentação de grupos, após uma discussão coletiva, por exemplo, pode ser agilizado por meio de cartazes, páginas do flipchart ou transparências para um retroprojetor. Do ponto de vista da progressão, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Outros critérios: (a) o tipo de ferramenta utilizada e/ou os recursos previstos; (b) o grau de sofisticação dos recursos mobilizados; (c) o grau de complexidade e/ou formalidade das apresentações orais; (d) o nível de autonomia a ser atingido pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF69LP42",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object:
+      "Construção composicional e estilo Gêneros de divulgação científica",
+    skill:
+      "(EF69LP42) Analisar a construção composicional dos textos pertencentes a gêneros relacionados à divulgação de conhecimentos: título, (olho), introdução, divisão do texto em subtítulos, imagens ilustrativas de conceitos, relações, ou resultados complexos (fotos, ilustrações, esquemas, gráficos, infográficos, diagramas, figuras, tabelas, mapas) etc., exposição, contendo definições, descrições, comparações, enumerações, exemplificações e remissões a conceitos e relações por meio de notas de rodapé, boxes ou links; ou título, contextualização do campo, ordenação temporal ou temática por tema ou subtema, intercalação de trechos verbais com fotos, ilustrações, áudios, vídeos etc. e reconhecer traços da linguagem dos textos de divulgação científica, fazendo uso consciente das estratégias de impessoalização da linguagem (ou de pessoalização, se o tipo de publicação e objetivos assim o demandarem, como em alguns podcasts e vídeos de divulgação científica), 3ª pessoa, presente atemporal, recurso à citação, uso de vocabulário técnico/especializado etc., como forma de ampliar suas capacidades de compreensão e produção de textos nesses gêneros.",
+    comment:
+      "O foco desta habilidade é o estudo de recursos textuais e discursivos utilizados na elaboração de textos de divulgação de conhecimentos, bem como a sua aplicação em produções próprias. Sua formulação enfatiza a necessidade de articulação entre os recursos verbais e não verbais, na construção efetiva dos sentidos. Demanda observação dos recursos em foco para que se possa refletir a respeito deles.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar que esta habilidade abrange o estudo de recursos relativos: (a) à organização interna do texto verbal; (b) aos recursos paratextuais, como imagens, boxes, infográficos etc. É importante que o tratamento a ser dado a esses recursos seja de correlação, de complementaridade, focalizando-se que o sentido do texto é derivado da articulação entre eles, sem o que a compreensão do conteúdo temático pode resultar parcial, superficial ou até inadequada. Convém, ainda, que os currículos programem as atividades de leitura e produção de textos necessárias às análises visadas pela habilidade e que orientem o emprego da metalinguagem (terminologia gramatical), para que o seu emprego só se dê depois da compreensão do aspecto estudado. A progressão — tanto vertical quanto horizontal — pode tomar como critérios: (a) os aspectos da construção composicional a serem estudados a cada momento; (b) o foco na compreensão prévia ou na análise do texto do ponto de vista dos aspectos visados; (c) o grau de complexidade do gênero ou texto a ser analisado; (d) o nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF69LP43",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo das práticas de estudo e pesquisa",
+    unit: "Análise linguística/semiótica",
+    object: "Marcas linguísticas Intertextualidade",
+    skill:
+      "(EF69LP43) Identificar e utilizar os modos de introdução de outras vozes no texto – citação literal e sua formatação e paráfrase –, as pistas linguísticas responsáveis por introduzir no texto a posição do autor e dos outros autores citados (“Segundo X; De acordo com Y; De minha/nossa parte, penso/amos que”...) e os elementos de normatização (tais como as regras de inclusão e formatação de citações e paráfrases, de organização de referências bibliográficas) em textos científicos, desenvolvendo reflexão sobre o modo como a intertextualidade e a retextualização ocorrem nesses textos.",
+    comment:
+      "Esta habilidade articula leitura e produção de textos, visando modos de introduzir vozes em textos científicos produzidos pelos alunos. Envolve, ainda, duas operações distintas: identificar e utilizar. A identificação e o uso desses modos de citar terceiros têm a finalidade de evidenciar como o autor de textos científicos dialoga com as vozes que traz para seu texto (discordando ou concordando) e como as apresenta  em seu texto (em discurso direto ou indireto, por exemplo).",
+    resume:
+      "Na elaboração do currículo, convém considerar que esta habilidade está vinculada ao uso de tecnologia digital, visto que contempla também a preocupação com o aprendizado de elementos de normatização do texto científico (como incluir e formatar uma citação no texto, organização de referências bibliográficas) que comumente circula em ambientes virtuais ou, mesmo quando impresso, implica uma produção digitalizada. Assim, convém propor atividade colaborativa entre professores de Língua Portuguesa e de Informática (ou componente similar), bem como que orientem a escola no que diz respeito ao acesso e ao uso de computadores e aplicativos. A progressão no desenvolvimento desta habilidade pode apoiar-se: (a) no foco a ser dado a uma ou outra das duas operações envolvidas (identificar/utilizar); (b) na ênfase sobre uma ou outra das práticas associadas (leitura/produção); (c) no procedimento e/ou no recurso envolvido em citações (pistas linguísticas/elementos de normatização); (d) no grau de complexidade dos gêneros e textos previstos para esse estudo; (e) no nível de autonomia a ser atingido pelo aluno em cada etapa.",
+  },
+  {
+    id: "EF69LP44",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
+    skill:
+      "(EF69LP44) Inferir a presença de valores sociais, culturais e humanos e de diferentes visões de mundo, em textos literários, reconhecendo nesses textos formas de estabelecer múltiplos olhares sobre as identidades, sociedades e culturas e considerando a autoria e o contexto social e histórico de sua produção.",
+    comment:
+      "Essa habilidade se refere ao reconhecimento dos textos literários como parte do patrimônio cultural da humanidade, representativos de culturas e valores dos diferentes grupos sociais. Envolve, ainda, resgatar as condições de produção, circulação e recepção desses textos, para, a partir disso, associá-los a uma autoria, mobilizar conhecimentos de mundo e atribuir sentidos a eles. Seu desenvolvimento demanda a participação em práticas frequentes e sistemáticas de leitura de textos literários de diferentes gêneros, épocas e contextos culturais.",
+    resume:
+      "Recomenda-se que os currículos locais prevejam, ao longo dos quatro anos finais do ensino fundamental, a organização sistemática de práticas de leitura de gêneros e textos literários os mais diversos, para que a experiência necessária ao desenvolvimento dessa habilidade se torne possível. Destaca-se a importância de a escola abrir-se, acolher e legitimar produtos culturais representativos de diferentes grupos sociais - das práticas de literatura mais prestigiadas historicamente (com a exploração da chamada arte dos clássicos) às práticas consideradas marginais e características de diferentes localidades.A progressão pode pautar-se pelos diferentes valores selecionados pelo currículo, pelas realidades culturais e/ou pelos autores visados, pelo grau de complexidade dos gêneros e textos a serem estudados e pelo grau de autonomia requerida do aluno a cada etapa desse ensino.",
+  },
+  {
+    id: "EF69LP45",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
+    skill:
+      "(EF69LP45) Posicionar-se criticamente em relação a textos pertencentes a gêneros como quarta-capa, programa (de teatro, dança, exposição etc.), sinopse, resenha crítica, comentário em blog/vlog cultural etc., para selecionar obras literárias e outras manifestações artísticas (cinema, teatro, exposições, espetáculos, CD´s, DVD´s etc.), diferenciando as sequências descritivas e avaliativas e reconhecendo-os como gêneros que apoiam a escolha do livro ou produção cultural e consultando-os no momento de fazer escolhas, quando for o caso.",
+    comment:
+      "Estreitamente relacionada a EF69LP46, essa habilidade consiste em apropriar-se de comportamentos próprios de leitores autônomos que selecionam o que ler / ver / ouvir, consultando textos que descrevem ou opinam sobre obras literárias e de outras linguagens. Também supõe, de um lado, diferenciar descrição de opinião expressa sobre o produto; de outro, reconhecer e fazer uso, em textos orais ou escritos, dos recursos do discurso argumentativo. Seu desenvolvimento demanda a participação efetiva do aluno em práticas de leitura e reflexão como as mencionadas.",
+    resume:
+      "Para o desenvolvimento dessa habilidade, convém que os currículos locais programem, para os quatro anos finais do ensino fundamental, atividades de leitura, análise e discussão oral dos gêneros e textos citados, contextualizadas em situações de efetiva escolha -- individual ou coletiva -- de produções culturais as mais diversas (Cf. EF69LP46). São essas práticas que permitem ao aluno refletir, discutir e deliberar com base em argumentos explícitos.A progressão curricular pode basear-se em critérios como o foco a ser dado às atividades, a cada momento (leitura/análise e discussão/deliberação e escolha); a ênfase nas descrições ou nas opiniões expressas nos textos; o grau de complexidade dos gêneros e textos previstos para o estudo; o nível de autonomia a ser atingido pelo aluno a cada etapa do ensino.",
+  },
+  {
+    id: "EF69LP46",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
+    skill:
+      "(EF69LP46) Participar de práticas de compartilhamento de leitura/recepção de obras literárias/ manifestações artísticas, como rodas de leitura, clubes de leitura, eventos de contação de histórias, de leituras dramáticas, de apresentações teatrais, musicais e de filmes, cineclubes, festivais de vídeo, saraus, slams, canais de booktubers, redes sociais temáticas (de leitores, de cinéfilos, de música etc.), dentre outros, tecendo, quando possível, comentários de ordem estética e afetiva",
+    comment:
+      "Essa habilidade supõe reconhecer as especificidades da participação em cada prática, apropriando-se dos diferentes gêneros orais ou escritos nelas envolvidos. Favorece o desenvolvimento de procedimentos, comportamentos e capacidades de leitura de apreciação e réplica sobre os produtos culturais mais diversos, sendo condição, portanto, para o desenvolvimento de EF69LP45 e EF69LP49.",
+    resume:
+      "Tendo em vista o desenvolvimento dessa habilidade, também aqui convém que os currículos locais abram espaços para acolher e legitimar produtos culturais representativos de diferentes grupos sociais, combatendo estereótipos e preconceitos. Forma eficaz de favorecer a participação nessas práticas é prever sua inserção, nos currículos, em atividades permanentes e regulares.É possível propor uma progressão dos tipos de práticas, priorizando para cada ano um pequeno conjunto delas. Um dos critérios para essa progressão pode ser considerar a complexidade implicada em cada prática, no que se refere ao uso da tecnologia e à complexidade do gênero. Outros critérios a serem considerados são o grau de complexidade dos gêneros e textos explorados e o nível de autonomia a ser desenvolvido pelo aluno a cada momento.",
+  },
+  {
+    id: "EF69LP47",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução da textualidade e compreensão dos efeitos\nde sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    skill:
+      "(EF69LP47) Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo.",
+  },
+  {
+    id: "EF69LP48",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução da textualidade e compreensão dos efeitos\nde sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    skill:
+      "(EF69LP48) Interpretar, em poemas, efeitos produzidos pelo uso de recursos expressivos sonoros (estrofação, rimas, aliterações etc), semânticos (figuras de linguagem, por exemplo), gráfico- espacial (distribuição da mancha gráfica no papel), imagens e sua relação com o texto verbal.",
+  },
+  {
+    id: "EF69LP49",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object: "Adesão às práticas de leitura",
+    skill:
+      "(EF69LP49) Mostrar-se interessado e envolvido pela leitura de livros de literatura e por outras produções culturais do campo e receptivo a textos que rompam com seu universo de expectativas, que representem um desafio em relação às suas possibilidades atuais e suas experiências anteriores de leitura, apoiando-se nas marcas linguísticas, em seu conhecimento sobre os gêneros e a temática e nas orientações dadas pelo professor.",
+    comment:
+      "Esta habilidade supõe o compromisso do aluno com a sua formação como leitor literário, pronto para vivenciar experiências de leitura mais desafiadoras. Implica um trabalho de mediação de leitura mais intenso, que favoreça a ativação de conhecimentos prévios pelo aluno. Pode envolver o planejamento de leituras anteriores e também ao longo da leitura desafiadora (que pode ser com apoio de textos em outras linguagens) para garantir o conhecimento prévio necessário para a compreensão do texto. Por exemplo, em caso de uma obra que envolva um discurso literário em que o tempo é tratado de forma não linear e sem sinais explícitos para indicar essa oscilação, recorrer a um trecho de um filme em que isso acontece, para depois voltar à escrita e comparar, pode ser uma estratégia motivadora para o aluno.",
+    resume:
+      "Na elaboração do currículo, uma forma de se colaborar para a motivação do aluno para leituras mais desafiadoras é prever projetos que articulem o trabalho em sala de aula com a sala de leitura e/ou biblioteca, em que se possa contar com leituras compartilhadas planejadas (feitas pelo professor ou mediador de leitura, preferencialmente), assim como rodas de biblioteca em que se possa apresentar obras mais complexas com sugestão de escolhas de leitura, articuladas com conversas posteriores sobre obras lidas.",
+  },
+  {
+    id: "EF69LP50",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object: "Relação entre textos",
+    skill:
+      "(EF69LP50) Elaborar texto teatral, a partir da adaptação de romances, contos, mitos, narrativas de enigma e de aventura, novelas, biografias romanceadas, crônicas, dentre outros, indicando as rubricas para caracterização do cenário, do espaço, do tempo; explicitando a caracterização física e psicológica dos personagens e dos seus modos de ação; reconfigurando a inserção do discurso direto e dos tipos de narrador; explicitando as marcas de variação linguística (dialetos, registros e jargões) e retextualizando o tratamento da temática.",
+    comment:
+      'Esta habilidade supõe um exercício de adaptação, de retextualização e de "transformação" de um gênero em outro, guardando a originalidade do tratamento temático. Ainda que seja uma ação de retextualização, as habilidades relacionadas às operações de produção textual (planejamento, produção e revisão) também devem estar vinculadas a esta habilidade. É possível articulá-la, ainda, com habilidades de análise de adaptações dessa mesma natureza.',
+    resume:
+      "Na elaboração do currículo, sugere-se uma progressão na proposição de adaptações, quer dos gêneros escolhidos (iniciando com um conto ou uma crônica, por exemplo, ou selecionando cenas de romances), quer da complexidade dos enredos dos textos selecionados, quer, ainda, do grau de autonomia esperado dos/as alunos/as nas produções dessa natureza (análises de trechos de adaptações já existentes, feitas coletivamente, passando para análises em grupos, produções de adaptações de trechos de textos feitas coletivamente, seguidas de produções em duplas ou grupos e, por fim, individualmente). Uma vez que os textos teatrais se realizam efetivamente quando são encenados, recomenda-se que essas adaptações tenham como objetivo a encenação. Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF69AR30), da Arte, no que se refere à composição de improvisações e acontecimentos cênicos com base em textos dramáticos e outros estímulos.",
+  },
+  {
+    id: "EF69LP51",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object:
+      "Consideração das condições de produção\nEstratégias de produção: planejamento, textualização e revisão/edição",
+    skill:
+      "(EF69LP51) Engajar-se ativamente nos processos de planejamento, textualização, revisão/ edição e reescrita, tendo em vista as restrições temáticas, composicionais e estilísticas dos textos pretendidos e as configurações da situação de produção – o leitor pretendido, o suporte, o contexto de circulação do texto, as finalidades etc. – e considerando a imaginação, a estesia e a verossimilhança próprias ao texto literário.",
+    comment:
+      "Esta habilidade se refere ao comprometimento dos/as alunos/as com a experimentação de produções literárias. Supõe desenvolver capacidades de compreensão das especificidades dos gêneros literários e de análise dos recursos linguísticos e semióticos usados na construção dos sentidos dos textos, que devem estar a serviço da fruição. Através de organizações variadas da turma, a colaboração pode ser estimulada: produções coletivas, em grupos, duplas ou individuais.",
+    resume:
+      "Na elaboração do currículo, pode-se considerar que o engajamento dos/as alunos/as no processo de produção de textos literários supõe uma motivação interna que pode ser provocada externamente pelas práticas culturais adotadas: rodas e clubes de leitura, eventos culturais, como saraus, mostra de cinema e show de esquetes, entre outros. Eventos como esses, além das parcerias necessárias entre as equipes de gestão e a equipe de profissionais (responsáveis pela biblioteca, professores de língua portuguesa, de arte, de dança etc.), envolvem a colaboração entre os/as alunos/as no processo de produção e de circulação dos textos.",
+  },
+  {
+    id: "EF69LP52",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Produção de textos orais",
+    skill:
+      "(EF69LP52) Representar cenas ou textos dramáticos, considerando, na caracterização dos personagens, os aspectos linguísticos e paralinguísticos das falas (timbre e tom de voz, pausas e hesitações, entonação e expressividade, variedades e registros linguísticos), os gestos e os deslocamentos no espaço cênico, o figurino e a maquiagem e elaborando as rubricas indicadas pelo autor por meio do cenário, da trilha sonora e da exploração dos modos de interpretação.",
+    comment:
+      "Esta habilidade supõe fazer uso das informações das rubricas dos textos dramáticos para mobilizar recursos de diferentes linguagens, visando a produção dos sentidos intencionados: além da oralização dramatizada do texto verbal (com gestos, movimentos, expressões faciais), o figurino das personagens, os efeitos de luz e de som, o cenário etc., também ajudam a produzir efeitos de sentido em uma peça teatral.",
+    resume:
+      "A promoção de eventos culturais dentro e fora da escola, em que representações dramáticas sejam realizadas, é recomendável. Nesses eventos, a participação da comunidade assume grande relevância. Na elaboração do currículo, o desenvolvimento desta habilidade pode ser potencializado se for proposto um trabalho interdisciplinar com professores da área, em especial, professores de Arte e de Educação Física, no interior de projetos culturais. Há, aqui, especial oportunidade de trabalho interdisciplinar com a habilidade (EF69AR30), da Arte, no que se refere à composição de improvisações e acontecimentos cênicos com base em textos dramáticos e outros estímulos.",
+  },
+  {
+    id: "EF69LP53",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Oralidade",
+    object: "Produção de textos orais Oralização",
+    skill:
+      "(EF69LP53) Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão.",
+    comment:
+      "O proposto por esta habilidade é alcançar uma leitura expressiva do que se lê, o que supõe um trabalho cuidadoso de compreensão leitora. Só é possível ler com expressividade, interpretando os sentimentos de narradores, eu lírico e personagens quando compreendemos os textos lidos e tecemos apreciações a respeito. Prevê-se o uso de recursos de outras linguagens (corporal, gestual, musical etc.) na construção da interpretação dada ao texto.",
+    resume:
+      "Na elaboração do currículo, convém considerar que a leitura em voz alta colabora para o desenvolvimento da fluência leitora, na medida em que, para alcançar a expressividade desejada, os/as alunos terão que ler os textos muitas vezes, trabalhando, por exemplo, a entonação, o ritmo, as ênfases que devem dar a certos trechos. Esse exercício contribui para automatizar o processo de identificação de palavras. Na descrição da habilidade, também é previsto que essa prática de leitura seja significativa, que tenha um fim: a escuta em determinado contexto. Nesse sentido, a leitura em voz alta pode estar associada às práticas sugeridas anteriormente, com a realização de saraus, as oficinas de criação, a produção de audiobooks para bibliotecas, blogs e outras redes sociais etc.",
+  },
+  {
+    id: "EF69LP54",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Campo artístico-literário",
+    unit: "Análise linguística/semiótica",
+    object:
+      "Recursos linguísticos e semióticos que operam nos textos pertencentes aos gêneros literários",
+    skill:
+      "(EF69LP54) Analisar os efeitos de sentido decorrentes da interação entre os elementos linguísticos e os recursos paralinguísticos e cinésicos, como as variações no ritmo, as modulações no tom de voz, as pausas, as manipulações do estrato sonoro da linguagem, obtidos por meio da estrofação, das rimas e de figuras de linguagem como as aliterações, as assonâncias, as onomatopeias, dentre outras, a postura corporal e a gestualidade, na declamação de poemas, apresentações musicais e teatrais, tanto em gêneros em prosa quanto nos gêneros poéticos, os efeitos de sentido decorrentes do emprego de figuras de linguagem, tais como comparação, metáfora, personificação, metonímia, hipérbole, eufemismo, ironia, paradoxo e antítese e os efeitos de sentido decorrentes do emprego de palavras e expressões denotativas e conotativas (adjetivos, locuções adjetivas, orações subordinadas adjetivas etc.), que funcionam como modificadores, percebendo sua função na caracterização dos espaços, tempos, personagens e ações próprios de cada gênero narrativo.",
+    comment:
+      "O foco desta habilidade está no reconhecimento, pelo aluno, da interação que se estabelece entre os aspectos linguísticos que constituem os textos do campo artístico-literário — organizados em prosa ou em verso (poemas, contos, textos teatrais etc.) — e os recursos paralinguísticos (voz, gestos e movimentação) que podem/devem ser mobilizados na oralização deles (declamações, representações, leituras dramáticas etc.), de modo a preservar seus efeitos de sentido, por meio da prática frequente e sistemática de leitura, estudo e oralização de textos do campo literário.",
+    resume:
+      "Na elaboração do currículo, recomenda-se: a) orientar a organização de atividades sistemáticas de leitura compreensiva de textos do campo artístico-literário; b) programar, de forma associada ao referido em a), atividades de estudo dos recursos verbais constitutivos do texto literário (figuras de linguagem, ritmo, rimas etc.), visando a identificação dos efeitos de sentido que produzem; c) prever, para o processo de declamação de poemas ou de contação de histórias, a identificação dos recursos extraverbais e cênicos que poderiam ser necessários para a interpretação dos textos; d) orientar, no caso da leitura dramática ou representação de textos teatrais, o estudo prévio do texto e a leitura atenta das rubricas, para que a representação seja adequada ao indicado no texto, garantindo uma compreensão mais fiel às intenções de significação presumidas. A progressão vertical e horizontal pode tomar como critérios os aspectos linguísticos e paralinguísticos a serem estudados a cada momento; a sequenciação entre estudo prévio do texto/planejamento/execução da apresentação oral; o grau de complexidade do gênero ou texto a ser analisado; o nível de autonomia a ser conquistado pelo aluno a cada etapa, quer da análise, quer da prática de oralização. Há, aqui, oportunidade para o trabalho interdisciplinar com as habilidades (EF69AR30) e (EF69AR32), da Arte, no que se refere à exploração, análise e criação de diálogos entre textos literários e outras manifestações, de diferentes linguagens artísticas.",
+  },
+  {
+    id: "EF69LP55",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Variação linguística",
+    skill:
+      "(EF69LP55) Reconhecer as variedades da língua falada, o conceito de norma-padrão e o de preconceito linguístico.",
+    comment:
+      'Reconhecer e combater o preconceito linguístico pressupõe a capacidade de perceber não só as semelhanças e diferenças entre as variedades da língua falada como, ainda, o prestígio social associado à escrita e, em particular, à norma-padrão. Esta é uma habilidade fundamental, relacionada a todas as demais que envolvem o domínio de normas urbanas de prestígio e/ou se referem a expressar-se, oralmente ou por escrito, "com correção". Seu desenvolvimento demanda convívio cotidiano com a variação linguística (no tempo, no espaço e na vida social), de forma que o aluno possa perceber as características principais de cada variedade e sua adequação ao contexto de origem. Só assim ele poderá compreender a legitimidade da diversidade linguística e ultrapassar a perspectiva cientificamente equivocada da variação como desvio ou erro, de forma a combater a discriminação pela língua.',
+    resume:
+      "Na elaboração do currículo, devido à importância do tema não só para a análise linguística/semiótica, mas também para o domínio crítico e consciente da língua, deve-se considerar que o desenvolvimento desta habilidade se estende pelos quatro anos finais do ensino fundamental. Convém que: (a) cada variedade seja tratada em termos de adequação aos seus contextos de uso; (b) abordem-se as normas de prestígio, inclusive a norma-padrão, como variedades sociais entre outras, explicitando-se as circunstâncias particulares em que são requeridas; (c) sejam sempre feitas associações à construção de conhecimentos específicos sobre o fenômeno da variação linguística (noções e conceitos básicos da sociolinguística). A progressão, tanto horizontal quanto vertical, pode pautar-se pelo tipo de variação linguística a ser estudada (histórica/geográfica/social/estilística), pela noção ou conceito a ser focalizado e pelo grau de complexidade dos gêneros e textos selecionados para estudo a cada momento. Há, aqui, oportunidade de trabalho interdisciplinar com as habilidades (EF07LI22) e (EF07LI23), da Língua Inglesa, no que se refere ao reconhecimento de variedades linguísticas refutando preconceitos.",
+  },
+  {
+    id: "EF69LP56",
+    competences: "Língua Portuguesa",
+    group_year_id: "69",
+    group_years: "6º; 7º; 8º; 9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Variação linguística",
+    skill:
+      "(EF69LP56) Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada.",
+    comment:
+      'Esta habilidade se refere ao uso da norma-padrão nas situações, gêneros e textos em que ela é requerida. Seu desenvolvimento  é indissociável tanto do estudo da variação linguística quanto da compreensão dos valores socialmente atribuídos às diferentes variedades. Ela demanda o envolvimento frequente e sistemático do aluno em práticas públicas e formais de leitura e/ou produção de textos, orais e/ou escritos, em que a "correção" deve ser observada. Exemplos de situações orais formais: palestras, seminários, apresentações orais, debates. Exemplos de situações escritas formais: entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática.',
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade (uso consciente e reflexivo de regras e normas da norma-padrão) demanda um trabalho comparativo com normas e regras de outras variedades da língua, possibilitando explorar a ideia de adequação/inadequação da variedade usada ao contexto de produção do texto escrito ou falado e, ainda, combater preconceitos linguísticos. Também é importante enfatizar que as criações literárias podem ser material rico para reflexões sobre adequação do uso ao contexto, visto que, não raro, subvertem regras e normas da norma-padrão para produzir efeitos de sentido, como trazer para o texto outras variedades da língua, para manter coerência com a construção de certa personagem e/ou contexto social. A progressão do ensino pode pautar-se pelas diferentes regras ou normas selecionadas para estudo, pelo grau de complexidade dos gêneros e textos previstos e pelo nível de autonomia que se pretenda levar o aluno a conquistar a cada etapa.",
+  },
+  {
+    id: "EF07LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF07LP01) Distinguir diferentes propostas editoriais – sensacionalismo, jornalismo investigativo etc. –, de forma a identificar os recursos utilizados para impactar/chocar o leitor que podem comprometer uma análise crítica da notícia e do fato noticiado.",
+    comment:
+      "Esta habilidade implica analisar como as escolhas de palavras e outros recursos semióticos (imagens, cores, fontes de letra etc.) ajudam a produzir sentidos. Também possibilita o desenvolvimento de um olhar crítico sobre esse campo de atuação, uma vez que, por meio da análise de primeiras páginas, das escolhas do que vira manchete e do modo como são formuladas, por exemplo, é possível perceber a que tipo de jornalismo se dedica o jornal ou programa — o que contribui para a percepção de que não existe jornalismo neutro.",
+    resume:
+      'Na elaboração do currículo, é importante considerar que, ao diferenciar as propostas editoriais, é preciso refletir sobre a relação entre elas e o público a que se destina cada jornal ou programa. Prever comparações entre jornais televisivos mais "populares" e "policialescos" (que podem ser mais próximos do universo familiar dos alunos) e jornais transmitidos no início da manhã ou da tarde, de emissoras diferentes, possibilita explorar as diferenças de linguagem e de abordagem, relacionando-as aos públicos a que se destinam. É importante prever a investigação de jornais e programas feitos para adolescentes. Discutir o que move esses veículos a fazerem um jornalismo diferenciado para cada público leitor é fundamental para construir um olhar crítico sobre o campo.',
+  },
+  {
+    id: "EF07LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF07LP02) Comparar notícias e reportagens sobre um mesmo fato divulgadas em diferentes mídias, analisando as especificidades das mídias, os processos de (re)elaboração dos textos e a convergência das mídias em notícias ou reportagens multissemióticas.",
+    comment:
+      "Comparar o modo como os diferentes jornais e mídias abordam um mesmo fato envolve analisar escolhas linguísticas e semióticas, com o objetivo de inferir-se a visão de cada um deles. Esta habilidade também implica conhecer os recursos de linguagem próprios de cada mídia, de modo que o aluno possa perceber as diferenças entre uma notícia impressa e uma radiofônica ou televisiva, por exemplo, conhecimentos que serão importantes para a produção de textos.",
+    resume:
+      'Na elaboração do currículo, pode-se pensar em, no caso de haver jornais, rádios e redes de TV locais, elegê-los para comparações antes de acessar outros jornais regionais e de grande circulação. Isso tornará o trabalho mais significativo para os alunos, uma vez que os textos farão referência a fatos e assuntos da localidade, mais próximos e passíveis de serem "verificados" mais facilmente, em caso de "versões contraditórias" entre os veículos. O trabalho com diferentes mídias também supõe ter recursos disponíveis na sala de aula: TV, DVD, computador ou aparelhos móveis, assinatura de jornais e revistas e acesso à internet.',
+  },
+  {
+    id: "EF07LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Léxico/morfologia",
+    skill:
+      "(EF07LP03) Formar, com base em palavras primitivas, palavras derivadas com os prefixos e sufixos mais produtivos no português.",
+    comment:
+      "Esta é uma habilidade fundamental para a compreensão dos processos derivacionais de formação das palavras. O foco está na compreensão e no uso adequado de prefixos e de sufixos. Pressupõe conhecimentos prévios relativos a classes de palavras e às categorias gramaticais a que elas se associam. (Relaciona-se com a habilidade EF07LP35).",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha sempre associado a práticas de leitura, produção ou oralidade, de forma que o aluno possa observar esses processos em ação e refletir sobre como são produtivos e criativos. Portanto, a apropriação desses mecanismos pelo aluno é o seu foco, e não a memorização da terminologia gramatical correspondente. Jogos de invenção de palavras derivadas por prefixação e/ou sufixação, com o objetivo de refletir sobre a significação resultante, podem ser muito produtivos. Exemplo: formação de grupos que experimentem criar palavras usando os afixos estudados e depois desafiando os demais a explicitar os recursos usados e os sentidos resultantes (Por exemplo, o que significa "imexível"?). Propostas de produção de textos criativos, como os literários e os publicitários, por exemplo, também podem propiciar situações adequadas para esse estudo. A progressão curricular pode apoiar-se no tipo de mecanismo a ser estudado (prefixação/sufixação) assim como no grau de complexidade dos gêneros e textos mobilizados.',
+  },
+  {
+    id: "EF07LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP04) Reconhecer, em textos, o verbo como o núcleo das orações.",
+    comment:
+      "O foco desta habilidade é a identificação do núcleo da oração, considerada como uma unidade básica da organização sintática do texto. Está, portanto, diretamente relacionada ao desenvolvimento de outras habilidades de análise com foco na sintaxe da oração e do período. Ela requer observar a organização sintática do texto e refletir a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas sim que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que as estruturas sintáticas estudadas podem produzir.Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, identificando os efeitos de sentido assim produzidos, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos programados para estudo.',
+  },
+  {
+    id: "EF07LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP05) Identificar, em orações de textos lidos ou de produção própria, verbos de predicação completa e incompleta: intransitivos e transitivos.",
+    comment:
+      "O foco desta habilidade é a identificação de verbos transitivos e intransitivos em orações de textos lidos ou próprios. Está, portanto, diretamente relacionada ao desenvolvimento de outras habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP04 e EF07LP07). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, recomenda-se que o trabalho com esta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que as estruturas sintáticas estudadas podem produzir.",
+  },
+  {
+    id: "EF07LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP06) Empregar as regras básicas de concordância nominal e verbal em situações comunicativas e na produção de textos.",
+    comment:
+      "Esta habilidade tem foco no domínio das concordâncias nominal e verbal, nas situações públicas e formais de comunicação oral e de produção de textos em que a norma-padrão é requerida. Seu desenvolvimento demanda a participação frequente e sistemática do aluno nas situações referidas, assim como o estudo prévio ou concomitante dos dois tipos de concordância, das classes de palavras (nome e verbo) e das categorias gramaticais nelas envolvidas. (É um desdobramento de EF06LP06, à qual está, portanto, diretamente relacionada).",
+    resume:
+      "Na elaboração do currículo, para um exercício reflexivo voltado para o uso da língua, convém que o estudo dos conhecimentos linguísticos mencionados seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que o estudo das concordâncias nominal e verbal venha sempre: (a)  programado para situações de comunicação em que a norma-padrão é requerida; (b) associado ao planejamento da fala e à produção e revisão de textos, assim como à análise, com vistas a compreender os efeitos de sentido produzidos por este ou aquele uso. Recomenda-se, ainda, articular esta habilidade com as de análise de gravações de palestras, debates etc., para as produções orais. (A progressão vertical deve considerar o desenvolvimento de EF07LP06 no ano anterior). A progressão horizontal pode adotar, como critérios, (a) os tópicos a serem abordados a cada momento (concordância nominal/concordância verbal); (b) o grau de complexidade dos gêneros e textos previstos; (c) o grau de autonomia que se pretende levar o aluno a atingir em cada etapa.",
+  },
+  {
+    id: "EF07LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP07) Identificar, em textos lidos ou de produção própria, a estrutura básica da oração: sujeito, predicado, complemento (objetos direto e indireto).",
+    comment:
+      "Esta habilidade se refere à identificação da estrutura básica da oração em textos lidos ou próprios. Está, portanto,  diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido, a partir do reconhecimento e diferenciação de sujeito, predicado e complementos. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo. Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no constituinte oracional a ser abordado a cada etapa (sujeito/predicado/objeto direto/objeto indireto) e/ou no grau de complexidade dos gêneros e textos programados para estudo.',
+  },
+  {
+    id: "EF07LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP08) Identificar, em textos lidos ou de produção própria, adjetivos que ampliam o sentido do substantivo sujeito ou complemento verbal.",
+    comment:
+      "Esta habilidade se refere à identificação do papel dos adjetivos na ampliação de sentidos do núcleo do sujeito ou dos complementos verbais. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP09). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo. Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos programados para estudo.',
+  },
+  {
+    id: "EF07LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP09) Identificar, em textos lidos ou de produção própria, advérbios e locuções adverbiais que ampliam o sentido do verbo núcleo da oração.",
+    comment:
+      "O foco desta habilidade é a identificação do papel dos advérbios e locuções adverbiais na ampliação de sentidos do núcleo do predicado oracional. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP08). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo.  Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos programados para o estudo (vale considerar, ainda, a articulação desta habilidade com EF07LP08).',
+  },
+  {
+    id: "EF07LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP10) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: modos e tempos verbais, concordância nominal e verbal, pontuação etc.",
+    comment:
+      "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero. Requer discussões sobre variação linguística e práticas de leitura e/ou produção de textos, especialmente em situações públicas e formais. Pressupõe, ainda, domínio e/ou estudo conexo de tópicos de análise linguística como os mencionados. (Estreitamente relacionada a EF69LP56 e a EF06LP11).",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento da habilidade venha sempre associado a práticas de leitura e/ou produção de textos dos mais diversos gêneros e campos de atuação. Recomenda-se, ainda, que as atividades propostas definam os conhecimentos a serem abordados considerando os tópicos já previstos para anos anteriores, e que evitem a perspectiva do "erro gramatical", em favor de uma abordagem baseada na adequação do uso. A habilidade representa uma progressão vertical (em relação à EF06LP11), na medida em que é uma retomada das mesmas operações e dos mesmos conteúdos. A progressão horizontal pode adotar como critério os tópicos a serem abordados a cada momento, o grau de complexidade dos gêneros e textos previstos e o grau de autonomia do aluno pressuposto na execução da tarefa.',
+  },
+  {
+    id: "EF07LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF07LP11) Identificar, em textos lidos ou de produção própria, períodos compostos nos quais duas orações são conectadas por vírgula, ou por conjunções que expressem soma de sentido (conjunção “e”) ou oposição de sentidos (conjunções “mas”, “porém”).",
+    comment:
+      "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na identificação e classificação de períodos compostos por coordenação aditiva ou adversativa, tanto sindéticas (com conectivos) quanto assindéticas (conectadas por vírgulas). Requer a observação da organização sintática do texto, reflexões a respeito e identificação de períodos compostos por coordenação sindética e assindética, além de apreender o princípio de sua organização interna e as relações de sentido o que implica  perceber seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, para reflexão e análise linguística/semiótica, é necessário que o estudo dos tópicos gramaticais envolvidos seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que esses conteúdos sejam propostos sempre vinculados à leitura, à produção e à revisão, com vistas à compreensão de seu papel na (re)construção do texto e na produção de efeitos de sentido determinados. Recomenda-se: (a) que o foco do trabalho seja a resolução de problemas de compreensão e manutenção da legibilidade do texto, considerando-se as intenções de significação; (b) que a compreensão de cada aspecto anteceda a sistematização; (c) que a metalinguagem seja empregada de modo que o aluno compreenda o que se diz. Ao longo do ano, a progressão pode apoiar-se seja no foco da identificação da oração coordenada (aditiva/adversativa; assindética/sindética), seja na complexidade dos gêneros e textos programados para o desenvolvimento da habilidade.",
+  },
+  {
+    id: "EF07LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Semântica Coesão",
+    skill:
+      "(EF07LP12) Reconhecer recursos de coesão referencial: substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos).",
+    comment:
+      "Esta habilidade tem como foco o reconhecimento de dois recursos básicos de coesão referencial: as substituições lexicais e as pronominais. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Implica atividades diversificadas e sistemáticas de leitura e produção e pressupõe conhecimentos prévios sobre substantivos e pronomes, assim como sobre as categorias gramaticais a que essas classes de palavras estão associadas.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego de recursos de coesão referencial; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas com base em práticas de leitura e produção, focalizando as diferentes possibilidades de referenciação no processo de coesão, considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. É importante observar, também, a substituição lexical por hiperônimos, bastante comum, e a ocorrência de elipse. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. A progressão ao longo do ano pode apoiar-se no tipo de recurso selecionado para estudo (substituição sinonímica/substituição pronominal) e no grau de complexidade dos gêneros e textos envolvidos nas práticas previstas. Sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF07LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Coesão",
+    skill:
+      "(EF07LP13) Estabelecer relações entre partes do texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos), que contribuem para a continuidade do texto.",
+    comment:
+      "Esta habilidade tem como foco o (re)estabelecimento de relações entre partes do texto. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Seu desenvolvimento adequado só se dá no interior de atividades diversificadas e sistemáticas de leitura e produção. Pressupõe conhecimentos prévios sobre substantivos e pronomes, além de categorias gramaticais a que essas classes de palavras estão associadas (e relaciona-se com a habilidade EF07LP12).",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego de recursos de substituições lexicais; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas com base em práticas de leitura e produção, focalizando as diferentes possibilidades de referenciação no processo de coesão e considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. A progressão ao longo do ano pode apoiar-se no tipo de recurso selecionado para estudo (substituição sinonímica/substituição pronominal) e no grau de complexidade dos gêneros e textos envolvidos nas práticas previstas. Sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF07LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "07",
+    group_years: "7º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Modalização",
+    skill:
+      "(EF07LP14) Identificar, em textos, os efeitos de sentido do uso de estratégias de modalização e argumentatividade.",
+    comment:
+      "O foco desta habilidade está na identificação de estratégias argumentativas e de modalização, em textos dos mais diversos gêneros, relacionados a qualquer campo de atuação. Trata-se de uma habilidade necessária à compreensão (a) das atitudes que o locutor/escritor pode assumir em relação àquilo que diz (estratégias de modalização), como parte de seu ponto de vista particular; (b) dos recursos de que ele se vale para convencer ou persuadir o ouvinte/leitor. (É condição necessária para o desenvolvimento da habilidade EF08LP16).",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver problemas de compreensão decorrentes da presença de estratégias de modalização ou argumentação, também relevantes para (re)estabelecer a progressão temática; 2) sistematizar o conhecimento discutido na etapa anterior (1). Recomenda-se que sua programação curricular se faça por propostas de leitura e/ou produção de textos em que as estratégias de modalização e/ou de argumentação sejam necessárias à eficácia do texto. Convém, portanto, que a metalinguagem só seja empregada depois de compreendido o(s) texto(s) e o aspecto em foco. A progressão horizontal pode apoiar-se no tipo de estratégia visada  (modalização/argumentação) e no grau de complexidade dos gêneros e textos selecionados para o estudo. Sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF08LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF08LP01) Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.",
+    comment:
+      "Esta habilidade favorece o desenvolvimento de uma atitude crítica em relação ao campo jornalístico, uma vez que supõe reconhecer as diferentes propostas editoriais visando públicos distintos. Supõe, além de habilidades de análise de elementos linguísticos e semióticos, a compreensão da importância de buscar diferentes fontes de informação para verificação da sua confiabilidade.",
+    resume:
+      "Na elaboração do currículo, assim como já sinalizado em outros campos que se referem ao trabalho com textos jornalísticos em diferentes mídias, o trabalho com esta habilidade demanda o oferecimento de material diversificado aos alunos. Portanto, além dos jornais televisivos e radiofônicos (a que os alunos, em geral, têm acesso em casa), é preciso garantir acesso aos impressos e aos digitais. Ao dar foco a esta habilidade, é importante articular esse trabalho de comparação à discussão sobre fake news e modos de apurar a fidedignidade das informações. Nesse sentido, o acesso à internet e um trabalho voltado para o ensino de procedimentos de busca e seleção de sites confiáveis são necessários.",
+  },
+  {
+    id: "EF08LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.",
+    comment:
+      "Esta habilidade pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01). Ela consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados;2. apurar informações, desenvolvendo procedimentos de curadoria;3. posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.A habilidade prevê que, para que se faça essa análise, sejam utilizados sites especializados em checar fatos.",
+    resume:
+      'Na elaboração do currículo, é importante considerar que as sugestões apresentadas nos campos das habilidades (EF06LP01), (EF07LP01), (EF07LP02), (EF89LP03), (EF89LP01), (EF89LP02) cabem para esta habilidade também. Ao analisar as diferenças e semelhanças no tratamento dado a uma mesma informação por diferentes veículos e mídias para justificá-las, também será importante considerar a proposta editorial dos veículos que circulam a informação e a sua natureza. Há jornais e revistas, por exemplo, que tendem a ser menos rigorosos na apuração das informações que veiculam, como acontece com as revistas comumente categorizadas como "revistas de fofocas". A esses revistas, interessa criar um "aura" de mexerico e de sensacionalismo sobre o fato ou assunto tratado, em geral relacionados a personalidades públicas.',
+  },
+  {
+    id: "EF08LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Textualização de textos argumentativos e apreciativos",
+    skill:
+      "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.",
+    comment:
+      "A habilidade envolve procedimentos de produção textual: definir contexto de produção, planejar, produzir e revisar. Tais procedimentos são apontados em (EF67LP09) e (EF67LP10), com a diferença de que, aqui, se trata de gênero argumentativo do campo jornalístico-midiático, que exige posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
+    resume:
+      "Na elaboração do currículo, vale considerar que a seleção do artigo de opinião para esses dois anos finais significa uma progressão no trabalho com os gêneros argumentativos desse campo. Produzir um artigo de opinião demanda apreciações de caráter político sobre os fatos/assuntos tratados. A apreciação envolve assumir uma postura argumentativa ética. A produção de gêneros argumentativos, como o artigo de opinião, implica, ainda, mobilizar com maior intensidade habilidades que desenvolvam o pensamento crítico, visto que se propõe a dar uma resposta a uma questão polêmica que vai exigir do/a autor/a interpretar informações selecionadas, avaliar o raciocínio e explicar evidências. Do ponto de vista didático, no trabalho com os gêneros, é indicado que os currículos contemplem um estudo das suas principais características e orientem a realização das diferentes operações de produção de textos. São elas: a) contextualização: definir a situação comunicativa em que o texto será produzido (quem serão os leitores, onde circulará, com que finalidade, em qual gênero); b) planejamento: que envolve a elaboração do conteúdo temático (o que será dito) e a organização do texto parte a parte; c) elaboração do texto (o processo de textualização); d) revisão, processual (durante a produção) e final. Essas operações podem, inicialmente, ser realizadas em situações coletivas e em grupos, com mais apoio do professor e, de modo gradual, envolver graus crescentes de autonomia do/a aluno para realizá-la. Os currículos podem propor uma progressão horizontal no trabalho com o gênero, em relação à mediação do professor e à colaboração entre pares: em colaboração em um ano (coletivo e em grupos), avançando para o trabalho com autonomia no ano seguinte.",
+  },
+  {
+    id: "EF08LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Fono-ortografia",
+    skill:
+      "(EF08LP04) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: ortografia, regências e concordâncias nominal e verbal, modos e tempos verbais, pontuação etc.",
+    comment:
+      "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero em que a norma-padrão é requerida. É indissociável de discussões sobre variação linguística e de análise de textos, especialmente em situações públicas e formais. Pressupõe, ainda, domínio e/ou estudo conexo de tópicos de ortografia, de classes de palavras (nome e verbo) e de categorias gramaticais a ela relacionadas. (Estreitamente relacionada a EF69LP56, EF06LP11 e EF07LP10).",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento da habilidade venha sempre associado a práticas de leitura e/ou produção de textos dos mais diversos gêneros e campos de atuação. Recomenda-se, ainda, que as atividades propostas definam os conteúdos específicos a serem abordados e evitem a perspectiva do "erro gramatical", em favor de uma abordagem baseada na adequação do uso. (A habilidade representa uma progressão vertical de EF06LP11 e EF07LP10, na medida em que é uma retomada das mesmas operações e dos mesmos conteúdos). A progressão horizontal pode adotar como critério os tópicos a serem abordados a cada momento, o grau de complexidade dos gêneros e textos previstos e o grau de autonomia do aluno pressuposto na execução da tarefa.',
+  },
+  {
+    id: "EF08LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/ semiótica",
+    object: "Léxico/morfologia",
+    skill:
+      "(EF08LP05) Analisar processos de formação de palavras por composição (aglutinação e justaposição), apropriando-se de regras básicas de uso do hífen em palavras compostas.",
+    comment:
+      "Com foco nos processos de composição, esta é uma habilidade fundamental para a compreensão dos processos morfológicos e semânticos de formação das palavras, assim como de regras básicas de uso do hífen em palavras compostas. Seu desenvolvimento pressupõe conhecimentos prévios relativos às classes de palavras e às categorias gramaticais a que elas se associam. (Relaciona-se com as habilidades EF07LP03 e EF07LP35).",
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha sempre associado a práticas de leitura, produção ou oralidade, de forma que o aluno possa observar esses processos em ação e refletir sobre como são produtivos e criativos. Portanto, a apropriação desses mecanismos pelo aluno é o seu foco, e não a memorização da terminologia gramatical correspondente. Jogos de invenção de palavras compostas por aglutinação e/ou justaposição, com o objetivo de refletir sobre a significação resultante, podem ser muito produtivos. Exemplo: formação de grupos que experimentem criar palavras usando os processos estudados e depois desafiando os demais a explicitar os recursos usados e os sentidos resultantes (Por exemplo, o que significa "lava-lento"?). Propostas de produção de textos criativos, como os literários e os publicitários, também podem propiciar situações adequadas para esse estudo. A progressão curricular pode apoiar-se no tipo de mecanismo a ser estudado (aglutinação/justaposição) assim como no grau de complexidade dos gêneros e textos mobilizados.',
+  },
+  {
+    id: "EF08LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP06) Identificar, em textos lidos ou de produção própria, os termos constitutivos da oração (sujeito e seus modificadores, verbo e seus complementos e modificadores).",
+    comment:
+      "Esta habilidade se refere ao reconhecimento da estrutura básica de uma oração em textos lidos ou próprios. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo. Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. (Tal como está formulada, EF08LP06 é a retomada de uma habilidade prevista para o ano anterior, EF07LP06.) A habilidade se constitui em uma progressão vertical da habilidade anterior. A progressão horizontal pode apoiar-se no constituinte oracional a ser abordado a cada etapa (modificadores do sujeito/complementos e modificadores do núcleo verbal) e/ou no grau de complexidade dos gêneros e textos programados para estudo.',
+  },
+  {
+    id: "EF08LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP07) Diferenciar, em textos lidos ou de produção própria, complementos diretos e indiretos de verbos transitivos, apropriando-se da regência de verbos de uso frequente.",
+    comment:
+      "A habilidade refere-se ao estudo da regência de verbos de uso frequente, analisando os efeitos de sentido que podem ser provocados ou pelo uso indevido de preposições, ou por inadequações na escolha delas. Abrange a análise do emprego desses complementos em textos de todos os campos de atuação, por meio de leituras de diferentes gêneros, nas quais a regência verbal possa ser observada e analisada em contextos e usos diversos.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver algum problema de compreensão/redação, considerando o sentido provocado ou pelo uso inadequado ou pela ausência de alguma preposição; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se — especialmente para a sistematização — que as atividades sejam organizadas a partir do estudo comparativo de enunciados nos quais um mesmo verbo é empregado com regências ou inadequadas ou com alteração de sentidos. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo em cada momento.",
+  },
+  {
+    id: "EF08LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP08) Identificar, em textos lidos ou de produção própria, verbos na voz ativa e na voz passiva, interpretando os efeitos de sentido de sujeito ativo e passivo (agente da passiva).",
+    comment:
+      "A habilidade refere-se ao estudo das vozes do verbo, com foco nos efeitos de sentido provocados pelo uso de uma ou de outra, tanto na leitura quanto em produções próprias. Abrange a análise do emprego desses verbos em gêneros e textos de todos os campos de atuação. Isso implica leituras e/ou produções nas quais a (re)construção dos sentidos do texto envolva as diferenças entre as vozes do verbo.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade se organize com base em dois pontos articulados: 1) realizar uma leitura menos superficial do texto, analisando os efeitos de sentido provocados pelo uso das vozes do verbo; 2) sistematizar o conhecimento produzido no momento anterior (1). Em ambos os casos, sugere-se que as atividades sejam organizadas a partir de estudo comparativo de enunciados organizados na voz passiva e na ativa, analisando os efeitos de sentido decorrentes dessa organização sintática. Recomenda-se, ainda que o estudo da voz passiva sintética, muito presente em textos de divulgação científica e argumentativos, e que a metalinguagem só sejam empregados depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo em cada momento.",
+  },
+  {
+    id: "EF08LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP09) Interpretar efeitos de sentido de modificadores (adjuntos adnominais – artigos definido ou indefinido, adjetivos, expressões adjetivas) em substantivos com função de sujeito ou de complemento verbal, usando-os para enriquecer seus próprios textos.",
+    comment:
+      "A habilidade refere-se ao estudo dos modificadores, incluindo os determinantes (artigos, numerais e pronomes), na perspectiva dos sentidos que eles imprimem aos substantivos, tanto na leitura quanto em produções próprias. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de modificadores do sujeito ou do objeto (direto ou indireto).",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver problemas de compreensão/redação decorrentes de sentidos associados ao substantivo por modificadores; 2) sistematizar o conhecimento discutido na etapa anterior (1). Em ambos os casos, sugere-se que as atividades sejam organizadas focalizando os sentidos que os modificadores acrescentam aos substantivos e, portanto, aos enunciados, e a relação dessa modificação com os significados pretendidos para o texto. Recomenda-se, ainda, que a metalinguagem seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF08LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP10) Interpretar, em textos lidos ou de produção própria, efeitos de sentido de modificadores do verbo (adjuntos adverbiais – advérbios e expressões adverbiais), usando-os para enriquecer seus próprios textos.",
+    comment:
+      "A habilidade refere-se ao estudo dos sentidos que os modificadores (adjuntos adverbiais, advérbios e expressões adverbiais), imprimem aos verbos, sendo importante considerá-los tanto no processo de leitura de um texto quanto nas produções próprias. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de modificadores verbais.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente de sentidos apresentados ao verbo por modificadores; 2) sistematizar o conhecimento discutido na etapa anterior (1). Em ambos os casos, sugere-se que as atividades sejam organizadas focalizando os sentidos que os modificadores acrescentam aos verbos e, portanto, aos enunciados, e a relação dessa modificação com os significados pretendidos para o texto. Recomenda-se, ainda, que a metalinguagem seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF08LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP11) Identificar, em textos lidos ou de produção própria, agrupamento de orações em períodos, diferenciando coordenação de subordinação.",
+    comment:
+      "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na percepção do período como agrupamento de orações, com base em dois princípios distintos: a coordenação e a subordinação. Requer a observação da organização sintática do texto e reflexões a respeito, identificando agrupamentos de orações, apreendendo o princípio de sua organização interna e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      "Na elaboração do currículo, para reflexão e análise linguística/semiótica, é necessário que o estudo dos tópicos gramaticais envolvidos seja realizado em contextos de uso, e não em atividades isoladas. Por essa razão, sugere-se que esses conteúdos sejam propostos sempre vinculados à leitura, à produção e à revisão, com vistas à compreensão de seu papel na (re)construção do texto e na produção de efeitos de sentido determinados. Recomenda-se: (a) que o foco do trabalho seja a resolução de problemas de compreensão e manutenção da legibilidade do texto, considerando-se as intenções de significação; (b) que a compreensão de cada aspecto anteceda a sistematização; (c) que a metalinguagem seja empregada de modo que o aluno compreenda o que se diz. Ao longo do ano, a progressão pode apoiar-se seja no foco da identificação das orações no contexto do período em que ocorrem (coordenadas/subordinadas), seja na complexidade dos gêneros e textos envolvidos nas práticas de leitura/produção programadas para o desenvolvimento da habilidade.",
+  },
+  {
+    id: "EF08LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP12) Identificar, em textos lidos, orações subordinadas com conjunções de uso frequente, incorporando-as às suas próprias produções.",
+    comment:
+      "A habilidade refere-se ao estudo da organização do enunciado em períodos compostos por subordinação, tanto no processo de leitura quanto no de produção, procurando analisar os sentidos produzidos por esse tipo de organização sintática. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções em processos de subordinação.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da organização sintática do enunciado por período composto por subordinação; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas focalizando as diferentes possibilidades de organização sintática do enunciado, considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF08LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF08LP13) Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial: conjunções e articuladores textuais.",
+    comment:
+      "A habilidade refere-se à compreensão das relações de sentido estabelecidas entre trechos do texto pelas conjunções e articuladores textuais, seja na leitura e compreensão de um texto, seja em produções próprias. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções e por diferentes articuladores textuais.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente do emprego de uma determinada conjunção ou articulador; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas focalizando diferentes possibilidades de articulação dos trechos, os articuladores correspondentes, considerando tanto a legibilidade do texto, como as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Conferir, ainda, comentários realizados à (EF06LP05). Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF08LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Semântica",
+    skill:
+      "(EF08LP14) Utilizar, ao produzir texto, recursos de coesão sequencial (articuladores) e referencial (léxica e pronominal), construções passivas e impessoais, discurso direto e indireto e outros recursos expressivos adequados ao gênero textual.",
+    comment:
+      "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é o emprego da adequação expressiva de recursos de coesão (referencial e sequencial) na produção escrita ou oral. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações; (4) ajudam a identificar as diferentes vozes do texto e a produzir efeitos de sentido, como o da impessoalidade. Também demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
+    resume:
+      "Na elaboração do currículo, convém que o desenvolvimento desta habilidade seja programado em associação com práticas de oralidade, leitura ou escrita de textos dos gêneros previstos para estudo. Será nessas condições que o aluno poderá refletir sobre a adequação expressiva do(s) recurso(s) que pretenda empregar.  Em caso de produções escritas, recomenda-se que os currículos prevejam atividades de produção e revisão em que o foco seja o uso desses elementos coesivos na construção do texto de um determinado gênero. Em caso de textos orais, podem ser analisadas, coletivamente, apresentações previamente gravadas. A progressão, vertical ou horizontal, pode apoiar-se no tipo de recurso coesivo a ser abordado, no grau de complexidade dos gêneros ou textos a serem considerados e no nível de autonomia que se pretende levar o aluno a conquistar.",
+  },
+  {
+    id: "EF08LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Coesão",
+    skill:
+      "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.",
+    comment:
+      "Esta habilidade tem como foco o (re)estabelecimento de relações entre partes do texto, com base na identificação do antecedente de um pronome relativo ou do referente comum a diversos termos do texto. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Implica conhecimentos prévios sobre pronomes relativos e sobre as categorias gramaticais a que essa classe de palavras está associada (pressupõe as habilidades EF07LP12 e EF07LP13).",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego de pronomes relativos, seus antecedentes e/ou referentes comuns de cadeias de substituição lexical; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas com base em práticas de leitura e produção, focalizando as diferentes possibilidades de referenciação no processo de coesão, considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. A progressão ao longo do ano pode apoiar-se no tipo de recurso selecionado para estudo (substituição sinonímica/substituição pronominal) e no grau de complexidade dos gêneros e textos envolvidos nas práticas previstas. Sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF08LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "08",
+    group_years: "8º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Modalização",
+    skill:
+      "(EF08LP16) Explicar os efeitos de sentido do uso, em textos, de estratégias de modalização e argumentatividade (sinais de pontuação, adjetivos, substantivos, expressões de grau, verbos e perífrases verbais, advérbios etc.).",
+    comment:
+      "O foco desta habilidade está na explicação dos efeitos de sentido produzidos por estratégias argumentativas e/ou de modalização, em textos dos mais diversos gêneros, relacionados a qualquer campo de atuação. Trata-se de uma habilidade necessária à compreensão (a) das atitudes que o locutor/escritor pode assumir em relação àquilo que diz (estratégias de modalização), como parte de seu ponto de vista particular; (b) dos recursos de que ele se vale para convencer ou persuadir o ouvinte/leitor. (Relaciona-se com a habilidade EF07LP14).",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver problemas de compreensão decorrentes da presença de estratégias de modalização ou argumentação, também relevantes para (re)estabelecer a progressão temática; 2) sistematizar o conhecimento discutido na etapa anterior (1). Recomenda-se propostas de leitura e/ou produção de textos em que as estratégias de modalização e/ou de argumentação sejam necessárias à eficácia do texto. Convém, portanto, que a metalinguagem só seja empregada depois de compreendido(s) o(s) texto(s) e o aspecto em foco. A progressão horizontal pode apoiar-se no tipo de estratégia visada  (modalização/argumentação) e no grau de complexidade dos gêneros e textos selecionados para o estudo. Sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF89LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF89LP01) Analisar os interesses que movem o campo jornalístico, os efeitos das novas tecnologias no campo e as condições que fazem da informação uma mercadoria, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos.",
+    comment:
+      "O desenvolvimento desta habilidade demanda abordagens do jornalismo em diferentes mídias, apontando-se para a relação entre o campo jornalístico e o publicitário, por exemplo, uma vez que a venda de anúncios é fundamental para instituições e programas jornalísticos. Essa relação entre os campos acarreta interesses que podem impactar a escolha do que será destaque ou a abordagem que será dada a um fato ou assunto.",
+    resume:
+      "Na elaboração do currículo, analisar os aspectos referidos na habilidade envolve a inclusão de reflexões sobre: a rapidez e a instantaneidade das informações e suas consequências (dentre elas, o risco de um tratamento superficial do fato ou assunto); a criação de canais de notícias independentes; a abertura para uma participação mais ativa dos leitores que influenciam as pautas dos jornais e se tornam produtores de conteúdo (com envio de fotos, vídeos e textos verbais); o fenômeno das fake news e a presença mais ostensiva da propaganda. Dada a importância dessas reflexões, a progressão se faz de forma predominantemente vertical, possibilitando, de um ano para outro, o seu aprofundamento.Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF09LI06), da Língua Inglesa, no que se refere à distinção e análise da qualidade das informações em textos jornalísticos.",
+  },
+  {
+    id: "EF89LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF89LP02) Analisar diferentes práticas (curtir, compartilhar, comentar, curar etc.) e textos pertencentes a diferentes gêneros da cultura digital (meme, gif, comentário, charge digital etc.) envolvidos no trato com a informação e opinião, de forma a possibilitar uma presença mais crítica e ética nas redes.",
+    comment:
+      "A esta habilidade podem se associar aprendizagens que favoreçam o protagonismo discursivo potencializado pela chamada web 2.0, que ampliou os modos de participação dos sujeitos como leitores e produtores de textos. Supõe-se o desenvolvimento da habilidade de reconhecer as intencionalidades do outro (por meio da análise dos recursos usados na produção dos sentidos do que o outro disse) e de se posicionar criticamente em relação ao que lê — o que significa desenvolver habilidades para uma participação qualificada do adolescente e do jovem.",
+    resume:
+      'Na elaboração do currículo, é importante considerar que, para uma presença mais crítica e ética nas redes, é necessário um trabalho com as capacidades de leitura mais complexas, como as que exigem do leitor um posicionamento e uma apreciação ética sobre o que se lê. É importante favorecer discussões sobre as consequências de se compartilhar ou "curtir" informações e opiniões que expressem desrespeito ou veiculem preconceito ou ódio, investindo na preparação dos alunos para uma curadoria de textos, além da averiguação da fidedignidade das informações e da pesquisa de diferentes perspectivas sobre uma questão, de forma a construírem uma visão mais ampla e complexa sobre ela e as comentarem com mais propriedade, recusando os discursos inflamados, unilaterais e antiéticos.Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF09LI13), da Língua Inglesa, no que se refere ao reconhecimento e análise de diferentes práticas e textos pertencentes a diferentes gêneros da cultura digital.',
+  },
+  {
+    id: "EF89LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Estratégia de leitura: apreender os sentidos globais do texto\nApreciação e réplica",
+    skill:
+      "(EF89LP03) Analisar textos de opinião (artigos de opinião, editoriais, cartas de leitores, comentários, posts de blog e de redes sociais, charges, memes, gifs etc.) e posicionar-se de forma crítica e fundamentada, ética e respeitosa frente a fatos e opiniões relacionados a esses textos.",
+    comment:
+      'Esta habilidade supõe reconhecer como opinião e argumentação se constroem com recursos das diferentes linguagens que constituem os gêneros referidos na habilidade, buscar informações para aprofundar o conhecimento sobre o assunto/fato que é objeto de crítica e selecionar argumentos relevantes, que fundamentem seu posicionamento, pautados no respeito ao outro. O desenvolvimento desta habilidade é importante também para a produção de textos, uma vez que a análise tem como fim uma "resposta do leitor".',
+    resume:
+      "Na elaboração do currículo, é importante convocar habilidades de leitura mais complexas, visto que é esperado do leitor se posicionar de forma fundamentada e ética em relação ao que lê. Apostar em modalidades didáticas que favoreçam a pesquisa e o aprofundamento sobre os assuntos/fatos em evidência pode contribuir muito para o desenvolvimento desta habilidade. Uma delas é a roda de leitura de textos jornalísticos, em que os alunos compartilham leituras feitas e exercitam a argumentação junto aos seus pares — o que também possibilita o exercício de respeito à palavra do outro.",
+  },
+  {
+    id: "EF89LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Estratégia de leitura: apreender os sentidos globais do texto\nApreciação e réplica",
+    skill:
+      "(EF89LP04) Identificar e avaliar teses/opiniões/posicionamentos explícitos e implícitos, argumentos e contra-argumentos em textos argumentativos do campo (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), posicionando-se frente à questão controversa de forma sustentada.",
+    comment:
+      "Esta habilidade diz respeito tanto às situações de leitura quanto às de produção de textos, na medida em que identificar e avaliar teses, opiniões, posicionamentos, argumentos e contra-argumentos sobre o que se lê/ouve são essenciais ao posicionamento crítico que se expressa em textos orais e escritos sobre o que foi lido/escutado. Nos 8º e 9º anos, espera-se que, ao se posicionarem, os alunos possam apresentar argumentos que justifiquem o posicionamento assumido com relação aos textos argumentativos analisados.",
+    resume:
+      "Na elaboração do currículo, é possível prever uma progressão curricular tanto na seleção dos gêneros argumentativos propostos como na complexidade dos textos dos variados gêneros. Independentemente do tipo de progressão que se decida propor, é importante que os alunos tenham acesso a exemplares dos gêneros que tratem de questões controversas ou de objetos culturais (no caso da resenha crítica e do comentário, especialmente) com os quais tenham familiaridade e possam mobilizar conhecimentos prévios para apoiá-los, tanto na avaliação de posições e argumentos nos textos de terceiros quanto na manifestação de discordância, visto que não é possível avaliar nem posicionar-se a respeito do que não se conhece.",
+  },
+  {
+    id: "EF89LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF89LP05) Analisar o efeito de sentido produzido pelo uso, em textos, de recurso a formas de apropriação textual (paráfrases, citações, discurso direto, indireto ou indireto livre).",
+    comment:
+      "Esta habilidade diz respeito a perceber, em se tratando de textos jornalísticos, como os autores incorporam, em seus textos, os discursos de outros, e possibilita compreender, por exemplo, a relevância que essas vozes assumem no discurso do jornalista e como são usadas para dar ênfase ao recorte ou enfoque escolhido, sinalizando a não neutralidade de textos supostamente objetivos, como as notícias.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que o desenvolvimento desta habilidade possibilita ao leitor tecer apreciações sobre a abordagem dos textos jornalísticos. Diante de uma reportagem, por exemplo, perceber um predomínio de citações ou de discurso direto para trazer ao texto diferentes vozes que apresentam uma mesma ideia, versão ou um mesmo posicionamento sobre o fato ou assunto, em oposição a outras vozes discordantes a essa ideia, versão ou posicionamento que são apenas parafraseadas pelo jornalista, pode sinalizar uma tendência do autor a enfatizar as vozes dos primeiros.",
+  },
+  {
+    id: "EF89LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido",
+    skill:
+      "(EF89LP06) Analisar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e seus efeitos de sentido.",
+    comment:
+      "Esta habilidade envolve as seguintes operações mentais: observar, reconhecer e compreender o modo como os recursos linguísticos ou de outras linguagens são usados na construção de discursos persuasivos em textos argumentativos. Implica uma progressão em relação à habilidade (EF67LP07).",
+    resume:
+      "Na elaboração do currículo, é importante considerar que analisar um argumento de autoridade usado para sustentar uma opinião, por exemplo, é ir além da identificação desse tipo de argumento no texto. Analisar implica uma avaliação (portanto, um exercício de crítica) da sua pertinência, considerando o contexto de uso, por exemplo. A progressão no desenvolvimento desta habilidade pode ser marcada pelo grau de complexidade da seleção dos textos argumentativos e pela variedade dos gêneros propostos, dentre eles, comentários, crônicas, artigos de opinião, charges, propagandas etc.",
+  },
+  {
+    id: "EF89LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Efeitos de sentido Exploração da multissemiose",
+    skill:
+      "(EF89LP07) Analisar, em notícias, reportagens e peças publicitárias em várias mídias, os efeitos de sentido devidos ao tratamento e à composição dos elementos nas imagens em movimento, à performance, à montagem feita (ritmo, duração e sincronização entre as linguagens – complementaridades, interferências etc.) e ao ritmo, melodia, instrumentos e sampleamentos das músicas e efeitos sonoros.",
+    comment:
+      "A habilidade se trata de observar como os recursos das diferentes linguagens se articulam para produzir sentidos. Por exemplo, entender, em uma peça publicitária para televisão, como imagem em movimento, cenário, luzes, fundo musical e texto verbal se articulam para produzir um certo efeito de prazer ou de tensão, dependendo daquilo que se quer expressar; ou como, em uma reportagem ou notícia radiofônica, a entonação, as pausas, os efeitos sonoros etc., ajudam a produzir este ou aquele efeito.",
+    resume:
+      "Na elaboração do currículo, tendo em vista que esta habilidade é proposta para os dois últimos anos desse segmento de ensino, é possível prever uma progressão horizontal, elegendo as notícias e reportagens multimídias para o 8º ano e as peças publicitárias multimídias, para o 9º; ou propor uma progressão vertical, trabalhando com esses gêneros nos dois anos e elegendo textos mais complexos no último ano.",
+  },
+  {
+    id: "EF89LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Estratégia de produção: planejamento de textos informativos",
+    skill:
+      "(EF89LP08) Planejar reportagem impressa e em outras mídias (rádio ou TV/vídeo, sites), tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. – a partir da escolha do fato a ser aprofundado ou do tema a ser focado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato ou tema – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes diversas, análise de documentos, cobertura de eventos etc. -, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc., da produção de infográficos, quando for o caso, e da organização hipertextual (no caso a publicação em sites ou blogs noticiosos ou mesmo de jornais impressos, por meio de boxes variados).",
+    comment:
+      "Do mesmo modo que o desenvolvimento da habilidade (EF67LP09), esta habilidade trata do processo implicado na prática de produzir textos: definir/considerar as condições em que o texto será produzido; planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte); produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens); e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que vai circular, e realizar ajustes necessários, aplicando os conhecimentos construídos sobre os recursos linguísticos e semióticos). Nesta habilidade, o foco é desenvolver, principalmente, a habilidade de planejamento.",
+    resume:
+      "Na elaboração do currículo, é possível considerar que o planejamento e produção de uma reportagem podem ser considerados uma progressão no trabalho com a produção de textos jornalísticos, quanto: (1) aos esforços de pesquisa sobre o fato/assunto e à elaboração do texto, envolvendo, por exemplo, a consulta de maior número de fontes e a articulação de diferentes vozes; (2) ao uso de recursos de outras linguagens na produção de sentidos. Planejar para uma ou outra mídia, em um ou outro gênero, também implica o uso de outros gêneros secundários diferenciados, como a produção de roteiros e entrevistas. O texto mais longo e o tratamento mais aprofundado do tema, numa reportagem, envolvem mais  articulações entre texto verbal e não verbal (efeitos sonoros, perspectiva da câmera, cortes de imagens etc. Sugere-se, ainda, que os currículos considerem o nível de autonomia do/a aluno/a, propondo, tanto na progressão horizontal quanto na vertical, trabalhos em colaboração que avancem para aqueles mais autônomos.",
+  },
+  {
+    id: "EF89LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Estratégia de produção: textualização de textos informativos",
+    skill:
+      "(EF89LP09) Produzir reportagem impressa, com título, linha fina (optativa), organização composicional (expositiva, interpretativa e/ou opinativa), progressão temática e uso de recursos linguísticos compatíveis com as escolhas feitas e reportagens multimidiáticas, tendo em vista as condições de produção, as características do gênero, os recursos e mídias disponíveis, sua organização hipertextual e o manejo adequado de recursos de captação e edição de áudio e imagem e adequação à norma-padrão.",
+    comment:
+      "A habilidade trata do processo implicado na prática de produzir textos: definir/considerar o contexto em que o texto será produzido e circulará, planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte), produzir (elaboração do texto, recorrendo aos recursos das diferentes a linguagens) e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que irá circular, e realizar ajustes necessários, aplicando os conhecimentos construídos sobre os recursos linguísticos e semióticos).",
+    resume:
+      "Na elaboração do currículo, é possível considerar que a produção de uma reportagem pode ser considerada uma progressão no trabalho com a produção de textos jornalísticos, no gênero notícia, por exemplo, quanto: (1) aos esforços de pesquisa sobre o fato/assunto e à elaboração do texto, envolvendo, por exemplo, a consulta de maior número de fontes e a articulação de diferentes vozes; (2) ao uso de recursos de outras linguagens na produção de sentidos. Planejar para uma ou outra mídia, em um ou outro gênero, também implica o uso de gêneros secundários (mais elaborados) diferenciados, como a produção de roteiros e entrevistas. O texto mais longo e o tratamento mais aprofundado do tema, numa reportagem, envolvem mais  articulações entre texto verbal e não verbal (efeitos sonoros, perspectiva da câmera, cortes de imagens etc.). Sugere-se, ainda, que os currículos considerem o nível de autonomia do/a aluno/a, propondo, tanto na progressão horizontal quanto na vertical, trabalhos em colaboração que avancem para aqueles mais autônomos. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados e orientem a realização das diferentes operações de produção de textos, quais sejam: a) contextualização: definição da situação comunicativa em que o texto será produzido (quem serão os leitores, onde circulará, com que finalidade, em qual gênero); b) planejamento: que envolve a elaboração do conteúdo temático (o que será dito) e a organização do texto parte a parte; c) elaboração do texto: o processo da construção do texto (textualização); d) revisão processual (durante a produção) e final. Essas operações podem, inicialmente, ser realizadas em situações coletivas e em grupos, com mais apoio do professor e, de modo gradual, envolver graus crescentes de autonomia do/a aluno para realizá-la.",
+  },
+  {
+    id: "EF89LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Estratégia de produção: planejamento de textos argumentativos e apreciativos",
+    skill:
+      "(EF89LP10) Planejar artigos de opinião, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do tema ou questão a ser discutido(a), da relevância para a turma, escola ou comunidade, do levantamento de dados e informações sobre a questão, de argumentos relacionados a diferentes posicionamentos em jogo, da definição – o que pode envolver consultas a fontes diversas, entrevistas com especialistas, análise de textos, organização esquemática das informações e argumentos – dos (tipos de) argumentos e estratégias que pretende utilizar para convencer os leitores.",
+    comment:
+      "A habilidade contempla uma das operações do processo de produção de textos: o planejamento, que deve ser realizado considerando o contexto de produção (interlocutores, intencionalidades etc). Como se trata de gênero que, nesse campo, exigem posicionamento crítico e opinativo, o planejamento envolve a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos, além de consulta a outras fontes/gêneros para construção do repertório temático. Orienta-se que se tenha especial atenção à escolha e relevância dos temas a serem planejados e produzidos e ao estudo das marcas linguísticas do artigo de opinião.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que a seleção do artigo de opinião para esses dois anos finais significa uma progressão no trabalho com os gêneros argumentativos desse campo. Planejar e produzir um artigo de opinião demanda apreciações de caráter político sobre os fatos/assuntos tratados. Em qualquer dos casos, a apreciação envolve assumir uma postura argumentativa ética. O planejamento de gêneros argumentativos como o artigo de opinião implica, ainda, mobilizar com maior intensidade habilidades que devolvam o pensamento crítico, visto que se propõe a dar uma resposta a uma questão polêmica que vai exigir do/a autor/a interpretar informações selecionadas, avaliar o raciocínio e explicar evidências. Os currículos podem propor uma progressão horizontal no trabalho com o gênero, em relação à mediação do professor e à colaboração entre pares: em colaboração em um ano (coletivo e em grupos), avançando para o trabalho com autonomia no ano seguinte.",
+  },
+  {
+    id: "EF89LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object:
+      "Estratégias de produção: planejamento, textualização, revisão e edição de textos publicitários",
+    skill:
+      "(EF89LP11) Produzir, revisar e editar peças e campanhas publicitárias, envolvendo o uso articulado e complementar de diferentes peças publicitárias: cartaz, banner, indoor, folheto, panfleto, anúncio de jornal/revista, para internet, spot, propaganda de rádio, TV, a partir da escolha da questão/problema/causa significativa para a escola e/ou a comunidade escolar, da definição do público-alvo, das peças que serão produzidas, das estratégias de persuasão e convencimento que serão utilizadas.",
+    comment:
+      "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes e mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e à produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte; (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros publicitários e suas diferentes peças.",
+    resume:
+      "Na elaboração do currículo, recomenda-se discutir a relação entre as esferas publicitária e jornalística, conforme sinalizado nas orientações relativas à leitura. Sugere-se uma progressão ao longo dos 4 anos finais, considerando os gêneros arrolados e a maior ou menor familiaridade dos/as alunos/as com um ou outro. Além do trabalho articulado com profissionais que usam aplicativos de edição de textos, da disponibilização desses aplicativos para os/as alunos/as, e do investimento no trabalho colaborativo, recomenda-se articular as propostas com a exploração dos documentos reguladores (campo da vida pública) da propaganda e publicidade, com vistas ao desenvolvimento de uma postura ética em relação à esfera publicitária.  Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF89LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object:
+      "Estratégias de produção: planejamento e participação em debates regrados",
+    skill:
+      "(EF89LP12) Planejar coletivamente a realização de um debate sobre tema previamente definido, de interesse coletivo, com regras acordadas e planejar, em grupo, participação em debate a partir do levantamento de informações e argumentos que possam sustentar o posicionamento a ser defendido (o que pode envolver entrevistas com especialistas, consultas a fontes diversas, o registro das informações e dados obtidos etc.), tendo em vista as condições de produção do debate – perfil dos ouvintes e demais participantes, objetivos do debate, motivações para sua realização, argumentos e estratégias de convencimento mais eficazes etc. e participar de debates regrados, na condição de membro de uma equipe de debatedor, apresentador/mediador, espectador (com ou sem direito a perguntas), e/ou de juiz/avaliador, como forma de compreender o funcionamento do debate, e poder participar de forma convincente, ética, respeitosa e crítica e desenvolver uma atitude de respeito e diálogo para com as ideias divergentes.",
+    comment:
+      "Esta habilidade consiste em promover a vivência de diferentes papéis em um debate regrado: debatedor, apresentador/mediador, espectador (com ou sem direito a perguntas), e/ou de juiz/avaliador. Supõe um trabalho coletivo (para definição de questões gerais), em grupo (para definição de responsabilidades e planejamento da atuação) e individual, embora como parte de um grupo/coletivo (na vivência do papel definido).",
+    resume:
+      "Na elaboração do currículo, sugere-se que esta habilidade também seja vinculada a projetos interdisciplinares. Ela dialoga com habilidades dos campos da vida pública e práticas de estudo e pesquisa. Participar de um debate é ação complexa que mobiliza habilidades de curadoria de informação (na pesquisa para aprofundar o tema escolhido e para o preparo dos argumentos), de produção de textos argumentativos (mobilizando conhecimentos sobre movimentos argumentativos e recursos linguísticos para a construção das ideias que se quer apresentar/defender), além de outras habilidades próprias de situações orais que implicam tomada de notas enquanto o outro fala, uso de recursos de entonação, ritmo e expressão facial e corporal).",
+  },
+  {
+    id: "EF89LP13",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Oralidade",
+    object:
+      "Estratégias de produção: planejamento, realização e edição de entrevistas orais",
+    skill:
+      "(EF89LP13) Planejar entrevistas orais com pessoas ligadas ao fato noticiado, especialistas etc., como forma de obter dados e informações sobre os fatos cobertos sobre o tema ou questão discutida ou temáticas em estudo, levando em conta o gênero e seu contexto de produção, partindo do levantamento de informações sobre o entrevistado e sobre a temática e da elaboração de um roteiro de perguntas, garantindo a relevância das informações mantidas e a continuidade temática, realizar entrevista e fazer edição em áudio ou vídeo, incluindo uma contextualização inicial e uma fala de encerramento para publicação da entrevista isoladamente ou como parte integrante de reportagem multimidiática, adequando-a a seu contexto de publicação e garantindo a relevância das informações mantidas e a continuidade temática.",
+    comment:
+      "Esta habilidade trata de tomar a entrevista tanto como texto autônomo quanto como um instrumento de coleta de informações para serem incorporadas a notícias. Cabe, em qualquer das situações, contemplar todo o processo implicado na produção de entrevistas: planejar (seleção de assunto e de quem será entrevistado, curadoria de informação etc.), produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens e aos aplicativos necessários, em caso de textos em áudio e vídeo) e, implicitamente, revisar (avaliar a adequação da entrevista ao meio em que circulará, se autônoma, ou selecionar e organizar os trechos relevantes para compor a notícia ou reportagem).",
+    resume:
+      'Na elaboração do currículo, as entrevistas são propostas na BNCC tanto como gêneros "autônomos" — em que o texto em si é o diálogo entre entrevistador e entrevistado(s) — quanto como gêneros que se hibridizam, se misturam a notícias, reportagens e outros textos. É importante considerar esses diferentes contextos e usos da entrevista no momento do planejamento. Por exemplo, se a entrevista for um texto integral, após definidos a finalidade e o recorte da entrevista e escolhido o entrevistado, as perguntas devem garantir um diálogo produtivo entre entrevistado e entrevistador. Se a entrevista a ser feita será para compor uma reportagem midiática, dependendo do fato/assunto e do recorte, pode haver mais de um entrevistado e pode ser necessário elaborar mais de um roteiro de perguntas.',
+  },
+  {
+    id: "EF89LP14",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object:
+      "Argumentação: movimentos argumentativos, tipos de argumento e força argumentativa",
+    skill:
+      "(EF89LP14) Analisar, em textos argumentativos e propositivos, os movimentos argumentativos de sustentação, refutação e negociação e os tipos de argumentos, avaliando a força/tipo dos argumentos utilizados.",
+    comment:
+      'A habilidade tem como foco a análise do funcionamento próprio de textos argumentativos/propositivos. Envolve reconhecer a posição do autor sobre a questão controversa; os argumentos sustentados; a conexão entre as ideias, muitas vezes evidenciada por recursos linguísticos ("É certo que/Por outro lado" etc.); a organização dos argumentos (hierarquização ou enumeração de motivos para sustentar uma posição, por exemplo).',
+    resume:
+      "Na elaboração do currículo, para avaliar a força dos argumentos, é preciso garantir que as habilidades apontem para uma atividade permanente de alimentação temática e para reflexões sobre temas atuais e controversos. Como uma habilidade definida para os dois últimos anos desse segmento de ensino, é desejável que os currículos programem atividades com textos argumentativos que apresentem os três movimentos, para que os(as) alunos possam se familiarizar com as marcas dessas construções textuais, de modo a construir um bom repertório no final do 9º ano. No currículo, a progressão pode se dar pelo aspecto da argumentação programado para estudo, pela complexidade dos gêneros e textos previstos, ou, ainda, pelo grau de autonomia do(a) aluno.",
+  },
+  {
+    id: "EF89LP15",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Estilo",
+    skill:
+      "(EF89LP15) Utilizar, nos debates, operadores argumentativos que marcam a defesa de ideia e de diálogo com a tese do outro: concordo, discordo, concordo parcialmente, do meu ponto de vista, na perspectiva aqui assumida etc.",
+    comment:
+      "O foco desta habilidade está no domínio de operadores argumentativos em produções orais. A habilidade envolve compreensão do conteúdo temático e da questão controversa em jogo no debate, assim como da posição a ser assumida. Além disso, supõe a compreensão da posição contrária à defendida, de modo que seja possível colocar-se no lugar do opositor e negociar com ele (exercício de alteridade).",
+    resume:
+      "Na elaboração do currículo, sugere-se propor o estudo de debates gravados, focalizando os aspectos indicados (operador argumentativo e a relação com o posicionamento dos interlocutores), assim como a participação efetiva de debates, de modo a criar-se uma situação de exercício da habilidade estudada, já que a participação supõe réplicas e tréplicas às manifestações dos diferentes debatedores. Projetos envolvendo debates de questões polêmicas de relevância social (os efeitos do uso da tecnologia no mundo; consumo consciente; comportamentos que podem garantir uma vida sustentável ao planeta; o impacto do bulling na vida das pessoas, por exemplo) podem criar um espaço bastante propício ao desenvolvimento dessa habilidade. A progressão pode apoiar-se no grau de complexidade das questões controversas em debate, no foco a ser dado a cada atividade (pesquisa sobre o tema/planejamento/execução) e no nível de autonomia a ser atingido pelo aluno em cada etapa.",
+  },
+  {
+    id: "EF89LP16",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Análise linguística/semiótica",
+    object: "Modalização",
+    skill:
+      "(EF89LP16) Analisar a modalização realizada em textos noticiosos e argumentativos, por meio das modalidades apreciativas, viabilizadas por classes e estruturas gramaticais como adjetivos, locuções adjetivas, advérbios, locuções adverbiais, orações adjetivas e adverbiais, orações relativas restritivas e explicativas etc., de maneira a perceber a apreciação ideológica sobre os fatos noticiados ou as posições implícitas ou assumidas.",
+    comment:
+      "Esta habilidade tem como foco a modalização em textos jornalísticos narrativos e argumentativos. Isso implica: (a) o reconhecimento dos recursos linguísticos empregados; (b) a compreensão dos efeitos de sentido produzidos por meio desses recursos, assim como de seu enquadramento ideológico; (c) a análise da coerência desses efeitos em relação às intenções pretendidas.",
+    resume:
+      "Na elaboração do currículo, sugere-se que o desenvolvimento da habilidade aconteça tanto por meio da leitura de estudo, quanto das atividades de revisão. A sistematização e a terminologia técnica só são recomendadas se ocorrerem depois da compreensão do aspecto estudado. Assim, seu desenvolvimento só pode se dar de forma efetiva no interior de práticas de leitura e/ou produção de textos jornalísticos como os mencionados, e supõe o estudo prévio e/ou concomitante das estruturas gramaticais indicadas. O foco é a análise dos efeitos de sentido produzidos pelos recursos empregados, considerando a sua coerência tanto com as intenções presumidas do texto, quanto com as especificidades dos gêneros. O estudo da modalização é fundamental para uma compreensão crítica dos efeitos de neutralidade produzidos pelo discurso jornalístico. No currículo local, a progressão pode se dar tanto pelo uso da metalinguagem, quanto pela complexidade dos textos.",
+  },
+  {
+    id: "EF89LP17",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos legais e normativos",
+    skill:
+      "(EF89LP17) Relacionar textos e documentos legais e normativos de importância universal, nacional ou local que envolvam direitos, em especial, de crianças, adolescentes e jovens – tais como a Declaração dos Direitos Humanos, a Constituição Brasileira, o ECA -, e a regulamentação da organização escolar – por exemplo, regimento escolar -, a seus contextos de produção, reconhecendo e analisando possíveis motivações, finalidades e sua vinculação com experiências humanas e fatos históricos e sociais, como forma de ampliar a compreensão dos direitos e deveres, de fomentar os princípios democráticos e uma atuação pautada pela ética da responsabilidade (o outro tem direito a uma vida digna tanto quanto eu tenho).",
+    comment:
+      "Esta habilidade supõe conhecer as histórias de luta de diferentes setores e grupos da sociedade (representantes de minorias) que, ao longo dos anos, conseguiram normatizar os seus direitos essenciais, como o direito à vida, à alimentação, educação, saúde e moradia. É essencial para ampliar a consciência sobre os direitos humanos em vários âmbitos da vida em sociedade e sobre o compromisso de uma atuação no coletivo, em defesa do Estado de direito.",
+    resume:
+      "Na elaboração do currículo, deve-se considerar que esta habilidade põe em jogo outras, especialmente as que se referem a identidades individuais e de grupos, bem como à necessidade de se colocar no lugar do outro, experimentando e valorizando diferentes vivências culturais e, ao mesmo tempo, atuando em favor da desconstrução de desigualdades que ferem direitos básicos, como o direito à vida (competências gerais 1, 2, 3, 4 e 7 da BNCC).A progressão pode se estabelecer a partir de questões do universo imediato do aluno, levando as discussões para o universo mais amplo e retornando para questões locais. Todas as habilidades do campo de atuação na vida pública podem estar vinculadas a projetos interdisciplinares, uma vez que a diversidade humana é objeto de estudo de diferentes perspectivas.Há, aqui, especial oportunidade para o trabalho interdisciplinar com a habilidade (EF09HI16), da História, no que se refere a conhecer e identificar relações entre textos legais sobre direitos humanos, as normas de convivência dos locais de vivência do aluno, processos de afirmação de direitos e instituições voltadas à defesa desses direitos.",
+  },
+  {
+    id: "EF89LP18",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Contexto de produção, circulação e recepção de textos e práticas relacionadas à defesa de direitos e à participação social",
+    skill:
+      "(EF89LP18) Explorar e analisar instâncias e canais de participação disponíveis na escola (conselho de escola, outros colegiados, grêmio livre), na comunidade (associações, coletivos, movimentos, etc.), no munícipio ou no país, incluindo formas de participação digital, como canais e plataformas de participação (como portal e-cidadania), serviços, portais e ferramentas de acompanhamentos do trabalho de políticos e de tramitação de leis, canais de educação política, bem como de propostas e proposições que circulam nesses canais, de forma a participar do debate de ideias e propostas na esfera social e a engajar-se com a busca de soluções para problemas ou questões que envolvam a vida da escola e da comunidade.",
+    comment:
+      "Esta habilidade diz respeito a conhecer as características dos espaços de circulação de gêneros que impliquem solicitação e/ou reclamação de direitos, participação na vida política da escola, comunidade, estado ou país — e textos que possibilitem essas ações —, o que permite aos alunos que organizem o seu discurso (oral ou escrito) utilizando recursos adequados aos interlocutores, com vistas a atingir seus objetivos. São habilidades fundamentais para o exercício da cidadania.",
+    resume:
+      "Na elaboração do currículo, é recomendável que se criem condições para o conhecimento dos espaços referidos, assim como dos textos dos gêneros que neles circulam. Nesse estudo, é de grande relevância o levantamento das características e procedimentos convencionados para a obtenção de informações sobre propostas em estudo, e a participação de debates e manifestação de opiniões. A progressão pode se dar tanto pelo modo de tratamento do conteúdo — por frequentação ou para aprofundamento — quanto pela complexidade dos textos.",
+  },
+  {
+    id: "EF89LP19",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros\nApreciação e réplica",
+    skill:
+      "(EF89LP19) Analisar, a partir do contexto de produção, a forma de organização das cartas abertas, abaixo-assinados e petições on-line (identificação dos signatários, explicitação da reivindicação feita, acompanhada ou não de uma breve apresentação da problemática e/ou de justificativas que visam sustentar a reivindicação) e a proposição, discussão e aprovação de propostas políticas ou de soluções para problemas de interesse público, apresentadas ou lidas nos canais digitais de participação, identificando suas marcas linguísticas, como forma de possibilitar a escrita ou subscrição consciente de abaixo-assinados e textos dessa natureza e poder se posicionar de forma crítica e fundamentada frente às propostas",
+    comment:
+      "Trata-se de habilidade de leitura para estudo das especificidades dos textos normativos jurídicos e reivindicatórios, visando à produção de textos dessa natureza, essenciais para a vida pública, especialmente em situações de defesa ou de debates sobre direitos do cidadão. Supõe-se o estudo desses gêneros no que diz respeito ao conteúdo — como pode se organizar e ser construído com os recursos linguísticos adequados, tendo em vista os objetivos pretendidos.",
+    resume:
+      "Na elaboração do currículo, é recomendável que o desenvolvimento de leitura e produção de textos dessa natureza tenha como contexto inicial as produções e questões locais. Sugere-se a definição de uma progressão para o trabalho com os textos reivindicatórios apresentados na descrição da habilidade. Cabe enfatizar, ainda, que a natureza dos textos reivindicatórios mobilizará habilidades propostas no campo jornalístico/midiático, visto que esses textos supõem o uso da argumentação.",
+  },
+  {
+    id: "EF89LP20",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object:
+      "Estratégias e procedimentos de leitura em textos reivindicatórios ou propositivos",
+    skill:
+      "(EF89LP20) Comparar propostas políticas e de solução de problemas, identificando o que se pretende fazer/implementar, por que (motivações, justificativas), para que (objetivos, benefícios e consequências esperados), como (ações e passos), quando etc. e a forma de avaliar a eficácia da proposta/solução, contrastando dados e informações de diferentes fontes, identificando coincidências, complementaridades e contradições, de forma a poder compreender e posicionar-se criticamente sobre os dados e informações usados em fundamentação de propostas e analisar a coerência entre os elementos, de forma a tomar decisões fundamentadas.",
+    comment:
+      "Esta habilidade implica mobilizar capacidades de leitura, tais como localização de informação, inferências e generalizações, bem como apreciações valorativas fundamentadas sobre as propostas políticas e soluções de problemas que resultem em tomadas de decisão. As habilidades relativas à curadoria de informações também se articulam a esta habilidade.",
+    resume:
+      "Na elaboração do currículo, pode-se desenvolver esta habilidade partindo da análise de propostas políticas e solução de problemas do contexto local — para depois compará-los a outros —, o que torna a abordagem dos textos indicados mais significativa para os alunos, uma vez que possibilitará uma avaliação da eficácia das propostas e soluções para o seu entorno. Para um trabalho mais significativo, também vale a pena enfatizar a importância de articular essas leituras em contextos de projetos que envolvam as diferentes áreas.",
+  },
+  {
+    id: "EF89LP21",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object:
+      "Estratégia de produção: planejamento de textos reivindicatórios ou propositivos",
+    skill:
+      "(EF89LP21) Realizar enquetes e pesquisas de opinião, de forma a levantar prioridades, problemas a resolver ou propostas que possam contribuir para melhoria da escola ou da comunidade, caracterizar demanda/necessidade, documentando-a de diferentes maneiras por meio de diferentes procedimentos, gêneros e mídias e, quando for o caso, selecionar informações e dados relevantes de fontes pertinentes diversas (sites, impressos, vídeos etc.), avaliando a qualidade e a utilidade dessas fontes, que possam servir de contextualização e fundamentação de propostas, de forma a justificar a proposição de propostas, projetos culturais e ações de intervenção.",
+    comment:
+      "A habilidade refere-se à investigação de problemas e questões que levarão à produção de gêneros reivindicatórios ou propositivos. Esta habilidade, prevista para os dois últimos anos, sinaliza uma progressão em relação à habilidade (EF67LP19), indicada para o 6º e 7º anos, que também faz referência a levantamento de questões ou problemas. A progressão suposta está (1) nos procedimentos envolvidos na investigação e na ampliação de alcance do público; (2) na geração de dados e na função deles para a produção de gêneros mais ou menos complexos. Supõe a leitura analítica de textos normativos e legais.",
+    resume:
+      "Na elaboração do currículo, é possível propor uma progressão para os dois anos indicados, em relação ao gênero a ser selecionado. Há articulação entre habilidades desse campo e do campo de práticas de estudo e pesquisa, quando as práticas deste último campo mobilizam habilidades que envolvem tomada de notas, sínteses de leituras, elaboração de entrevistas, enquetes etc.",
+  },
+  {
+    id: "EF89LP22",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object:
+      "Escuta\nApreender o sentido geral dos textos Apreciação e réplica Produção/Proposta",
+    skill:
+      "(EF89LP22) Compreender e comparar as diferentes posições e interesses em jogo em uma discussão ou apresentação de propostas, avaliando a validade e força dos argumentos e as consequências do que está sendo proposto e, quando for o caso, formular e negociar propostas de diferentes naturezas relativas a interesses coletivos envolvendo a escola ou comunidade escolar.",
+  },
+  {
+    id: "EF89LP23",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object: "Movimentos argumentativos e força dos argumentos",
+    skill:
+      "(EF89LP23) Analisar, em textos argumentativos, reivindicatórios e propositivos, os movimentos argumentativos utilizados (sustentação, refutação e negociação), avaliando a força dos argumentos utilizados.",
+    comment:
+      'A habilidade implica reconhecer, inicialmente, a especificidade dos movimentos argumentativos, indicando: (a) que a sustentação de uma posição supõe a apresentação de argumentos que fundamentem a posição defendida; (b) que a refutação implica a desqualificação da posição oposta à defendida no texto; (c) que a negociação requer a criação de um efeito de que o argumentador reconhece o valor de algum aspecto da posição contrária, validando-os, de modo a "quebrar" um pouco a resistência do oponente, aproximando-o da sua posição. Para tanto, é preciso identificar: a posição do autor sobre a questão em pauta; os argumentos e contra-argumentos apresentados; os recursos linguísticos usados para introduzir os diferentes movimentos argumentativos ("É certo que/Por outro lado" etc.). Finalmente, avaliar a força dos argumentos empregados no texto implica conhecer o tema e realizar reflexões não superficiais sobre ele.',
+    resume:
+      "Na elaboração do currículo, convém considerar que esta habilidade também vem relacionada, na BNCC, ao campo jornalístico/midiático. O que a diferencia quando associada ao campo da vida pública, como aqui, é a especificidade dos gêneros reivindicatórios, como as cartas de solicitação e reclamação, as cartas abertas, o abaixo assinado. A avaliação da força dos argumentos requer um trabalho permanente de alimentação temática e reflexões da turma sobre temas atuais e controversos. A progressão pode se dar pela complexidade do texto e do gênero; pelo tipo de tratamento didático — por frequentação (aos gêneros/textos) ou para aprofundamento; pelo grau de autonomia do aluno (em colaboração coletiva — em grupos, em duplas — ou de modo autônomo); pelo tratamento dado ao conteúdo — mais ou menos complexo, mais ou menos aprofundado, mais ou menos implicado à realidade cotidiana do aluno.",
+  },
+  {
+    id: "EF89LP24",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Leitura",
+    object: "Curadoria de informação",
+    skill:
+      "(EF89LP24) Realizar pesquisa, estabelecendo o recorte das questões, usando fontes abertas e confiáveis.",
+    comment:
+      "Esta habilidade se refere à curadoria de informação, com vistas à ampliação e qualificação da participação dos jovens nas diferentes esferas da vida pública. Por exemplo, para saber sobre seus direitos em alguma dimensão da vida pública, o aluno terá que buscar textos legais ou que circularam na mídia (reportagens, notícias, artigos de opinião etc.), nos quais possa fundamentar uma reivindicação ou reclamação.",
+    resume:
+      "Na elaboração do currículo, é necessário considerar que esta habilidade se articula com habilidades definidas para o campo de práticas de estudo e pesquisa, no que se refere ao cuidado com a curadoria de informação. Nesse sentido, procedimentos como grifar, fazer anotações, bem como produções de textos que apoiem a compreensão, como resumos, esquemas etc., serão importantes no processo de compreensão desses textos. Cuidados com a verificação da fidedignidade das fontes também precisam estar no foco. Além dos aspectos procedimentais envolvidos, o aluno também terá que mobilizar todos os conhecimentos construídos sobre os usos dos recursos linguísticos e seus efeitos de sentido, para avaliar o que selecionar em sua pesquisa.",
+  },
+  {
+    id: "EF89LP25",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object: "Estratégias de escrita: textualização, revisão e edição",
+    skill:
+      "(EF89LP25) Divulgar o resultado de pesquisas por meio de apresentações orais, verbetes de enciclopédias colaborativas, reportagens de divulgação científica, vlogs científicos, vídeos de diferentes tipos etc.",
+    comment:
+      "Esta habilidade refere-se à apropriação de diferentes modos de divulgar pesquisas realizadas. Supõe o estudo das especificidades dos gêneros e da adequação de um ou outro ao contexto de produção, com destaque para a natureza dos resultados, as intencionalidades e o público provável. Envolve as operações de planejamento, produção e revisão do texto no gênero escolhido para divulgar os resultados.",
+    resume:
+      "Na elaboração do currículo, uma vez que se recomenda a proposição de pesquisa envolvendo as diferentes áreas no interior de projetos integradores, a divulgação de resultados pode culminar em feiras de ciências ou em eventos de fechamento do ano, possibilitando a produção de diferentes formas de divulgação que envolvam toda a comunidade escolar. Em currículos locais, esses eventos podem ser planejados entre várias escolas de uma mesma cidade ou de regiões diferentes no interior de um determinado estado. Por exemplo, pode-se prever a criação de site ou blog em que se concentrem produções dos dois anos que podem variar no gênero, visto que esses espaços suportam várias mídias.",
+  },
+  {
+    id: "EF89LP26",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Produção de textos",
+    object: "Estratégias de escrita: textualização, revisão e edição",
+    skill:
+      "(EF89LP26) Produzir resenhas, a partir das notas e/ou esquemas feitos, com o manejo adequado das vozes envolvidas (do resenhador, do autor da obra e, se for o caso, também dos autores citados na obra resenhada), por meio do uso de paráfrases, marcas do discurso reportado e citações.",
+    comment:
+      "Esta habilidade se refere aos procedimentos de planejamento e à elaboração de resenhas resultantes de variadas leituras de estudo, com cuidado para o tratamento dos dados e das informações coletadas durante a curadoria da informação. Envolve aprender a usar as vozes do/a aluno/a e das fontes consultadas na construção dos sentidos que se pretende. Por exemplo, se a intenção é reforçar uma determinada ideia ou posição, predominarão no texto vozes que reforcem essa ideia ou posição.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que os gêneros sugeridos na descrição da habilidade são gêneros de apoio à compreensão de textos. Comumente, são meios para se chegar a uma outra produção (a principal) ou para o estudo de apropriação de conceitos que serão aplicados em outros contextos. Recomenda-se que o trabalho com habilidades que favorecem a apropriação desta habilidade e dos gêneros nela implicados seja realizado em todos os componentes e áreas do currículo. Promover momentos de planejamento integrado envolvendo profissionais de todas as áreas para se prepararem para práticas comuns nesse sentido potencializará o aprendizado pelos/as alunos/as. Do ponto de vista didático, é indicado que os currículos contemplem um estudo das principais características dos gêneros selecionados.",
+  },
+  {
+    id: "EF89LP27",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object: "Conversação espontânea",
+    skill:
+      "(EF89LP27) Tecer considerações e formular problematizações pertinentes, em momentos oportunos, em situações de aulas, apresentação oral, seminário etc.",
+    comment:
+      "Esta habilidade é solicitada em situações orais diversas, em contextos mais ou menos formais, em que se espera uma participação mais ativa da audiência. Supõe uma participação qualificada, apoiada em informações ouvidas ou coletadas e analisadas. A expressão corporal, o contato visual com o interlocutor, a entonação, além do respeito ao turno do outro e da postura ética devem ser foco da aprendizagem nessas participações.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que a participação mais qualificada como audiência (parte do público a que se dirige um apresentador ou debatedor) implica a capacidade de identificar as informações mais relevantes, fazer inferências sobre o que é dito e relacioná-las a outras informações para, a partir disso, elaborar perguntas sobre possíveis dúvidas ou se posicionar e argumentar em relação ao que foi dito. As anotações resultantes da tomada de notas podem servir de apoio nessas situações. É importante garantir que essa participação qualificada seja solicitada frequentemente e que sejam propostos momentos de avaliação da turma sobre essas participações, no sentido de aprimorá-las.",
+  },
+  {
+    id: "EF89LP28",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Oralidade",
+    object: "Procedimentos de apoio à compreensão Tomada de nota",
+    skill:
+      "(EF89LP28) Tomar nota de videoaulas, aulas digitais, apresentações multimídias, vídeos de divulgação científica, documentários e afins, identificando, em função dos objetivos, informações principais para apoio ao estudo e realizando, quando necessário, uma síntese final que destaque e reorganize os pontos ou conceitos centrais e suas relações e que, em alguns casos, seja acompanhada de reflexões pessoais, que podem conter dúvidas, questionamentos, considerações etc.",
+    comment:
+      "Esta habilidade supõe o trabalho com a tomada de notas para diferentes fins: (1) para alimentar outras produções escritas com a finalidade de documentar processos e resultados do que foi apreendido a partir do conteúdo assistido; (2) para registro pessoal, visando a reflexão sobre o registrado; (3) como apoio à fala durante a participação em situações orais como discussões, debates, seminários.",
+    resume:
+      "Na elaboração do currículo, é válido levar em consideração que a tomada de notas como registro é considerada um gênero de apoio à compreensão do ouvido, assistido. Como procedimento, está vinculada a diferentes situações, em qualquer campo de atuação. É comum em práticas como debate, palestras, reuniões, aulas e suas variantes em outras mídias. Supõe a capacidade de identificar informações relevantes e sintetizá-las em notas, de modo coerente, garantindo a possibilidade de retomada das ideias pelo(a) seu(sua) autor(a). Pode ser proposta uma progressão que indique tanto a variação dos objetivos da tomada de notas, quanto a situação em que ela é solicitada.",
+  },
+  {
+    id: "EF89LP29",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object: "Textualização Progressão temática",
+    skill:
+      "(EF89LP29) Utilizar e perceber mecanismos de progressão temática, tais como retomadas anafóricas (“que, cujo, onde”, pronomes do caso reto e oblíquos, pronomes demonstrativos, nomes correferentes etc.), catáforas (remetendo para adiante ao invés de retomar o já dito), uso de organizadores textuais, de coesivos etc., e analisar os mecanismos de reformulação e paráfrase utilizados nos textos de divulgação do conhecimento.",
+    comment:
+      "Esta habilidade refere-se ao campo de atuação na vida pública e, mais especificamente, aos textos de divulgação do conhecimento. Remete aos estudos de como acontece, em tais textos, a progressão do tema, considerando elementos específicos de coesão, seja referencial, seja sequencial; ou, ainda, o uso de organizadores textuais (os conectivos empregados no interior de e entre frases), por meio de leitura e produção de textos, nos quais seja possível perceber os mecanismos em questão e refletir a seu respeito.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento da habilidade pode ser contextualizado em projetos de produção de revistas (impressas ou digitais) de divulgação de conhecimentos, blogs e/ou vlogs e murais temáticos, relacionados a trabalhos interdisciplinares. Recomenda-se: a) que o estudo dos aspectos referidos seja programado por meio de atividades de leitura e/ou produção de textos que considerem os efeitos de sentido por eles produzidos e a relação que estabelecem entre os trechos do enunciado; c) que a sistematização dos conhecimentos e metalinguagem correspondente (terminologia gramatical) só sejam realizadas/empregadas depois que os aspectos em foco tiverem sido compreendidos. A progressão, tanto vertical quanto horizontal, pode tomar como critérios: (a) os mecanismos de progressão temática a serem estudados a cada momento; (b) a sequenciação entre leitura compreensiva prévia do texto e a análise de algum(ns) desses mecanismos; (c) o grau de complexidade do gênero ou texto a ser analisado; (d) o nível de autonomia a ser conquistado pelo aluno a cada etapa.",
+  },
+  {
+    id: "EF89LP30",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object: "Textualização",
+    skill:
+      "(EF89LP30) Analisar a estrutura de hipertexto e hiperlinks em textos de divulgação científica que circulam na Web e proceder à remissão a conceitos e relações por meio de links.",
+    comment:
+      "Esta habilidade (assim como a EF67LP26) supõe que a análise empreendida na leitura de hipertextos em ambiente digital poderá favorecer a produção deles. Consiste em compreender que os links em textos de divulgação científica, em ambiente digital, levam a outros conteúdos que mantêm uma relação direta com o assunto tratado no hipertexto de origem, seja de complementariedade, seja de aprofundamento. Requer a observação, a reflexão e a análise de hipertextos.",
+    resume:
+      "Na elaboração do currículo (assim como indicado para a habilidade EF67LP26), é recomendável a colaboração entre todas as áreas, com vistas a contemplar textos de divulgação científica de todas elas, de modo que, de um lado, o professor de Língua Portuguesa possa colaborar com os demais, no sentido de orientar, por exemplo, o ensino de procedimentos de leitura e de produção desses textos, e, de outro, os demais professores possam colaborar com o de Língua Portuguesa, orientando-o quanto aos recursos das linguagens específicas (cartografia, gráficos/infográficos, simulações, por exemplo) usados na construção de sentidos dos textos. É condição para isso que os currículos prevejam projetos e/ou atividades interdisciplinares, com acesso irrestrito a computadores conectados à Internet. A progressão, tanto vertical quanto horizontal, pode combinar diferentes critérios: (a) a ênfase sobre a leitura de estudo preliminar desses textos em ambientes digitais ou sobre a análise do hipertexto e seus links; (b) o grau de complexidade dos gêneros e textos selecionados para estudo; (c) o nível de autonomia a ser conquistado pelo aluno em cada momento.",
+  },
+  {
+    id: "EF89LP31",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo de atuação na vida pública",
+    unit: "Análise linguística/semiótica",
+    object: "Modalização",
+    skill:
+      "(EF89LP31) Analisar e utilizar modalização epistêmica, isto é, modos de indicar uma avaliação sobre o valor de verdade e as condições de verdade de uma proposição, tais como os asseverativos – quando se concorda com (“realmente, evidentemente, naturalmente, efetivamente, claro, certo, lógico, sem dúvida” etc.) ou discorda de (“de jeito nenhum, de forma alguma”) uma ideia; e os quase-asseverativos, que indicam que se considera o conteúdo como quase certo (“talvez, assim, possivelmente, provavelmente, eventualmente”).",
+    comment:
+      "Trata-se de analisar os efeitos de sentido produzidos pelos recursos empregados — a modalização epistêmica —, considerando a sua coerência tanto com as intenções presumidas do texto, quanto com a especificidade do gênero, considerando campo de atuação, finalidade e espaço de circulação. Além disso, está associada aos textos argumentativos e às habilidades que envolvem o reconhecimento dos movimentos de sustentação, refutação e argumentação (relaciona-se com a habilidade EF89LP23).",
+    resume:
+      "Na elaboração do currículo, tal como apontado para as habilidades (EF89LP16) e (EF69LP28), sugere-se que o desenvolvimento aconteça tanto por meio da leitura/escuta de estudo, quanto das atividades de produção e revisão de textos orais e escritos. Isso porque analisar a modalização está associado ao uso desses recursos em ações de linguagem, tanto na condição de produtor como de interlocutor dos respectivos textos. A progressão pode se dar pela complexidade do texto e/ou do gênero e pelo grau de autonomia do aluno ao realizar o trabalho (em colaboração — coletiva, em grupos, em duplas — e de modo autônomo).",
+  },
+  {
+    id: "EF89LP32",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF89LP32) Analisar os efeitos de sentido decorrentes do uso de mecanismos de intertextualidade (referências, alusões, retomadas) entre os textos literários, entre esses textos literários e outras manifestações artísticas (cinema, teatro, artes visuais e midiáticas, música), quanto aos temas, personagens, estilos, autores etc., e entre o texto original e paródias, paráfrases, pastiches, trailer honesto, vídeos-minuto, vidding, dentre outros.",
+    comment:
+      'Assim como a habilidade (EF67LP27), esta habilidade supõe o estudo comparado das obras literárias entre si e com outras linguagens, mas significa uma progressão em relação à anterior por priorizar, para além da identificação das relações intertextuais, a análise dos efeitos de sentido produzidos por elas, implicando, inclusive, o estudo de gêneros multimidiáticos que são uma "resposta" do público em relação às produções baseadas no original, como é o caso do trailer honesto e do vidding (que são produções feitas por fãs das obras de literatura, cinema etc.)',
+    resume:
+      "Na elaboração do currículo, a progressão pode ser formulada com base nos gêneros propostos, partindo do estudo das relações intertextuais entre obras literárias de diferente tempos e, em seguida, de adaptações de obras para outras linguagens (do romance para o cinema) para, posteriormente, propor um estudo comparativo entre a obra original e produções parodísticas, seja de empresas, seja de fãs. A habilidade abrange, ainda, o estudo de recursos estilísticos, como a ironia e a hipérbole — construídas tanto com recursos verbais como com recursos de outras linguagens.",
+  },
+  {
+    id: "EF89LP33",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object: "Estratégias de leitura Apreciação e réplica",
+    skill:
+      "(EF89LP33) Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes – romances, contos contemporâneos, minicontos, fábulas contemporâneas, romances juvenis, biografias romanceadas, novelas, crônicas visuais, narrativas de ficção científica, narrativas de suspense, poemas de forma livre e fixa (como haicai), poema concreto, ciberpoema, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    comment:
+      "A habilidade refere-se a procedimentos e estratégias que podem ser usados para compreender e apreciar diferentes gêneros literários, considerando as suas marcas específicas. Esse tipo de leitura favorece a fruição literária — que significa ler sem qualquer compromisso com avaliações ou apresentações formais sobre o lido. Entretanto, cabe lembrar que, para fruir melhor o texto, é essencial ter vivenciado experiências prazerosas de leitura e conversa sobre textos desses gêneros, em que  o caráter criativo dos discursos literários tenham sido evidenciados.",
+    resume:
+      "Na elaboração do currículo, uma forma de se colaborar para a motivação do aluno para leituras autônomas é:(1) acolher as mais variadas produções culturais, oferecendo um amplo e variado acervo de livros;(2) prever projetos que envolvam o cultivo da leitura de livre escolha;(3) rodas de conversa sobre obras lidas;(4) outros eventos culturais, como saraus, mostras de cinema, teatro, música etc.Ações dessa natureza favorecem a inserção dos alunos em práticas variadas, ampliando seu repertório cultural e consciência multicultural. Para um trabalho dessa dimensão, é necessária a articulação dos professores da área — o que possibilitará explorar as diferentes linguagens —, bem como a pessoa responsável pela sala de leitura e/ou biblioteca. Esta habilidade articula-se com a habilidade de mostrar interesse e envolvimento com a leitura de textos literários — no sentido de que envolver-se nas mais variadas práticas de leitura literária favorece o desenvolvimento da autonomia dos alunos.",
+  },
+  {
+    id: "EF89LP34",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo artístico-literário",
+    unit: "Leitura",
+    object:
+      "Reconstrução da textualidade e compreensão dos efeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    skill:
+      "(EF89LP34) Analisar a organização de texto dramático apresentado em teatro, televisão, cinema, identificando e percebendo os sentidos decorrentes dos recursos linguísticos e semióticos que sustentam sua realização como peça teatral, novela, filme etc.",
+    comment:
+      "Esta habilidade implica comparar a realização do texto dramático em diferentes contextos. Ou seja, analisar as as diferenças e semelhanças entre um texto dramático criado para o palco, para o cinema e para a TV ou o rádio, por exemplo; com que recursos se pode contar em cada caso e como eles ajudam a produzir os sentidos pretendidos.",
+    resume:
+      'Na elaboração do currículo, deve-se considerar que o texto dramático é comumente concebido para ser encenado no palco. As outras formas de realização são, em geral, tratadas como "roteiro" (de filme/cinema, de novela). Um estudo do texto dramático que se aproxime dessas últimas práticas, mais acessíveis aos alunos, pode ser mais significativo. Além disso, o estudo comparativo de textos dramáticos produzidos para as diferentes mídias implica refletir sobre as semelhanças e diferenças entre as linguagens (e seus recursos) usadas na realização desses textos. Por exemplo, atuar para o palco é diferente de atuar para a TV ou o cinema. O mesmo acontece com outros recursos e linguagens, como o som, a iluminação, o cenário, o figurino, a maquiagem etc.',
+  },
+  {
+    id: "EF89LP35",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object: "Construção da textualidade",
+    skill:
+      "(EF89LP35) Criar contos ou crônicas (em especial, líricas), crônicas visuais, minicontos, narrativas de aventura e de ficção científica, dentre outros, com temáticas próprias ao gênero, usando os conhecimentos sobre os constituintes estruturais e recursos expressivos típicos dos gêneros narrativos pretendidos, e, no caso de produção em grupo, ferramentas de escrita colaborativa.",
+    comment:
+      "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários em prosa. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
+    resume:
+      'Na elaboração do currículo, é interessante considerar que esta habilidade supõe a análise dos recursos usados na produção de sentido dos textos oferecidos à leitura nos gêneros referidos. Sugere-se, então, uma progressão na proposição dos "subgêneros" narrativos sugeridos. Recomenda-se que as produções experimentadas sejam efetivamente colocadas em circulação e alcancem os leitores previstos. É sugerido propor antecipadamente (1) a publicação de coletâneas para compor a biblioteca e/ou para distribuir para amigos e familiares; (2) a divulgação das produções em blogs literários criados para esse fim, e/ou páginas de Facebook; (3) a realização de concursos, desafios, saraus, clubes de leitura etc.',
+  },
+  {
+    id: "EF89LP36",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Campo artístico-literário",
+    unit: "Produção de textos",
+    object: "Relação entre textos",
+    skill:
+      "(EF89LP36) Parodiar poemas conhecidos da literatura e criar textos em versos (como poemas concretos, ciberpoemas, haicais, liras, microrroteiros, lambe-lambes e outros tipos de poemas), explorando o uso de recursos sonoros e semânticos (como figuras de linguagem e jogos de palavras) e visuais (como relações entre imagem e texto verbal e distribuição da mancha gráfica), de forma a propiciar diferentes efeitos de sentido.",
+    comment:
+      "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários líricos. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte. O diferencial desta habilidade em relação à habilidade do 6º e 7º anos, que também sugere o trabalho com gêneros líricos, se dá pelo fato de que, aqui, há necessariamente um trabalho intertextual exigido, visto que sugere o trabalho com paródias de textos conhecidos.",
+    resume:
+      'Na elaboração do currículo, é interessante considerar que esta habilidade supõe a análise dos recursos usados na produção de sentido dos textos oferecidos à leitura nos gêneros referidos. Sugere-se, então, uma progressão na proposição dos "subgêneros" líricos sugeridos. Recomenda-se que as produções experimentadas sejam efetivamente colocadas em circulação e alcancem os leitores previstos. É sugerido propor antecipadamente (1) a publicação de coletâneas para compor a biblioteca e/ou para distribuir para amigos e familiares; (2) a divulgação das produções em blogs literários criados para esse fim, e/ou páginas de Facebook; (3) a realização de concursos, desafios, saraus, clubes de leitura etc.',
+  },
+  {
+    id: "EF89LP37",
+    competences: "Língua Portuguesa",
+    group_year_id: "89",
+    group_years: "8º, 9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Figuras de linguagem",
+    skill:
+      "(EF89LP37) Analisar os efeitos de sentido do uso de figuras de linguagem como ironia, eufemismo, antítese, aliteração, assonância, dentre outras.",
+    comment:
+      "O foco desta habilidade está na compreensão e análise de figuras de linguagem como as mencionadas, em gêneros e textos de qualquer campo de atuação. Trata-se, portanto, de uma habilidade relevante não só para a compreensão, mas, ainda, para a interpretação de textos, na medida em que evidencia mecanismos de (re)construção do texto e de seus sentidos.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode ser contextualizado em projetos de produção de textos do campo literário; na elaboração de artigos de divulgação de conhecimento; em projetos de estudo das figuras de linguagem em textos literários ou de divulgação de conhecimento. Recomenda-se: a) que os aspectos referidos sejam estudados levando-se em consideração os efeitos de sentido que produzem e a relação que estabelecem entre os trechos do enunciado; b) que a terminologia gramatical e a sistematização só sejam abordadas depois que os aspectos em foco tiverem sido compreendidos. A progressão pode se dar com base na complexidade do gênero/texto ou do grau de autonomia do aluno ao realizar o trabalho. Sugere-se, inicialmente, um exercício colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+  {
+    id: "EF09LP01",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object:
+      "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    skill:
+      "(EF09LP01) Analisar o fenômeno da disseminação de notícias falsas nas redes sociais e desenvolver estratégias para reconhecê-las, a partir da verificação/avaliação do veículo, fonte, data e local da publicação, autoria, URL, da análise da formatação, da comparação de diferentes fontes, da consulta a sites de curadoria que atestam a fidedignidade do relato dos fatos e denunciam boatos etc.",
+    comment:
+      "Esta habilidade envolve procedimentos de pesquisa, como escolher palavras ou frases-chave adequadas para um resultado mais eficaz, bem como capacidades de leitura, como levantar hipóteses, localizar informações (expressas em diferentes linguagens) e compará-las, realizar inferências e checar hipóteses a partir dessas comparações. Favorece, ainda, o pensamento crítico e o posicionamento ético em relação ao compartilhamento das notícias falsas.",
+    resume:
+      'Na elaboração do currículo, é importante levar em conta que as fake news têm dominado as redes sociais. Alguns dos espaços de grande circulação dessas notícias falsas, na atualidade, são o Whatsapp e o Facebook, aos quais os adolescentes têm fácil acesso. Se faz necessário propor um trabalho que parta das experiências deles nesses espaços e que os prepare para analisar e averiguar os diferentes elementos que constituem essas mensagens e que dão ou não credibilidade a elas. Prever projetos que envolvam toda a comunidade escolar para se criar uma rede de proteção contra as notícias falsas pode mobilizar os alunos para ações permanentes de "alertas", junto aos colegas e comunidade escolar. Além disso, possibilitar acesso a sites criados com essa finalidade pode inspirá-los.Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF09LI06), da Língua Inglesa, no que se refere à distinção e análise da qualidade das informações.',
+  },
+  {
+    id: "EF09LP02",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Leitura",
+    object: "Relação entre textos",
+    skill:
+      "(EF09LP02) Analisar e comentar a cobertura da imprensa sobre fatos de relevância social, comparando diferentes enfoques por meio do uso de ferramentas de curadoria.",
+    comment:
+      "Esta habilidade pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01). Ela consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados nos textos;2. apurar informações, desenvolvendo procedimentos de curadoria;3. posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.",
+    resume:
+      "Na elaboração do currículo, é importante considerar que as sugestões apresentadas nos campos das habilidades (EF06LP01), (EF07LP01), (EF07LP02), (EF89LP03), (EF89LP01), (EF89LP02) cabem para esta habilidade também. Para analisar e comentar a qualidade da cobertura dos fatos pela imprensa, será necessário investir em procedimentos de curadoria que vão desde o refinamento da capacidade de selecionar palavras, expressões ou frases-chave para busca de um mesmo fato veiculado pelos diferentes veículos e mídias, até buscar informações sobre a proposta editorial e o grau de confiabilidade dos veículos pesquisados.",
+  },
+  {
+    id: "EF09LP03",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Campo jornalístico/midiático",
+    unit: "Produção de textos",
+    object: "Textualização de textos argumentativos e apreciativos",
+    skill:
+      "(EF09LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, assumindo posição diante de tema polêmico, argumentando de acordo com a estrutura própria desse tipo de texto e utilizando diferentes tipos de argumentos – de autoridade, comprovação, exemplificação princípio etc.",
+    comment:
+      "A habilidade envolve os procedimentos apontados em (EF67LP09) e (EF67LP10): definir contexto de produção, planejar, produzir e revisar. Aqui, no entanto, se trata de gênero argumentativo do campo jornalístico-midiático, que exige posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
+    resume:
+      "Na elaboração do currículo, é interessante considerar que a seleção do artigo de opinião para esses dois anos finais significa uma progressão no trabalho com os gêneros argumentativos desse campo. Produzir um artigo de opinião demanda apreciações de caráter político sobre os fatos/assuntos tratados. A apreciação envolve assumir uma postura argumentativa ética. A produção de gêneros argumentativos como o artigo de opinião implica, ainda, mobilizar com maior intensidade habilidades que desenvolvam o pensamento crítico, visto que se propõe a dar uma resposta a uma questão polêmica que vai exigir do/a autor/a interpretar informações selecionadas, avaliar o raciocínio e explicar evidências. Os currículos podem propor uma progressão horizontal no trabalho com o gênero, em relação à mediação do professor e à colaboração entre pares: em colaboração em um ano (coletivo e em grupos), avançando para o trabalho com autonomia no ano seguinte. Há, aqui, oportunidade para o trabalho interdisciplinar com a habilidade (EF09LI12), da Língua Inglesa, associada à produção de textos com posicionamento crítico.",
+  },
+  {
+    id: "EF09LP04",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Fono-ortografia",
+    skill:
+      "(EF09LP04) Escrever textos corretamente, de acordo com a norma-padrão, com estruturas sintáticas complexas no nível da oração e do período.",
+    comment:
+      'Esta habilidade se refere ao uso da norma-padrão nas situações, gêneros e textos em que ela é requerida e tem como foco específico o uso de estruturas sintáticas complexas, no nível da oração e do período. Requer o estudo da variação linguística e da compreensão dos valores socialmente atribuídos às diferentes variedades, e demanda o envolvimento frequente e sistemático em práticas públicas e formais de leitura e/ou produção de textos, orais e/ou escritos, em que a "correção" (adequação) deve ser observada. Exemplos de situações orais formais: palestras, seminários, apresentações orais, debates. Exemplos de situações escritas formais: entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática. (Estreitamente relacionada a EF08LP04).',
+    resume:
+      'Na elaboração do currículo, convém que o desenvolvimento desta habilidade venha sempre associado a práticas de leitura e/ou produção de textos dos mais diversos gêneros e campos de atuação. Recomenda-se, ainda, que: (a) as atividades propostas definam os conhecimentos a serem abordados considerando os tópicos já previstos para anos anteriores; (b) explicitem as estruturas sintáticas complexas a serem estudadas; (c) evitem a perspectiva do "erro gramatical", em favor de uma abordagem baseada na adequação do uso. (A habilidade representa uma progressão vertical de EF06LP11, EF07LP10 e EF08LP04, na medida em que é uma retomada das mesmas operações, com acréscimo de conteúdos). A progressão horizontal pode adotar como critério os tópicos a serem abordados a cada momento, o grau de complexidade dos gêneros e textos previstos e o grau de autonomia do aluno pressuposto na execução da tarefa.',
+  },
+  {
+    id: "EF09LP05",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF09LP05) Identificar, em textos lidos e em produções próprias, orações com a estrutura sujeito-verbo de ligação-predicativo.",
+    comment:
+      "O foco desta habilidade é a identificação da estrutura sintática própria de orações cujo núcleo é um verbo de ligação. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF0LP906). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo.   Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos programados para o estudo (vale considerar, ainda, a relação desta habilidade com EF09LP06.',
+  },
+  {
+    id: "EF09LP06",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF09LP06) Diferenciar, em textos lidos e em produções próprias, o efeito de sentido do uso dos verbos de ligação “ser”, “estar”, “ficar”, “parecer” e “permanecer”.",
+    comment:
+      "O foco desta habilidade é a identificação do papel dos verbos de ligação na produção de efeitos de sentido específicos. Está, portanto,  diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF09LP05). Requer observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
+    resume:
+      'Na elaboração do currículo, recomenda-se que o desenvolvimento desta habilidade não se constitua como um fim em si mesmo, mas que contribua para uma compreensão global, por parte do aluno, do papel da sintaxe no funcionamento da língua. Isso significa propor atividades que associem essas análises à leitura e à produção de textos, com foco nos efeitos de sentido que podem se associar às estruturas sintáticas em estudo.  Atividades lúdicas, em que os alunos possam explorar livremente diferentes alternativas de estruturação de um "mesmo" enunciado, podem contribuir significativamente para a percepção e compreensão da natureza e do funcionamento dos mecanismos sintáticos em jogo. A progressão horizontal pode apoiar-se no grau de complexidade dos gêneros e textos programados para o estudo (vale considerar, ainda, a relação desta habilidade com EF09LP05).',
+  },
+  {
+    id: "EF09LP07",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF09LP07) Comparar o uso de regência verbal e regência nominal na norma-padrão com seu uso no português brasileiro coloquial oral.",
+    comment:
+      'Esta habilidade possibilita refletir sobre diferenças entre a norma-padrão e outras variedades da língua. Um exemplo comum é a regência do verbo assistir (com o sentido de ver algo). De acordo com a norma-padrão, esse verbo é regido pela preposição "a": "Ele assistiu ao filme ontem". Entretanto, hoje, até mesmo em textos jornalísticos encontramos o uso do verbo sem essa regência: "Ele assistiu o filme ontem". A habilidade, portanto, demanda a análise comparativa de enunciados em que as regências nominal e verbal obedeçam regras de diferentes normas.',
+    resume:
+      "Na elaboração do currículo, convém reforçar um compromisso fundamental da escola: ser o espaço em que os/as alunos aprendem a utilizar as variedades de maior prestígio e com as quais tenham pouca familiaridade, sem, no entanto, discriminar as demais. Análises comparativas favorecem a compreensão do fenômeno da variação linguística, uma vez que colocam em discussão, nesse caso, as regras da norma-padrão sobre concordância e regência entre as palavras, em contraste com os usos efetivos da língua pelos falantes. Esse estudo possibilita, de um lado, colocar em questão as origens das regras da norma-padrão para relativizá-las; de outro lado, favorece a compreensão da língua como algo que muda no tempo e no espaço, de modo a legitimar todas as variedades e seus contextos culturais. A progressão do ensino pode pautar-se pelas diferentes regências selecionadas para estudo (nominal/verbal), pelo grau de complexidade e/ou formalidade dos gêneros e textos previstos e pelo nível de autonomia que se pretenda levar o aluno a conquistar a cada etapa.",
+  },
+  {
+    id: "EF09LP08",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Morfossintaxe",
+    skill:
+      "(EF09LP08) Identificar, em textos lidos e em produções próprias, a relação que conjunções (e locuções conjuntivas) coordenativas e subordinativas estabelecem entre as orações que conectam.",
+    comment:
+      "A habilidade refere-se ao estudo das relações de sentido estabelecidas entre trechos do texto pelas conjunções e locuções conjuntivas, em períodos compostos por coordenação e/ou subordinação, seja na leitura, seja na produção de textos próprios. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo o envolvimento do aluno em práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções em processos de subordinação.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente do emprego de uma determinada conjunção ou locução conjuntiva; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que a atividades sejam organizadas focalizando diferentes possibilidades de articulação dos trechos, as conjunções e locuções correspondentes, considerando tanto a legibilidade do texto, como as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Conferir comentários a (EF06LP05), (EF08LP13) e (EF08LP12). Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF09LP09",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Elementos notacionais da escrita/morfossintaxe",
+    skill:
+      "(EF09LP09) Identificar efeitos de sentido do uso de orações adjetivas restritivas e explicativas em um período composto.",
+    comment:
+      "A habilidade refere-se ao estudo necessário para a resolução de problemas de compreensão encontrados, seja na leitura, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego de orações adjetivas restritivas e explicativas em períodos compostos. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo contraponto entre orações adjetivas restritivas e explicativas.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego de orações adjetivas restritivas ou explicativas em períodos compostos; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas focalizando as diferentes possibilidades de organização sintática do enunciado, considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF09LP10",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Coesão",
+    skill:
+      "(EF09LP10) Comparar as regras de colocação pronominal na norma-padrão com o seu uso no português brasileiro coloquial.",
+    comment:
+      "A habilidade refere-se ao estudo de como acontece a colocação pronominal em diferentes variedades linguísticas (realizadas em diferentes camadas sociais e/ou em distintas regiões/estados do país), em contraposição às regras da norma-padrão. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pela colocação pronominal.",
+    resume:
+      "Na elaboração do currículo, é importante reconhecer: a) que as variedades relacionam-se, sobretudo, à linguagem oral; b) que a utilização de uma variedade linguística não padrão em textos escritos é possível quando se pretende, por exemplo, caracterizar um personagem (textos da esfera literária); c) que as variedades coloquiais não são idênticas no país inteiro, devido a fatores regionais, sociais e temporais. Dessa maneira, a linguagem informal não é a mesma no país todo. Recomenda-se que o trabalho relacionado às variedades linguísticas seja realizado de tal maneira que o aluno consiga selecionar a variedade adequada à situação comunicativa, repudiando qualquer preconceito linguístico relativo ao uso delas. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF09LP11",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Coesão",
+    skill:
+      "(EF09LP11) Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial (conjunções e articuladores textuais).",
+    comment:
+      "A habilidade refere-se ao estudo necessário para a resolução de problemas de compreensão encontrados, seja na leitura de um texto, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego de recursos de coesão sequencial. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de recursos de coesão sequencial, como conjunções e articuladores textuais.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode organizar-se com base em dois pontos articulados: 1) resolver um problema de compreensão/redação decorrente da presença e/ou emprego de recursos de coesão sequencial; 2) sistematizar o conhecimento discutido na etapa anterior (1). Sugere-se que as atividades sejam organizadas focalizando as diferentes possibilidades de articulação de trechos de enunciados no estabelecimento da progressão temática, considerando a legibilidade do texto, as intenções de significação e as possibilidades de compreensão do interlocutor. Recomenda-se, ainda, que a metalinguagem só seja empregada depois de compreendido o aspecto em foco. Do ponto de vista da progressão horizontal, sugere-se, inicialmente, um trabalho colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo. Um segundo critério é a complexidade dos gêneros e textos previstos para o estudo.",
+  },
+  {
+    id: "EF09LP12",
+    competences: "Língua Portuguesa",
+    group_year_id: "09",
+    group_years: "9º",
+    field: "Todos os campos de atuação",
+    unit: "Análise linguística/semiótica",
+    object: "Variação linguística",
+    skill:
+      "(EF09LP12) Identificar estrangeirismos, caracterizando-os segundo a conservação, ou não, de sua forma gráfica de origem, avaliando a pertinência, ou não, de seu uso.",
+    comment:
+      "Esta é uma habilidade que envolve duas operações distintas: identificar e avaliar estrangeirismos, do ponto de vista da pertinência de seu emprego na leitura e/ou produção, reconhecendo os termos e analisando sua adequação.",
+    resume:
+      "Na elaboração do currículo, o desenvolvimento desta habilidade pode ser contextualizado em projetos de leitura e/ou produção de textos de qualquer campo, ou, ainda, em projetos de estudo do recurso a estrangeirismos e de sua pertinência em diferentes gêneros e textos de campos diversos. É necessária a leitura crítica e/ou a produção monitorada de textos em que estrangeirismos são frequentes (informática, moda, tecnologia etc.), em qualquer campo de atuação Recomenda-se: a) que os aspectos referidos sejam estudados levando-se em consideração os efeitos de sentido que produzem; b) que a terminologia gramatical e a sistematização a respeito dos diferentes tipos de estrangeirismos só sejam abordadas depois que os aspectos em foco tiverem sido compreendidos. A progressão pode se dar com base na complexidade do gênero/texto ou no grau de autonomia do aluno. Sugere-se, inicialmente, um exercício colaborativo (coletivo e em grupos/duplas), que progrida para o autônomo.",
+  },
+];
+
+/**
+ * "id":"EF01LP01",
+   "competences": "Língua Portuguesa",
+   group_year_id: "01",
+   "group_years": "1º",
+   "field": "Todos os campos de atuação",
+   "unit": "Leitura\/escuta (compartilhada e autônoma)",
+   "object": "Protocolos de leitura",
+   "skill": "(EF01LP01) Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+   "comment": "O momento de leitura em voz alta de materiais impressos e digitais, feita pelo professor, terá o papel de modelizar procedimentos de leitura, entre eles, o que se refere a esta habilidade. Esta habilidade também é parte do processo de aquisição do sistema de escrita, porque o procedimento de apontar o que está sendo lido oferece pistas sobre a relação entre fala e escrita.",
+   "resume": "Para contextualizar o desenvolvimento dessa habilidade, o currículo pode orientar que a prática de leitura se desenvolva em situações significativas, em que o ato de refletir sobre as características do sistema de escrita (por exemplo, saber a direção em que se lê) aconteça de modo a trazer para os estudantes o papel da leitura na vida. Nesse processo, podem ajudar projetos e\/ou sequências didáticas que proponham, por exemplo, a oralização de textos (como preparar-se para apresentar ou gravar uma leitura — cantiga, poema etc. —  para pais ou colegas). Os objetivos poderão orientar atividade de leitura feita pelo professor e acompanhada pelo aluno em material impresso ou projetada por aparelhos eletrônicos."
+
+   const alice = await prisma.user.upsert({
+    where: { id: 'EF01LP01' },
+    update: {},
+    create: {
+      competences: {
+        create:{
+
+      }} 'alice@prisma.io',
+      name: 'Alice',
+      posts: {
+        create: {
+          title: 'Check out Prisma with Next.js',
+          content: 'https://www.prisma.io/nextjs',
+          published: true,
+        },
+      },
+    },
+  })
+ */
+
+async function main() {
+  portuguesSeed.map(
+    async (item: portuguesDto) =>
+      await prisma.apprendiceship.create({
+        data: {
+          id: item.id,
+          competence: {
+            create: {
+              id: "LP",
+              name: item.competences,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          group_year: {
+            create: {
+              id: item.group_year_id,
+              description: item.group_years,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          field: {
+            create: {
+              description: item.field,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          unit: {
+            create: {
+              description: item.unit,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          object: {
+            create: {
+              description: item.object,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          skill: {
+            create: {
+              description: item.skill,
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          comment: {
+            create: {
+              comment: item.comment || "N/A",
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          resume: {
+            create: {
+              description: item.resume || "N/A",
+              created: new Date(Date()).toISOString(),
+            },
+          },
+          created: new Date(Date()).toISOString(),
+        },
+      })
+  );
+}
+
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });

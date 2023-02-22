@@ -2342,6 +2342,5473 @@ const skillsArray: Array<fieldsDto> = [
       "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada.",
     created: new Date(Date()).toISOString(),
   },
+  {
+    id: "EF15AR01",
+    description:
+      "Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR02",
+    description:
+      "Explorar e reconhecer elementos constitutivos das artes visuais (ponto, linha, forma, cor, espaço, movimento etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR03",
+    description:
+      "Reconhecer e analisar a influência de distintas matrizes estéticas e culturais das artes visuais nas manifestações artísticas das culturas locais, regionais e nacionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR04",
+    description:
+      "Experimentar diferentes formas de expressão artística (desenho, pintura, colagem, quadrinhos, dobradura, escultura, modelagem, instalação, vídeo, fotografia etc.), fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR05",
+    description:
+      "Experimentar a criação em artes visuais de modo individual, coletivo e colaborativo, explorando diferentes espaços da escola e da comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR06",
+    description:
+      "Dialogar sobre a sua criação e as dos colegas, para alcançar sentidos plurais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR07",
+    description:
+      "Reconhecer algumas categorias do sistema das artes visuais (museus, galerias, instituições, artistas, artesãos, curadores etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR08",
+    description:
+      "Experimentar e apreciar formas distintas de manifestações da dança presentes em diferentes contextos, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório corporal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR09",
+    description:
+      "Estabelecer relações entre as partes do corpo e destas com o todo corporal na construção do movimento dançado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR10",
+    description:
+      "Experimentar diferentes formas de orientação no espaço (deslocamentos, planos, direções, caminhos etc.) e ritmos de movimento (lento, moderado e rápido) na construção do movimento dançado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR11",
+    description:
+      "Criar e improvisar movimentos dançados de modo individual, coletivo e colaborativo, considerando os aspectos estruturais, dinâmicos e expressivos dos elementos constitutivos do movimento, com base nos códigos de dança.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR12",
+    description:
+      "Discutir, com respeito e sem preconceito, as experiências pessoais e coletivas em dança vivenciadas na escola, como fonte para a construção de vocabulários e repertórios próprios.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR13",
+    description:
+      "Identificar e apreciar criticamente diversas formas e gêneros de expressão musical, reconhecendo e analisando os usos e as funções da música em diversos contextos de circulação, em especial, aqueles da vida cotidiana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR14",
+    description:
+      "Perceber e explorar os elementos constitutivos da música (altura, intensidade, timbre, melodia, ritmo etc.), por meio de jogos, brincadeiras, canções e práticas diversas de composição/criação, execução e apreciação musical.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR15",
+    description:
+      "Explorar fontes sonoras diversas, como as existentes no próprio corpo (palmas, voz, percussão corporal), na natureza e em objetos cotidianos, reconhecendo os elementos constitutivos da música e as características de instrumentos musicais variados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR16",
+    description:
+      "Explorar diferentes formas de registro musical não convencional (representação gráfica de sons, partituras criativas etc.), bem como procedimentos e técnicas de registro em áudio e audiovisual, e reconhecer a notação musical convencional.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR17",
+    description:
+      "Experimentar improvisações, composições e sonorização de histórias, entre outros, utilizando vozes, sons corporais e/ou instrumentos musicais convencionais ou não convencionais, de modo individual, coletivo e colaborativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR18",
+    description:
+      "Reconhecer e apreciar formas distintas de manifestações do teatro presentes em diferentes contextos, aprendendo a ver e a ouvir histórias dramatizadas e cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório ficcional.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR19",
+    description:
+      "Descobrir teatralidades na vida cotidiana, identificando elementos teatrais (variadas entonações de voz, diferentes fisicalidades, diversidade de personagens e narrativas etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR20",
+    description:
+      "Experimentar o trabalho colaborativo, coletivo e autoral em improvisações teatrais e processos narrativos criativos em teatro, explorando desde a teatralidade dos gestos e das ações do cotidiano até elementos de diferentes matrizes estéticas e culturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR21",
+    description:
+      "Exercitar a imitação e o faz de conta, ressignificando objetos e fatos e experimentando-se no lugar do outro, ao compor e encenar acontecimentos cênicos, por meio de músicas, imagens, textos ou outros pontos de partida, de forma intencional e reflexiva.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR22",
+    description:
+      "Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR23",
+    description:
+      "Reconhecer e experimentar, em projetos temáticos, as relações processuais entre diversas linguagens artísticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR24",
+    description:
+      "Caracterizar e experimentar brinquedos, brincadeiras, jogos, danças, canções e histórias de diferentes matrizes estéticas e culturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR25",
+    description:
+      "Conhecer e valorizar o patrimônio cultural, material e imaterial, de culturas diversas, em especial a brasileira, incluindo-se suas matrizes indígenas, africanas e europeias, de diferentes épocas, favorecendo a construção de vocabulário e repertório relativos às diferentes linguagens artísticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15AR26",
+    description:
+      "Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR01",
+    description:
+      "Pesquisar, apreciar e analisar formas distintas das artes visuais tradicionais e contemporâneas, em obras de artistas brasileiros e estrangeiros de diferentes épocas e em diferentes matrizes estéticas e culturais, de modo a ampliar a experiência com diferentes contextos e práticas artístico-visuais e cultivar a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR02",
+    description:
+      "Pesquisar e analisar diferentes estilos visuais, contextualizando-os no tempo e no espaço.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR03",
+    description:
+      "Analisar situações nas quais as linguagens das artes visuais se integram às linguagens audiovisuais (cinema, animações, vídeos etc.), gráficas (capas de livros, ilustrações de textos diversos etc.), cenográficas, coreográficas, musicais etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR04",
+    description:
+      "Analisar os elementos constitutivos das artes visuais (ponto, linha, forma, direção, cor, tom, escala, dimensão, espaço, movimento etc.) na apreciação de diferentes produções artísticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR05",
+    description:
+      "Experimentar e analisar diferentes formas de expressão artística (desenho, pintura, colagem, quadrinhos, dobradura, escultura, modelagem, instalação, vídeo, fotografia, performance etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR06",
+    description:
+      "Desenvolver processos de criação em artes visuais, com base em temas ou interesses artísticos, de modo individual, coletivo e colaborativo, fazendo uso de materiais, instrumentos e recursos convencionais, alternativos e digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR07",
+    description:
+      "Dialogar com princípios conceituais, proposições temáticas, repertórios imagéticos e processos de criação nas suas produções visuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR08",
+    description:
+      "Diferenciar as categorias de artista, artesão, produtor cultural, curador, designer, entre outras, estabelecendo relações entre os profissionais do sistema das artes visuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR09",
+    description:
+      "Pesquisar e analisar diferentes formas de expressão, representação e encenação da dança, reconhecendo e apreciando composições de dança de artistas e grupos brasileiros e estrangeiros de diferentes épocas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR10",
+    description:
+      "Explorar elementos constitutivos do movimento cotidiano e do movimento dançado, abordando, criticamente, o desenvolvimento das formas da dança em sua história tradicional e contemporânea.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR11",
+    description:
+      "Experimentar e analisar os fatores de movimento (tempo, peso, fluência e espaço) como elementos que, combinados, geram as ações corporais e o movimento dançado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR12",
+    description:
+      "Investigar e experimentar procedimentos de improvisação e criação do movimento como fonte para a construção de vocabulários e repertórios próprios.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR13",
+    description:
+      "Investigar brincadeiras, jogos, danças coletivas e outras práticas de dança de diferentes matrizes estéticas e culturais como referência para a criação e a composição de danças autorais, individualmente e em grupo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR14",
+    description:
+      "Analisar e experimentar diferentes elementos (figurino, iluminação, cenário, trilha sonora etc.) e espaços (convencionais e não convencionais) para composição cênica e apresentação coreográfica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR15",
+    description:
+      "Discutir as experiências pessoais e coletivas em dança vivenciadas na escola e em outros contextos, problematizando estereótipos e preconceitos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR16",
+    description:
+      "Analisar criticamente, por meio da apreciação musical, usos e funções da música em seus contextos de produção e circulação, relacionando as práticas musicais às diferentes dimensões da vida social, cultural, política, histórica, econômica, estética e ética",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR17",
+    description:
+      "Explorar e analisar, criticamente, diferentes meios e equipamentos culturais de circulação da música e do conhecimento musical.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR18",
+    description:
+      "Reconhecer e apreciar o papel de músicos e grupos de música brasileiros e estrangeiros que contribuíram para o desenvolvimento de formas e gêneros musicais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR19",
+    description:
+      "Identificar e analisar diferentes estilos musicais, contextualizando-os no tempo e no espaço, de modo a aprimorar a capacidade de apreciação da estética musical.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR20",
+    description:
+      "Explorar e analisar elementos constitutivos da música (altura, intensidade, timbre, melodia, ritmo etc.), por meio de recursos tecnológicos (games e plataformas digitais), jogos, canções e práticas diversas de composição/criação, execução e apreciação musicais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR21",
+    description:
+      "Explorar e analisar fontes e materiais sonoros em práticas de composição/criação, execução e apreciação musical, reconhecendo timbres e características de instrumentos musicais diversos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR22",
+    description:
+      "Explorar e identificar diferentes formas de registro musical (notação musical tradicional, partituras criativas e procedimentos da música contemporânea), bem como procedimentos e técnicas de registro em áudio e audiovisual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR23",
+    description:
+      "Explorar e criar improvisações, composições, arranjos, jingles, trilhas sonoras, entre outros, utilizando vozes, sons corporais e/ou instrumentos acústicos ou eletrônicos, convencionais ou não convencionais, expressando ideias musicais de maneira individual, coletiva e colaborativa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR24",
+    description:
+      "Reconhecer e apreciar artistas e grupos de teatro brasileiros e estrangeiros de diferentes épocas, investigando os modos de criação, produção, divulgação, circulação e organização da atuação profissional em teatro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR25",
+    description:
+      "Identificar e analisar diferentes estilos cênicos, contextualizando-os no tempo e no espaço de modo a aprimorar a capacidade de apreciação da estética teatral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR26",
+    description:
+      "Explorar diferentes elementos envolvidos na composição dos acontecimentos cênicos (figurinos, adereços, cenário, iluminação e sonoplastia) e reconhecer seus vocabulários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR27",
+    description:
+      "Pesquisar e criar formas de dramaturgias e espaços cênicos para o acontecimento teatral, em diálogo com o teatro contemporâneo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR28",
+    description:
+      "Investigar e experimentar diferentes funções teatrais e discutir os limites e desafios do trabalho artístico coletivo e colaborativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR29",
+    description:
+      "Experimentar a gestualidade e as construções corporais e vocais de maneira imaginativa na improvisação teatral e no jogo cênico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR30",
+    description:
+      "Compor improvisações e acontecimentos cênicos com base em textos dramáticos ou outros estímulos (música, imagens, objetos etc.), caracterizando personagens (com figurinos e adereços), cenário, iluminação e sonoplastia e considerando a relação com o espectador.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR31",
+    description:
+      "Relacionar as práticas artísticas às diferentes dimensões da vida social, cultural, política, histórica, econômica, estética e ética.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR32",
+    description:
+      "Analisar e explorar, em projetos temáticos, as relações processuais entre diversas linguagens artísticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR33",
+    description:
+      "Analisar aspectos históricos, sociais e políticos da produção artística, problematizando as narrativas eurocêntricas e as diversas categorizações da arte (arte, artesanato, folclore, design etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR34",
+    description:
+      "Analisar e valorizar o patrimônio cultural, material e imaterial, de culturas diversas, em especial a brasileira, incluindo suas matrizes indígenas, africanas e europeias, de diferentes épocas, e favorecendo a construção de vocabulário e repertório relativos às diferentes linguagens artísticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69AR35",
+    description:
+      "Identificar e manipular diferentes tecnologias e recursos digitais para acessar, apreciar, produzir, registrar e compartilhar práticas e repertórios artísticos, de modo reflexivo, ético e responsável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF01",
+    description:
+      "Experimentar, fruir e recriar diferentes brincadeiras e jogos da cultura popular presentes no contexto comunitário e regional, reconhecendo e respeitando as diferenças individuais de desempenho dos colegas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF02",
+    description:
+      "Explicar, por meio de múltiplas linguagens (corporal, visual, oral e escrita), as brincadeiras e os jogos populares do contexto comunitário e regional, reconhecendo e valorizando a importância desses jogos e brincadeiras para suas culturas de origem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF03",
+    description:
+      "Planejar e utilizar estratégias para resolver desafios de brincadeiras e jogos populares do contexto comunitário e regional, com base no reconhecimento das características dessas práticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF04",
+    description:
+      "Colaborar na proposição e na produção de alternativas para a prática, em outros momentos e espaços, de brincadeiras e jogos e demais práticas corporais tematizadas na escola, produzindo textos (orais, escritos, audiovisuais) para divulgá-las na escola e na comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF05",
+    description:
+      "Experimentar e fruir, prezando pelo trabalho coletivo e pelo protagonismo, a prática de esportes de marca e de precisão, identificando os elementos comuns a esses esportes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF06",
+    description:
+      "Discutir a importância da observação das normas e das regras dos esportes de marca e de precisão para assegurar a integridade própria e as dos demais participantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF07",
+    description:
+      "Experimentar, fruir e identificar diferentes elementos básicos da ginástica (equilíbrios, saltos, giros, rotações, acrobacias, com e sem materiais) e da ginástica geral, de forma individual e em pequenos grupos, adotando procedimentos de segurança.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF08",
+    description:
+      "Planejar e utilizar estratégias para a execução de diferentes elementos básicos da ginástica e da ginástica geral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF09",
+    description:
+      "Participar da ginástica geral, identificando as potencialidades e os limites do corpo, e respeitando as diferenças individuais e de desempenho corporal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF10",
+    description:
+      "Descrever, por meio de múltiplas linguagens (corporal, oral, escrita e audiovisual), as características dos elementos básicos da ginástica e da ginástica geral, identificando a presença desses elementos em distintas práticas corporais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF11",
+    description:
+      "Experimentar e fruir diferentes danças do contexto comunitário e regional (rodas cantadas, brincadeiras rítmicas e expressivas), e recriá-las, respeitando as diferenças individuais e de desempenho corporal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12EF12",
+    description:
+      "Identificar os elementos constitutivos (ritmo, espaço, gestos) das danças do contexto comunitário e regional, valorizando e respeitando as manifestações de diferentes culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF01",
+    description:
+      "Experimentar e fruir brincadeiras e jogos populares do Brasil e do mundo, incluindo aqueles de matriz indígena e africana, e recriá-los, valorizando a importância desse patrimônio histórico cultural.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF02",
+    description:
+      "Planejar e utilizar estratégias para possibilitar a participação segura de todos os alunos em brincadeiras e jogos populares do Brasil e de matriz indígena e africana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF03",
+    description:
+      "Descrever, por meio de múltiplas linguagens (corporal, oral, escrita, audiovisual), as brincadeiras e os jogos populares do Brasil e de matriz indígena e africana, explicando suas características e a importância desse patrimônio histórico cultural na preservação das diferentes culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF04",
+    description:
+      "Recriar, individual e coletivamente, e experimentar, na escola e fora dela, brincadeiras e jogos populares do Brasil e do mundo, incluindo aqueles de matriz indígena e africana, e demais práticas corporais tematizadas na escola, adequando-as aos espaços públicos disponíveis.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF05",
+    description:
+      "Experimentar e fruir diversos tipos de esportes de campo e taco, rede/parede e invasão, identificando seus elementos comuns e criando estratégias individuais e coletivas básicas para sua execução, prezando pelo trabalho coletivo e pelo protagonismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF06",
+    description:
+      "Diferenciar os conceitos de jogo e esporte, identificando as características que os constituem na contemporaneidade e suas manifestações (profissional e comunitária/lazer).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF07",
+    description:
+      "Experimentar e fruir, de forma coletiva, combinações de diferentes elementos da ginástica geral (equilíbrios, saltos, giros, rotações, acrobacias, com e sem materiais), propondo coreografias com diferentes temas do cotidiano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF08",
+    description:
+      "Planejar e utilizar estratégias para resolver desafios na execução de elementos básicos de apresentações coletivas de ginástica geral, reconhecendo as potencialidades e os limites do corpo e adotando procedimentos de segurança.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF09",
+    description:
+      "Experimentar, recriar e fruir danças populares do Brasil e do mundo e danças de matriz indígena e africana, valorizando e respeitando os diferentes sentidos e significados dessas danças em suas culturas de origem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF10",
+    description:
+      "Comparar e identificar os elementos constitutivos comuns e diferentes (ritmo, espaço, gestos) em danças populares do Brasil e do mundo e danças de matriz indígena e africana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF11",
+    description:
+      "Formular e utilizar estratégias para a execução de elementos constitutivos das danças populares do Brasil e do mundo, e das danças de matriz indígena e africana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF12",
+    description:
+      "Identificar situações de injustiça e preconceito geradas e/ou presentes no contexto das danças e demais práticas corporais e discutir alternativas para superá-las.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF13",
+    description:
+      "Experimentar, fruir e recriar diferentes lutas presentes no contexto comunitário e regional e lutas de matriz indígena e africana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF14",
+    description:
+      "Planejar e utilizar estratégias básicas das lutas do contexto comunitário e regional e lutas de matriz indígena e africana experimentadas, respeitando o colega como oponente e as normas de segurança.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35EF15",
+    description:
+      "Identificar as características das lutas do contexto comunitário e regional e lutas de matriz indígena e africana, reconhecendo as diferenças entre lutas e brigas e entre lutas e as demais práticas corporais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF01",
+    description:
+      "Experimentar e fruir, na escola e fora dela, jogos eletrônicos diversos, valorizando e respeitando os sentidos e significados atribuídos a eles por diferentes grupos sociais e etários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF02",
+    description:
+      "Identificar as transformações nas características dos jogos eletrônicos em função dos avanços das tecnologias e nas respectivas exigências corporais colocadas por esses diferentes tipos de jogos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF03",
+    description:
+      "Experimentar e fruir esportes de marca, precisão, invasão e técnico-combinatórios, valorizando o trabalho coletivo e o protagonismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF04",
+    description:
+      "Praticar um ou mais esportes de marca, precisão, invasão e técnico-combinatórios oferecidos pela escola, usando habilidades técnico-táticas básicas e respeitando regras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF05",
+    description:
+      "Planejar e utilizar estratégias para solucionar os desafios técnicos e táticos, tanto nos esportes de marca, precisão, invasão e técnico-combinatórios como nas modalidades esportivas escolhidas para praticar de forma específica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF06",
+    description:
+      "Analisar as transformações na organização e na prática dos esportes em suas diferentes manifestações (profissional e comunitário/lazer).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF07",
+    description:
+      "Propor e produzir alternativas para experimentação dos esportes não disponíveis e/ou acessíveis na comunidade e das demais práticas corporais tematizadas na escola.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF08",
+    description:
+      "Experimentar e fruir exercícios físicos que solicitem diferentes capacidades físicas, identificando seus tipos (força, velocidade, resistência, flexibilidade) e as sensações corporais provocadas pela sua prática.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF09",
+    description:
+      "Construir, coletivamente, procedimentos e normas de convívio que viabilizem a participação de todos na prática de exercícios físicos, com o objetivo de promover a saúde.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF10",
+    description:
+      "Diferenciar exercício físico de atividade física e propor alternativas para a prática de exercícios físicos dentro e fora do ambiente escolar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF11",
+    description:
+      "Experimentar, fruir e recriar danças urbanas, identificando seus elementos constitutivos (ritmo, espaço, gestos).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF12",
+    description:
+      "Planejar e utilizar estratégias para aprender elementos constitutivos das danças urbanas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF13",
+    description:
+      "Diferenciar as danças urbanas das demais manifestações da dança, valorizando e respeitando os sentidos e significados atribuídos a eles por diferentes grupos sociais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF14",
+    description:
+      "Experimentar, fruir e recriar diferentes lutas do Brasil, valorizando a própria segurança e integridade física, bem como as dos demais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF15",
+    description:
+      "Planejar e utilizar estratégias básicas das lutas do Brasil, respeitando o colega como oponente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF16",
+    description:
+      "Identificar as características (códigos, rituais, elementos técnico-táticos, indumentária, materiais, instalações, instituições) das lutas do Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF17",
+    description:
+      "Problematizar preconceitos e estereótipos relacionados ao universo das lutas e demais práticas corporais, propondo alternativas para superá-los, com base na solidariedade, na justiça, na equidade e no respeito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF18",
+    description:
+      "Experimentar e fruir diferentes práticas corporais de aventura urbanas, valorizando a própria segurança e integridade física, bem como as dos demais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF19",
+    description:
+      "Identificar os riscos durante a realização de práticas corporais de aventura urbanas e planejar estratégias para sua superação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF20",
+    description:
+      "Executar práticas corporais de aventura urbanas, respeitando o patrimônio público e utilizando alternativas para a prática segura em diversos espaços.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67EF21",
+    description:
+      "Identificar a origem das práticas corporais de aventura e as possibilidades de recriá-las, reconhecendo as características (instrumentos, equipamentos de segurança, indumentária, organização) e seus tipos de práticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF01",
+    description:
+      "Experimentar diferentes papéis (jogador, árbitro e técnico) e fruir os esportes de rede/parede, campo e taco, invasão e combate, valorizando o trabalho coletivo e o protagonismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF02",
+    description:
+      "Praticar um ou mais esportes de rede/parede, campo e taco, invasão e combate oferecidos pela escola, usando habilidades técnico-táticas básicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF03",
+    description:
+      "Formular e utilizar estratégias para solucionar os desafios técnicos e táticos, tanto nos esportes de campo e taco, rede/parede, invasão e combate como nas modalidades esportivas escolhidas para praticar de forma específica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF04",
+    description:
+      "Identificar os elementos técnicos ou técnico-táticos individuais, combinações táticas, sistemas de jogo e regras das modalidades esportivas praticadas, bem como diferenciar as modalidades esportivas com base nos critérios da lógica interna das categorias de esporte: rede/parede, campo e taco, invasão e combate.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF05",
+    description:
+      "Identificar as transformações históricas do fenômeno esportivo e discutir alguns de seus problemas (doping, corrupção, violência etc.) e a forma como as mídias os apresentam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF06",
+    description:
+      "Verificar locais disponíveis na comunidade para a prática de esportes e das demais práticas corporais tematizadas na escola, propondo e produzindo alternativas para utilizá-los no tempo livre.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF07",
+    description:
+      "Experimentar e fruir um ou mais programas de exercícios físicos, identificando as exigências corporais desses diferentes programas e reconhecendo a importância de uma prática individualizada, adequada às características e necessidades de cada sujeito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF08",
+    description:
+      "Discutir as transformações históricas dos padrões de desempenho, saúde e beleza, considerando a forma como são apresentados nos diferentes meios (científico, midiático etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF09",
+    description:
+      "Problematizar a prática excessiva de exercícios físicos e o uso de medicamentos para a ampliação do rendimento ou potencialização das transformações corporais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF10",
+    description:
+      "Experimentar e fruir um ou mais tipos de ginástica de conscientização corporal, identificando as exigências corporais dos mesmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF11",
+    description:
+      "Identificar as diferenças e semelhanças entre a ginástica de conscientização corporal e as de condicionamento físico e discutir como a prática de cada uma dessas manifestações pode contribuir para a melhoria das condições de vida, saúde, bem-estar e cuidado consigo mesmo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF12",
+    description:
+      "Experimentar, fruir e recriar danças de salão, valorizando a diversidade cultural e respeitando a tradição dessas culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF13",
+    description:
+      "Planejar e utilizar estratégias para se apropriar dos elementos constitutivos (ritmo, espaço, gestos) das danças de salão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF14",
+    description:
+      "Discutir estereótipos e preconceitos relativos às danças de salão e demais práticas corporais e propor alternativas para sua superação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF15",
+    description:
+      "Analisar as características (ritmos, gestos, coreografias e músicas) das danças de salão, bem como suas transformações históricas e os grupos de origem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF16",
+    description:
+      "Experimentar e fruir a execução dos movimentos pertencentes às lutas do mundo, adotando procedimentos de segurança e respeitando o oponente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF17",
+    description:
+      "Planejar e utilizar estratégias básicas das lutas experimentadas, reconhecendo as suas características técnico-táticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF18",
+    description:
+      "Discutir as transformações históricas, o processo de esportivização e a midiatização de uma ou mais lutas, valorizando e respeitando as culturas de origem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF19",
+    description:
+      "Experimentar e fruir diferentes práticas corporais de aventura na natureza, valorizando a própria segurança e integridade física, bem como as dos demais, respeitando o patrimônio natural e minimizando os impactos de degradação ambiental.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF20",
+    description:
+      "Identificar riscos, formular estratégias e observar normas de segurança para superar os desafios na realização de práticas corporais de aventura na natureza.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89EF21",
+    description:
+      "Identificar as características (equipamentos de segurança, instrumentos, indumentária, organização) das práticas corporais de aventura na natureza, bem como suas transformações históricas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI01",
+    description:
+      "Interagir em situações de intercâmbio oral, demonstrando iniciativa para utilizar a língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI02",
+    description:
+      "Coletar informações do grupo, perguntando e respondendo sobre a família, os amigos, a escola e a comunidade..",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI03",
+    description:
+      "Solicitar esclarecimentos em língua inglesa sobre o que não entendeu e o significado de palavras ou expressões desconhecidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI04",
+    description:
+      "Reconhecer, com o apoio de palavras cognatas e pistas do contexto discursivo, o assunto e as informações principais em textos orais sobre temas familiares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI05",
+    description:
+      "Aplicar os conhecimentos da língua inglesa para falar de si e de outras pessoas, explicitando informações pessoais e características relacionadas a gostos, preferências e rotinas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI06",
+    description:
+      "Planejar apresentação sobre a família, a comunidade e a escola, compartilhando-a oralmente com o grupo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI07",
+    description:
+      "Formular hipóteses sobre a finalidade de um texto em língua inglesa, com base em sua estrutura, organização textual e pistas gráficas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI08",
+    description:
+      "Identificar o assunto de um texto, reconhecendo sua organização textual e palavras cognatas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI09",
+    description: "Localizar informações específicas em texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI10",
+    description:
+      "Conhecer a organização de um dicionário bilíngue (impresso e/ou on-line) para construir repertório lexical.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI11",
+    description:
+      "Explorar ambientes virtuais e/ou aplicativos para construir repertório lexical na língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI12",
+    description:
+      "Interessar-se pelo texto lido, compartilhando suas ideias sobre o que o texto informa/comunica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI13",
+    description:
+      "Listar ideias para a produção de textos, levando em conta o tema e o assunto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI14",
+    description:
+      "Organizar ideias, selecionando-as em função da estrutura e do objetivo do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI15",
+    description:
+      "Produzir textos escritos em língua inglesa (histórias em quadrinhos, cartazes, chats, blogues, agendas, fotolegendas, entre outros), sobre si mesmo, sua família, seus amigos, gostos, preferências e rotinas, sua comunidade e seu contexto escolar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI16",
+    description:
+      "Construir repertório relativo às expressões usadas para o convívio social e o uso da língua inglesa em sala de aula.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI17",
+    description:
+      "Construir repertório lexical relativo a temas familiares (escola, família, rotina diária, atividades de lazer, esportes, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI18",
+    description:
+      "Reconhecer semelhanças e diferenças na pronúncia de palavras da língua inglesa e da língua materna e/ou outras línguas conhecidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI19",
+    description:
+      "Utilizar o presente do indicativo para identificar pessoas (verbo to be) e descrever rotinas diárias.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI20",
+    description:
+      "Utilizar o presente contínuo para descrever ações em progresso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI21",
+    description:
+      "Reconhecer o uso do imperativo em enunciados de atividades, comandos e instruções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI22",
+    description: "Descrever relações por meio do uso de apóstrofo (’) + s.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI23",
+    description: "Empregar, de forma inteligível, os adjetivos possessivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI24",
+    description:
+      "Investigar o alcance da língua inglesa no mundo: como língua materna e/ou oficial (primeira ou segunda língua).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI25",
+    description:
+      "Identificar a presença da língua inglesa na sociedade brasileira/comunidade (palavras, expressões, suportes e esferas de circulação e consumo) e seu significado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LI26",
+    description:
+      "Avaliar, problematizando elementos/produtos culturais de países de língua inglesa absorvidos pela sociedade brasileira/comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI01",
+    description:
+      "Interagir em situações de intercâmbio oral para realizar as atividades em sala de aula, de forma respeitosa e colaborativa, trocando ideias e engajando-se em brincadeiras e jogos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI02",
+    description: "Entrevistar os colegas para conhecer suas histórias de vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI03",
+    description: "Mobilizar conhecimentos prévios para compreender texto oral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI04",
+    description:
+      "Identificar o contexto, a finalidade, o assunto e os interlocutores em textos orais presentes no cinema, na internet, na televisão, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI05",
+    description:
+      "Compor, em língua inglesa, narrativas orais sobre fatos, acontecimentos e personalidades marcantes do passado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI06",
+    description:
+      "Antecipar o sentido global de textos em língua inglesa por inferências, com base em leitura rápida, observando títulos, primeiras e últimas frases de parágrafos e palavras-chave repetidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI07",
+    description:
+      "Identificar a(s) informação(ões)-chave de partes de um texto em língua inglesa (parágrafos).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI08",
+    description:
+      "Relacionar as partes de um texto (parágrafos) para construir seu sentido global.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI09",
+    description:
+      "Selecionar, em um texto, a informação desejada como objetivo de leitura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI10",
+    description:
+      "Escolher, em ambientes virtuais, textos em língua inglesa, de fontes confiáveis, para estudos/pesquisas escolares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI11",
+    description:
+      "Participar de troca de opiniões e informações sobre textos, lidos na sala de aula ou em outros ambientes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI12",
+    description:
+      "Planejar a escrita de textos em função do contexto (público, finalidade, layout e suporte).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI13",
+    description:
+      "Organizar texto em unidades de sentido, dividindo-o em parágrafos ou tópicos e subtópicos, explorando as possibilidades de organização gráfica, de suporte e de formato do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI14",
+    description:
+      "Produzir textos diversos sobre fatos, acontecimentos e personalidades do passado (linha do tempo/ timelines, biografias, verbetes de enciclopédias, blogues, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI15",
+    description:
+      "Construir repertório lexical relativo a verbos regulares e irregulares (formas no passado), preposições de tempo (in, on, at) e conectores (and, but, because, then, so, before, after, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI16",
+    description: "Reconhecer a pronúncia de verbos regulares no passado (-ed).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI17",
+    description:
+      "Explorar o caráter polissêmico de palavras de acordo com o contexto de uso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI18",
+    description:
+      "Utilizar o passado simples e o passado contínuo para produzir textos orais e escritos, mostrando relações de sequência e causalidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI19",
+    description:
+      "Discriminar sujeito de objeto utilizando pronomes a eles relacionados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI20",
+    description:
+      "Empregar, de forma inteligível, o verbo modal can para descrever habilidades (no presente e no passado).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI21",
+    description:
+      "Analisar o alcance da língua inglesa e os seus contextos de uso no mundo globalizado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI22",
+    description:
+      "Explorar modos de falar em língua inglesa, refutando preconceitos e reconhecendo a variação linguística como fenômeno natural das línguas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LI23",
+    description:
+      "Reconhecer a variação linguística como manifestação de formas de pensar e expressar o mundo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI01",
+    description:
+      "Fazer uso da língua inglesa para resolver mal-entendidos, emitir opiniões e esclarecer informações por meio de paráfrases ou justificativas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI02",
+    description:
+      "Explorar o uso de recursos linguísticos (frases incompletas, hesitações, entre outros) e paralinguísticos (gestos, expressões faciais, entre outros) em situações de interação oral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI03",
+    description:
+      "Construir o sentido global de textos orais, relacionando suas partes, o assunto principal e informações relevantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI04",
+    description:
+      "Utilizar recursos e repertório linguísticos apropriados para informar/comunicar/falar do futuro: planos, previsões, possibilidades e probabilidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI05",
+    description:
+      "Inferir informações e relações que não aparecem de modo explícito no texto para construção de sentidos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI06",
+    description:
+      "Apreciar textos narrativos em língua inglesa (contos, romances, entre outros, em versão original ou simplificada), como forma de valorizar o patrimônio cultural produzido em língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI07",
+    description:
+      "Explorar ambientes virtuais e/ou aplicativos para acessar e usufruir do patrimônio artístico literário em língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI08",
+    description:
+      "Analisar, criticamente, o conteúdo de textos, comparando diferentes perspectivas apresentadas sobre um mesmo assunto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI09",
+    description:
+      "Avaliar a própria produção escrita e a de colegas, com base no contexto de comunicação (finalidade e adequação ao público, conteúdo a ser comunicado, organização textual, legibilidade, estrutura de frases).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI10",
+    description:
+      "Reconstruir o texto, com cortes, acréscimos, reformulações e correções, para aprimoramento, edição e publicação final.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI11",
+    description:
+      "Produzir textos (comentários em fóruns, relatos pessoais, mensagens instantâneas, tweets, reportagens, histórias de ficção, blogues, entre outros), com o uso de estratégias de escrita (planejamento, produção de rascunho, revisão e edição final), apontando sonhos e projetos para o futuro (pessoal, da família, da comunidade ou do planeta).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI12",
+    description:
+      "Construir repertório lexical relativo a planos, previsões e expectativas para o futuro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI13",
+    description:
+      "Reconhecer sufixos e prefixos comuns utilizados na formação de palavras em língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI14",
+    description:
+      "Utilizar formas verbais do futuro para descrever planos e expectativas e fazer previsões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI15",
+    description:
+      "Utilizar, de modo inteligível, as formas comparativas e superlativas de adjetivos para comparar qualidades e quantidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI16",
+    description:
+      "Utilizar, de modo inteligível, corretamente, some, any, many, much.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI17",
+    description:
+      "Empregar, de modo inteligível, os pronomes relativos (who, which, that, whose) para construir períodos compostos por subordinação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI18",
+    description:
+      "Construir repertório cultural por meio do contato com manifestações artístico-culturais vinculadas à língua inglesa (artes plásticas e visuais, literatura, música, cinema, dança, festividades, entre outros), valorizando a diversidade entre culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI19",
+    description:
+      "Investigar de que forma expressões, gestos e comportamentos são interpretados em função de aspectos culturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LI20",
+    description:
+      "Examinar fatores que podem impedir o entendimento entre pessoas de culturas diferentes que falam a língua inglesa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI01",
+    description:
+      "Fazer uso da língua inglesa para expor pontos de vista, argumentos e contra-argumentos, considerando o contexto e os recursos linguísticos voltados para a eficácia da comunicação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI02",
+    description:
+      "Compilar as ideias-chave de textos por meio de tomada de notas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI03",
+    description:
+      "Analisar posicionamentos defendidos e refutados em textos orais sobre temas de interesse social e coletivo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI04",
+    description:
+      "Expor resultados de pesquisa ou estudo com o apoio de recursos, tais como notas, gráficos, tabelas, entre outros, adequando as estratégias de construção do texto oral aos objetivos de comunicação e ao contexto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI05",
+    description:
+      "Identificar recursos de persuasão (escolha e jogo de palavras, uso de cores e imagens, tamanho de letras), utilizados nos textos publicitários e de propaganda, como elementos de convencimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI06",
+    description:
+      "Distinguir fatos de opiniões em textos argumentativos da esfera jornalística.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI07",
+    description:
+      "Identificar argumentos principais e as evidências/exemplos que os sustentam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI08",
+    description:
+      "Explorar ambientes virtuais de informação e socialização, analisando a qualidade e a validade das informações veiculadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI09",
+    description:
+      "Compartilhar, com os colegas, a leitura dos textos escritos pelo grupo, valorizando os diferentes pontos de vista defendidos, com ética e respeito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI10",
+    description:
+      "Propor potenciais argumentos para expor e defender ponto de vista em texto escrito, refletindo sobre o tema proposto e pesquisando dados, evidências e exemplos para sustentar os argumentos, organizando-os em sequência lógica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI11",
+    description:
+      "Utilizar recursos verbais e não verbais para construção da persuasão em textos da esfera publicitária, de forma adequada ao contexto de circulação (produção e compreensão).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI12",
+    description:
+      "Produzir textos (infográficos, fóruns de discussão on-line, fotorreportagens, campanhas publicitárias, memes, entre outros) sobre temas de interesse coletivo local ou global, que revelem posicionamento crítico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI13",
+    description:
+      "Reconhecer, nos novos gêneros digitais (blogues, mensagens instantâneas, tweets, entre outros), novas formas de escrita (abreviação de palavras, palavras com combinação de letras e números, pictogramas, símbolos gráficos, entre outros) na constituição das mensagens.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI14",
+    description:
+      "Utilizar conectores indicadores de adição, condição, oposição, contraste, conclusão e síntese como auxiliares na construção da argumentação e intencionalidade discursiva.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI15",
+    description:
+      "Empregar, de modo inteligível, as formas verbais em orações condicionais dos tipos 1 e 2 (If-clauses).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI16",
+    description:
+      "Empregar, de modo inteligível, os verbos should, must, have to, may e might para indicar recomendação, necessidade ou obrigação e probabilidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI17",
+    description:
+      "Debater sobre a expansão da língua inglesa pelo mundo, em função do processo de colonização nas Américas, África, Ásia e Oceania.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI18",
+    description:
+      "Analisar a importância da língua inglesa para o desenvolvimento das ciências (produção, divulgação e discussão de novos conhecimentos), da economia e da política no cenário mundial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LI19",
+    description:
+      "Discutir a comunicação intercultural por meio da língua inglesa como mecanismo de valorização pessoal e de construção de identidades no mundo globalizado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA01",
+    description:
+      "Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA02",
+    description:
+      "Contar de maneira exata ou aproximada, utilizando diferentes estratégias como o pareamento e outros agrupamentos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA03",
+    description:
+      "Estimar e comparar quantidades de objetos de dois conjuntos (em torno de 20 elementos), por estimativa e/ou por correspondência (um a um, dois a dois) para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA04",
+    description:
+      "Contar a quantidade de objetos de coleções até 100 unidades e apresentar o resultado por registros verbais e simbólicos, em situações de seu interesse, como jogos, brincadeiras, materiais da sala de aula, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA05",
+    description:
+      "Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA06",
+    description:
+      "Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA07",
+    description:
+      "Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA08",
+    description:
+      "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até dois algarismos, com os significados de juntar, acrescentar, separar e retirar, com o suporte de imagens e/ou material manipulável, utilizando estratégias e formas de registro pessoais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA09",
+    description:
+      "Organizar e ordenar objetos familiares ou representações por figuras, por meio de atributos, tais como cor, forma e medida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA10",
+    description:
+      "Descrever, após o reconhecimento e a explicitação de um padrão (ou regularidade), os elementos ausentes em sequências recursivas de números naturais, objetos ou figuras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA11",
+    description:
+      "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA12",
+    description:
+      "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA13",
+    description:
+      "Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA14",
+    description:
+      "Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA15",
+    description:
+      "Comparar comprimentos, capacidades ou massas, utilizando termos como mais alto, mais baixo, mais comprido, mais curto, mais grosso, mais fino, mais largo, mais pesado, mais leve, cabe mais, cabe menos, entre outros, para ordenar objetos de uso cotidiano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA16",
+    description:
+      "Relatar em linguagem verbal ou não verbal sequência de acontecimentos relativos a um dia, utilizando, quando possível, os horários dos eventos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA17",
+    description:
+      "Reconhecer e relacionar períodos do dia, dias da semana e meses do ano, utilizando calendário, quando necessário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA18",
+    description:
+      "Produzir a escrita de uma data, apresentando o dia, o mês e o ano, e indicar o dia da semana de uma data, consultando calendários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA19",
+    description:
+      "Reconhecer e relacionar valores de moedas e cédulas do sistema monetário brasileiro para resolver situações simples do cotidiano do estudante.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA20",
+    description:
+      "Classificar eventos envolvendo o acaso, tais como “acontecerá com certeza”, “talvez aconteça” e “é impossível acontecer”, em situações do cotidiano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA21",
+    description:
+      "Ler dados expressos em tabelas e em gráficos de colunas simples.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01MA22",
+    description:
+      "Realizar pesquisa, envolvendo até duas variáveis categóricas de seu interesse e universo de até 30 elementos, e organizar dados por meio de representações pessoais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA01",
+    description:
+      "Comparar e ordenar números naturais (até a ordem de centenas) pela compreensão de características do sistema de numeração decimal (valor posicional e função do zero).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA02",
+    description:
+      "Fazer estimativas por meio de estratégias diversas a respeito da quantidade de objetos de coleções e registrar o resultado da contagem desses objetos (até 1000 unidades).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA03",
+    description:
+      "Comparar quantidades de objetos de dois conjuntos, por estimativa e/ou por correspondência (um a um, dois a dois, entre outros), para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”, indicando, quando for o caso, quantos a mais e quantos a menos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA04",
+    description:
+      "Compor e decompor números naturais de até três ordens, com suporte de material manipulável, por meio de diferentes adições.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA05",
+    description:
+      "Construir fatos básicos da adição e subtração e utilizá-los no cálculo mental ou escrito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA06",
+    description:
+      "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até três ordens, com os significados de juntar, acrescentar, separar, retirar, utilizando estratégias pessoais ou convencionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA07",
+    description:
+      "Resolver e elaborar problemas de multiplicação (por 2, 3, 4 e 5) com a ideia de adição de parcelas iguais por meio de estratégias e formas de registro pessoais, utilizando ou não suporte de imagens e/ou material manipulável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA08",
+    description:
+      "Resolver e elaborar problemas envolvendo dobro, metade, triplo e terça parte, com o suporte de imagens ou material manipulável, utilizando estratégias pessoais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA09",
+    description:
+      "Construir sequências de números naturais em ordem crescente ou decrescente a partir de um número qualquer, utilizando uma regularidade estabelecida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA10",
+    description:
+      "Descrever um padrão (ou regularidade) de sequências repetitivas e de sequências recursivas, por meio de palavras, símbolos ou desenhos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA11",
+    description:
+      "Descrever os elementos ausentes em sequências repetitivas e em sequências recursivas de números naturais, objetos ou figuras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA12",
+    description:
+      "Identificar e registrar, em linguagem verbal ou não verbal, a localização e os deslocamentos de pessoas e de objetos no espaço, considerando mais de um ponto de referência, e indicar as mudanças de direção e de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA13",
+    description:
+      "Esboçar roteiros a ser seguidos ou plantas de ambientes familiares, assinalando entradas, saídas e alguns pontos de referência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA14",
+    description:
+      "Reconhecer, nomear e comparar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera), relacionando-as com objetos do mundo físico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA15",
+    description:
+      "Reconhecer, comparar e nomear figuras planas (círculo, quadrado, retângulo e triângulo), por meio de características comuns, em desenhos apresentados em diferentes disposições ou em sólidos geométricos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA16",
+    description:
+      "Estimar, medir e comparar comprimentos de lados de salas (incluindo contorno) e de polígonos, utilizando unidades de medida não padronizadas e padronizadas (metro, centímetro e milímetro) e instrumentos adequados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA17",
+    description:
+      "Estimar, medir e comparar capacidade e massa, utilizando estratégias pessoais e unidades de medida não padronizadas ou padronizadas (litro, mililitro, grama e quilograma).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA18",
+    description:
+      "Indicar a duração de intervalos de tempo entre duas datas, como dias da semana e meses do ano, utilizando calendário, para planejamentos e organização de agenda.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA19",
+    description:
+      "Medir a duração de um intervalo de tempo por meio de relógio digital e registrar o horário do início e do fim do intervalo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA20",
+    description:
+      "Estabelecer a equivalência de valores entre moedas e cédulas do sistema monetário brasileiro para resolver situações cotidianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA21",
+    description:
+      "Classificar resultados de eventos cotidianos aleatórios como “pouco prováveis”, “muito prováveis”, “improváveis” e “impossíveis”.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA22",
+    description:
+      "Comparar informações de pesquisas apresentadas por meio de tabelas de dupla entrada e em gráficos de colunas simples ou barras, para melhor compreender aspectos da realidade próxima.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02MA23",
+    description:
+      "Realizar pesquisa em universo de até 30 elementos, escolhendo até três variáveis categóricas de seu interesse, organizando os dados coletados em listas, tabelas e gráficos de colunas simples.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA01",
+    description:
+      "Ler, escrever e comparar números naturais de até a ordem de unidade de milhar, estabelecendo relações entre os registros numéricos e em língua materna.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA02",
+    description:
+      "Identificar características do sistema de numeração decimal, utilizando a composição e a decomposição de número natural de até quatro ordens.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA03",
+    description:
+      "Construir e utilizar fatos básicos da adição e da multiplicação para o cálculo mental ou escrito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA04",
+    description:
+      "Estabelecer a relação entre números naturais e pontos da reta numérica para utilizá-la na ordenação dos números naturais e também na construção de fatos da adição e da subtração, relacionando-os com deslocamentos para a direita ou para a esquerda.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA05",
+    description:
+      "Utilizar diferentes procedimentos de cálculo mental e escrito para resolver problemas significativos envolvendo adição e subtração com números naturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA06",
+    description:
+      "Resolver e elaborar problemas de adição e subtração com os significados de juntar, acrescentar, separar, retirar, comparar e completar quantidades, utilizando diferentes estratégias de cálculo exato ou aproximado, incluindo cálculo mental.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA07",
+    description:
+      "Resolver e elaborar problemas de multiplicação (por 2, 3, 4, 5 e 10) com os significados de adição de parcelas iguais e elementos apresentados em disposição retangular, utilizando diferentes estratégias de cálculo e registros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA08",
+    description:
+      "Resolver e elaborar problemas de divisão de um número natural por outro (até 10), com resto zero e com resto diferente de zero, com os significados de repartição equitativa e de medida, por meio de estratégias e registros pessoais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA09",
+    description:
+      "Associar o quociente de uma divisão com resto zero de um número natural por 2, 3, 4, 5 e 10 às ideias de metade, terça, quarta, quinta e décima partes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA10",
+    description:
+      "Identificar regularidades em sequências ordenadas de números naturais, resultantes da realização de adições ou subtrações sucessivas, por um mesmo número, descrever uma regra de formação da sequência e determinar elementos faltantes ou seguintes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA11",
+    description:
+      "Compreender a ideia de igualdade para escrever diferentes sentenças de adições ou de subtrações de dois números naturais que resultem na mesma soma ou diferença.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA12",
+    description:
+      "Descrever e representar, por meio de esboços de trajetos ou utilizando croquis e maquetes, a movimentação de pessoas ou de objetos no espaço, incluindo mudanças de direção e sentido, com base em diferentes pontos de referência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA13",
+    description:
+      "Associar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera) a objetos do mundo físico e nomear essas figuras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA14",
+    description:
+      "Descrever características de algumas figuras geométricas espaciais (prismas retos, pirâmides, cilindros, cones), relacionando-as com suas planificações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA15",
+    description:
+      "Classificar e comparar figuras planas (triângulo, quadrado, retângulo, trapézio e paralelogramo) em relação a seus lados (quantidade, posições relativas e comprimento) e vértices.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA16",
+    description:
+      "Reconhecer figuras congruentes, usando sobreposição e desenhos em malhas quadriculadas ou triangulares, incluindo o uso de tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA17",
+    description:
+      "Reconhecer que o resultado de uma medida depende da unidade de medida utilizada.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA18",
+    description:
+      "Escolher a unidade de medida e o instrumento mais apropriado para medições de comprimento, tempo e capacidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA19",
+    description:
+      "Estimar, medir e comparar comprimentos, utilizando unidades de medida não padronizadas e padronizadas mais usuais (metro, centímetro e milímetro) e diversos instrumentos de medida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA20",
+    description:
+      "Estimar e medir capacidade e massa, utilizando unidades de medida não padronizadas e padronizadas mais usuais (litro, mililitro, quilograma, grama e miligrama), reconhecendo-as em leitura de rótulos e embalagens, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA21",
+    description:
+      "Comparar, visualmente ou por superposição, áreas de faces de objetos, de figuras planas ou de desenhos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA22",
+    description:
+      "Ler e registrar medidas e intervalos de tempo, utilizando relógios (analógico e digital) para informar os horários de início e término de realização de uma atividade e sua duração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA23",
+    description:
+      "Ler horas em relógios digitais e em relógios analógicos e reconhecer a relação entre hora e minutos e entre minuto e segundos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA24",
+    description:
+      "Resolver e elaborar problemas que envolvam a comparação e a equivalência de valores monetários do sistema brasileiro em situações de compra, venda e troca.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA25",
+    description:
+      "Identificar, em eventos familiares aleatórios, todos os resultados possíveis, estimando os que têm maiores ou menores chances de ocorrência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA26",
+    description:
+      "Resolver problemas cujos dados estão apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA27",
+    description:
+      "Ler, interpretar e comparar dados apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas, envolvendo resultados de pesquisas significativas, utilizando termos como maior e menor frequência, apropriando-se desse tipo de linguagem para compreender aspectos da realidade sociocultural significativos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03MA28",
+    description:
+      "Realizar pesquisa envolvendo variáveis categóricas em um universo de até 50 elementos, organizar os dados coletados utilizando listas, tabelas simples ou de dupla entrada e representá-los em gráficos de colunas simples, com e sem uso de tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA01",
+    description:
+      "Ler, escrever e ordenar números naturais até a ordem de dezenas de milhar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA02",
+    description:
+      "Mostrar, por decomposição e composição, que todo número natural pode ser escrito por meio de adições e multiplicações por potências de dez, para compreender o sistema de numeração decimal e desenvolver estratégias de cálculo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA03",
+    description:
+      "Resolver e elaborar problemas com números naturais envolvendo adição e subtração, utilizando estratégias diversas, como cálculo, cálculo mental e algoritmos, além de fazer estimativas do resultado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA04",
+    description:
+      "Utilizar as relações entre adição e subtração, bem como entre multiplicação e divisão, para ampliar as estratégias de cálculo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA05",
+    description:
+      "Utilizar as propriedades das operações para desenvolver estratégias de cálculo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA06",
+    description:
+      "Resolver e elaborar problemas envolvendo diferentes significados da multiplicação (adição de parcelas iguais, organização retangular e proporcionalidade), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA07",
+    description:
+      "Resolver e elaborar problemas de divisão cujo divisor tenha no máximo dois algarismos, envolvendo os significados de repartição equitativa e de medida, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA08",
+    description:
+      "Resolver, com o suporte de imagem e/ou material manipulável, problemas simples de contagem, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra, utilizando estratégias e formas de registro pessoais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA09",
+    description:
+      "Reconhecer as frações unitárias mais usuais (1/2, 1/3, 1/4, 1/5, 1/10 e 1/100) como unidades de medida menores do que uma unidade, utilizando a reta numérica como recurso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA10",
+    description:
+      "Reconhecer que as regras do sistema de numeração decimal podem ser estendidas para a representação decimal de um número racional e relacionar décimos e centésimos com a representação do sistema monetário brasileiro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA11",
+    description:
+      "Identificar regularidades em sequências numéricas compostas por múltiplos de um número natural.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA12",
+    description:
+      "Reconhecer, por meio de investigações, que há grupos de números naturais para os quais as divisões por um determinado número resultam em restos iguais, identificando regularidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA13",
+    description:
+      "Reconhecer, por meio de investigações, utilizando a calculadora quando necessário, as relações inversas entre as operações de adição e de subtração e de multiplicação e de divisão, para aplicá-las na resolução de problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA14",
+    description:
+      "Reconhecer e mostrar, por meio de exemplos, que a relação de igualdade existente entre dois termos permanece quando se adiciona ou se subtrai um mesmo número a cada um desses termos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA15",
+    description:
+      "Determinar o número desconhecido que torna verdadeira uma igualdade que envolve as operações fundamentais com números naturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA16",
+    description:
+      "Descrever deslocamentos e localização de pessoas e de objetos no espaço, por meio de malhas quadriculadas e representações como desenhos, mapas, planta baixa e croquis, empregando termos como direita e esquerda, mudanças de direção e sentido, intersecção, transversais, paralelas e perpendiculares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA17",
+    description:
+      "Associar prismas e pirâmides a suas planificações e analisar, nomear e comparar seus atributos, estabelecendo relações entre as representações planas e espaciais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA18",
+    description:
+      "Reconhecer ângulos retos e não retos em figuras poligonais com o uso de dobraduras, esquadros ou softwares de geometria.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA19",
+    description:
+      "Reconhecer simetria de reflexão em figuras e em pares de figuras geométricas planas e utilizá-la na construção de figuras congruentes, com o uso de malhas quadriculadas e de softwares de geometria.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA20",
+    description:
+      "Medir e estimar comprimentos (incluindo perímetros), massas e capacidades, utilizando unidades de medida padronizadas mais usuais, valorizando e respeitando a cultura local.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA21",
+    description:
+      "Medir, comparar e estimar área de figuras planas desenhadas em malha quadriculada, pela contagem dos quadradinhos ou de metades de quadradinho, reconhecendo que duas figuras com formatos diferentes podem ter a mesma medida de área.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA22",
+    description:
+      "Ler e registrar medidas e intervalos de tempo em horas, minutos e segundos em situações relacionadas ao seu cotidiano, como informar os horários de início e término de realização de uma tarefa e sua duração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA23",
+    description:
+      "Reconhecer temperatura como grandeza e o grau Celsius como unidade de medida a ela associada e utilizá-lo em comparações de temperaturas em diferentes regiões do Brasil ou no exterior ou, ainda, em discussões que envolvam problemas relacionados ao aquecimento global.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA24",
+    description:
+      "Registrar as temperaturas máxima e mínima diárias, em locais do seu cotidiano, e elaborar gráficos de colunas com as variações diárias da temperatura, utilizando, inclusive, planilhas eletrônicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA25",
+    description:
+      "Resolver e elaborar problemas que envolvam situações de compra e venda e formas de pagamento, utilizando termos como troco e desconto, enfatizando o consumo ético, consciente e responsável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA26",
+    description:
+      "Identificar, entre eventos aleatórios cotidianos, aqueles que têm maior chance de ocorrência, reconhecendo características de resultados mais prováveis, sem utilizar frações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA27",
+    description:
+      "Analisar dados apresentados em tabelas simples ou de dupla entrada e em gráficos de colunas ou pictóricos, com base em informações das diferentes áreas do conhecimento, e produzir texto com a síntese de sua análise.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04MA28",
+    description:
+      "Realizar pesquisa envolvendo variáveis categóricas e numéricas e organizar dados coletados por meio de tabelas e gráficos de colunas simples ou agrupadas, com e sem uso de tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA01",
+    description:
+      "Ler, escrever e ordenar números naturais até a ordem das centenas de milhar com compreensão das principais características do sistema de numeração decimal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA02",
+    description:
+      "Ler, escrever e ordenar números racionais na forma decimal com compreensão das principais características do sistema de numeração decimal, utilizando, como recursos, a composição e decomposição e a reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA03",
+    description:
+      "Identificar e representar frações (menores e maiores que a unidade), associando-as ao resultado de uma divisão ou à ideia de parte de um todo, utilizando a reta numérica como recurso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA04",
+    description: "Identificar frações equivalentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA05",
+    description:
+      "Comparar e ordenar números racionais positivos (representações fracionária e decimal), relacionando-os a pontos na reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA06",
+    description:
+      "Associar as representações 10%, 25%, 50%, 75% e 100% respectivamente à décima parte, quarta parte, metade, três quartos e um inteiro, para calcular porcentagens, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA07",
+    description:
+      "Resolver e elaborar problemas de adição e subtração com números naturais e com números racionais, cuja representação decimal seja finita, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA08",
+    description:
+      "Resolver e elaborar problemas de multiplicação e divisão com números naturais e com números racionais cuja representação decimal é finita (com multiplicador natural e divisor natural e diferente de zero), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA09",
+    description:
+      "Resolver e elaborar problemas simples de contagem envolvendo o princípio multiplicativo, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra coleção, por meio de diagramas de árvore ou por tabelas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA10",
+    description:
+      "Concluir, por meio de investigações, que a relação de igualdade existente entre dois membros permanece ao adicionar, subtrair, multiplicar ou dividir cada um desses membros por um mesmo número, para construir a noção de equivalência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA11",
+    description:
+      "Resolver e elaborar problemas cuja conversão em sentença matemática seja uma igualdade com uma operação em que um dos termos é desconhecido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA12",
+    description:
+      "Resolver problemas que envolvam variação de proporcionalidade direta entre duas grandezas, para associar a quantidade de um produto ao valor a pagar, alterar as quantidades de ingredientes de receitas, ampliar ou reduzir escala em mapas, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA13",
+    description:
+      "Resolver problemas envolvendo a partilha de uma quantidade em duas partes desiguais, tais como dividir uma quantidade em duas partes, de modo que uma seja o dobro da outra, com compreensão da ideia de razão entre as partes e delas com o todo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA14",
+    description:
+      "Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas, células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções de coordenadas cartesianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA15",
+    description:
+      "Interpretar, descrever e representar a localização ou movimentação de objetos no plano cartesiano (1º quadrante), utilizando coordenadas cartesianas, indicando mudanças de direção e de sentido e giros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA16",
+    description:
+      "Associar figuras espaciais a suas planificações (prismas, pirâmides, cilindros e cones) e analisar, nomear e comparar seus atributos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA17",
+    description:
+      "Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e desenhá-los, utilizando material de desenho ou tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA18",
+    description:
+      "Reconhecer a congruência dos ângulos e a proporcionalidade entre os lados correspondentes de figuras poligonais em situações de ampliação e de redução em malhas quadriculadas e usando tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA19",
+    description:
+      "Resolver e elaborar problemas envolvendo medidas das grandezas comprimento, área, massa, tempo, temperatura e capacidade, recorrendo a transformações entre as unidades mais usuais em contextos socioculturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA20",
+    description:
+      "Concluir, por meio de investigações, que figuras de perímetros iguais podem ter áreas diferentes e que, também, figuras que têm a mesma área podem ter perímetros diferentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA21",
+    description:
+      "Reconhecer volume como grandeza associada a sólidos geométricos e medir volumes por meio de empilhamento de cubos, utilizando, preferencialmente, objetos concretos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA22",
+    description:
+      "Apresentar todos os possíveis resultados de um experimento aleatório, estimando se esses resultados são igualmente prováveis ou não.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA23",
+    description:
+      "Determinar a probabilidade de ocorrência de um resultado em eventos aleatórios, quando todos os resultados possíveis têm a mesma chance de ocorrer (equiprováveis).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA24",
+    description:
+      "Interpretar dados estatísticos apresentados em textos, tabelas e gráficos (colunas ou linhas), referentes a outras áreas do conhecimento ou a outros contextos, como saúde e trânsito, e produzir textos com o objetivo de sintetizar conclusões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05MA25",
+    description:
+      "Realizar pesquisa envolvendo variáveis categóricas e numéricas, organizar dados coletados por meio de tabelas, gráficos de colunas, pictóricos e de linhas, com e sem uso de tecnologias digitais, e apresentar texto escrito sobre a finalidade da pesquisa e a síntese dos resultados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA01",
+    description:
+      "Comparar, ordenar, ler e escrever números naturais e números racionais cuja representação decimal é finita, fazendo uso da reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA02",
+    description:
+      "Reconhecer o sistema de numeração decimal, como o que prevaleceu no mundo ocidental, e destacar semelhanças e diferenças com outros sistemas, de modo a sistematizar suas principais características (base, valor posicional e função do zero), utilizando, inclusive, a composição e decomposição de números naturais e números racionais em sua representação decimal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA03",
+    description:
+      "Resolver e elaborar problemas que envolvam cálculos (mentais ou escritos, exatos ou aproximados) com números naturais, por meio de estratégias variadas, com compreensão dos processos neles envolvidos com e sem uso de calculadora.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA04",
+    description:
+      "Construir algoritmo em linguagem natural e representá-lo por fluxograma que indique a resolução de um problema simples (por exemplo, se um número natural qualquer é par).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA05",
+    description:
+      "Classificar números naturais em primos e compostos, estabelecer relações entre números, expressas pelos termos “é múltiplo de”, “é divisor de”, “é fator de”, e estabelecer, por meio de investigações, critérios de divisibilidade por 2, 3, 4, 5, 6, 8, 9, 10, 100 e 1000.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA06",
+    description:
+      "Resolver e elaborar problemas que envolvam as ideias de múltiplo e de divisor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA07",
+    description:
+      "Compreender, comparar e ordenar frações associadas às ideias de partes de inteiros e resultado de divisão, identificando frações equivalentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA08",
+    description:
+      "Reconhecer que os números racionais positivos podem ser expressos nas formas fracionária e decimal, estabelecer relações entre essas representações, passando de uma representação para outra, e relacioná-los a pontos na reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA09",
+    description:
+      "Resolver e elaborar problemas que envolvam o cálculo da fração de uma quantidade e cujo resultado seja um número natural, com e sem uso de calculadora.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA10",
+    description:
+      "Resolver e elaborar problemas que envolvam adição ou subtração com números racionais positivos na representação fracionária.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA11",
+    description:
+      "Resolver e elaborar problemas com números racionais positivos na representação decimal, envolvendo as quatro operações fundamentais e a potenciação, por meio de estratégias diversas, utilizando estimativas e arredondamentos para verificar a razoabilidade de respostas, com e sem uso de calculadora.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA12",
+    description:
+      "Fazer estimativas de quantidades e aproximar números para múltiplos da potência de 10 mais próxima.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA13",
+    description:
+      "Resolver e elaborar problemas que envolvam porcentagens, com base na ideia de proporcionalidade, sem fazer uso da “regra de três”, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA14",
+    description:
+      "Reconhecer que a relação de igualdade matemática não se altera ao adicionar, subtrair, multiplicar ou dividir os seus dois membros por um mesmo número e utilizar essa noção para determinar valores desconhecidos na resolução de problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA15",
+    description:
+      "Resolver e elaborar problemas que envolvam a partilha de uma quantidade em duas partes desiguais, envolvendo relações aditivas e multiplicativas, bem como a razão entre as partes e entre uma das partes e o todo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA16",
+    description:
+      "Associar pares ordenados de números a pontos do plano cartesiano do 1º quadrante, em situações como a localização dos vértices de um polígono.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA17",
+    description:
+      "Quantificar e estabelecer relações entre o número de vértices, faces e arestas de prismas e pirâmides, em função do seu polígono da base, para resolver problemas e desenvolver a percepção espacial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA18",
+    description:
+      "Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e classificá-los em regulares e não regulares, tanto em suas representações no plano como em faces de poliedros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA19",
+    description:
+      "Identificar características dos triângulos e classificá-los em relação às medidas dos lados e dos ângulos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA20",
+    description:
+      "Identificar características dos quadriláteros, classificá-los em relação a lados e a ângulos e reconhecer a inclusão e a intersecção de classes entre eles.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA21",
+    description:
+      "Construir figuras planas semelhantes em situações de ampliação e de redução, com o uso de malhas quadriculadas, plano cartesiano ou tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA22",
+    description:
+      "Utilizar instrumentos, como réguas e esquadros, ou softwares para representações de retas paralelas e perpendiculares e construção de quadriláteros, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA23",
+    description:
+      "Construir algoritmo para resolver situações passo a passo (como na construção de dobraduras ou na indicação de deslocamento de um objeto no plano segundo pontos de referência e distâncias fornecidas etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA24",
+    description:
+      "Resolver e elaborar problemas que envolvam as grandezas comprimento, massa, tempo, temperatura, área (triângulos e retângulos), capacidade e volume (sólidos formados por blocos retangulares), sem uso de fórmulas, inseridos, sempre que possível, em contextos oriundos de situações reais e/ou relacionadas às outras áreas do conhecimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA25",
+    description:
+      "Reconhecer a abertura do ângulo como grandeza associada às figuras geométricas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA26",
+    description:
+      "Resolver problemas que envolvam a noção de ângulo em diferentes contextos e em situações reais, como ângulo de visão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA27",
+    description:
+      "Determinar medidas da abertura de ângulos, por meio de transferidor e/ou tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA28",
+    description:
+      "Interpretar, descrever e desenhar plantas baixas simples de residências e vistas aéreas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA29",
+    description:
+      "Analisar e descrever mudanças que ocorrem no perímetro e na área de um quadrado ao se ampliarem ou reduzirem, igualmente, as medidas de seus lados, para compreender que o perímetro é proporcional à medida do lado, o que não ocorre com a área.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA30",
+    description:
+      "Calcular a probabilidade de um evento aleatório, expressando-a por número racional (forma fracionária, decimal e percentual) e comparar esse número com a probabilidade obtida por meio de experimentos sucessivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA31",
+    description:
+      "Identificar as variáveis e suas frequências e os elementos constitutivos (título, eixos, legendas, fontes e datas) em diferentes tipos de gráfico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA32",
+    description:
+      "Interpretar e resolver situações que envolvam dados de pesquisas sobre contextos ambientais, sustentabilidade, trânsito, consumo responsável, entre outros, apresentadas pela mídia em tabelas e em diferentes tipos de gráficos e redigir textos escritos com o objetivo de sintetizar conclusões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA33",
+    description:
+      "Planejar e coletar dados de pesquisa referente a práticas sociais escolhidas pelos alunos e fazer uso de planilhas eletrônicas para registro, representação e interpretação das informações, em tabelas, vários tipos de gráficos e texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06MA34",
+    description:
+      "Interpretar e desenvolver fluxogramas simples, identificando as relações entre os objetos representados (por exemplo, posição de cidades considerando as estradas que as unem, hierarquia dos funcionários de uma empresa etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA01",
+    description:
+      "Resolver e elaborar problemas com números naturais, envolvendo as noções de divisor e de múltiplo, podendo incluir máximo divisor comum ou mínimo múltiplo comum, por meio de estratégias diversas, sem a aplicação de algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA02",
+    description:
+      "Resolver e elaborar problemas que envolvam porcentagens, como os que lidam com acréscimos e decréscimos simples, utilizando estratégias pessoais, cálculo mental e calculadora, no contexto de educação financeira, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA03",
+    description:
+      "Comparar e ordenar números inteiros em diferentes contextos, incluindo o histórico, associá-los a pontos da reta numérica e utilizá-los em situações que envolvam adição e subtração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA04",
+    description:
+      "Resolver e elaborar problemas que envolvam operações com números inteiros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA05",
+    description: "Resolver um mesmo problema utilizando diferentes algoritmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA06",
+    description:
+      "Reconhecer que as resoluções de um grupo de problemas que têm a mesma estrutura podem ser obtidas utilizando os mesmos procedimentos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA07",
+    description:
+      "Representar por meio de um fluxograma os passos utilizados para resolver um grupo de problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA08",
+    description:
+      "Comparar e ordenar frações associadas às ideias de partes de inteiros, resultado da divisão, razão e operador.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA09",
+    description:
+      "Utilizar, na resolução de problemas, a associação entre razão e fração, como a fração 2/3 para expressar a razão de duas partes de uma grandeza para três partes da mesma ou três partes de outra grandeza.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA10",
+    description:
+      "Comparar e ordenar números racionais em diferentes contextos e associá-los a pontos da reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA11",
+    description:
+      "Compreender e utilizar a multiplicação e a divisão de números racionais, a relação entre elas e suas propriedades operatórias.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA12",
+    description:
+      "Resolver e elaborar problemas que envolvam as operações com números racionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA13",
+    description:
+      "Compreender a ideia de variável, representada por letra ou símbolo, para expressar relação entre duas grandezas, diferenciando-a da ideia de incógnita.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA14",
+    description:
+      "Classificar sequências em recursivas e não recursivas, reconhecendo que o conceito de recursão está presente não apenas na matemática, mas também nas artes e na literatura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA15",
+    description:
+      "Utilizar a simbologia algébrica para expressar regularidades encontradas em sequências numéricas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA16",
+    description:
+      "Reconhecer se duas expressões algébricas obtidas para descrever a regularidade de uma mesma sequência numérica são ou não equivalentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA17",
+    description:
+      "Resolver e elaborar problemas que envolvam variação de proporcionalidade direta e de proporcionalidade inversa entre duas grandezas, utilizando sentença algébrica para expressar a relação entre elas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA18",
+    description:
+      "Resolver e elaborar problemas que possam ser representados por equações polinomiais de 1º grau, redutíveis à forma ax + b = c, fazendo uso das propriedades da igualdade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA19",
+    description:
+      "Realizar transformações de polígonos representados no plano cartesiano, decorrentes da multiplicação das coordenadas de seus vértices por um número inteiro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA20",
+    description:
+      "Reconhecer e representar, no plano cartesiano, o simétrico de figuras em relação aos eixos e à origem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA21",
+    description:
+      "Reconhecer e construir figuras obtidas por simetrias de translação, rotação e reflexão, usando instrumentos de desenho ou softwares de geometria dinâmica e vincular esse estudo a representações planas de obras de arte, elementos arquitetônicos, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA22",
+    description:
+      "Construir circunferências, utilizando compasso, reconhecê-las como lugar geométrico e utilizá-las para fazer composições artísticas e resolver problemas que envolvam objetos equidistantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA23",
+    description:
+      "Verificar relações entre os ângulos formados por retas paralelas cortadas por uma transversal, com e sem uso de softwares de geometria dinâmica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA24",
+    description:
+      "Construir triângulos, usando régua e compasso, reconhecer a condição de existência do triângulo quanto à medida dos lados e verificar que a soma das medidas dos ângulos internos de um triângulo é 180°.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA25",
+    description:
+      "Reconhecer a rigidez geométrica dos triângulos e suas aplicações, como na construção de estruturas arquitetônicas (telhados, estruturas metálicas e outras) ou nas artes plásticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA26",
+    description:
+      "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um triângulo qualquer, conhecidas as medidas dos três lados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA27",
+    description:
+      "Calcular medidas de ângulos internos de polígonos regulares, sem o uso de fórmulas, e estabelecer relações entre ângulos internos e externos de polígonos, preferencialmente vinculadas à construção de mosaicos e de ladrilhamentos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA28",
+    description:
+      "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um polígono regular (como quadrado e triângulo equilátero), conhecida a medida de seu lado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA29",
+    description:
+      "Resolver e elaborar problemas que envolvam medidas de grandezas inseridos em contextos oriundos de situações cotidianas ou de outras áreas do conhecimento, reconhecendo que toda medida empírica é aproximada.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA30",
+    description:
+      "Resolver e elaborar problemas de cálculo de medida do volume de blocos retangulares, envolvendo as unidades usuais (metro cúbico, decímetro cúbico e centímetro cúbico).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA31",
+    description:
+      "Estabelecer expressões de cálculo de área de triângulos e de quadriláteros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA32",
+    description:
+      "Resolver e elaborar problemas de cálculo de medida de área de figuras planas que podem ser decompostas por quadrados, retângulos e/ou triângulos, utilizando a equivalência entre áreas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA33",
+    description:
+      "Estabelecer o número π como a razão entre a medida de uma circunferência e seu diâmetro, para compreender e resolver problemas, inclusive os de natureza histórica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA34",
+    description:
+      "Planejar e realizar experimentos aleatórios ou simulações que envolvem cálculo de probabilidades ou estimativas por meio de frequência de ocorrências.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA35",
+    description:
+      "Compreender, em contextos significativos, o significado de média estatística como indicador da tendência de uma pesquisa, calcular seu valor e relacioná-lo, intuitivamente, com a amplitude do conjunto de dados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA36",
+    description:
+      "Planejar e realizar pesquisa envolvendo tema da realidade social, identificando a necessidade de ser censitária ou de usar amostra, e interpretar os dados para comunicá-los por meio de relatório escrito, tabelas e gráficos, com o apoio de planilhas eletrônicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07MA37",
+    description:
+      "Interpretar e analisar dados apresentados em gráfico de setores divulgados pela mídia e compreender quando é possível ou conveniente sua utilização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA01",
+    description:
+      "Efetuar cálculos com potências de expoentes inteiros e aplicar esse conhecimento na representação de números em notação científica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA02",
+    description:
+      "Resolver e elaborar problemas usando a relação entre potenciação e radiciação, para representar uma raiz como potência de expoente fracionário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA03",
+    description:
+      "Resolver e elaborar problemas de contagem cuja resolução envolva a aplicação do princípio multiplicativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA04",
+    description:
+      "Resolver e elaborar problemas, envolvendo cálculo de porcentagens, incluindo o uso de tecnologias digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA05",
+    description:
+      "Reconhecer e utilizar procedimentos para a obtenção de uma fração geratriz para uma dízima periódica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA06",
+    description:
+      "Resolver e elaborar problemas que envolvam cálculo do valor numérico de expressões algébricas, utilizando as propriedades das operações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA07",
+    description:
+      "Associar uma equação linear de 1º grau com duas incógnitas a uma reta no plano cartesiano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA08",
+    description:
+      "Resolver e elaborar problemas relacionados ao seu contexto próximo, que possam ser representados por sistemas de equações de 1º grau com duas incógnitas e interpretá-los, utilizando, inclusive, o plano cartesiano como recurso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA09",
+    description:
+      "Resolver e elaborar, com e sem uso de tecnologias, problemas que possam ser representados por equações polinomiais de 2º grau do tipo ax2 = b.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA10",
+    description:
+      "Identificar a regularidade de uma sequência numérica ou figural não recursiva e construir um algoritmo por meio de um fluxograma que permita indicar os números ou as figuras seguintes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA11",
+    description:
+      "Identificar a regularidade de uma sequência numérica recursiva e construir um algoritmo por meio de um fluxograma que permita indicar os números seguintes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA12",
+    description:
+      "Identificar a natureza da variação de duas grandezas, diretamente, inversamente proporcionais ou não proporcionais, expressando a relação existente por meio de sentença algébrica e representá-la no plano cartesiano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA13",
+    description:
+      "Resolver e elaborar problemas que envolvam grandezas diretamente ou inversamente proporcionais, por meio de estratégias variadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA14",
+    description:
+      "Demonstrar propriedades de quadriláteros por meio da identificação da congruência de triângulos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA15",
+    description:
+      "Construir, utilizando instrumentos de desenho ou softwares de geometria dinâmica, mediatriz, bissetriz, ângulos de 90°, 60°, 45° e 30° e polígonos regulares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA16",
+    description:
+      "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um hexágono regular de qualquer área, a partir da medida do ângulo central e da utilização de esquadros e compasso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA17",
+    description:
+      "Aplicar os conceitos de mediatriz e bissetriz como lugares geométricos na resolução de problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA18",
+    description:
+      "Reconhecer e construir figuras obtidas por composições de transformações geométricas (translação, reflexão e rotação), com o uso de instrumentos de desenho ou de softwares de geometria dinâmica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA19",
+    description:
+      "Resolver e elaborar problemas que envolvam medidas de área de figuras geométricas, utilizando expressões de cálculo de área (quadriláteros, triângulos e círculos), em situações como determinar medida de terrenos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA20",
+    description:
+      "Reconhecer a relação entre um litro e um decímetro cúbico e a relação entre litro e metro cúbico, para resolver problemas de cálculo de capacidade de recipientes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA21",
+    description:
+      "Resolver e elaborar problemas que envolvam o cálculo do volume de recipiente cujo formato é o de um bloco retangular.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA22",
+    description:
+      "Calcular a probabilidade de eventos, com base na construção do espaço amostral, utilizando o princípio multiplicativo, e reconhecer que a soma das probabilidades de todos os elementos do espaço amostral é igual a 1.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA23",
+    description:
+      "Avaliar a adequação de diferentes tipos de gráficos para representar um conjunto de dados de uma pesquisa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA24",
+    description:
+      "Classificar as frequências de uma variável contínua de uma pesquisa em classes, de modo que resumam os dados de maneira adequada para a tomada de decisões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA25",
+    description:
+      "Obter os valores de medidas de tendência central de uma pesquisa estatística (média, moda e mediana) com a compreensão de seus significados e relacioná-los com a dispersão de dados, indicada pela amplitude.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA26",
+    description:
+      "Selecionar razões, de diferentes naturezas (física, ética ou econômica), que justificam a realização de pesquisas amostrais e não censitárias, e reconhecer que a seleção da amostra pode ser feita de diferentes maneiras (amostra casual simples, sistemática e estratificada).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08MA27",
+    description:
+      "Planejar e executar pesquisa amostral, selecionando uma técnica de amostragem adequada, e escrever relatório que contenha os gráficos apropriados para representar os conjuntos de dados, destacando aspectos como as medidas de tendência central, a amplitude e as conclusões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA01",
+    description:
+      "Reconhecer que, uma vez fixada uma unidade de comprimento, existem segmentos de reta cujo comprimento não é expresso por número racional (como as medidas de diagonais de um polígono e alturas de um triângulo, quando se toma a medida de cada lado como unidade).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA02",
+    description:
+      "Reconhecer um número irracional como um número real cuja representação decimal é infinita e não periódica, e estimar a localização de alguns deles na reta numérica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA03",
+    description:
+      "Efetuar cálculos com números reais, inclusive potências com expoentes fracionários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA04",
+    description:
+      "Resolver e elaborar problemas com números reais, inclusive em notação científica, envolvendo diferentes operações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA05",
+    description:
+      "Resolver e elaborar problemas que envolvam porcentagens, com a ideia de aplicação de percentuais sucessivos e a determinação das taxas percentuais, preferencialmente com o uso de tecnologias digitais, no contexto da educação financeira.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA06",
+    description:
+      "Compreender as funções como relações de dependência unívoca entre duas variáveis e suas representações numérica, algébrica e gráfica e utilizar esse conceito para analisar situações que envolvam relações funcionais entre duas variáveis.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA07",
+    description:
+      "Resolver problemas que envolvam a razão entre duas grandezas de espécies diferentes, como velocidade e densidade demográfica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA08",
+    description:
+      "Resolver e elaborar problemas que envolvam relações de proporcionalidade direta e inversa entre duas ou mais grandezas, inclusive escalas, divisão em partes proporcionais e taxa de variação, em contextos socioculturais, ambientais e de outras áreas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA09",
+    description:
+      "Compreender os processos de fatoração de expressões algébricas, com base em suas relações com os produtos notáveis, para resolver e elaborar problemas que possam ser representados por equações polinomiais do 2º grau.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA10",
+    description:
+      "Demonstrar relações simples entre os ângulos formados por retas paralelas cortadas por uma transversal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA11",
+    description:
+      "Resolver problemas por meio do estabelecimento de relações entre arcos, ângulos centrais e ângulos inscritos na circunferência, fazendo uso, inclusive, de softwares de geometria dinâmica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA12",
+    description:
+      "Reconhecer as condições necessárias e suficientes para que dois triângulos sejam semelhantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA13",
+    description:
+      "Demonstrar relações métricas do triângulo retângulo, entre elas o teorema de Pitágoras, utilizando, inclusive, a semelhança de triângulos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA14",
+    description:
+      "Resolver e elaborar problemas de aplicação do teorema de Pitágoras ou das relações de proporcionalidade envolvendo retas paralelas cortadas por secantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA15",
+    description:
+      "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um polígono regular cuja medida do lado é conhecida, utilizando régua e compasso, como também softwares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA16",
+    description:
+      "Determinar o ponto médio de um segmento de reta e a distância entre dois pontos quaisquer, dadas as coordenadas desses pontos no plano cartesiano, sem o uso de fórmulas, e utilizar esse conhecimento para calcular, por exemplo, medidas de perímetros e áreas de figuras planas construídas no plano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA17",
+    description:
+      "Reconhecer vistas ortogonais de figuras espaciais e aplicar esse conhecimento para desenhar objetos em perspectiva.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA18",
+    description:
+      "Reconhecer e empregar unidades usadas para expressar medidas muito grandes ou muito pequenas, tais como distância entre planetas e sistemas solares, tamanho de vírus ou de células, capacidade de armazenamento de computadores, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA19",
+    description:
+      "Resolver e elaborar problemas que envolvam medidas de volumes de prismas e de cilindros retos, inclusive com uso de expressões de cálculo, em situações cotidianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA20",
+    description:
+      "Reconhecer, em experimentos aleatórios, eventos independentes e dependentes e calcular a probabilidade de sua ocorrência, nos dois casos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA21",
+    description:
+      "Analisar e identificar, em gráficos divulgados pela mídia, os elementos que podem induzir, às vezes propositadamente, erros de leitura, como escalas inapropriadas, legendas não explicitadas corretamente, omissão de informações importantes (fontes e datas), entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA22",
+    description:
+      "Escolher e construir o gráfico mais adequado (colunas, setores, linhas), com ou sem uso de planilhas eletrônicas, para apresentar um determinado conjunto de dados, destacando aspectos como as medidas de tendência central.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09MA23",
+    description:
+      "Planejar e executar pesquisa amostral envolvendo tema da realidade social e comunicar os resultados por meio de relatório contendo avaliação de medidas de tendência central e da amplitude, tabelas e gráficos adequados, construídos com o apoio de planilhas eletrônicas.  ",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI01",
+    description:
+      "Comparar características de diferentes materiais presentes em objetos de uso cotidiano, discutindo sua origem, os modos como são descartados e como podem ser usados de forma mais consciente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI02",
+    description:
+      "Localizar, nomear e representar graficamente (por meio de desenhos) partes do corpo humano e explicar suas funções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI03",
+    description:
+      "Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI04",
+    description:
+      "Comparar características físicas entre os colegas, reconhecendo a diversidade e a importância da valorização, do acolhimento e do respeito às diferenças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI05",
+    description:
+      "Identificar e nomear diferentes escalas de tempo: os períodos diários (manhã, tarde, noite) e a sucessão de dias, semanas, meses e anos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01CI06",
+    description:
+      "Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI01",
+    description:
+      "Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI02",
+    description:
+      "Propor o uso de diferentes materiais para a construção de objetos de uso cotidiano, tendo em vista algumas propriedades desses materiais (flexibilidade, dureza, transparência etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI03",
+    description:
+      "Discutir os cuidados necessários à prevenção de acidentes domésticos (objetos cortantes e inflamáveis, eletricidade, produtos de limpeza, medicamentos etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI04",
+    description:
+      "Descrever características de plantas e animais (tamanho, forma, cor, fase da vida, local onde se desenvolvem etc.) que fazem parte de seu cotidiano e relacioná-las ao ambiente em que eles vivem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI05",
+    description:
+      "Investigar a importância da água e da luz para a manutenção da vida de plantas em geral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI06",
+    description:
+      "Identificar as principais partes de uma planta (raiz, caule, folhas, flores e frutos) e a função desempenhada por cada uma delas, e analisar as relações entre as plantas, o ambiente e os demais seres vivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI07",
+    description:
+      "Descrever as posições do Sol em diversos horários do dia e associá-las ao tamanho da sombra projetada.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02CI08",
+    description:
+      "Comparar o efeito da radiação solar (aquecimento e reflexão) em diferentes tipos de superfície (água, areia, solo, superfícies escura, clara e metálica etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI01",
+    description:
+      "Produzir diferentes sons a partir da vibração de variados objetos e identificar variáveis que influem nesse fenômeno.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI02",
+    description:
+      "Experimentar e relatar o que ocorre com a passagem da luz através de objetos transparentes (copos, janelas de vidro, lentes, prismas, água etc.), no contato com superfícies polidas (espelhos) e na intersecção com objetos opacos (paredes, pratos, pessoas e outros objetos de uso cotidiano).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI03",
+    description:
+      "Discutir hábitos necessários para a manutenção da saúde auditiva e visual considerando as condições do ambiente em termos de som e luz.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI04",
+    description:
+      "Identificar características sobre o modo de vida (o que comem, como se reproduzem, como se deslocam etc.) dos animais mais comuns no ambiente próximo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI05",
+    description:
+      "Descrever e comunicar as alterações que ocorrem desde o nascimento em animais de diferentes meios terrestres ou aquáticos, inclusive o homem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI06",
+    description:
+      "Comparar alguns animais e organizar grupos com base em características externas comuns (presença de penas, pelos, escamas, bico, garras, antenas, patas etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI07",
+    description:
+      "Identificar características da Terra (como seu formato esférico, a presença de água, solo etc.), com base na observação, manipulação e comparação de diferentes formas de representação do planeta (mapas, globos, fotografias etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI08",
+    description:
+      "Observar, identificar e registrar os períodos diários (dia e/ou noite) em que o Sol, demais estrelas, Lua e planetas estão visíveis no céu.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI09",
+    description:
+      "Comparar diferentes amostras de solo do entorno da escola com base em características como cor, textura, cheiro, tamanho das partículas, permeabilidade etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03CI10",
+    description:
+      "Identificar os diferentes usos do solo (plantação e extração de materiais, dentre outras possibilidades), reconhecendo a importância do solo para a agricultura e para a vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI01",
+    description:
+      "Identificar misturas na vida diária, com base em suas propriedades físicas observáveis, reconhecendo sua composição.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI02",
+    description:
+      "Testar e relatar transformações nos materiais do dia a dia quando expostos a diferentes condições (aquecimento, resfriamento, luz e umidade).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI03",
+    description:
+      "Concluir que algumas mudanças causadas por aquecimento ou resfriamento são reversíveis (como as mudanças de estado físico da água) e outras não (como o cozimento do ovo, a queima do papel etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI04",
+    description:
+      "Analisar e construir cadeias alimentares simples, reconhecendo a posição ocupada pelos seres vivos nessas cadeias e o papel do Sol como fonte primária de energia na produção de alimentos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI05",
+    description:
+      "Descrever e destacar semelhanças e diferenças entre o ciclo da matéria e o fluxo de energia entre os componentes vivos e não vivos de um ecossistema.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI06",
+    description:
+      "Relacionar a participação de fungos e bactérias no processo de decomposição, reconhecendo a importância ambiental desse processo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI07",
+    description:
+      "Verificar a participação de microrganismos na produção de alimentos, combustíveis, medicamentos, entre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI08",
+    description:
+      "Propor, a partir do conhecimento das formas de transmissão de alguns microrganismos (vírus, bactérias e protozoários), atitudes e medidas adequadas para prevenção de doenças a eles associadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI09",
+    description:
+      "Identificar os pontos cardeais, com base no registro de diferentes posições relativas do Sol e da sombra de uma vara (gnômon).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI10",
+    description:
+      "Comparar as indicações dos pontos cardeais resultantes da observação das sombras de uma vara (gnômon) com aquelas obtidas por meio de uma bússola.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04CI11",
+    description:
+      "Associar os movimentos cíclicos da Lua e da Terra a períodos de tempo regulares e ao uso desse conhecimento para a construção de calendários em diferentes culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI01",
+    description:
+      "Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais – como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI02",
+    description:
+      "Aplicar os conhecimentos sobre as mudanças de estado físico da água para explicar o ciclo hidrológico e analisar suas implicações na agricultura, no clima, na geração de energia elétrica, no provimento de água potável e no equilíbrio dos ecossistemas regionais (ou locais).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI03",
+    description:
+      "Selecionar argumentos que justifiquem a importância da cobertura vegetal para a manutenção do ciclo da água, a conservação dos solos, dos cursos de água e da qualidade do ar atmosférico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI04",
+    description:
+      "Identificar os principais usos da água e de outros materiais nas atividades cotidianas para discutir e propor formas sustentáveis de utilização desses recursos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI05",
+    description:
+      "Construir propostas coletivas para um consumo mais consciente e criar soluções tecnológicas para o descarte adequado e a reutilização ou reciclagem de materiais consumidos na escola e/ou na vida cotidiana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI06",
+    description:
+      "Selecionar argumentos que justifiquem por que os sistemas digestório e respiratório são considerados corresponsáveis pelo processo de nutrição do organismo, com base na identificação das funções desses sistemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI07",
+    description:
+      "Justificar a relação entre o funcionamento do sistema circulatório, a distribuição dos nutrientes pelo organismo e a eliminação dos resíduos produzidos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI08",
+    description:
+      "Organizar um cardápio equilibrado com base nas características dos grupos alimentares (nutrientes e calorias) e nas necessidades individuais (atividades realizadas, idade, sexo etc.) para a manutenção da saúde do organismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI09",
+    description:
+      "Discutir a ocorrência de distúrbios nutricionais (como obesidade, subnutrição etc.) entre crianças e jovens a partir da análise de seus hábitos (tipos e quantidade de alimento ingerido, prática de atividade física etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI10",
+    description:
+      "Identificar algumas constelações no céu, com o apoio de recursos (como mapas celestes e aplicativos digitais, entre outros), e os períodos do ano em que elas são visíveis no início da noite.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI11",
+    description:
+      "Associar o movimento diário do Sol e das demais estrelas no céu ao movimento de rotação da Terra.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI12",
+    description:
+      "Concluir sobre a periodicidade das fases da Lua, com base na observação e no registro das formas aparentes da Lua no céu ao longo de, pelo menos, dois meses.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05CI13",
+    description:
+      "Projetar e construir dispositivos para observação à distância (luneta, periscópio etc.), para observação ampliada de objetos (lupas, microscópios) ou para registro de imagens (máquinas fotográficas) e discutir usos sociais desses dispositivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI01",
+    description:
+      "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais (água e sal, água e óleo, água e areia etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI02",
+    description:
+      "Identificar evidências de transformações químicas a partir do resultado de misturas de materiais que originam produtos diferentes dos que foram misturados (mistura de ingredientes para fazer um bolo, mistura de vinagre com bicarbonato de sódio etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI03",
+    description:
+      "Selecionar métodos mais adequados para a separação de diferentes sistemas heterogêneos a partir da identificação de processos de separação de materiais (como a produção de sal de cozinha, a destilação de petróleo, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI04",
+    description:
+      "Associar a produção de medicamentos e outros materiais sintéticos ao desenvolvimento científico e tecnológico, reconhecendo benefícios e avaliando impactos socioambientais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI05",
+    description:
+      "Explicar a organização básica das células e seu papel como unidade estrutural e funcional dos seres vivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI06",
+    description:
+      "Concluir, com base na análise de ilustrações e/ou modelos (físicos ou digitais), que os organismos são um complexo arranjo de sistemas com diferentes níveis de organização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI07",
+    description:
+      "Justificar o papel do sistema nervoso na coordenação das ações motoras e sensoriais do corpo, com base na análise de suas estruturas básicas e respectivas funções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI08",
+    description:
+      "Explicar a importância da visão (captação e interpretação das imagens) na interação do organismo com o meio e, com base no funcionamento do olho humano, selecionar lentes adequadas para a correção de diferentes defeitos da visão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI09",
+    description:
+      "Deduzir que a estrutura, a sustentação e a movimentação dos animais resultam da interação entre os sistemas muscular, ósseo e nervoso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI10",
+    description:
+      "Explicar como o funcionamento do sistema nervoso pode ser afetado por substâncias psicoativas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI11",
+    description:
+      "Identificar as diferentes camadas que estruturam o planeta Terra (da estrutura interna à atmosfera) e suas principais características.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI12",
+    description:
+      "Identificar diferentes tipos de rocha, relacionando a formação de fósseis a rochas sedimentares em diferentes períodos geológicos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI13",
+    description:
+      "Selecionar argumentos e evidências que demonstrem a esfericidade da Terra.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06CI14",
+    description:
+      "Inferir que as mudanças na sombra de uma vara (gnômon) ao longo do dia em diferentes períodos do ano são uma evidência dos movimentos relativos entre a Terra e o Sol, que podem ser explicados por meio dos movimentos de rotação e translação da Terra e da inclinação de seu eixo de rotação em relação ao plano de sua órbita em torno do Sol.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI01",
+    description:
+      "Discutir a aplicação, ao longo da história, das máquinas simples e propor soluções e invenções para a realização de tarefas mecânicas cotidianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI02",
+    description:
+      "Diferenciar temperatura, calor e sensação térmica nas diferentes situações de equilíbrio termodinâmico cotidianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI03",
+    description:
+      "Utilizar o conhecimento das formas de propagação do calor para justificar a utilização de determinados materiais (condutores e isolantes) na vida cotidiana, explicar o princípio de funcionamento de alguns equipamentos (garrafa térmica, coletor solar etc.) e/ou construir soluções tecnológicas a partir desse conhecimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI04",
+    description:
+      "Avaliar o papel do equilíbrio termodinâmico para a manutenção da vida na Terra, para o funcionamento de máquinas térmicas e em outras situações cotidianas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI05",
+    description:
+      "Discutir o uso de diferentes tipos de combustível e máquinas térmicas ao longo do tempo, para avaliar avanços, questões econômicas e problemas socioambientais causados pela produção e uso desses materiais e máquinas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI06",
+    description:
+      "Discutir e avaliar mudanças econômicas, culturais e sociais, tanto na vida cotidiana quanto no mundo do trabalho, decorrentes do desenvolvimento de novos materiais e tecnologias (como automação e informatização).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI07",
+    description:
+      "Caracterizar os principais ecossistemas brasileiros quanto à paisagem, à quantidade de água, ao tipo de solo, à disponibilidade de luz solar, à temperatura etc., correlacionando essas características à flora e fauna específicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI08",
+    description:
+      "Avaliar como os impactos provocados por catástrofes naturais ou mudanças nos componentes físicos, biológicos ou sociais de um ecossistema afetam suas populações, podendo ameaçar ou provocar a extinção de espécies, alteração de hábitos, migração etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI09",
+    description:
+      "Interpretar as condições de saúde da comunidade, cidade ou estado, com base na análise e comparação de indicadores de saúde (como taxa de mortalidade infantil, cobertura de saneamento básico e incidência de doenças de veiculação hídrica, atmosférica entre outras) e dos resultados de políticas públicas destinadas à saúde.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI10",
+    description:
+      "Argumentar sobre a importância da vacinação para a saúde pública, com base em informações sobre a maneira como a vacina atua no organismo e o papel histórico da vacinação para a manutenção da saúde individual e coletiva e para a erradicação de doenças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI11",
+    description:
+      "Analisar historicamente o uso da tecnologia, incluindo a digital, nas diferentes dimensões da vida humana, considerando indicadores ambientais e de qualidade de vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI12",
+    description:
+      "Demonstrar que o ar é uma mistura de gases, identificando sua composição, e discutir fenômenos naturais ou antrópicos que podem alterar essa composição.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI13",
+    description:
+      "Descrever o mecanismo natural do efeito estufa, seu papel fundamental para o desenvolvimento da vida na Terra, discutir as ações humanas responsáveis pelo seu aumento artificial (queima dos combustíveis fósseis, desmatamento, queimadas etc.) e selecionar e implementar propostas para a reversão ou controle desse quadro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI14",
+    description:
+      "Justificar a importância da camada de ozônio para a vida na Terra, identificando os fatores que aumentam ou diminuem sua presença na atmosfera, e discutir propostas individuais e coletivas para sua preservação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI15",
+    description:
+      "Interpretar fenômenos naturais (como vulcões, terremotos e tsunamis) e justificar a rara ocorrência desses fenômenos no Brasil, com base no modelo das placas tectônicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07CI16",
+    description:
+      "Justificar o formato das costas brasileira e africana com base na teoria da deriva dos continentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI01",
+    description:
+      "Identificar e classificar diferentes fontes (renováveis e não renováveis) e tipos de energia utilizados em residências, comunidades ou cidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI02",
+    description:
+      "Construir circuitos elétricos com pilha/bateria, fios e lâmpada ou outros dispositivos e compará-los a circuitos elétricos residenciais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI03",
+    description:
+      "Classificar equipamentos elétricos residenciais (chuveiro, ferro, lâmpadas, TV, rádio, geladeira etc.) de acordo com o tipo de transformação de energia (da energia elétrica para a térmica, luminosa, sonora e mecânica, por exemplo).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI04",
+    description:
+      "Calcular o consumo de eletrodomésticos a partir dos dados de potência (descritos no próprio equipamento) e tempo médio de uso para avaliar o impacto de cada equipamento no consumo doméstico mensal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI05",
+    description:
+      "Propor ações coletivas para otimizar o uso de energia elétrica em sua escola e/ou comunidade, com base na seleção de equipamentos segundo critérios de sustentabilidade (consumo de energia e eficiência energética) e hábitos de consumo responsável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI06",
+    description:
+      "Discutir e avaliar usinas de geração de energia elétrica (termelétricas, hidrelétricas, eólicas etc.), suas semelhanças e diferenças, seus impactos socioambientais, e como essa energia chega e é usada em sua cidade, comunidade, casa ou escola.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI07",
+    description:
+      "Comparar diferentes processos reprodutivos em plantas e animais em relação aos mecanismos adaptativos e evolutivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI08",
+    description:
+      "Analisar e explicar as transformações que ocorrem na puberdade considerando a atuação dos hormônios sexuais e do sistema nervoso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI09",
+    description:
+      "Comparar o modo de ação e a eficácia dos diversos métodos contraceptivos e justificar a necessidade de compartilhar a responsabilidade na escolha e na utilização do método mais adequado à prevenção da gravidez precoce e indesejada e de Doenças Sexualmente Transmissíveis (DST).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI10",
+    description:
+      "Identificar os principais sintomas, modos de transmissão e tratamento de algumas DST (com ênfase na AIDS), e discutir estratégias e métodos de prevenção.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI11",
+    description:
+      "Selecionar argumentos que evidenciem as múltiplas dimensões da sexualidade humana (biológica, sociocultural, afetiva e ética).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI12",
+    description:
+      "Justificar, por meio da construção de modelos e da observação da Lua no céu, a ocorrência das fases da Lua e dos eclipses, com base nas posições relativas entre Sol, Terra e Lua.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI13",
+    description:
+      "Representar os movimentos de rotação e translação da Terra e analisar o papel da inclinação do eixo de rotação da Terra em relação à sua órbita na ocorrência das estações do ano, com a utilização de modelos tridimensionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI14",
+    description:
+      "Relacionar climas regionais aos padrões de circulação atmosférica e oceânica e ao aquecimento desigual causado pela forma e pelos movimentos da Terra.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI15",
+    description:
+      "Identificar as principais variáveis envolvidas na previsão do tempo e simular situações nas quais elas possam ser medidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08CI16",
+    description:
+      "Discutir iniciativas que contribuam para restabelecer o equilíbrio ambiental a partir da identificação de alterações climáticas regionais e globais provocadas pela intervenção humana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI01",
+    description:
+      "Investigar as mudanças de estado físico da matéria e explicar essas transformações com base no modelo de constituição submicroscópica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI02",
+    description:
+      "Comparar quantidades de reagentes e produtos envolvidos em transformações químicas, estabelecendo a proporção entre as suas massas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI03",
+    description:
+      "Identificar modelos que descrevem a estrutura da matéria (constituição do átomo e composição de moléculas simples) e reconhecer sua evolução histórica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI04",
+    description:
+      "Planejar e executar experimentos que evidenciem que todas as cores de luz podem ser formadas pela composição das três cores primárias da luz e que a cor de um objeto está relacionada também à cor da luz que o ilumina.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI05",
+    description:
+      "Investigar os principais mecanismos envolvidos na transmissão e recepção de imagem e som que revolucionaram os sistemas de comunicação humana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI06",
+    description:
+      "Classificar as radiações eletromagnéticas por suas frequências, fontes e aplicações, discutindo e avaliando as implicações de seu uso em controle remoto, telefone celular, raio X, forno de micro-ondas, fotocélulas etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI07",
+    description:
+      "Discutir o papel do avanço tecnológico na aplicação das radiações na medicina diagnóstica (raio X, ultrassom, ressonância nuclear magnética) e no tratamento de doenças (radioterapia, cirurgia ótica a laser, infravermelho, ultravioleta etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI08",
+    description:
+      "Associar os gametas à transmissão das características hereditárias, estabelecendo relações entre ancestrais e descendentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI09",
+    description:
+      "Discutir as ideias de Mendel sobre hereditariedade (fatores hereditários, segregação, gametas, fecundação), considerando-as para resolver problemas envolvendo a transmissão de características hereditárias em diferentes organismos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI10",
+    description:
+      "Comparar as ideias evolucionistas de Lamarck e Darwin apresentadas em textos científicos e históricos, identificando semelhanças e diferenças entre essas ideias e sua importância para explicar a diversidade biológica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI11",
+    description:
+      "Discutir a evolução e a diversidade das espécies com base na atuação da seleção natural sobre as variantes de uma mesma espécie, resultantes de processo reprodutivo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI12",
+    description:
+      "Justificar a importância das unidades de conservação para a preservação da biodiversidade e do patrimônio nacional, considerando os diferentes tipos de unidades (parques, reservas e florestas nacionais), as populações humanas e as atividades a eles relacionados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI13",
+    description:
+      "Propor iniciativas individuais e coletivas para a solução de problemas ambientais da cidade ou da comunidade, com base na análise de ações de consumo consciente e de sustentabilidade bem-sucedidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI14",
+    description:
+      "Descrever a composição e a estrutura do Sistema Solar (Sol, planetas rochosos, planetas gigantes gasosos e corpos menores), assim como a localização do Sistema Solar na nossa Galáxia (a Via Láctea) e dela no Universo (apenas uma galáxia dentre bilhões).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI15",
+    description:
+      "Relacionar diferentes leituras do céu e explicações sobre a origem da Terra, do Sol ou do Sistema Solar às necessidades de distintas culturas (agricultura, caça, mito, orientação espacial e temporal etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI16",
+    description:
+      "Selecionar argumentos sobre a viabilidade da sobrevivência humana fora da Terra, com base nas condições necessárias à vida, nas características dos planetas e nas distâncias e nos tempos envolvidos em viagens interplanetárias e interestelares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09CI17",
+    description:
+      "Analisar o ciclo evolutivo do Sol (nascimento, vida e morte) baseado no conhecimento das etapas de evolução de estrelas de diferentes dimensões e os efeitos desse processo no nosso planeta.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE01",
+    description:
+      "Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE02",
+    description:
+      "Identificar semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE03",
+    description:
+      "Identificar e relatar semelhanças e diferenças de usos do espaço público (praças, parques) para o lazer e diferentes manifestações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE04",
+    description:
+      "Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE05",
+    description:
+      "Observar e descrever ritmos naturais (dia e noite, variação de temperatura e umidade etc.) em diferentes escalas espaciais e temporais, comparando a sua realidade com outras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE06",
+    description:
+      "Descrever e comparar diferentes tipos de moradia ou objetos de uso cotidiano (brinquedos, roupas, mobiliários), considerando técnicas e materiais utilizados em sua produção.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE07",
+    description:
+      "Descrever atividades de trabalho relacionadas com o dia a dia da sua comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE08",
+    description:
+      "Criar mapas mentais e desenhos com base em itinerários, contos literários, histórias inventadas e brincadeiras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE09",
+    description:
+      "Elaborar e utilizar mapas simples para localizar elementos do local de vivência, considerando referenciais espaciais (frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) e tendo o corpo como referência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE10",
+    description:
+      "Descrever características de seus lugares de vivência relacionadas aos ritmos da natureza (chuva, vento, calor etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01GE11",
+    description:
+      "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE01",
+    description:
+      "Descrever a história das migrações no bairro ou comunidade em que vive.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE02",
+    description:
+      "Comparar costumes e tradições de diferentes populações inseridas no bairro ou comunidade em que vive, reconhecendo a importância do respeito às diferenças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE03",
+    description:
+      "Comparar diferentes meios de transporte e de comunicação, indicando o seu papel na conexão entre lugares, e discutir os riscos para a vida e para o ambiente e seu uso responsável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE04",
+    description:
+      "Reconhecer semelhanças e diferenças nos hábitos, nas relações com a natureza e no modo de viver de pessoas em diferentes lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE05",
+    description:
+      "Analisar mudanças e permanências, comparando imagens de um mesmo lugar em diferentes tempos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE06",
+    description:
+      "Relacionar o dia e a noite a diferentes tipos de atividades sociais (horário escolar, comercial, sono etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE07",
+    description:
+      "Descrever as atividades extrativas (minerais, agropecuárias e industriais) de diferentes lugares, identificando os impactos ambientais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE08",
+    description:
+      "Identificar e elaborar diferentes formas de representação (desenhos, mapas mentais, maquetes) para representar componentes da paisagem dos lugares de vivência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE09",
+    description:
+      "Identificar objetos e lugares de vivência (escola e moradia) em imagens aéreas e mapas (visão vertical) e fotografias (visão oblíqua).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE10",
+    description:
+      "Aplicar princípios de localização e posição de objetos (referenciais espaciais, como frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) por meio de representações espaciais da sala de aula e da escola.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02GE11",
+    description:
+      "Reconhecer a importância do solo e da água para a vida, identificando seus diferentes usos (plantação e extração de materiais, entre outras possibilidades) e os impactos desses usos no cotidiano da cidade e do campo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE01",
+    description:
+      "Identificar e comparar aspectos culturais dos grupos sociais de seus lugares de vivência, seja na cidade, seja no campo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE02",
+    description:
+      "Identificar, em seus lugares de vivência, marcas de contribuição cultural e econômica de grupos de diferentes origens.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE03",
+    description:
+      "Reconhecer os diferentes modos de vida de povos e comunidades tradicionais em distintos lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE04",
+    description:
+      "Explicar como os processos naturais e históricos atuam na produção e na mudança das paisagens naturais e antrópicas nos seus lugares de vivência, comparando-os a outros lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE05",
+    description:
+      "Identificar alimentos, minerais e outros produtos cultivados e extraídos da natureza, comparando as atividades de trabalho em diferentes lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE06",
+    description:
+      "Identificar e interpretar imagens bidimensionais e tridimensionais em diferentes tipos de representação cartográfica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE07",
+    description:
+      "Reconhecer e elaborar legendas com símbolos de diversos tipos de representações em diferentes escalas cartográficas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE08",
+    description:
+      "Relacionar a produção de lixo doméstico ou da escola aos problemas causados pelo consumo excessivo e construir propostas para o consumo consciente, considerando a ampliação de hábitos de redução, reúso e reciclagem/ descarte de materiais consumidos em casa, na escola e/ou no entorno.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE09",
+    description:
+      "Investigar os usos dos recursos naturais, com destaque para os usos da água em atividades cotidianas (alimentação, higiene, cultivo de plantas etc.), e discutir os problemas ambientais provocados por esses usos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE10",
+    description:
+      "Identificar os cuidados necessários para utilização da água na agricultura e na geração de energia de modo a garantir a manutenção do provimento de água potável.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03GE11",
+    description:
+      "Comparar impactos das atividades econômicas urbanas e rurais sobre o ambiente físico natural, assim como os riscos provenientes do uso de ferramentas e máquinas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE01",
+    description:
+      "Selecionar, em seus lugares de vivência e em suas histórias familiares e/ou da comunidade, elementos de distintas culturas (indígenas, afro-brasileiras, de outras regiões do país, latino-americanas, europeias, asiáticas etc.), valorizando o que é próprio em cada uma delas e sua contribuição para a formação da cultura local, regional e brasileira.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE02",
+    description:
+      "Descrever processos migratórios e suas contribuições para a formação da sociedade brasileira.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE03",
+    description:
+      "Distinguir funções e papéis dos órgãos do poder público municipal e canais de participação social na gestão do Município, incluindo a Câmara de Vereadores e Conselhos Municipais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE04",
+    description:
+      "Reconhecer especificidades e analisar a interdependência do campo e da cidade, considerando fluxos econômicos, de informações, de ideias e de pessoas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE05",
+    description:
+      "Distinguir unidades político-administrativas oficiais nacionais (Distrito, Município, Unidade da Federação e grande região), suas fronteiras e sua hierarquia, localizando seus lugares de vivência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE06",
+    description:
+      "Identificar e descrever territórios étnico-culturais existentes no Brasil, tais como terras indígenas e de comunidades remanescentes de quilombos, reconhecendo a legitimidade da demarcação desses territórios.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE07",
+    description:
+      "Comparar as características do trabalho no campo e na cidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE08",
+    description:
+      "Descrever e discutir o processo de produção (transformação de matérias-primas), circulação e consumo de diferentes produtos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE09",
+    description:
+      "Utilizar as direções cardeais na localização de componentes físicos e humanos nas paisagens rurais e urbanas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE10",
+    description:
+      "Comparar tipos variados de mapas, identificando suas características, elaboradores, finalidades, diferenças e semelhanças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04GE11",
+    description:
+      "Identificar as características das paisagens naturais e antrópicas (relevo, cobertura vegetal, rios etc.) no ambiente em que vive, bem como a ação humana na conservação ou degradação dessas áreas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE01",
+    description:
+      "Descrever e analisar dinâmicas populacionais na Unidade da Federação em que vive, estabelecendo relações entre migrações e condições de infraestrutura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE02",
+    description:
+      "Identificar diferenças étnico-raciais e étnico-culturais e desigualdades sociais entre grupos em diferentes territórios.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE03",
+    description:
+      "Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE04",
+    description:
+      "Reconhecer as características da cidade e analisar as interações entre a cidade e o campo e entre cidades na rede urbana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE05",
+    description:
+      "Identificar e comparar as mudanças dos tipos de trabalho e desenvolvimento tecnológico na agropecuária, na indústria, no comércio e nos serviços.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE06",
+    description:
+      "Identificar e comparar transformações dos meios de transporte e de comunicação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE07",
+    description:
+      "Identificar os diferentes tipos de energia utilizados na produção industrial, agrícola e extrativa e no cotidiano das populações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE08",
+    description:
+      "Analisar transformações de paisagens nas cidades, comparando sequência de fotografias, fotografias aéreas e imagens de satélite de épocas diferentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE09",
+    description:
+      "Estabelecer conexões e hierarquias entre diferentes cidades, utilizando mapas temáticos e representações gráficas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE10",
+    description:
+      "Reconhecer e comparar atributos da qualidade ambiental e algumas formas de poluição dos cursos de água e dos oceanos (esgotos, efluentes industriais, marés negras etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE11",
+    description:
+      "Identificar e descrever problemas ambientais que ocorrem no entorno da escola e da residência (lixões, indústrias poluentes, destruição do patrimônio histórico etc.), propondo soluções (inclusive tecnológicas) para esses problemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05GE12",
+    description:
+      "Identificar órgãos do poder público e canais de participação social responsáveis por buscar soluções para a melhoria da qualidade de vida (em áreas como meio ambiente, mobilidade, moradia e direito à cidade) e discutir as propostas implementadas por esses órgãos que afetam a comunidade em que vive.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE01",
+    description:
+      "Comparar modificações das paisagens nos lugares de vivência e os usos desses lugares em diferentes tempos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE02",
+    description:
+      "Analisar modificações de paisagens por diferentes tipos de sociedade, com destaque para os povos originários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE03",
+    description:
+      "Descrever os movimentos do planeta e sua relação com a circulação geral da atmosfera, o tempo atmosférico e os padrões climáticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE04",
+    description:
+      "Descrever o ciclo da água, comparando o escoamento superficial no ambiente urbano e rural, reconhecendo os principais componentes da morfologia das bacias e das redes hidrográficas e a sua localização no modelado da superfície terrestre e da cobertura vegetal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE05",
+    description:
+      "Relacionar padrões climáticos, tipos de solo, relevo e formações vegetais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE06",
+    description:
+      "Identificar as características das paisagens transformadas pelo trabalho humano a partir do desenvolvimento da agropecuária e do processo de industrialização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE07",
+    description:
+      "Explicar as mudanças na interação humana com a natureza a partir do surgimento das cidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE08",
+    description:
+      "Medir distâncias na superfície pelas escalas gráficas e numéricas dos mapas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE09",
+    description:
+      "Elaborar modelos tridimensionais, blocos-diagramas e perfis topográficos e de vegetação, visando à representação de elementos e estruturas da superfície terrestre.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE10",
+    description:
+      "Explicar as diferentes formas de uso do solo (rotação de terras, terraceamento, aterros etc.) e de apropriação dos recursos hídricos (sistema de irrigação, tratamento e redes de distribuição), bem como suas vantagens e desvantagens em diferentes épocas e lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE11",
+    description:
+      "Analisar distintas interações das sociedades com a natureza, com base na distribuição dos componentes físico-naturais, incluindo as transformações da biodiversidade local e do mundo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE12",
+    description:
+      "Identificar o consumo dos recursos hídricos e o uso das principais bacias hidrográficas no Brasil e no mundo, enfatizando as transformações nos ambientes urbanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06GE13",
+    description:
+      "Analisar consequências, vantagens e desvantagens das práticas humanas na dinâmica climática (ilha de calor etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE01",
+    description:
+      "Avaliar, por meio de exemplos extraídos dos meios de comunicação, ideias e estereótipos acerca das paisagens e da formação territorial do Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE02",
+    description:
+      "Analisar a influência dos fluxos econômicos e populacionais na formação socioeconômica e territorial do Brasil, compreendendo os conflitos e as tensões históricas e contemporâneas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE03",
+    description:
+      "Selecionar argumentos que reconheçam as territorialidades dos povos indígenas originários, das comunidades remanescentes de quilombos, de povos das florestas e do cerrado, de ribeirinhos e caiçaras, entre outros grupos sociais do campo e da cidade, como direitos legais dessas comunidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE04",
+    description:
+      "Analisar a distribuição territorial da população brasileira, considerando a diversidade étnico-cultural (indígena, africana, europeia e asiática), assim como aspectos de renda, sexo e idade nas regiões brasileiras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE05",
+    description:
+      "Analisar fatos e situações representativas das alterações ocorridas entre o período mercantilista e o advento do capitalismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE06",
+    description:
+      "Discutir em que medida a produção, a circulação e o consumo de mercadorias provocam impactos ambientais, assim como influem na distribuição de riquezas, em diferentes lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE07",
+    description:
+      "Analisar a influência e o papel das redes de transporte e comunicação na configuração do território brasileiro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE08",
+    description:
+      "Estabelecer relações entre os processos de industrialização e inovação tecnológica com as transformações socioeconômicas do território brasileiro.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE09",
+    description:
+      "Interpretar e elaborar mapas temáticos e históricos, inclusive utilizando tecnologias digitais, com informações demográficas e econômicas do Brasil (cartogramas), identificando padrões espaciais, regionalizações e analogias espaciais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE10",
+    description:
+      "Elaborar e interpretar gráficos de barras, gráficos de setores e histogramas, com base em dados socioeconômicos das regiões brasileiras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE11",
+    description:
+      "Caracterizar dinâmicas dos componentes físico-naturais no território nacional, bem como sua distribuição e biodiversidade (Florestas Tropicais, Cerrados, Caatingas, Campos Sulinos e Matas de Araucária).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07GE12",
+    description:
+      "Comparar unidades de conservação existentes no Município de residência e em outras localidades brasileiras, com base na organização do Sistema Nacional de Unidades de Conservação (SNUC).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE01",
+    description:
+      "Descrever as rotas de dispersão da população humana pelo planeta e os principais fluxos migratórios em diferentes períodos da história, discutindo os fatores históricos e condicionantes físico-naturais associados à distribuição da população humana pelos continentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE02",
+    description:
+      "Relacionar fatos e situações representativas da história das famílias do Município em que se localiza a escola, considerando a diversidade e os fluxos migratórios da população mundial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE03",
+    description:
+      "Analisar aspectos representativos da dinâmica demográfica, considerando características da população (perfil etário, crescimento vegetativo e mobilidade espacial).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE04",
+    description:
+      "Compreender os fluxos de migração na América Latina (movimentos voluntários e forçados, assim como fatores e áreas de expulsão e atração) e as principais políticas migratórias da região.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE05",
+    description:
+      "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões na contemporaneidade, com destaque para as situações geopolíticas na América e na África e suas múltiplas regionalizações a partir do pós-guerra.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE06",
+    description:
+      "Analisar a atuação das organizações mundiais nos processos de integração cultural e econômica nos contextos americano e africano, reconhecendo, em seus lugares de vivência, marcas desses processos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE07",
+    description:
+      "Analisar os impactos geoeconômicos, geoestratégicos e geopolíticos da ascensão dos Estados Unidos da América no cenário internacional em sua posição de liderança global e na relação com a China e o Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE08",
+    description:
+      "Analisar a situação do Brasil e de outros países da América Latina e da África, assim como da potência estadunidense na ordem mundial do pós-guerra.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE09",
+    description:
+      "Analisar os padrões econômicos mundiais de produção, distribuição e intercâmbio dos produtos agrícolas e industrializados, tendo como referência os Estados Unidos da América e os países denominados de Brics (Brasil, Rússia, Índia, China e África do Sul).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE10",
+    description:
+      "Distinguir e analisar conflitos e ações dos movimentos sociais brasileiros, no campo e na cidade, comparando com outros movimentos sociais existentes nos países latino-americanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE11",
+    description:
+      "Analisar áreas de conflito e tensões nas regiões de fronteira do continente latino-americano e o papel de organismos internacionais e regionais de cooperação nesses cenários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE12",
+    description:
+      "Compreender os objetivos e analisar a importância dos organismos de integração do território americano (Mercosul, OEA, OEI, Nafta, Unasul, Alba, Comunidade Andina, Aladi, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE13",
+    description:
+      "Analisar a influência do desenvolvimento científico e tecnológico na caracterização dos tipos de trabalho e na economia dos espaços urbanos e rurais da América e da África.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE14",
+    description:
+      "Analisar os processos de desconcentração, descentralização e recentralização das atividades econômicas a partir do capital estadunidense e chinês em diferentes regiões no mundo, com destaque para o Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE15",
+    description:
+      "Analisar a importância dos principais recursos hídricos da America Latina (Aquífero Guarani, Bacias do rio da Prata, do Amazonas e do Orinoco, sistemas de nuvens na Amazônia e nos Andes, entre outros) e discutir os desafios relacionados à gestão e comercialização da água.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE16",
+    description:
+      "Analisar as principais problemáticas comuns às grandes cidades latino-americanas, particularmente aquelas relacionadas à distribuição, estrutura e dinâmica da população e às condições de vida e trabalho.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE17",
+    description:
+      "Analisar a segregação socioespacial em ambientes urbanos da América Latina, com atenção especial ao estudo de favelas, alagados e zona de riscos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE18",
+    description:
+      "Elaborar mapas ou outras formas de representação cartográfica para analisar as redes e as dinâmicas urbanas e rurais, ordenamento territorial, contextos culturais, modo de vida e usos e ocupação de solos da África e América.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE19",
+    description:
+      "Interpretar cartogramas, mapas esquemáticos (croquis) e anamorfoses geográficas com informações geográficas acerca da África e América.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE20",
+    description:
+      "Analisar características de países e grupos de países da América e da África no que se refere aos aspectos populacionais, urbanos, políticos e econômicos, e discutir as desigualdades sociais e econômicas e as pressões sobre a natureza e suas riquezas (sua apropriação e valoração na produção e circulação), o que resulta na espoliação desses povos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE21",
+    description:
+      "Analisar o papel ambiental e territorial da Antártica no contexto geopolítico, sua relevância para os países da América do Sul e seu valor como área destinada à pesquisa e à compreensão do ambiente global.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE22",
+    description:
+      "Identificar os principais recursos naturais dos países da América Latina, analisando seu uso para a produção de matéria-prima e energia e sua relevância para a cooperação entre os países do Mercosul.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE23",
+    description:
+      "Identificar paisagens da América Latina e associá-las, por meio da cartografia, aos diferentes povos da região, com base em aspectos da geomorfologia, da biogeografia e da climatologia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08GE24",
+    description:
+      "Analisar as principais características produtivas dos países latino-americanos (como exploração mineral na Venezuela; agricultura de alta especialização e exploração mineira no Chile; circuito da carne nos pampas argentinos e no Brasil; circuito da cana-de-açúcar em Cuba; polígono industrial do sudeste brasileiro e plantações de soja no centro-oeste; maquiladoras mexicanas, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE01",
+    description:
+      "Analisar criticamente de que forma a hegemonia europeia foi exercida em várias regiões do planeta, notadamente em situações de conflito, intervenções militares e/ou influência cultural em diferentes tempos e lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE02",
+    description:
+      "Analisar a atuação das corporações internacionais e das organizações econômicas mundiais na vida da população em relação ao consumo, à cultura e à mobilidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE03",
+    description:
+      "Identificar diferentes manifestações culturais de minorias étnicas como forma de compreender a multiplicidade cultural na escala mundial, defendendo o princípio do respeito às diferenças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE04",
+    description:
+      "Relacionar diferenças de paisagens aos modos de viver de diferentes povos na Europa, Ásia e Oceania, valorizando identidades e interculturalidades regionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE05",
+    description:
+      "Analisar fatos e situações para compreender a integração mundial (econômica, política e cultural), comparando as diferentes interpretações: globalização e mundialização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE06",
+    description:
+      "Associar o critério de divisão do mundo em Ocidente e Oriente com o Sistema Colonial implantado pelas potências europeias.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE07",
+    description:
+      "Analisar os componentes físico-naturais da Eurásia e os determinantes histórico-geográficos de sua divisão em Europa e Ásia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE08",
+    description:
+      "Analisar transformações territoriais, considerando o movimento de fronteiras, tensões, conflitos e múltiplas regionalidades na Europa, na Ásia e na Oceania.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE09",
+    description:
+      "Analisar características de países e grupos de países europeus, asiáticos e da Oceania em seus aspectos populacionais, urbanos, políticos e econômicos, e discutir suas desigualdades sociais e econômicas e pressões sobre seus ambientes físico-naturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE10",
+    description:
+      "Analisar os impactos do processo de industrialização na produção e circulação de produtos e culturas na Europa, na Ásia e na Oceania.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE11",
+    description:
+      "Relacionar as mudanças técnicas e científicas decorrentes do processo de industrialização com as transformações no trabalho em diferentes regiões do mundo e suas consequências no Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE12",
+    description:
+      "Relacionar o processo de urbanização às transformações da produção agropecuária, à expansão do desemprego estrutural e ao papel crescente do capital financeiro em diferentes países, com destaque para o Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE13",
+    description:
+      "Analisar a importância da produção agropecuária na sociedade urbano-industrial ante o problema da desigualdade mundial de acesso aos recursos alimentares e à matéria-prima.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE14",
+    description:
+      "Elaborar e interpretar gráficos de barras e de setores, mapas temáticos e esquemáticos (croquis) e anamorfoses geográficas para analisar, sintetizar e apresentar dados e informações sobre diversidade, diferenças e desigualdades sociopolíticas e geopolíticas mundiais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE15",
+    description:
+      "Comparar e classificar diferentes regiões do mundo com base em informações populacionais, econômicas e socioambientais representadas em mapas temáticos e com diferentes projeções cartográficas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE16",
+    description:
+      "Identificar e comparar diferentes domínios morfoclimáticos da Europa, da Ásia e da Oceania.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE17",
+    description:
+      "Explicar as características físico-naturais e a forma de ocupação e usos da terra em diferentes regiões da Europa, da Ásia e da Oceania.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09GE18",
+    description:
+      "Identificar e analisar as cadeias industriais e de inovação e as consequências dos usos de recursos naturais e das diferentes fontes de energia (tais como termoelétrica, hidrelétrica, eólica e nuclear) em diferentes países.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI01",
+    description:
+      "Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI02",
+    description:
+      "Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI03",
+    description:
+      "Descrever e distinguir os seus papéis e responsabilidades relacionados à família, à escola e à comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI04",
+    description:
+      "Identificar as diferenças entre os variados ambientes em que vive (doméstico, escolar e da comunidade), reconhecendo as especificidades dos hábitos e das regras que os regem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI05",
+    description:
+      "Identificar semelhanças e diferenças entre jogos e brincadeiras atuais e de outras épocas e lugares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI06",
+    description:
+      "Conhecer as histórias da família e da escola e identificar o papel desempenhado por diferentes sujeitos em diferentes espaços.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI07",
+    description:
+      "Identificar mudanças e permanências nas formas de organização familiar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01HI08",
+    description:
+      "Reconhecer o significado das comemorações e festas escolares, diferenciando-as das datas festivas comemoradas no âmbito familiar ou da comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI01",
+    description:
+      "Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI02",
+    description:
+      "Identificar e descrever práticas e papéis sociais que as pessoas exercem em diferentes comunidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI03",
+    description:
+      "Selecionar situações cotidianas que remetam à percepção de mudança, pertencimento e memória.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI04",
+    description:
+      "Selecionar e compreender o significado de objetos e documentos pessoais como fontes de memórias e histórias nos âmbitos pessoal, familiar, escolar e comunitário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI05",
+    description:
+      "Selecionar objetos e documentos pessoais e de grupos próximos ao seu convívio e compreender sua função, seu uso e seu significado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI06",
+    description:
+      "Identificar e organizar, temporalmente, fatos da vida cotidiana, usando noções relacionadas ao tempo (antes, durante, ao mesmo tempo e depois).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI07",
+    description:
+      "Identificar e utilizar diferentes marcadores do tempo presentes na comunidade, como relógio e calendário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI08",
+    description:
+      "Compilar histórias da família e/ou da comunidade registradas em diferentes fontes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI09",
+    description:
+      "Identificar objetos e documentos pessoais que remetam à própria experiência no âmbito da família e/ou da comunidade, discutindo as razões pelas quais alguns objetos são preservados e outros são descartados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI10",
+    description:
+      "Identificar diferentes formas de trabalho existentes na comunidade em que vive, seus significados, suas especificidades e importância.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02HI11",
+    description:
+      "Identificar impactos no ambiente causados pelas diferentes formas de trabalho existentes na comunidade em que vive.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI01",
+    description:
+      "Identificar os grupos populacionais que formam a cidade, o município e a região, as relações estabelecidas entre eles e os eventos que marcam a formação da cidade, como fenômenos migratórios (vida rural/vida urbana), desmatamentos, estabelecimento de grandes empresas etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI02",
+    description:
+      "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI03",
+    description:
+      "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI04",
+    description:
+      "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI05",
+    description:
+      "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI06",
+    description:
+      "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI07",
+    description:
+      "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI08",
+    description:
+      "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI09",
+    description:
+      "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI10",
+    description:
+      "Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI11",
+    description:
+      "Identificar diferenças entre formas de trabalho realizadas na cidade e no campo, considerando também o uso da tecnologia nesses diferentes contextos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03HI12",
+    description:
+      "Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI01",
+    description:
+      "Reconhecer a história como resultado da ação do ser humano no tempo e no espaço, com base na identificação de mudanças e permanências ao longo do tempo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI02",
+    description:
+      "Identificar mudanças e permanências ao longo do tempo, discutindo os sentidos dos grandes marcos da história da humanidade (nomadismo, desenvolvimento da agricultura e do pastoreio, criação da indústria etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI03",
+    description:
+      "Identificar as transformações ocorridas na cidade ao longo do tempo e discutir suas interferências nos modos de vida de seus habitantes, tomando como ponto de partida o presente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI04",
+    description:
+      "Identificar as relações entre os indivíduos e a natureza e discutir o significado do nomadismo e da fixação das primeiras comunidades humanas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI05",
+    description:
+      "Relacionar os processos de ocupação do campo a intervenções na natureza, avaliando os resultados dessas intervenções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI06",
+    description:
+      "Identificar as transformações ocorridas nos processos de deslocamento das pessoas e mercadorias, analisando as formas de adaptação ou marginalização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI07",
+    description:
+      "Identificar e descrever a importância dos caminhos terrestres, fluviais e marítimos para a dinâmica da vida comercial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI08",
+    description:
+      "Identificar as transformações ocorridas nos meios de comunicação (cultura oral, imprensa, rádio, televisão, cinema, internet e demais tecnologias digitais de informação e comunicação) e discutir seus significados para os diferentes grupos ou estratos sociais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI09",
+    description:
+      "Identificar as motivações dos processos migratórios em diferentes tempos e espaços e avaliar o papel desempenhado pela migração nas regiões de destino.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI10",
+    description:
+      "Analisar diferentes fluxos populacionais e suas contribuições para a formação da sociedade brasileira.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04HI11",
+    description:
+      "Analisar, na sociedade em que vive, a existência ou não de mudanças associadas à migração (interna e internacional).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI01",
+    description:
+      "Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI02",
+    description:
+      "Identificar os mecanismos de organização do poder político com vistas à compreensão da ideia de Estado e/ou de outras formas de ordenação social.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI03",
+    description:
+      "Analisar o papel das culturas e das religiões na composição identitária dos povos antigos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI04",
+    description:
+      "Associar a noção de cidadania com os princípios de respeito à diversidade, à pluralidade e aos direitos humanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI05",
+    description:
+      "Associar o conceito de cidadania à conquista de direitos dos povos e das sociedades, compreendendo-o como conquista histórica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI06",
+    description:
+      "Comparar o uso de diferentes linguagens e tecnologias no processo de comunicação e avaliar os significados sociais, políticos e culturais atribuídos a elas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI07",
+    description:
+      "Identificar os processos de produção, hierarquização e difusão dos marcos de memória e discutir a presença e/ou a ausência de diferentes grupos que compõem a sociedade na nomeação desses marcos de memória.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI08",
+    description:
+      "Identificar formas de marcação da passagem do tempo em distintas sociedades, incluindo os povos indígenas originários e os povos africanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI09",
+    description:
+      "Comparar pontos de vista sobre temas que impactam a vida cotidiana no tempo presente, por meio do acesso a diferentes fontes, incluindo orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05HI10",
+    description:
+      "Inventariar os patrimônios materiais e imateriais da humanidade e analisar mudanças e permanências desses patrimônios ao longo do tempo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI01",
+    description:
+      "Identificar diferentes formas de compreensão da noção de tempo e de periodização dos processos históricos (continuidades e rupturas).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI02",
+    description:
+      "Identificar a gênese da produção do saber histórico e analisar o significado das fontes que originaram determinadas formas de registro em sociedades e épocas distintas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI03",
+    description:
+      "Identificar as hipóteses científicas sobre o surgimento da espécie humana e sua historicidade e analisar os significados dos mitos de fundação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI04",
+    description: "Conhecer as teorias sobre a origem do homem americano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI05",
+    description:
+      "Descrever modificações da natureza e da paisagem realizadas por diferentes tipos de sociedade, com destaque para os povos indígenas originários e povos africanos, e discutir a natureza e a lógica das transformações ocorridas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI06",
+    description:
+      "Identificar geograficamente as rotas de povoamento no território americano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI07",
+    description:
+      "Identificar aspectos e formas de registro das sociedades antigas na África, no Oriente Médio e nas Américas, distinguindo alguns significados presentes na cultura material e na tradição oral dessas sociedades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI08",
+    description:
+      "Identificar os espaços territoriais ocupados e os aportes culturais, científicos, sociais e econômicos dos astecas, maias e incas e dos povos indígenas de diversas regiões brasileiras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI09",
+    description:
+      "Discutir o conceito de Antiguidade Clássica, seu alcance e limite na tradição ocidental, assim como os impactos sobre outras sociedades e culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI10",
+    description:
+      "Explicar a formação da Grécia Antiga, com ênfase na formação da pólis e nas transformações políticas, sociais e culturais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI11",
+    description:
+      "Caracterizar o processo de formação da Roma Antiga e suas configurações sociais e políticas nos períodos monárquico e republicano.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI12",
+    description:
+      "Associar o conceito de cidadania a dinâmicas de inclusão e exclusão na Grécia e Roma antigas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI13",
+    description:
+      "Conceituar “império” no mundo antigo, com vistas à análise das diferentes formas de equilíbrio e desequilíbrio entre as partes envolvidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI14",
+    description:
+      "Identificar e analisar diferentes formas de contato, adaptação ou exclusão entre populações em diferentes tempos e espaços.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI15",
+    description:
+      "Descrever as dinâmicas de circulação de pessoas, produtos e culturas no Mediterrâneo e seu significado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI16",
+    description:
+      "Caracterizar e comparar as dinâmicas de abastecimento e as formas de organização do trabalho e da vida social em diferentes sociedades e períodos, com destaque para as relações entre senhores e servos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI17",
+    description:
+      "Diferenciar escravidão, servidão e trabalho livre no mundo antigo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI18",
+    description:
+      "Analisar o papel da religião cristã na cultura e nos modos de organização social no período medieval.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06HI19",
+    description:
+      "Descrever e analisar os diferentes papéis sociais das mulheres no mundo antigo e nas sociedades medievais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI01",
+    description:
+      "Explicar o significado de “modernidade” e suas lógicas de inclusão e exclusão, com base em uma concepção europeia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI02",
+    description:
+      "Identificar conexões e interações entre as sociedades do Novo Mundo, da Europa, da África e da Ásia no contexto das navegações e indicar a complexidade e as interações que ocorrem nos Oceanos Atlântico, Índico e Pacífico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI03",
+    description:
+      "Identificar aspectos e processos específicos das sociedades africanas e americanas antes da chegada dos europeus, com destaque para as formas de organização social e o desenvolvimento de saberes e técnicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI04",
+    description:
+      "Identificar as principais características dos Humanismos e dos Renascimentos e analisar seus significados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI05",
+    description:
+      "Identificar e relacionar as vinculações entre as reformas religiosas e os processos culturais e sociais do período moderno na Europa e na América.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI06",
+    description:
+      "Comparar as navegações no Atlântico e no Pacífico entre os séculos XIV e XVI.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI07",
+    description:
+      "Descrever os processos de formação e consolidação das monarquias e suas principais características com vistas à compreensão das razões da centralização política.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI08",
+    description:
+      "Descrever as formas de organização das sociedades americanas no tempo da conquista com vistas à compreensão dos mecanismos de alianças, confrontos e resistências.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI09",
+    description:
+      "Analisar os diferentes impactos da conquista europeia da América para as populações ameríndias e identificar as formas de resistência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI10",
+    description:
+      "Analisar, com base em documentos históricos, diferentes interpretações sobre as dinâmicas das sociedades americanas no período colonial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI11",
+    description:
+      "Analisar a formação histórico-geográfica do território da América portuguesa por meio de mapas históricos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI12",
+    description:
+      "Identificar a distribuição territorial da população brasileira em diferentes épocas, considerando a diversidade étnico-racial e étnico-cultural (indígena, africana, europeia e asiática).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI13",
+    description:
+      "Caracterizar a ação dos europeus e suas lógicas mercantis visando ao domínio no mundo atlântico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI14",
+    description:
+      "Descrever as dinâmicas comerciais das sociedades americanas e africanas e analisar suas interações com outras sociedades do Ocidente e do Oriente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI15",
+    description:
+      "Discutir o conceito de escravidão moderna e suas distinções em relação ao escravismo antigo e à servidão medieval.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI16",
+    description:
+      "Analisar os mecanismos e as dinâmicas de comércio de escravizados em suas diferentes fases, identificando os agentes responsáveis pelo tráfico e as regiões e zonas africanas de procedência dos escravizados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07HI17",
+    description:
+      "Discutir as razões da passagem do mercantilismo para o capitalismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI01",
+    description:
+      "Identificar os principais aspectos conceituais do iluminismo e do liberalismo e discutir a relação entre eles e a organização do mundo contemporâneo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI02",
+    description:
+      "Identificar as particularidades político-sociais da Inglaterra do século XVII e analisar os desdobramentos posteriores à Revolução Gloriosa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI03",
+    description:
+      "Analisar os impactos da Revolução Industrial na produção e circulação de povos, produtos e culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI04",
+    description:
+      "Identificar e relacionar os processos da Revolução Francesa e seus desdobramentos na Europa e no mundo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI05",
+    description:
+      "Explicar os movimentos e as rebeliões da América portuguesa, articulando as temáticas locais e suas interfaces com processos ocorridos na Europa e nas Américas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI06",
+    description:
+      "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI07",
+    description:
+      "Identificar e contextualizar as especificidades dos diversos processos de independência nas Américas, seus aspectos populacionais e suas conformações territoriais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI08",
+    description:
+      "Conhecer o ideário dos líderes dos movimentos independentistas e seu papel nas revoluções que levaram à independência das colônias hispano-americanas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI09",
+    description:
+      "Conhecer as características e os principais pensadores do Pan-americanismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI10",
+    description:
+      "Identificar a Revolução de São Domingo como evento singular e desdobramento da Revolução Francesa e avaliar suas implicações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI11",
+    description:
+      "Identificar e explicar os protagonismos e a atuação de diferentes grupos sociais e étnicos nas lutas de independência no Brasil, na América espanhola e no Haiti.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI12",
+    description:
+      "Caracterizar a organização política e social no Brasil desde a chegada da Corte portuguesa, em 1808, até 1822 e seus desdobramentos para a história política brasileira.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI13",
+    description:
+      "Analisar o processo de independência em diferentes países latino-americanos e comparar as formas de governo neles adotadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI14",
+    description:
+      "Discutir a noção da tutela dos grupos indígenas e a participação dos negros na sociedade brasileira do final do período colonial, identificando permanências na forma de preconceitos, estereótipos e violências sobre as populações indígenas e negras no Brasil e nas Américas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI15",
+    description:
+      "Identificar e analisar o equilíbrio das forças e os sujeitos envolvidos nas disputas políticas durante o Primeiro e o Segundo Reinado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI16",
+    description:
+      "Identificar, comparar e analisar a diversidade política, social e regional nas rebeliões e nos movimentos contestatórios ao poder centralizado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI17",
+    description:
+      "Relacionar as transformações territoriais, em razão de questões de fronteiras, com as tensões e conflitos durante o Império.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI18",
+    description:
+      "Identificar as questões internas e externas sobre a atuação do Brasil na Guerra do Paraguai e discutir diferentes versões sobre o conflito.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI19",
+    description:
+      "Formular questionamentos sobre o legado da escravidão nas Américas, com base na seleção e consulta de fontes de diferentes naturezas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI20",
+    description:
+      "Identificar e relacionar aspectos das estruturas sociais da atualidade com os legados da escravidão no Brasil e discutir a importância de ações afirmativas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI21",
+    description:
+      "Identificar e analisar as políticas oficiais com relação ao indígena durante o Império.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI22",
+    description:
+      "Discutir o papel das culturas letradas, não letradas e das artes na produção das identidades no Brasil do século XIX.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI23",
+    description:
+      "Estabelecer relações causais entre as ideologias raciais e o determinismo no contexto do imperialismo europeu e seus impactos na África e na Ásia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI24",
+    description:
+      "Reconhecer os principais produtos, utilizados pelos europeus, procedentes do continente africano durante o imperialismo e analisar os impactos sobre as comunidades locais na forma de organização e exploração econômica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI25",
+    description:
+      "Caracterizar e contextualizar aspectos das relações entre os Estados Unidos da América e a América Latina no século XIX.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI26",
+    description:
+      "Identificar e contextualizar o protagonismo das populações locais na resistência ao imperialismo na África e Ásia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08HI27",
+    description:
+      "Identificar as tensões e os significados dos discursos civilizatórios, avaliando seus impactos negativos para os povos indígenas originários e as populações negras nas Américas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI01",
+    description:
+      "Descrever e contextualizar os principais aspectos sociais, culturais, econômicos e políticos da emergência da República no Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI02",
+    description:
+      "Caracterizar e compreender os ciclos da história republicana, identificando particularidades da história local e regional até 1954.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI03",
+    description:
+      "Identificar os mecanismos de inserção dos negros na sociedade brasileira pós-abolição e avaliar os seus resultados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI04",
+    description:
+      "Discutir a importância da participação da população negra na formação econômica, política e social do Brasil.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI05",
+    description:
+      "Identificar os processos de urbanização e modernização da sociedade brasileira e avaliar suas contradições e impactos na região em que vive.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI06",
+    description:
+      "Identificar e discutir o papel do trabalhismo como força política, social e cultural no Brasil, em diferentes escalas (nacional, regional, cidade, comunidade).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI07",
+    description:
+      "Identificar e explicar, em meio a lógicas de inclusão e exclusão, as pautas dos povos indígenas, no contexto republicano (até 1964), e das populações afrodescendentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI08",
+    description:
+      "Identificar as transformações ocorridas no debate sobre as questões da diversidade no Brasil durante o século XX e compreender o significado das mudanças de abordagem em relação ao tema.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI09",
+    description:
+      "Relacionar as conquistas de direitos políticos, sociais e civis à atuação de movimentos sociais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI10",
+    description:
+      "Identificar e relacionar as dinâmicas do capitalismo e suas crises, os grandes conflitos mundiais e os conflitos vivenciados na Europa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI11",
+    description:
+      "Identificar as especificidades e os desdobramentos mundiais da Revolução Russa e seu significado histórico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI12",
+    description:
+      "Analisar a crise capitalista de 1929 e seus desdobramentos em relação à economia global.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI13",
+    description:
+      "Descrever e contextualizar os processos da emergência do fascismo e do nazismo, a consolidação dos estados totalitários e as práticas de extermínio (como o holocausto).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI14",
+    description:
+      "Caracterizar e discutir as dinâmicas do colonialismo no continente africano e asiático e as lógicas de resistência das populações locais diante das questões internacionais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI15",
+    description:
+      "Discutir as motivações que levaram à criação da Organização das Nações Unidas (ONU) no contexto do pós-guerra e os propósitos dessa organização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI16",
+    description:
+      "Relacionar a Carta dos Direitos Humanos ao processo de afirmação dos direitos fundamentais e de defesa da dignidade humana, valorizando as instituições voltadas para a defesa desses direitos e para a identificação dos agentes responsáveis por sua violação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI17",
+    description:
+      "Identificar e analisar processos sociais, econômicos, culturais e políticos do Brasil a partir de 1946.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI18",
+    description:
+      "Descrever e analisar as relações entre as transformações urbanas e seus impactos na cultura brasileira entre 1946 e 1964 e na produção das desigualdades regionais e sociais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI19",
+    description:
+      "Identificar e compreender o processo que resultou na ditadura civil-militar no Brasil e discutir a emergência de questões relacionadas à memória e à justiça sobre os casos de violação dos direitos humanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI20",
+    description:
+      "Discutir os processos de resistência e as propostas de reorganização da sociedade brasileira durante a ditadura civil-militar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI21",
+    description:
+      "Identificar e relacionar as demandas indígenas e quilombolas como forma de contestação ao modelo desenvolvimentista da ditadura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI22",
+    description:
+      "Discutir o papel da mobilização da sociedade brasileira do final do período ditatorial até a Constituição de 1988.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI23",
+    description:
+      "Identificar direitos civis, políticos e sociais expressos na Constituição de 1988 e relacioná-los à noção de cidadania e ao pacto da sociedade brasileira de combate a diversas formas de preconceito, como o racismo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI24",
+    description:
+      "Analisar as transformações políticas, econômicas, sociais e culturais de 1989 aos dias atuais, identificando questões prioritárias para a promoção da cidadania e dos valores democráticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI25",
+    description:
+      "Relacionar as transformações da sociedade brasileira aos protagonismos da sociedade civil após 1989.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI26",
+    description:
+      "Discutir e analisar as causas da violência contra populações marginalizadas (negros, indígenas, mulheres, homossexuais, camponeses, pobres etc.) com vistas à tomada de consciência e à construção de uma cultura de paz, empatia e respeito às pessoas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI27",
+    description:
+      "Relacionar aspectos das mudanças econômicas, culturais e sociais ocorridas no Brasil a partir da década de 1990 ao papel do País no cenário internacional na era da globalização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI28",
+    description:
+      "Identificar e analisar aspectos da Guerra Fria, seus principais conflitos e as tensões geopolíticas no interior dos blocos liderados por soviéticos e estadunidenses.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI29",
+    description:
+      "Descrever e analisar as experiências ditatoriais na América Latina, seus procedimentos e vínculos com o poder, em nível nacional e internacional, e a atuação de movimentos de contestação às ditaduras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI30",
+    description:
+      "Comparar as características dos regimes ditatoriais latino-americanos, com especial atenção para a censura política, a opressão e o uso da força, bem como para as reformas econômicas e sociais e seus impactos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI31",
+    description:
+      "Descrever e avaliar os processos de descolonização na África e na Ásia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI32",
+    description:
+      "Analisar mudanças e permanências associadas ao processo de globalização, considerando os argumentos dos movimentos críticos às políticas globais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI33",
+    description:
+      "Analisar as transformações nas relações políticas locais e globais geradas pelo desenvolvimento das tecnologias digitais de informação e comunicação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI34",
+    description:
+      "Discutir as motivações da adoção de diferentes políticas econômicas na América Latina, assim como seus impactos sociais nos países da região.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI35",
+    description:
+      "Analisar os aspectos relacionados ao fenômeno do terrorismo na contemporaneidade, incluindo os movimentos migratórios e os choques entre diferentes grupos e culturas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09HI36",
+    description:
+      "Identificar e discutir as diversidades identitárias e seus significados históricos no início do século XXI, combatendo qualquer forma de preconceito e violência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER01",
+    description:
+      "Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER02",
+    description:
+      "Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER03",
+    description:
+      "Reconhecer e respeitar as características físicas e subjetivas de cada um.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER04",
+    description: "Valorizar a diversidade de formas de vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER05",
+    description:
+      "Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01ER06",
+    description:
+      "Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER01",
+    description: "Reconhecer os diferentes espaços de convivência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER02",
+    description:
+      "Identificar costumes, crenças e formas diversas de viver em variados ambientes de convivência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER03",
+    description:
+      "Identificar as diferentes formas de registro das memórias pessoais, familiares e escolares (fotos, músicas, narrativas, álbuns...).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER04",
+    description:
+      "Identificar os símbolos presentes nos variados espaços de convivência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER05",
+    description:
+      "Identificar, distinguir e respeitar símbolos religiosos de distintas manifestações, tradições e instituições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER06",
+    description:
+      "Exemplificar alimentos considerados sagrados por diferentes culturas, tradições e expressões religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02ER07",
+    description:
+      "Identificar significados atribuídos a alimentos em diferentes manifestações e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER01",
+    description:
+      "Identificar e respeitar os diferentes espaços e territórios religiosos de diferentes tradições e movimentos religiosos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER02",
+    description:
+      "Caracterizar os espaços e territórios religiosos como locais de realização das práticas celebrativas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER03",
+    description:
+      "Identificar e respeitar práticas celebrativas (cerimônias, orações, festividades, peregrinações, entre outras) de diferentes tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER04",
+    description:
+      "Caracterizar as práticas celebrativas como parte integrante do conjunto das manifestações religiosas de diferentes culturas e sociedades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER05",
+    description:
+      "Reconhecer as indumentárias (roupas, acessórios, símbolos, pinturas corporais) utilizadas em diferentes manifestações e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03ER06",
+    description:
+      "Caracterizar as indumentárias como elementos integrantes das identidades religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER01",
+    description:
+      "Identificar ritos presentes no cotidiano pessoal, familiar, escolar e comunitário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER02",
+    description:
+      "Identificar ritos e suas funções em diferentes manifestações e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER03",
+    description:
+      "Caracterizar ritos de iniciação e de passagem em diversos grupos religiosos (nascimento, casamento e morte).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER04",
+    description:
+      "Identificar as diversas formas de expressão da espiritualidade (orações, cultos, gestos, cantos, dança, meditação) nas diferentes tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER05",
+    description:
+      "Identificar representações religiosas em diferentes expressões artísticas (pinturas, arquitetura, esculturas, ícones, símbolos, imagens), reconhecendo-as como parte da identidade de diferentes culturas e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER06",
+    description:
+      "Identificar nomes, significados e representações de divindades nos contextos familiar e comunitário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04ER07",
+    description:
+      "Reconhecer e respeitar as ideias de divindades de diferentes manifestações e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER01",
+    description:
+      "Identificar e respeitar acontecimentos sagrados de diferentes culturas e tradições religiosas como recurso para preservar a memória.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER02",
+    description:
+      "Identificar mitos de criação em diferentes culturas e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER03",
+    description:
+      "Reconhecer funções e mensagens religiosas contidas nos mitos de criação (concepções de mundo, natureza, ser humano, divindades, vida e morte).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER04",
+    description:
+      "Reconhecer a importância da tradição oral para preservar memórias e acontecimentos religiosos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER05",
+    description:
+      "Identificar elementos da tradição oral nas culturas e religiosidades indígenas, afro-brasileiras, ciganas, entre outras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER06",
+    description:
+      "Identificar o papel dos sábios e anciãos na comunicação e preservação da tradição oral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05ER07",
+    description:
+      "Reconhecer, em textos orais, ensinamentos relacionados a modos de ser e viver.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER01",
+    description:
+      "Reconhecer o papel da tradição escrita na preservação de memórias, acontecimentos e ensinamentos religiosos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER02",
+    description:
+      "Reconhecer e valorizar a diversidade de textos religiosos escritos (textos do Budismo, Cristianismo, Espiritismo, Hinduísmo, Islamismo, Judaísmo, entre outros).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER03",
+    description:
+      "Reconhecer, em textos escritos, ensinamentos relacionados a modos de ser e viver.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER04",
+    description:
+      "Reconhecer que os textos escritos são utilizados pelas tradições religiosas de maneiras diversas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER05",
+    description:
+      "Discutir como o estudo e a interpretação dos textos religiosos influenciam os adeptos a vivenciarem os ensinamentos das tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER06",
+    description:
+      "Reconhecer a importância dos mitos, ritos, símbolos e textos na estruturação das diferentes crenças, tradições e movimentos religiosos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06ER07",
+    description:
+      "Exemplificar a relação entre mito, rito e símbolo nas práticas celebrativas de diferentes tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER01",
+    description:
+      "Reconhecer e respeitar as práticas de comunicação com as divindades em distintas manifestações e tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER02",
+    description:
+      "Identificar práticas de espiritualidade utilizadas pelas pessoas em determinadas situações (acidentes, doenças, fenômenos climáticos).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER03",
+    description:
+      "Reconhecer os papéis atribuídos às lideranças de diferentes tradições religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER04",
+    description:
+      "Exemplificar líderes religiosos que se destacaram por suas contribuições à sociedade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER05",
+    description:
+      "Discutir estratégias que promovam a convivência ética e respeitosa entre as religiões.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER06",
+    description:
+      "Identificar princípios éticos em diferentes tradições religiosas e filosofias de vida, discutindo como podem influenciar condutas pessoais e práticas sociais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER07",
+    description:
+      "Identificar e discutir o papel das lideranças religiosas e seculares na defesa e promoção dos direitos humanos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07ER08",
+    description:
+      "Reconhecer o direito à liberdade de consciência, crença ou convicção, questionando concepções e práticas sociais que a violam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER01",
+    description:
+      "Discutir como as crenças e convicções podem influenciar escolhas e atitudes pessoais e coletivas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER02",
+    description:
+      "Analisar filosofias de vida, manifestações e tradições religiosas destacando seus princípios éticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER03",
+    description:
+      "Analisar doutrinas das diferentes tradições religiosas e suas concepções de mundo, vida e morte.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER04",
+    description:
+      "Discutir como filosofias de vida, tradições e instituições religiosas podem influenciar diferentes campos da esfera pública (política, saúde, educação, economia).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER05",
+    description:
+      "Debater sobre as possibilidades e os limites da interferência das tradições religiosas na esfera pública.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER06",
+    description:
+      "Analisar práticas, projetos e políticas públicas que contribuem para a promoção da liberdade de pensamento, crenças e convicções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08ER07",
+    description:
+      "Analisar as formas de uso das mídias e tecnologias pelas diferentes denominações religiosas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER01",
+    description:
+      "Analisar princípios e orientações para o cuidado da vida e nas diversas tradições religiosas e filosofias de vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER02",
+    description:
+      "Discutir as diferentes expressões de valorização e de desrespeito à vida, por meio da análise de matérias nas diferentes mídias.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER03",
+    description:
+      "Identificar sentidos do viver e do morrer em diferentes tradições religiosas, através do estudo de mitos fundantes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER04",
+    description:
+      "Identificar concepções de vida e morte em diferentes tradições religiosas e filosofias de vida, por meio da análise de diferentes ritos fúnebres.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER05",
+    description:
+      "Analisar as diferentes ideias de imortalidade elaboradas pelas tradições religiosas (ancestralidade, reencarnação, transmigração e ressurreição).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER06",
+    description:
+      "Reconhecer a coexistência como uma atitude ética de respeito à vida e à dignidade humana.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER07",
+    description:
+      "Identificar princípios éticos (familiares, religiosos e culturais) que possam alicerçar a construção de projetos de vida.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09ER08",
+    description:
+      "Construir projetos de vida assentados em princípios e valores éticos.",
+    created: new Date(Date()).toISOString(),
+  },
 ];
 
 /* const objectsArray: Array<fieldsDto> = [
@@ -8518,21 +13985,8 @@ const portuguesSeed: Array<portuguesDto> = [
   },
 ];
 
-/**
- * "id":"EF01LP01",
-   "competences": "Língua Portuguesa",
-   group_year_id: "01",
-   "group_years": "1º",
-   "field": "Todos os campos de atuação",
-   "unit": "Leitura\/escuta (compartilhada e autônoma)",
-   "object": "Protocolos de leitura",
-   "skill": "(EF01LP01) Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
-   "comment": "O momento de leitura em voz alta de materiais impressos e digitais, feita pelo professor, terá o papel de modelizar procedimentos de leitura, entre eles, o que se refere a esta habilidade. Esta habilidade também é parte do processo de aquisição do sistema de escrita, porque o procedimento de apontar o que está sendo lido oferece pistas sobre a relação entre fala e escrita.",
-   "resume": "Para contextualizar o desenvolvimento dessa habilidade, o currículo pode orientar que a prática de leitura se desenvolva em situações significativas, em que o ato de refletir sobre as características do sistema de escrita (por exemplo, saber a direção em que se lê) aconteça de modo a trazer para os estudantes o papel da leitura na vida. Nesse processo, podem ajudar projetos e\/ou sequências didáticas que proponham, por exemplo, a oralização de textos (como preparar-se para apresentar ou gravar uma leitura — cantiga, poema etc. —  para pais ou colegas). Os objetivos poderão orientar atividade de leitura feita pelo professor e acompanhada pelo aluno em material impresso ou projetada por aparelhos eletrônicos."
- */
-
 async function main() {
-  competencesArray.map(async (competence: competencesdto) => {
+  /*   competencesArray.map(async (competence: competencesdto) => {
     await prisma.competences.create({
       data: {
         id: competence.id,
@@ -8570,35 +14024,30 @@ async function main() {
         created: new Date(Date()).toISOString(),
       },
     });
-  });
-
-  /*  objectsArray.map(async (object: fieldsDto) => {
-    await prisma.objects.create({
-      data: {
-        id: object.id,
-        description: object.description,
-        created: new Date(Date()).toISOString(),
-      },
-    });
   }); */
 
   skillsArray.map(async (skill: fieldsDto) => {
-    await prisma.skills.create({
-      data: {
+    await prisma.skills.upsert({
+      where: { id: skill.id },
+      update: {
+        description: skill.description,
+      },
+      create: {
         id: skill.id,
         description: skill.description,
         created: new Date(Date()).toISOString(),
       },
     });
   });
-  /*   portuguesSeed.map(async (line: portuguesDto) => {
+
+  /* portuguesSeed.map(async (line: portuguesDto) => {
     await prisma.apprendiceship.upsert({
       where: { id: line.id },
       update: {},
       create: {
         id: line.id,
         competence: {
-          connect: { id: "LP" },
+          connect: { id: line.competences },
         },
         group_year: {
           connect: { id: line.group_years },
@@ -8610,7 +14059,12 @@ async function main() {
           connect: { id: line.unit },
         },
         object: {
-          create: { description: line.object },
+          connectOrCreate: {
+            where: { id: line.object },
+            create: {
+              description: line.object,
+            },
+          },
         },
         skill: {
           connect: { id: line.skill },

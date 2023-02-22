@@ -11,14 +11,10 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { id, description } = req.body;
-    const newSkill = await prisma.skills.create({
-      data: {
-        id,
-        description,
-        created: new Date(Date()).toISOString(),
-      },
+    const { description } = req.body;
+    const skill = await prisma.skills.findMany({
+      where: { description: { contains: description } },
     });
-    return res.status(201).json(newSkill);
+    return res.status(200).json(skill);
   }
 }

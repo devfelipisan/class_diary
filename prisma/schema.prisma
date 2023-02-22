@@ -11,7 +11,7 @@ datasource db {
 }
 
 model apprendiceship {
-  id            String      @id @unique
+  id            String      @id
   competence    competences @relation(fields: [competence_id], references: [id])
   competence_id String
   group_year    group_years @relation(fields: [group_year_id], references: [id])
@@ -34,7 +34,7 @@ model apprendiceship {
 }
 
 model competences {
-  id             String           @id @unique
+  id             String           @id
   name           String
   created        DateTime
   apprendiceship apprendiceship[]
@@ -44,14 +44,14 @@ model competences {
 
 //rever id autoincremet, pois do 3 pula para o 13
 model units {
-  id             String           @id @default(uuid())
+  id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model skills {
-  id             String           @id @default(uuid())
+  id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
@@ -65,16 +65,16 @@ model resumes {
 }
 
 model axes {
-  id             String           @id @default(uuid())
+  id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
 model fields {
-  id             String           @id @default(uuid())
+  id             String           @id
   description    String
-  created        DateTime
+  created        DateTime?
   apprendiceship apprendiceship[]
 }
 
@@ -88,12 +88,12 @@ model comments {
 model objects {
   id             String           @id @default(uuid())
   description    String
-  created        DateTime
+  created        DateTime?
   apprendiceship apprendiceship[]
 }
 
 model group_years {
-  id             String           @id @unique()
+  id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]

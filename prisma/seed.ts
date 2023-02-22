@@ -1,9 +1,3377 @@
 import { prisma } from "./client";
 
+interface fieldsDto {
+  id: string;
+  description: string;
+  created: string;
+}
+
+const skillsArray: Array<fieldsDto> = [
+  {
+    id: "EF69LP49",
+    description:
+      "Mostrar-se interessado e envolvido pela leitura de livros de literatura e por outras produções culturais do campo e receptivo a textos que rompam com seu universo de expectativas, que representem um desafio em relação às suas possibilidades atuais e suas experiências anteriores de leitura, apoiando-se nas marcas linguísticas, em seu conhecimento sobre os gêneros e a temática e nas orientações dadas pelo professor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP27",
+    description:
+      "Analisar a forma composicional de textos pertencentes a gêneros normativos/ jurídicos e a gêneros da esfera política, tais como propostas, programas políticos (posicionamento quanto a diferentes ações a serem propostas, objetivos, ações previstas etc.), propaganda política (propostas e sua sustentação, posicionamento quanto a temas em discussão) e textos reivindicatórios: cartas de reclamação, petição (proposta, suas justificativas e ações a serem adotadas) e suas marcas linguísticas, de forma a incrementar a compreensão de textos pertencentes a esses gêneros e a possibilitar a produção de textos mais adequados e/ou fundamentados quando isso for requerido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP02",
+    description:
+      "Explorar o espaço reservado ao leitor nos jornais, revistas, impressos e on-line, sites noticiosos etc., destacando notícias, fotorreportagens, entrevistas, charges, assuntos, temas, debates em foco, posicionando-se de maneira ética e respeitosa frente a esses textos e opiniões a eles relacionadas, e publicar notícias, notas jornalísticas, fotorreportagem de interesse geral nesses espaços do leitor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP21",
+    description:
+      "Posicionar-se em relação a conteúdos veiculados em práticas não institucionalizadas de participação social, sobretudo àquelas vinculadas a manifestações artísticas, produções culturais, intervenções urbanas e práticas próprias das culturas juvenis que pretendam denunciar, expor uma problemática ou “convocar” para uma reflexão/ação, relacionando esse texto/produção com seu contexto de produção e relacionando as partes e semioses presentes para a construção de sentidos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP31",
+    description:
+      "Utilizar pistas linguísticas – tais como “em primeiro/segundo/terceiro lugar”, “por outro lado”, “dito de outro modo”, isto é”, “por exemplo” – para compreender a hierarquização das proposições, sintetizando o conteúdo dos textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP01",
+    description:
+      "Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP02",
+    description:
+      "Analisar e comparar peças publicitárias variadas (cartazes, folhetos, outdoor, anúncios e propagandas em diferentes mídias, spots, jingle, vídeos etc.), de forma a perceber a articulação entre elas em campanhas, as especificidades das várias semioses e mídias, a adequação dessas peças ao público-alvo, aos objetivos do anunciante e/ou da campanha e à construção composicional e estilo dos gêneros em questão, como forma de ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP18",
+    description:
+      "Apreciar poemas e outros textos versificados, observando rimas, sonoridades, jogos de palavras, reconhecendo seu pertencimento ao mundo imaginário e sua dimensão de encantamento, jogo e fruição.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP17",
+    description:
+      "Apreciar poemas visuais e concretos, observando efeitos de sentido criados pelo formato do texto na página, distribuição e diagramação das letras, pelas ilustrações e por outros efeitos visuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP23",
+    description:
+      "Apreciar poemas e outros textos versificados, observando rimas, aliterações e diferentes modos de divisão dos versos, estrofes e refrões e seu efeito de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP14",
+    description:
+      "Analisar, em textos argumentativos e propositivos, os movimentos argumentativos de sustentação, refutação e negociação e os tipos de argumentos, avaliando a força/tipo dos argumentos utilizados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP12",
+    description:
+      "Atribuir significado a aspectos não linguísticos (paralinguísticos) observados na fala, como direção do olhar, riso, gestos, movimentos da cabeça (de concordância ou discordância), expressão corporal, tom de voz.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP11",
+    description:
+      "Reconhecer características da conversação espontânea presencial, respeitando os turnos de fala, selecionando e utilizando, durante a conversação, formas de tratamento adequadas, de acordo com a situação e a posição do interlocutor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP13",
+    description:
+      "Estabelecer relações entre partes do texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos), que contribuem para a continuidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP15",
+    description:
+      "Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP10",
+    description:
+      "Comparar as regras de colocação pronominal na norma-padrão com o seu uso no português brasileiro coloquial.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP11",
+    description:
+      "Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial (conjunções e articuladores textuais).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP36",
+    description:
+      "Utilizar, ao produzir texto, recursos de coesão referencial (léxica e pronominal) e sequencial e outros recursos expressivos adequados ao gênero textual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP03",
+    description:
+      "Identificar a ideia central do texto, demonstrando compreensão global.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP19",
+    description:
+      "Recuperar as ideias principais em situações formais de escuta de exposições, apresentações e palestras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP16",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP12",
+    description:
+      "Ler e compreender com certa autonomia cantigas, letras de canção, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP11",
+    description:
+      "Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico- visuais, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP12",
+    description:
+      "Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP18",
+    description:
+      "Ler e compreender, com autonomia, cartas dirigidas a veículos da mídia impressa ou digital (cartas de leitor e de reclamação a jornais, revistas) e notícias, dentre outros gêneros do campo jornalístico, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP19",
+    description:
+      "Identificar e discutir o propósito do uso de recursos de persuasão (cores, imagens, escolha de palavras, jogo de palavras, tamanho de letras) em textos publicitários e de propaganda, como elementos de convencimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP24",
+    description:
+      "Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP09",
+    description:
+      "Ler e compreender, com autonomia, boletos, faturas e carnês, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero (campos, itens elencados, medidas de consumo, código de barras) e considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP10",
+    description:
+      "Ler e compreender, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP14",
+    description:
+      "Identificar, em notícias, fatos, participantes, local e momento/tempo da ocorrência do fato noticiado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP15",
+    description:
+      "Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP19",
+    description:
+      "Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP09",
+    description:
+      "Ler e compreender, com autonomia, textos instrucional de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP10",
+    description:
+      "Ler e compreender, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP15",
+    description:
+      "Ler/assistir e compreender, com autonomia, notícias, reportagens, vídeos em vlogs argumentativos, dentre outros gêneros do campo político-cidadão, de acordo com as convenções dos gêneros e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP16",
+    description:
+      "Comparar informações sobre um mesmo fato veiculadas em diferentes mídias e concluir sobre qual é mais confiável e por quê.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP22",
+    description:
+      "Ler e compreender verbetes de dicionário, identificando a estrutura, as informações gramaticais (significado de abreviaturas) e as informações semânticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP04",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor ou já com certa autonomia, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP08",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP09",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP10",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, cartazes, avisos, folhetos, regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP17",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, enunciados de tarefas escolares, diagramas, curiosidades, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, entre outros gêneros do campo investigativo, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP11",
+    description:
+      "Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP07",
+    description:
+      "Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP04",
+    description:
+      "Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP04",
+    description:
+      "Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP03",
+    description:
+      "Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP04",
+    description: "Distinguir as letras do alfabeto de outros sinais gráficos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP10",
+    description:
+      "Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP06",
+    description:
+      "Perceber o princípio acrofônico que opera nos nomes das letras do alfabeto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP03",
+    description:
+      "Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP02",
+    description:
+      "Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP35",
+    description:
+      "Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP51",
+    description:
+      "Engajar-se ativamente nos processos de planejamento, textualização, revisão/ edição e reescrita, tendo em vista as restrições temáticas, composicionais e estilísticas dos textos pretendidos e as configurações da situação de produção – o leitor pretendido, o suporte, o contexto de circulação do texto, as finalidades etc. – e considerando a imaginação, a estesia e a verossimilhança próprias ao texto literário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP16",
+    description:
+      "Analisar e utilizar as formas de composição dos gêneros jornalísticos da ordem do relatar, tais como notícias (pirâmide invertida no impresso X blocos noticiosos hipertextuais e hipermidiáticos no digital, que também pode contar com imagens de vários tipos, vídeos, gravações de áudio etc.), da ordem do argumentar, tais como artigos de opinião e editorial (contextualização, defesa de tese/opinião e uso de argumentos) e das entrevistas: apresentação e contextualização do entrevistado e do tema, estrutura pergunta e resposta etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP40",
+    description:
+      "Analisar, em gravações de seminários, conferências rápidas, trechos de palestras, dentre outros, a construção composicional dos gêneros de apresentação – abertura/saudação, introdução ao tema, apresentação do plano de exposição, desenvolvimento dos conteúdos, por meio do encadeamento de temas e subtemas (coesão temática), síntese final e/ou conclusão, encerramento –, os elementos paralinguísticos (tais como: tom e volume da voz, pausas e hesitações – que, em geral, devem ser minimizadas –, modulação de voz e entonação, ritmo, respiração etc.) e cinésicos (tais como: postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia, modulação de voz e entonação, sincronia da fala com ferramenta de apoio etc.), para melhor performar apresentações orais no campo da divulgação do conhecimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP42",
+    description:
+      "Analisar a construção composicional dos textos pertencentes a gêneros relacionados à divulgação de conhecimentos: título, (olho), introdução, divisão do texto em subtítulos, imagens ilustrativas de conceitos, relações, ou resultados complexos (fotos, ilustrações, esquemas, gráficos, infográficos, diagramas, figuras, tabelas, mapas) etc., exposição, contendo definições, descrições, comparações, enumerações, exemplificações e remissões a conceitos e relações por meio de notas de rodapé, boxes ou links; ou título, contextualização do campo, ordenação temporal ou temática por tema ou subtema, intercalação de trechos verbais com fotos, ilustrações, áudios, vídeos etc. e reconhecer traços da linguagem dos textos de divulgação científica, fazendo uso consciente das estratégias de impessoalização da linguagem (ou de pessoalização, se o tipo de publicação e objetivos assim o demandarem, como em alguns podcasts e vídeos de divulgação científica), 3ª pessoa, presente atemporal, recurso à citação, uso de vocabulário técnico/especializado etc., como forma de ampliar suas capacidades de compreensão e produção de textos nesses gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP35",
+    description:
+      "Criar contos ou crônicas (em especial, líricas), crônicas visuais, minicontos, narrativas de aventura e de ficção científica, dentre outros, com temáticas próprias ao gênero, usando os conhecimentos sobre os constituintes estruturais e recursos expressivos típicos dos gêneros narrativos pretendidos, e, no caso de produção em grupo, ferramentas de escrita colaborativa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP30",
+    description:
+      "Criar narrativas ficcionais, tais como contos populares, contos de suspense, mistério, terror, humor, narrativas de enigma, crônicas, histórias em quadrinhos, dentre outros, que utilizem cenários e personagens realistas ou de fantasia, observando os elementos da estrutura narrativa próprios ao gênero pretendido, tais como enredo, personagens, tempo, espaço e narrador, utilizando tempos verbais adequados à narração de fatos passados, empregando conhecimentos sobre diferentes modos de se iniciar uma história e de inserir os discursos direto e indireto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP31",
+    description:
+      "Criar poemas compostos por versos livres e de forma fixa (como quadras e sonetos), utilizando recursos visuais, semânticos e sonoros, tais como cadências, ritmos e rimas, e poemas visuais e vídeo-poemas, explorando as relações entre imagem e texto verbal, a distribuição da mancha gráfica (poema visual) e outros recursos visuais e sonoros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP05",
+    description:
+      "Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP13",
+    description:
+      "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP06",
+    description:
+      "Identificar a sílaba tônica em palavras, classificando-as em oxítonas, paroxítonas e proparoxítonas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP06",
+    description: "Segmentar oralmente palavras em sílabas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP07",
+    description: "Identificar fonemas e sua representação por letras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP08",
+    description:
+      "Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP09",
+    description:
+      "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas iniciais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP02",
+    description:
+      "Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP03",
+    description:
+      "Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP04",
+    description:
+      "Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, identificando que existem vogais em todas as sílabas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP05",
+    description:
+      "Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP01",
+    description:
+      "Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP02",
+    description:
+      "Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP03",
+    description:
+      "Ler e escrever corretamente palavras com os dígrafos lh, nh, ch.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP01",
+    description:
+      "Grafar palavras utilizando regras de correspondência fonema--grafema regulares diretas e contextuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP02",
+    description:
+      "Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP01",
+    description:
+      "Grafar palavras utilizando regras de correspondência fonema-grafema regulares, contextuais e morfológicas e palavras de uso frequente com correspondências irregulares.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP12",
+    description:
+      "Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP13",
+    description:
+      "Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial que não representa fonema.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP03",
+    description:
+      "Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP01",
+    description:
+      "Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP07",
+    description:
+      "Utilizar, ao produzir um texto, conhecimentos linguísticos e gramaticais, tais como ortografia, regras básicas de concordância nominal e verbal, pontuação (ponto final, ponto de exclamação, ponto de interrogação, vírgulas em enumerações) e pontuação do discurso direto, quando for o caso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP03",
+    description:
+      "Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP08",
+    description:
+      "Utilizar, ao produzir um texto, recursos de referenciação (por substituição lexical ou por pronomes pessoais, possessivos e demonstrativos), vocabulário apropriado ao gênero, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível suficiente de informatividade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP19",
+    description:
+      "Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP16",
+    description:
+      "Explorar e analisar espaços de reclamação de direitos e de envio de solicitações (tais como ouvidorias, SAC, canais ligados a órgãos públicos, plataformas do consumidor, plataformas de reclamação), bem como de textos pertencentes a gêneros que circulam nesses espaços, reclamação ou carta de reclamação, solicitação ou carta de solicitação, como forma de ampliar as possibilidades de produção desses textos em casos que remetam a reivindicações que envolvam a escola, a comunidade ou algum de seus membros como forma de se engajar na busca de solução de problemas pessoais, dos outros e coletivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP18",
+    description:
+      "Explorar e analisar instâncias e canais de participação disponíveis na escola (conselho de escola, outros colegiados, grêmio livre), na comunidade (associações, coletivos, movimentos, etc.), no munícipio ou no país, incluindo formas de participação digital, como canais e plataformas de participação (como portal e-cidadania), serviços, portais e ferramentas de acompanhamentos do trabalho de políticos e de tramitação de leis, canais de educação política, bem como de propostas e proposições que circulam nesses canais, de forma a participar do debate de ideias e propostas na esfera social e a engajar-se com a busca de soluções para problemas ou questões que envolvam a vida da escola e da comunidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP23",
+    description:
+      "Respeitar os turnos de fala, na participação em conversações e em discussões ou atividades coletivas, na sala de aula e na escola e formular perguntas coerentes e adequadas em momentos oportunos em situações de aulas, apresentação oral, seminário etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP27",
+    description:
+      "Tecer considerações e formular problematizações pertinentes, em momentos oportunos, em situações de aulas, apresentação oral, seminário etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP02",
+    description:
+      "Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP20",
+    description:
+      "Realizar pesquisa, a partir de recortes e questões definidos previamente, usando fontes indicadas e abertas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP24",
+    description:
+      "Realizar pesquisa, estabelecendo o recorte das questões, usando fontes abertas e confiáveis.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP28",
+    description:
+      "Declamar poemas, com entonação, postura e interpretação adequadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP01",
+    description:
+      "Ler palavras novas com precisão na decodificação, no caso de palavras de uso frequente, ler globalmente, por memorização.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP01",
+    description:
+      "Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP30",
+    description:
+      "Diferenciar discurso indireto e discurso direto, determinando o efeito de sentido de verbos de enunciação e explicando o uso de variedades linguísticas no discurso direto, quando for o caso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP24",
+    description:
+      "Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP25",
+    description:
+      "Posicionar-se de forma consistente e sustentada em uma discussão, assembleia, reuniões de colegiados da escola, de agremiações e outras situações de apresentação de propostas e defesas de opiniões, respeitando as opiniões contrárias e propostas alternativas e fundamentando seus posicionamentos, no tempo de fala previsto, valendo-se de sínteses e propostas claras e justificadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP07",
+    description:
+      "Editar a versão final do texto, em colaboração com os colegas e com a ajuda do professor, ilustrando, quando for o caso, em suporte adequado, manual ou digital.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP19",
+    description:
+      "Analisar, em gêneros orais que envolvam argumentação, os efeitos de sentido de elementos típicos da modalidade falada, como a pausa, a entonação, o ritmo, a gestualidade e expressão facial, as hesitações etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP06",
+    description:
+      "Identificar os efeitos de sentido provocados pela seleção lexical, topicalização de elementos e seleção e hierarquização de informações, uso de 3ª pessoa etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP07",
+    description:
+      "Identificar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e perceber seus efeitos de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP04",
+    description:
+      "Identificar e analisar os efeitos de sentido que fortalecem a persuasão nos textos publicitários, relacionando as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados, como imagens, tempo verbal, jogos de palavras, figuras de linguagem etc., com vistas a fomentar práticas de consumo conscientes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP05",
+    description:
+      "Inferir e justificar, em textos multissemióticos – tirinhas, charges, memes, gifs etc. –, o efeito de humor, ironia e/ou crítica pelo uso ambíguo de palavras, expressões ou imagens ambíguas, de clichês, de recursos iconográficos, de pontuação etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP05",
+    description:
+      "Analisar o efeito de sentido produzido pelo uso, em textos, de recurso a formas de apropriação textual (paráfrases, citações, discurso direto, indireto ou indireto livre).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP06",
+    description:
+      "Analisar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e seus efeitos de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP08",
+    description:
+      "Identificar os efeitos de sentido devidos à escolha de imagens estáticas, sequenciação ou sobreposição de imagens, definição de figura/fundo, ângulo, profundidade e foco, cores/tonalidades, relação com o escrito (relações de reiteração, complementação ou oposição) etc. em notícias, reportagens, fotorreportagens, foto-denúncias, memes, gifs, anúncios publicitários e propagandas publicados em jornais, revistas, sites na internet etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP07",
+    description:
+      "Analisar, em notícias, reportagens e peças publicitárias em várias mídias, os efeitos de sentido devidos ao tratamento e à composição dos elementos nas imagens em movimento, à performance, à montagem feita (ritmo, duração e sincronização entre as linguagens – complementaridades, interferências etc.) e ao ritmo, melodia, instrumentos e sampleamentos das músicas e efeitos sonoros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP33",
+    description: "Pontuar textos adequadamente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP11",
+    description:
+      "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: tempos verbais, concordância nominal e verbal, regras ortográficas, pontuação etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP09",
+    description:
+      "Identificar efeitos de sentido do uso de orações adjetivas restritivas e explicativas em um período composto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP23",
+    description:
+      "Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP22",
+    description:
+      "Planejar e produzir, com certa autonomia, verbetes de enciclopédia infantil, digitais ou impressos, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP25",
+    description:
+      "Representar cenas de textos dramáticos, reproduzindo as falas das personagens, de acordo com as rubricas de interpretação e movimento indicadas pelo autor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP27",
+    description:
+      "Ler e compreender, com certa autonomia, textos em versos, explorando rimas, sons e jogos de palavras, imagens poéticas (sentidos figurados) e recursos visuais e sonoros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP17",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP18",
+    description:
+      "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP25",
+    description:
+      "Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor, histórias imaginadas ou baseadas em livros de imagens, observando a forma de composição de textos narrativos (personagens, enredo, tempo e espaço).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP13",
+    description:
+      "Planejar e produzir bilhetes e cartas, em meio impresso e/ou digital, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP14",
+    description:
+      "Planejar e produzir pequenos relatos de observação de processos, de fatos, de experiências pessoais, mantendo as características do gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP27",
+    description:
+      "Reescrever textos narrativos literários lidos pelo professor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP25",
+    description:
+      "Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP26",
+    description:
+      "Ler e compreender, com certa autonomia, narrativas ficcionais que apresentem cenários e personagens, observando os elementos da estrutura narrativa: enredo, tempo, espaço, personagens, narrador e a construção do discurso indireto e discurso direto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP13",
+    description:
+      "Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP14",
+    description:
+      "Planejar e produzir textos injuntivos instrucionais, com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico-visuais, considerando a situação comunicativa e o tema/ assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP20",
+    description:
+      "Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campopo lítico-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP21",
+    description:
+      "Produzir anúncios publicitários, textos de campanhas de conscientização destinados ao público infantil, observando os recursos de persuasão utilizados nos textos publicitários e de propaganda (cores, imagens, slogan, escolha de palavras, jogo de palavras, tamanho e tipo de letras, diagramação).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP11",
+    description:
+      "Planejar e produzir, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e com a estrutura própria desses textos (problema, opinião, argumentos), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP16",
+    description:
+      "Produzir notícias sobre fatos ocorridos no universo escolar, digitais ou impressas, para o jornal da escola, noticiando os fatos e seus atores e comentando decorrências, de acordo com as convenções do gênero notícia e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP11",
+    description:
+      "Registrar, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP12",
+    description:
+      "Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP17",
+    description:
+      "Produzir roteiro para edição de uma reportagem digital sobre temas de interesse da turma, a partir de buscas de informações, imagens, áudios e vídeos na internet, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP15",
+    description:
+      "Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP21",
+    description:
+      "Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP18",
+    description:
+      "Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP05",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP11",
+    description:
+      "Escrever, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, digitais ou impressos, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP12",
+    description:
+      "Escrever, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP10",
+    description:
+      "Escutar, com atenção, falas de professores e colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP18",
+    description:
+      "Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP22",
+    description:
+      "Compreender e comparar as diferentes posições e interesses em jogo em uma discussão ou apresentação de propostas, avaliando a validade e força dos argumentos e as consequências do que está sendo proposto e, quando for o caso, formular e negociar propostas de diferentes naturezas relativas a interesses coletivos envolvendo a escola ou comunidade escolar.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP17",
+    description:
+      "Perceber e analisar os recursos estilísticos e semióticos dos gêneros jornalísticos e publicitários, os aspectos relativos ao tratamento da informação em notícias, como a ordenação dos eventos, as escolhas lexicais, o efeito de imparcialidade do relato, a morfologia do verbo, em textos noticiosos e argumentativos, reconhecendo marcas de pessoa, número, tempo, modo, a distribuição dos verbos nos gêneros textuais (por exemplo, as formas de pretérito em relatos; as formas de presente e futuro em gêneros argumentativos; as formas de imperativo em gêneros publicitários), o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados (tempo verbal, jogos de palavras, metáforas, imagens).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP18",
+    description:
+      "Utilizar, na escrita/reescrita de textos argumentativos, recursos linguísticos que marquem as relações de sentido entre parágrafos e enunciados do texto e operadores de conexão adequados aos tipos de argumento e à forma de composição de textos argumentativos, de maneira a garantir a coesão, a coerência e a progressão temática nesses textos (“primeiramente, mas, no entanto, em primeiro/segundo/terceiro lugar, finalmente, em conclusão” etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP15",
+    description:
+      "Utilizar, nos debates, operadores argumentativos que marcam a defesa de ideia e de diálogo com a tese do outro: concordo, discordo, concordo parcialmente, do meu ponto de vista, na perspectiva aqui assumida etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP02",
+    description:
+      "Estabelecer expectativas em relação ao texto que vai ler (pressuposições antecipadoras dos sentidos, da forma e da função social do texto), apoiando-se em seus conhecimentos prévios sobre as condições de produção e recepção desse texto, o gênero, o suporte e o universo temático, bem como sobre saliências textuais, recursos gráficos, imagens, dados da própria obra (índice, prefácio etc.), confirmando antecipações e inferências realizadas antes e durante a leitura de textos, checando a adequação das hipóteses realizadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP03",
+    description: "Localizar informações explícitas em textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP04",
+    description:
+      "Identificar o efeito de sentido produzido pelo uso de recursos expressivos gráfico-visuais em textos multissemióticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP04",
+    description: "Inferir informações implícitas nos textos lidos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP05",
+    description:
+      "Inferir o sentido de palavras ou expressões desconhecidas em textos, com base no contexto da frase ou do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP06",
+    description:
+      "Recuperar relações entre partes de um texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos) que contribuem para a continuidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP04",
+    description:
+      "Distinguir, em segmentos descontínuos de textos, fato da opinião enunciada em relação a esse mesmo fato.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP03",
+    description:
+      "Identificar, em notícias, o fato central, suas principais circunstâncias e eventuais decorrências; em reportagens e fotorreportagens o fato ou a temática retratada e a perspectiva de abordagem, em entrevistas os principais temas/subtemas abordados, explicações dadas ou teses defendidas em relação a esses subtemas; em tirinhas, memes, charge, a crítica, ironia ou humor presente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP03",
+    description:
+      "Analisar textos de opinião (artigos de opinião, editoriais, cartas de leitores, comentários, posts de blog e de redes sociais, charges, memes, gifs etc.) e posicionar-se de forma crítica e fundamentada, ética e respeitosa frente a fatos e opiniões relacionados a esses textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP04",
+    description:
+      "Identificar e avaliar teses/opiniões/posicionamentos explícitos e implícitos, argumentos e contra-argumentos em textos argumentativos do campo (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), posicionando-se frente à questão controversa de forma sustentada.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP05",
+    description:
+      "Identificar e avaliar teses/opiniões/posicionamentos explícitos e argumentos em textos argumentativos (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), manifestando concordância ou discordância.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP10",
+    description:
+      "Planejar artigos de opinião, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do tema ou questão a ser discutido(a), da relevância para a turma, escola ou comunidade, do levantamento de dados e informações sobre a questão, de argumentos relacionados a diferentes posicionamentos em jogo, da definição – o que pode envolver consultas a fontes diversas, entrevistas com especialistas, análise de textos, organização esquemática das informações e argumentos – dos (tipos de) argumentos e estratégias que pretende utilizar para convencer os leitores.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP08",
+    description:
+      "Planejar reportagem impressa e em outras mídias (rádio ou TV/vídeo, sites), tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. – a partir da escolha do fato a ser aprofundado ou do tema a ser focado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato ou tema – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes diversas, análise de documentos, cobertura de eventos etc. -, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc., da produção de infográficos, quando for o caso, e da organização hipertextual (no caso a publicação em sites ou blogs noticiosos ou mesmo de jornais impressos, por meio de boxes variados).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP19",
+    description:
+      "Realizar levantamento de questões, problemas que requeiram a denúncia de desrespeito a direitos, reivindicações, reclamações, solicitações que contemplem a comunidade escolar ou algum de seus membros e examinar normas e legislações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP21",
+    description:
+      "Realizar enquetes e pesquisas de opinião, de forma a levantar prioridades, problemas a resolver ou propostas que possam contribuir para melhoria da escola ou da comunidade, caracterizar demanda/necessidade, documentando-a de diferentes maneiras por meio de diferentes procedimentos, gêneros e mídias e, quando for o caso, selecionar informações e dados relevantes de fontes pertinentes diversas (sites, impressos, vídeos etc.), avaliando a qualidade e a utilidade dessas fontes, que possam servir de contextualização e fundamentação de propostas, de forma a justificar a proposição de propostas, projetos culturais e ações de intervenção.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP09",
+    description:
+      "Produzir reportagem impressa, com título, linha fina (optativa), organização composicional (expositiva, interpretativa e/ou opinativa), progressão temática e uso de recursos linguísticos compatíveis com as escolhas feitas e reportagens multimidiáticas, tendo em vista as condições de produção, as características do gênero, os recursos e mídias disponíveis, sua organização hipertextual e o manejo adequado de recursos de captação e edição de áudio e imagem e adequação à norma-padrão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP21",
+    description:
+      "Divulgar resultados de pesquisas por meio de apresentações orais, painéis, artigos de divulgação científica, verbetes de enciclopédia, podcasts científicos etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP22",
+    description:
+      "Produzir resumos, a partir das notas e/ou esquemas feitos, com o uso adequado de paráfrases e citações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP36",
+    description:
+      "Produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigos de divulgação científica, verbete de enciclopédia, infográfico, infográfico animado, podcast ou vlog científico, relato de experimento, relatório, relatório multimidiático de campo, dentre outros, considerando o contexto de produção e as regularidades dos gêneros em termos de suas construções composicionais e estilos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP25",
+    description:
+      "Divulgar o resultado de pesquisas por meio de apresentações orais, verbetes de enciclopédias colaborativas, reportagens de divulgação científica, vlogs científicos, vídeos de diferentes tipos etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP26",
+    description:
+      "Produzir resenhas, a partir das notas e/ou esquemas feitos, com o manejo adequado das vozes envolvidas (do resenhador, do autor da obra e, se for o caso, também dos autores citados na obra resenhada), por meio do uso de paráfrases, marcas do discurso reportado e citações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP28",
+    description:
+      "Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes –, romances infantojuvenis, contos populares, contos de terror, lendas brasileiras, indígenas e africanas, narrativas de aventuras, narrativas de enigma, mitos, crônicas, autobiografias, histórias em quadrinhos, mangás, poemas de forma livre e fixa (como sonetos e cordéis), vídeo-poemas, poemas visuais, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP33",
+    description:
+      "Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes – romances, contos contemporâneos, minicontos, fábulas contemporâneas, romances juvenis, biografias romanceadas, novelas, crônicas visuais, narrativas de ficção científica, narrativas de suspense, poemas de forma livre e fixa (como haicai), poema concreto, ciberpoema, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP37",
+    description:
+      "Produzir roteiros para elaboração de vídeos de diferentes tipos (vlog científico, vídeo-minuto, programa de rádio, podcasts) para divulgação de conhecimentos científicos e resultados de pesquisa, tendo em vista seu contexto de produção, os elementos e a construção composicional dos roteiros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP39",
+    description:
+      "Definir o recorte temático da entrevista e o entrevistado, levantar informações sobre o entrevistado e sobre o tema da entrevista, elaborar roteiro de perguntas, realizar entrevista, a partir do roteiro, abrindo possibilidades para fazer perguntas a partir da resposta, se o contexto permitir, tomar nota, gravar ou salvar a entrevista e usar adequadamente as informações obtidas, de acordo com os objetivos estabelecidos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP11",
+    description:
+      "Planejar resenhas, vlogs, vídeos e podcasts variados, e textos e vídeos de apresentação e apreciação próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), dentre outros, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha de uma produção ou evento cultural para analisar – livro, filme, série, game, canção, videoclipe, fanclipe, show, saraus, slams etc. – da busca de informação sobre a produção ou evento escolhido, da síntese de informações sobre a obra/evento e do elenco/seleção de aspectos, elementos ou recursos que possam ser destacados positiva ou negativamente ou da roteirização do passo a passo do game para posterior gravação dos vídeos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP09",
+    description:
+      "Planejar notícia impressa e para circulação em outras mídias (rádio ou TV/vídeo), tendo em vista as condições de produção, do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do fato a ser noticiado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes, análise de documentos, cobertura de eventos etc.–, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc. e a previsão de uma estrutura hipertextual (no caso de publicação em sites ou blogs noticiosos).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP12",
+    description:
+      "Planejar coletivamente a realização de um debate sobre tema previamente definido, de interesse coletivo, com regras acordadas e planejar, em grupo, participação em debate a partir do levantamento de informações e argumentos que possam sustentar o posicionamento a ser defendido (o que pode envolver entrevistas com especialistas, consultas a fontes diversas, o registro das informações e dados obtidos etc.), tendo em vista as condições de produção do debate – perfil dos ouvintes e demais participantes, objetivos do debate, motivações para sua realização, argumentos e estratégias de convencimento mais eficazes etc. e participar de debates regrados, na condição de membro de uma equipe de debatedor, apresentador/mediador, espectador (com ou sem direito a perguntas), e/ou de juiz/avaliador, como forma de compreender o funcionamento do debate, e poder participar de forma convincente, ética, respeitosa e crítica e desenvolver uma atitude de respeito e diálogo para com as ideias divergentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP38",
+    description:
+      "Organizar os dados e informações pesquisados em painéis ou slides de apresentação, levando em conta o contexto de produção, o tempo disponível, as características do gênero apresentação oral, a multissemiose, as mídias e tecnologias que serão utilizadas, ensaiar a apresentação, considerando também elementos paralinguísticos e cinésicos e proceder à exposição oral de resultados de estudos e pesquisas, no tempo determinado, a partir do planejamento e da definição de diferentes formas de uso da fala – memorizada, com apoio da leitura ou fala espontânea.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP13",
+    description:
+      "Planejar entrevistas orais com pessoas ligadas ao fato noticiado, especialistas etc., como forma de obter dados e informações sobre os fatos cobertos sobre o tema ou questão discutida ou temáticas em estudo, levando em conta o gênero e seu contexto de produção, partindo do levantamento de informações sobre o entrevistado e sobre a temática e da elaboração de um roteiro de perguntas, garantindo a relevância das informações mantidas e a continuidade temática, realizar entrevista e fazer edição em áudio ou vídeo, incluindo uma contextualização inicial e uma fala de encerramento para publicação da entrevista isoladamente ou como parte integrante de reportagem multimidiática, adequando-a a seu contexto de publicação e garantindo a relevância das informações mantidas e a continuidade temática.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP11",
+    description:
+      "Produzir, revisar e editar peças e campanhas publicitárias, envolvendo o uso articulado e complementar de diferentes peças publicitárias: cartaz, banner, indoor, folheto, panfleto, anúncio de jornal/revista, para internet, spot, propaganda de rádio, TV, a partir da escolha da questão/problema/causa significativa para a escola e/ou a comunidade escolar, da definição do público-alvo, das peças que serão produzidas, das estratégias de persuasão e convencimento que serão utilizadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP15",
+    description:
+      "Identificar a proibição imposta ou o direito garantido, bem como as circunstâncias de sua aplicação, em artigos relativos a normas, regimentos escolares, regimentos e estatutos da sociedade civil, regulamentações para o mercado publicitário, Código de Defesa do Consumidor, Código Nacional de Trânsito, ECA, Constituição, dentre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP20",
+    description:
+      "Comparar propostas políticas e de solução de problemas, identificando o que se pretende fazer/implementar, por que (motivações, justificativas), para que (objetivos, benefícios e consequências esperados), como (ações e passos), quando etc. e a forma de avaliar a eficácia da proposta/solução, contrastando dados e informações de diferentes fontes, identificando coincidências, complementaridades e contradições, de forma a poder compreender e posicionar-se criticamente sobre os dados e informações usados em fundamentação de propostas e analisar a coerência entre os elementos, de forma a tomar decisões fundamentadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP32",
+    description:
+      "Selecionar informações e dados relevantes de fontes diversas (impressas, digitais, orais etc.), avaliando a qualidade e a utilidade dessas fontes, e organizar, esquematicamente, com ajuda do professor, as informações necessárias (sem excedê-las) com ou sem apoio de ferramentas digitais, em quadros, tabelas ou gráficos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP33",
+    description:
+      "Articular o verbal com os esquemas, infográficos, imagens variadas etc. na (re)construção dos sentidos dos textos de divulgação científica e retextualizar do discursivo para o esquemático – infográfico, esquema, tabela, gráfico, ilustração etc. – e, ao contrário, transformar o conteúdo das tabelas, esquemas, infográficos, ilustrações etc. em texto discursivo, como forma de ampliar as possibilidades de compreensão desses textos e analisar as características das multissemioses e dos gêneros em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP34",
+    description:
+      "Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP18",
+    description:
+      "Identificar o objeto da reclamação e/ou da solicitação e sua sustentação, explicação ou justificativa, de forma a poder analisar a pertinência da solicitação ou justificação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP38",
+    description:
+      "Analisar os efeitos de sentido do uso de figuras de linguagem, como comparação, metáfora, metonímia, personificação, hipérbole, dentre outras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP37",
+    description:
+      "Analisar os efeitos de sentido do uso de figuras de linguagem como ironia, eufemismo, antítese, aliteração, assonância, dentre outras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP04",
+    description:
+      "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: ortografia, regências e concordâncias nominal e verbal, modos e tempos verbais, pontuação etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP04",
+    description:
+      "Escrever textos corretamente, de acordo com a norma-padrão, com estruturas sintáticas complexas no nível da oração e do período.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP32",
+    description:
+      "Escrever palavras com correção ortográfica, obedecendo as convenções da língua escrita.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP10",
+    description:
+      "Identificar gêneros do discurso oral, utilizados em diferentes situações e contextos comunicativos, e suas características linguístico-expressivas e composicionais (conversação espontânea, conversação telefônica, entrevistas pessoais, entrevistas no rádio ou na TV, debate, noticiário de rádio e TV, narração de jogos esportivos no rádio e TV, aula, debate etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP27",
+    description:
+      "Identificar, em textos dramáticos, marcadores das falas das personagens e de cena.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP31",
+    description:
+      "Identificar, em textos versificados, efeitos de sentido decorrentes do uso de recursos rítmicos e sonoros e de metáforas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP26",
+    description:
+      "Observar, em poemas concretos, o formato, a distribuição e a diagramação das letras do texto na página.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP28",
+    description:
+      "Observar, em ciberpoemas e minicontos infantis em mídia digital, os recursos multissemióticos presentes nesses textos digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP20",
+    description:
+      "Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP16",
+    description:
+      "Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails, receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP17",
+    description:
+      "Identificar e reproduzir, em relatos de experiências pessoais, a sequência dos fatos, utilizando expressões que marquem a passagem do tempo (“antes”, “depois”, “ontem”, “hoje”, “amanhã”, “outro dia”, “antigamente”, “há muito tempo” etc.), e o nível de informatividade necessário.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP16",
+    description:
+      "Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução '– modo de fazer').",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP17",
+    description:
+      "Identificar e reproduzir, em gêneros epistolares e diários, a formatação própria desses textos (relatos de acontecimentos, expressão de vivências, emoções, opiniões ou críticas) e a diagramação específica dos textos desses gêneros (data, saudação, corpo do texto, despedida, assinatura).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP13",
+    description:
+      "Identificar e reproduzir, em textos injuntivos instrucionais (instruções de jogos digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e formato específico dos textos orais ou escritos desses gêneros (lista/ apresentação de materiais e instruções/passos de jogo).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP14",
+    description:
+      "Identificar e reproduzir, em textos de resenha crítica de brinquedos ou livros de literatura infantil, a formatação própria desses textos (apresentação e avaliação do produto).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP07",
+    description:
+      "Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP14",
+    description:
+      "Identificar e reproduzir, em fotolegendas de notícias, álbum de fotos digital noticioso, cartas de leitor (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP15",
+    description: "Identificar a forma de composição de slogans publicitários.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP16",
+    description:
+      "Identificar e reproduzir, em anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil (orais e escritos, digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros, inclusive o uso de imagens.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP23",
+    description:
+      "Analisar o uso de adjetivos em cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), digitais ou impressas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP18",
+    description:
+      "Analisar o padrão entonacional e a expressão facial e corporal de âncoras de jornais radiofônicos ou televisivos e de entrevistadores/entrevistados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP20",
+    description:
+      "Analisar a validade e força de argumentos em argumentações sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP21",
+    description:
+      "Analisar o padrão entonacional, a expressão facial e corporal e as escolhas de variedade e registro linguísticos de vloggers de vlogs opinativos ou argumentativos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP16",
+    description:
+      "Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP26",
+    description:
+      "Utilizar, ao produzir o texto, conhecimentos linguísticos e gramaticais: regras sintáticas de concordância nominal e verbal, convenções de escrita de citações, pontuação (ponto final, dois-pontos, vírgulas em enumerações) e regras ortográficas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP27",
+    description:
+      "Utilizar, ao produzir o texto, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível adequado de informatividade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP26",
+    description:
+      "Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP24",
+    description:
+      "Identificar e reproduzir, em seu formato, tabelas, diagramas e gráficos em relatórios de observação e pesquisa, como forma de apresentação de dados e informações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP23",
+    description:
+      "Identificar e reproduzir, em verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica desse gênero (título do verbete, definição, detalhamento, curiosidades), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP24",
+    description:
+      "Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP25",
+    description:
+      "Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP02",
+    description:
+      "Buscar, selecionar e ler, com a mediação do professor (leitura compartilhada), textos que circulam em meios impressos ou digitais, de acordo com as necessidades e interesses.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP02",
+    description:
+      "Selecionar livros da biblioteca e/ou do cantinho de leitura da sala de aula e/ou disponíveis em meios digitais para leitura individual, justificando a escolha e compartilhando com os colegas sua opinião, após a leitura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP26",
+    description:
+      "Ler e compreender, com certa autonomia, textos literários, de gêneros variados, desenvolvendo o gosto pela leitura.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP15",
+    description:
+      "Reconhecer que os textos literários fazem parte do mundo do imaginário e apresentam uma dimensão lúdica, de encantamento, valorizando-os, em sua diversidade cultural, como patrimônio artístico da humanidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP21",
+    description:
+      "Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP22",
+    description:
+      "Perceber diálogos em textos narrativos, observando o efeito de sentido de verbos de enunciação e, se for o caso, o uso de variedades linguísticas no discurso direto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP18",
+    description: "Relacionar texto com ilustrações e outros recursos gráficos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP26",
+    description:
+      "Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP28",
+    description:
+      "Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP29",
+    description:
+      "Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP19",
+    description:
+      "Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP29",
+    description:
+      "Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP20",
+    description:
+      "Reconhecer a função de textos utilizados para apresentar informações coletadas em atividades de pesquisa (enquetes, pequenas entrevistas, registros de experimentações).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP20",
+    description:
+      "Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP23",
+    description: "Comparar informações apresentadas em gráficos ou tabelas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP16",
+    description:
+      "Ler e compreender, em colaboração com os colegas e com a ajuda do professor e, mais tarde, de maneira autônoma, textos narrativos de maior porte como contos (populares, de fadas, acumulativos, de assombração etc.) e crônicas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP14",
+    description:
+      "Construir o sentido de histórias em quadrinhos e tirinhas, relacionando imagens e palavras e interpretando recursos gráficos (tipos de balões, de letras, onomatopeias).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP03",
+    description:
+      "Analisar diferenças de sentido entre palavras de uma série sinonímica.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP03",
+    description:
+      "Formar, com base em palavras primitivas, palavras derivadas com os prefixos e sufixos mais produtivos no português.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP05",
+    description:
+      "Analisar processos de formação de palavras por composição (aglutinação e justaposição), apropriando-se de regras básicas de uso do hífen em palavras compostas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP34",
+    description:
+      "Formar antônimos com acréscimo de prefixos que expressam noção de negação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP35",
+    description:
+      "Distinguir palavras derivadas por acréscimo de afixos e palavras compostas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP43",
+    description:
+      "Identificar e utilizar os modos de introdução de outras vozes no texto – citação literal e sua formatação e paráfrase –, as pistas linguísticas responsáveis por introduzir no texto a posição do autor e dos outros autores citados (“Segundo X; De acordo com Y; De minha/nossa parte, penso/amos que”...) e os elementos de normatização (tais como as regras de inclusão e formatação de citações e paráfrases, de organização de referências bibliográficas) em textos científicos, desenvolvendo reflexão sobre o modo como a intertextualidade e a retextualização ocorrem nesses textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP14",
+    description:
+      "Identificar, em textos, os efeitos de sentido do uso de estratégias de modalização e argumentatividade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP16",
+    description:
+      "Explicar os efeitos de sentido do uso, em textos, de estratégias de modalização e argumentatividade (sinais de pontuação, adjetivos, substantivos, expressões de grau, verbos e perífrases verbais, advérbios etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP28",
+    description:
+      "Observar os mecanismos de modalização adequados aos textos jurídicos, as modalidades deônticas, que se referem ao eixo da conduta (obrigatoriedade/permissibilidade) como, por exemplo: Proibição: “Não se deve fumar em recintos fechados.”; Obrigatoriedade: “A vida tem que valer a pena.”; Possibilidade: “É permitido a entrada de menores acompanhados de adultos responsáveis”, e os mecanismos de modalização adequados aos textos políticos e propositivos, as modalidades apreciativas, em que o locutor exprime um juízo de valor (positivo ou negativo) acerca do que enuncia. Por exemplo: “Que belo discurso!”, “Discordo das escolhas de Antônio.” “Felizmente, o buraco ainda não causou acidentes mais graves.”",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP16",
+    description:
+      "Analisar a modalização realizada em textos noticiosos e argumentativos, por meio das modalidades apreciativas, viabilizadas por classes e estruturas gramaticais como adjetivos, locuções adjetivas, advérbios, locuções adverbiais, orações adjetivas e adverbiais, orações relativas restritivas e explicativas etc., de maneira a perceber a apreciação ideológica sobre os fatos noticiados ou as posições implícitas ou assumidas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP31",
+    description:
+      "Analisar e utilizar modalização epistêmica, isto é, modos de indicar uma avaliação sobre o valor de verdade e as condições de verdade de uma proposição, tais como os asseverativos – quando se concorda com (“realmente, evidentemente, naturalmente, efetivamente, claro, certo, lógico, sem dúvida” etc.) ou discorda de (“de jeito nenhum, de forma alguma”) uma ideia; e os quase-asseverativos, que indicam que se considera o conteúdo como quase certo (“talvez, assim, possivelmente, provavelmente, eventualmente”).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP11",
+    description:
+      "Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP08",
+    description:
+      "Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP10",
+    description:
+      "Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP08",
+    description:
+      "Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP05",
+    description:
+      "Identificar a expressão de presente, passado e futuro em tempos verbais do modo indicativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP06",
+    description:
+      "Flexionar, adequadamente, na escrita e na oralidade, os verbos em concordância com pronomes pessoais/nomes sujeitos da oração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP07",
+    description:
+      "Identificar, em textos, o uso de conjunções e a relação que estabelecem entre partes do texto: adição, oposição, tempo, causa, condição, finalidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP08",
+    description:
+      "Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adição de prefixo e de sufixo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP14",
+    description:
+      "Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP06",
+    description:
+      "Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP09",
+    description:
+      "Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP07",
+    description:
+      "Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP04",
+    description:
+      "Analisar a função e as flexões de substantivos e adjetivos e de verbos nos modos Indicativo, Subjuntivo e Imperativo: afirmativo e negativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP05",
+    description:
+      "Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP06",
+    description:
+      "Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP07",
+    description:
+      "Identificar, em textos, períodos compostos por orações separadas por vírgula sem a utilização de conectivos, nomeando-os como períodos compostos por coordenação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP08",
+    description:
+      "Identificar, em texto ou sequência textual, orações como unidades constituídas em torno de um núcleo verbal e períodos como conjunto de orações conectadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP09",
+    description:
+      "Classificar, em texto ou sequência textual, os períodos simples compostos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP04",
+    description: "Reconhecer, em textos, o verbo como o núcleo das orações.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP05",
+    description:
+      "Identificar, em orações de textos lidos ou de produção própria, verbos de predicação completa e incompleta: intransitivos e transitivos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP06",
+    description:
+      "Empregar as regras básicas de concordância nominal e verbal em situações comunicativas e na produção de textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP07",
+    description:
+      "Identificar, em textos lidos ou de produção própria, a estrutura básica da oração: sujeito, predicado, complemento (objetos direto e indireto).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP08",
+    description:
+      "Identificar, em textos lidos ou de produção própria, adjetivos que ampliam o sentido do substantivo sujeito ou complemento verbal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP09",
+    description:
+      "Identificar, em textos lidos ou de produção própria, advérbios e locuções adverbiais que ampliam o sentido do verbo núcleo da oração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP10",
+    description:
+      "Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: modos e tempos verbais, concordância nominal e verbal, pontuação etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP11",
+    description:
+      "Identificar, em textos lidos ou de produção própria, períodos compostos nos quais duas orações são conectadas por vírgula, ou por conjunções que expressem soma de sentido (conjunção “e”) ou oposição de sentidos (conjunções “mas”, “porém”).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP06",
+    description:
+      "Identificar, em textos lidos ou de produção própria, os termos constitutivos da oração (sujeito e seus modificadores, verbo e seus complementos e modificadores).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP07",
+    description:
+      "Diferenciar, em textos lidos ou de produção própria, complementos diretos e indiretos de verbos transitivos, apropriando-se da regência de verbos de uso frequente.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP08",
+    description:
+      "Identificar, em textos lidos ou de produção própria, verbos na voz ativa e na voz passiva, interpretando os efeitos de sentido de sujeito ativo e passivo (agente da passiva).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP09",
+    description:
+      "Interpretar efeitos de sentido de modificadores (adjuntos adnominais – artigos definido ou indefinido, adjetivos, expressões adjetivas) em substantivos com função de sujeito ou de complemento verbal, usando-os para enriquecer seus próprios textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP10",
+    description:
+      "Interpretar, em textos lidos ou de produção própria, efeitos de sentido de modificadores do verbo (adjuntos adverbiais – advérbios e expressões adverbiais), usando-os para enriquecer seus próprios textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP11",
+    description:
+      "Identificar, em textos lidos ou de produção própria, agrupamento de orações em períodos, diferenciando coordenação de subordinação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP12",
+    description:
+      "Identificar, em textos lidos, orações subordinadas com conjunções de uso frequente, incorporando-as às suas próprias produções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP13",
+    description:
+      "Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial: conjunções e articuladores textuais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP05",
+    description:
+      "Identificar, em textos lidos e em produções próprias, orações com a estrutura sujeito-verbo de ligação-predicativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP06",
+    description:
+      "Diferenciar, em textos lidos e em produções próprias, o efeito de sentido do uso dos verbos de ligação “ser”, “estar”, “ficar”, “parecer” e “permanecer”.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP07",
+    description:
+      "Comparar o uso de regência verbal e regência nominal na norma-padrão com seu uso no português brasileiro coloquial oral.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP08",
+    description:
+      "Identificar, em textos lidos e em produções próprias, a relação que conjunções (e locuções conjuntivas) coordenativas e subordinativas estabelecem entre as orações que conectam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP23",
+    description:
+      "Analisar, em textos argumentativos, reivindicatórios e propositivos, os movimentos argumentativos utilizados (sustentação, refutação e negociação), avaliando a força dos argumentos utilizados.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP09",
+    description:
+      "Expressar-se em situações de intercâmbio oral com clareza, preocupando-se em ser compreendido pelo interlocutor e usando a palavra com tom de voz audível, boa articulação e ritmo adequado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP13",
+    description:
+      "Engajar-se e contribuir com a busca de conclusões comuns relativas a problemas, temas ou questões polêmicas de interesse da turma e/ou de relevância social.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP14",
+    description:
+      "Formular perguntas e decompor, com a ajuda dos colegas e dos professores, tema/questão polêmica, explicações e ou argumentos relativos ao objeto de discussão para análise mais minuciosa e buscar em fontes diversas informações ou dados que permitam analisar partes da questão e compartilhá-los com a turma.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP15",
+    description:
+      "Apresentar argumentos e contra-argumentos coerentes, respeitando os turnos de fala, na participação em discussões sobre temas controversos e/ou polêmicos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP27",
+    description:
+      "Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP25",
+    description:
+      "Planejar e produzir, com certa autonomia, verbetes de dicionário, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP21",
+    description:
+      "Explorar, com a mediação do professor, textos informativos de diferentes ambientes digitais de pesquisa, conhecendo suas possibilidades.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP17",
+    description:
+      "Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP05",
+    description:
+      "Planejar, com a ajuda do professor, o texto que será produzido, considerando a situação comunicativa, os interlocutores (quem escreve/para quem escreve); a finalidade ou o propósito (escrever para quê); a circulação (onde o texto vai circular); o suporte (qual é o portador do texto); a linguagem, organização e forma do texto e seu tema, pesquisando em meios impressos ou digitais, sempre que for preciso, informações necessárias à produção do texto, organizando em tópicos os dados e as fontes pesquisadas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP23",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP24",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, relatos de experimentos, registros de observação, entrevistas, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP20",
+    description:
+      "Expor trabalhos ou pesquisas escolares, em sala de aula, com apoio de recursos multissemióticos (imagens, diagrama, tabelas etc.), orientando-se por roteiro escrito, planejando o tempo de fala e adequando a linguagem à situação comunicativa.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP09",
+    description:
+      "Organizar o texto em unidades de sentido, dividindo-o em parágrafos segundo as normas gráficas e de acordo com as características do gênero textual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP09",
+    description:
+      "Planejar uma campanha publicitária sobre questões/problemas, temas, causas significativas para a escola e/ou comunidade, a partir de um levantamento de material sobre o tema ou evento, da definição do público-alvo, do texto ou peça a ser produzido – cartaz, banner, folheto, panfleto, anúncio impresso e para internet, spot, propaganda de rádio, TV etc. –, da ferramenta de edição de texto, áudio ou vídeo que será utilizada, do recorte e enfoque a ser dado, das estratégias de persuasão que serão utilizadas etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP14",
+    description:
+      "Definir o contexto de produção da entrevista (objetivos, o que se pretende conseguir, porque aquele entrevistado etc.), levantar informações sobre o entrevistado e sobre o acontecimento ou tema em questão, preparar o roteiro de perguntar e realizar entrevista oral com envolvidos ou especialistas relacionados com o fato noticiado ou com o tema em pauta, usando roteiro previamente elaborado e formulando outras perguntas a partir das respostas dadas e, quando for o caso, selecionar partes, transcrever e proceder a uma edição escrita do texto, adequando-o a seu contexto de publicação, à construção composicional do gênero e garantindo a relevância das informações mantidas e a continuidade temática.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP22",
+    description:
+      "Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP17",
+    description:
+      "Produzir jornais radiofônicos ou televisivos e entrevistas veiculadas em rádio, TV e na internet, orientando-se por roteiro ou texto e demonstrando conhecimento dos gêneros jornal falado/televisivo e entrevista.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP18",
+    description:
+      "Roteirizar, produzir e editar vídeo para vlogs argumentativos sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP12",
+    description:
+      "Desenvolver estratégias de planejamento, elaboração, revisão, edição, reescrita/ redesign (esses três últimos quando não for situação ao vivo) e avaliação de textos orais, áudio e/ou vídeo, considerando sua adequação aos contextos em que foram produzidos, à forma composicional e estilo de gêneros, a clareza, progressão temática e variedade linguística empregada, os elementos relacionados à fala, tais como modulação de voz, entonação, ritmo, altura e intensidade, respiração etc., os elementos cinésicos, tais como postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP14",
+    description:
+      "Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP09",
+    description:
+      "Usar adequadamente ponto final, ponto de interrogação e ponto de exclamação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP07",
+    description:
+      "Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP05",
+    description:
+      "Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP04",
+    description:
+      "Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP24",
+    description:
+      "Tomar nota de aulas, apresentações orais, entrevistas (ao vivo, áudio, TV, vídeo), identificando e hierarquizando as informações principais, tendo em vista apoiar o estudo e a produção de sínteses e reflexões pessoais ou outros objetivos em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP28",
+    description:
+      "Tomar nota de videoaulas, aulas digitais, apresentações multimídias, vídeos de divulgação científica, documentários e afins, identificando, em função dos objetivos, informações principais para apoio ao estudo e realizando, quando necessário, uma síntese final que destaque e reorganize os pontos ou conceitos centrais e suas relações e que, em alguns casos, seja acompanhada de reflexões pessoais, que podem conter dúvidas, questionamentos, considerações etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP19",
+    description:
+      "Argumentar oralmente sobre acontecimentos de interesse social, com base em conhecimentos sobre fatos divulgados em TV, rádio, mídia impressa e digital, respeitando pontos de vista diferentes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP19",
+    description:
+      "Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP15",
+    description: "Cantar cantigas e canções, obedecendo ao ritmo e à melodia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP19",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, notícias curtas para público infantil, para compor jornal falado que possa ser repassado oralmente ou em meio digital, em áudio ou vídeo, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP15",
+    description:
+      "Assistir, em vídeo digital, a programa de culinária infantil e, a partir dele, planejar e produzir receitas em áudio ou vídeo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP12",
+    description:
+      "Assistir, em vídeo digital, a programa infantil com instruções de montagem, de jogos e brincadeiras e, a partir dele, planejar e produzir tutoriais em áudio ou vídeo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP13",
+    description:
+      "Assistir, em vídeo digital, a postagem de vlog infantil de críticas de brinquedos e livros de literatura infantil e, a partir dele, planejar e produzir resenhas digitais em áudio ou vídeo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP06",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, recados, avisos, convites, receitas, instruções de montagem, dentre outros gêneros do campo da vida cotidiana, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF12LP13",
+    description:
+      "Planejar, em colaboração com os colegas e com a ajuda do professor, slogans e peça de campanha de conscientização destinada ao público infantil que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP22",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, diagramas, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP22",
+    description:
+      "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP25",
+    description:
+      "Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF04LP21",
+    description:
+      "Planejar e produzir textos sobre temas de interesse, com base em resultados de observações e pesquisas em fontes de informações impressas ou eletrônicas, incluindo, quando pertinente, imagens e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF05LP24",
+    description:
+      "Planejar e produzir texto sobre tema de interesse, organizando resultados de pesquisa em fontes de informação impressas ou digitais, incluindo imagens e gráficos ou tabelas, considerando a situação comunicativa e o tema/assunto do texto.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP10",
+    description:
+      "Produzir notícias para rádios, TV ou vídeos, podcasts noticiosos e de opinião, entrevistas, comentários, vlogs, jornais radiofônicos e televisivos, dentre outros possíveis, relativos a fato e temas de interesse pessoal, local ou global e textos orais de apreciação e opinião – podcasts e vlogs noticiosos, culturais e de opinião, orientando-se por roteiro ou texto, considerando o contexto de produção e demonstrando domínio dos gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP11",
+    description:
+      "Identificar e analisar posicionamentos defendidos e refutados na escuta de interações polêmicas em entrevistas, discussões e debates (televisivo, em sala de aula, em redes sociais etc.), entre outros, e se posicionar frente a eles.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP52",
+    description:
+      "Representar cenas ou textos dramáticos, considerando, na caracterização dos personagens, os aspectos linguísticos e paralinguísticos das falas (timbre e tom de voz, pausas e hesitações, entonação e expressividade, variedades e registros linguísticos), os gestos e os deslocamentos no espaço cênico, o figurino e a maquiagem e elaborando as rubricas indicadas pelo autor por meio do cenário, da trilha sonora e da exploração dos modos de interpretação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP53",
+    description:
+      "Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP13",
+    description:
+      "Produzir, revisar e editar textos publicitários, levando em conta o contexto de produção dado, explorando recursos multissemióticos, relacionando elementos verbais e visuais, utilizando adequadamente estratégias discursivas de persuasão e/ou convencimento e criando título ou slogan que façam o leitor motivar-se a interagir com o texto produzido e se sinta atraído pelo serviço, ideia ou produto em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP01",
+    description:
+      "Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP34",
+    description:
+      "Analisar a organização de texto dramático apresentado em teatro, televisão, cinema, identificando e percebendo os sentidos decorrentes dos recursos linguísticos e semióticos que sustentam sua realização como peça teatral, novela, filme etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP47",
+    description:
+      "Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP48",
+    description:
+      "Interpretar, em poemas, efeitos produzidos pelo uso de recursos expressivos sonoros (estrofação, rimas, aliterações etc), semânticos (figuras de linguagem, por exemplo), gráfico- espacial (distribuição da mancha gráfica no papel), imagens e sua relação com o texto verbal.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP29",
+    description:
+      "Identificar, em texto dramático, personagem, ato, cena, fala e indicações cênicas e a organização do texto: enredo, conflitos, ideias principais, pontos de vista, universos de referência.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP20",
+    description:
+      "Identificar, tendo em vista o contexto de produção, a forma de organização dos textos normativos e legais, a lógica de hierarquização de seus itens e subitens e suas partes: parte inicial (título – nome e data – e ementa), blocos de artigos (parte, livro, capítulo, seção, subseção), artigos (caput e parágrafos e incisos) e parte final (disposições pertinentes à sua implementação) e analisar efeitos de sentido causados pelo uso de vocabulário técnico, pelo uso do imperativo, de palavras e expressões que indicam circunstâncias, como advérbios e locuções adverbiais, de palavras que indicam generalidade, como alguns pronomes indefinidos, de forma a poder compreender o caráter imperativo, coercitivo e generalista das leis e de outras formas de regulamentação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP01",
+    description:
+      "Identificar a função social de textos que circulam em campos da vida social dos quais participa cotidianamente (a casa, a rua, a comunidade, a escola) e nas mídias impressa, de massa e digital, reconhecendo para que foram produzidos, onde circulam, quem os produziu e a quem se destinam.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP29",
+    description:
+      "Refletir sobre a relação entre os contextos de produção dos gêneros de divulgação científica – texto didático, artigo de divulgação científica, reportagem de divulgação científica, verbete de enciclopédia (impressa e digital), esquema, infográfico (estático e animado), relatório, relato multimidiático de campo, podcasts e vídeos variados de divulgação científica etc. – e os aspectos relativos à construção composicional e às marcas linguística características desses gêneros, de forma a ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP44",
+    description:
+      "Inferir a presença de valores sociais, culturais e humanos e de diferentes visões de mundo, em textos literários, reconhecendo nesses textos formas de estabelecer múltiplos olhares sobre as identidades, sociedades e culturas e considerando a autoria e o contexto social e histórico de sua produção.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP45",
+    description:
+      "Posicionar-se criticamente em relação a textos pertencentes a gêneros como quarta-capa, programa (de teatro, dança, exposição etc.), sinopse, resenha crítica, comentário em blog/vlog cultural etc., para selecionar obras literárias e outras manifestações artísticas (cinema, teatro, exposições, espetáculos, CD´s, DVD´s etc.), diferenciando as sequências descritivas e avaliativas e reconhecendo-os como gêneros que apoiam a escolha do livro ou produção cultural e consultando-os no momento de fazer escolhas, quando for o caso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP46",
+    description:
+      "Participar de práticas de compartilhamento de leitura/recepção de obras literárias/ manifestações artísticas, como rodas de leitura, clubes de leitura, eventos de contação de histórias, de leituras dramáticas, de apresentações teatrais, musicais e de filmes, cineclubes, festivais de vídeo, saraus, slams, canais de booktubers, redes sociais temáticas (de leitores, de cinéfilos, de música etc.), dentre outros, tecendo, quando possível, comentários de ordem estética e afetiva",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP17",
+    description:
+      "Relacionar textos e documentos legais e normativos de importância universal, nacional ou local que envolvam direitos, em especial, de crianças, adolescentes e jovens – tais como a Declaração dos Direitos Humanos, a Constituição Brasileira, o ECA -, e a regulamentação da organização escolar – por exemplo, regimento escolar -, a seus contextos de produção, reconhecendo e analisando possíveis motivações, finalidades e sua vinculação com experiências humanas e fatos históricos e sociais, como forma de ampliar a compreensão dos direitos e deveres, de fomentar os princípios democráticos e uma atuação pautada pela ética da responsabilidade (o outro tem direito a uma vida digna tanto quanto eu tenho).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP01",
+    description:
+      "Reconhecer a impossibilidade de uma neutralidade absoluta no relato de fatos e identificar diferentes graus de parcialidade/ imparcialidade dados pelo recorte feito e pelos efeitos de sentido advindos de escolhas feitas pelo autor, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos e tornar-se consciente das escolhas feitas enquanto produtor de textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP02",
+    description:
+      "Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP01",
+    description:
+      "Distinguir diferentes propostas editoriais – sensacionalismo, jornalismo investigativo etc. –, de forma a identificar os recursos utilizados para impactar/chocar o leitor que podem comprometer uma análise crítica da notícia e do fato noticiado.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP02",
+    description:
+      "Comparar notícias e reportagens sobre um mesmo fato divulgadas em diferentes mídias, analisando as especificidades das mídias, os processos de (re)elaboração dos textos e a convergência das mídias em notícias ou reportagens multissemióticas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP01",
+    description:
+      "Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP01",
+    description:
+      "Analisar o fenômeno da disseminação de notícias falsas nas redes sociais e desenvolver estratégias para reconhecê-las, a partir da verificação/avaliação do veículo, fonte, data e local da publicação, autoria, URL, da análise da formatação, da comparação de diferentes fontes, da consulta a sites de curadoria que atestam a fidedignidade do relato dos fatos e denunciam boatos etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP01",
+    description:
+      "Analisar a estrutura e funcionamento dos hiperlinks em textos noticiosos publicados na Web e vislumbrar possibilidades de uma escrita hipertextual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP01",
+    description:
+      "Analisar os interesses que movem o campo jornalístico, os efeitos das novas tecnologias no campo e as condições que fazem da informação uma mercadoria, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP02",
+    description:
+      "Analisar diferentes práticas (curtir, compartilhar, comentar, curar etc.) e textos pertencentes a diferentes gêneros da cultura digital (meme, gif, comentário, charge digital etc.) envolvidos no trato com a informação e opinião, de forma a possibilitar uma presença mais crítica e ética nas redes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP54",
+    description:
+      "Analisar os efeitos de sentido decorrentes da interação entre os elementos linguísticos e os recursos paralinguísticos e cinésicos, como as variações no ritmo, as modulações no tom de voz, as pausas, as manipulações do estrato sonoro da linguagem, obtidos por meio da estrofação, das rimas e de figuras de linguagem como as aliterações, as assonâncias, as onomatopeias, dentre outras, a postura corporal e a gestualidade, na declamação de poemas, apresentações musicais e teatrais, tanto em gêneros em prosa quanto nos gêneros poéticos, os efeitos de sentido decorrentes do emprego de figuras de linguagem, tais como comparação, metáfora, personificação, metonímia, hipérbole, eufemismo, ironia, paradoxo e antítese e os efeitos de sentido decorrentes do emprego de palavras e expressões denotativas e conotativas (adjetivos, locuções adjetivas, orações subordinadas adjetivas etc.), que funcionam como modificadores, percebendo sua função na caracterização dos espaços, tempos, personagens e ações próprios de cada gênero narrativo.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP26",
+    description:
+      "Tomar nota em discussões, debates, palestras, apresentação de propostas, reuniões, como forma de documentar o evento e apoiar a própria fala (que pode se dar no momento do evento ou posteriormente, quando, por exemplo, for necessária a retomada dos assuntos tratados em outros contextos públicos, como diante dos representados).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP06",
+    description:
+      "Produzir e publicar notícias, fotodenúncias, fotorreportagens, reportagens, reportagens multimidiáticas, infográficos, podcasts noticiosos, entrevistas, cartas de leitor, comentários, artigos de opinião de interesse local ou global, textos de apresentação e apreciação de produção cultural – resenhas e outros próprios das formas de expressão das culturas juvenis, tais como vlogs e podcasts culturais, gameplay, detonado etc.– e cartazes, anúncios, propagandas, spots, jingles de campanhas sociais, dentre outros em várias mídias, vivenciando de forma significativa o papel de repórter, de comentador, de analista, de crítico, de editor ou articulista, de booktuber, de vlogger (vlogueiro) etc., como forma de compreender as condições de produção que envolvem a circulação desses textos e poder participar e vislumbrar possibilidades de participação nas práticas de linguagem do campo jornalístico e do campo midiático de forma ética e responsável, levando-se em consideração o contexto da Web 2.0, que amplia a possibilidade de circulação desses textos e “funde” os papéis de leitor e autor, de consumidor e produtor.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP17",
+    description:
+      "Analisar, a partir do contexto de produção, a forma de organização das cartas de solicitação e de reclamação (datação, forma de início, apresentação contextualizada do pedido ou da reclamação, em geral, acompanhada de explicações, argumentos e/ou relatos do problema, fórmula de finalização mais ou menos cordata, dependendo do tipo de carta e subscrição) e algumas das marcas linguísticas relacionadas à argumentação, explicação ou relato de fatos, como forma de possibilitar a escrita fundamentada de cartas como essas ou de postagens em canais próprios de reclamações e solicitações em situações que envolvam questões relativas à escola, à comunidade ou a algum dos seus membros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP19",
+    description:
+      "Analisar, a partir do contexto de produção, a forma de organização das cartas abertas, abaixo-assinados e petições on-line (identificação dos signatários, explicitação da reivindicação feita, acompanhada ou não de uma breve apresentação da problemática e/ou de justificativas que visam sustentar a reivindicação) e a proposição, discussão e aprovação de propostas políticas ou de soluções para problemas de interesse público, apresentadas ou lidas nos canais digitais de participação, identificando suas marcas linguísticas, como forma de possibilitar a escrita ou subscrição consciente de abaixo-assinados e textos dessa natureza e poder se posicionar de forma crítica e fundamentada frente às propostas",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP02",
+    description:
+      "Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP02",
+    description:
+      "Analisar e comentar a cobertura da imprensa sobre fatos de relevância social, comparando diferentes enfoques por meio do uso de ferramentas de curadoria.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP03",
+    description:
+      "Comparar informações sobre um mesmo fato divulgadas em diferentes veículos e mídias, analisando e avaliando a confiabilidade.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP27",
+    description:
+      "Analisar, entre os textos literários e entre estes e outras manifestações artísticas (como cinema, teatro, música, artes visuais e midiáticas), referências explícitas ou implícitas a outros textos, quanto aos temas, personagens e recursos literários e semióticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP30",
+    description:
+      "Comparar, com a ajuda do professor, conteúdos, dados e informações de diferentes fontes, levando em conta seus contextos de produção e referências, identificando coincidências, complementaridades e contradições, de forma a poder identificar erros/imprecisões conceituais, compreender e posicionar-se criticamente sobre os conteúdos e informações em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP50",
+    description:
+      "Elaborar texto teatral, a partir da adaptação de romances, contos, mitos, narrativas de enigma e de aventura, novelas, biografias romanceadas, crônicas, dentre outros, indicando as rubricas para caracterização do cenário, do espaço, do tempo; explicitando a caracterização física e psicológica dos personagens e dos seus modos de ação; reconfigurando a inserção do discurso direto e dos tipos de narrador; explicitando as marcas de variação linguística (dialetos, registros e jargões) e retextualizando o tratamento da temática.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP32",
+    description:
+      "Analisar os efeitos de sentido decorrentes do uso de mecanismos de intertextualidade (referências, alusões, retomadas) entre os textos literários, entre esses textos literários e outras manifestações artísticas (cinema, teatro, artes visuais e midiáticas, música), quanto aos temas, personagens, estilos, autores etc., e entre o texto original e paródias, paráfrases, pastiches, trailer honesto, vídeos-minuto, vidding, dentre outros.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP36",
+    description:
+      "Parodiar poemas conhecidos da literatura e criar textos em versos (como poemas concretos, ciberpoemas, haicais, liras, microrroteiros, lambe-lambes e outros tipos de poemas), explorando o uso de recursos sonoros e semânticos (como figuras de linguagem e jogos de palavras) e visuais (como relações entre imagem e texto verbal e distribuição da mancha gráfica), de forma a propiciar diferentes efeitos de sentido.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP13",
+    description:
+      "Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP06",
+    description:
+      "Reler e revisar o texto produzido com a ajuda do professor e a colaboração dos colegas, para corrigi-lo e aprimorá-lo, fazendo cortes, acréscimos, reformulações, correções de ortografia e pontuação.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP08",
+    description:
+      "Revisar/editar o texto produzido – notícia, reportagem, resenha, artigo de opinião, dentre outros –, tendo em vista sua adequação ao contexto de produção, a mídia em questão, características do gênero, aspectos relativos à textualidade, a relação entre as diferentes semioses, a formatação e uso adequado das ferramentas de edição (de texto, foto, áudio e vídeo, dependendo do caso) e adequação à norma culta.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP12",
+    description:
+      "Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP08",
+    description:
+      "Segmentar corretamente as palavras ao escrever frases e textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF03LP05",
+    description:
+      "Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP14",
+    description:
+      "Utilizar, ao produzir texto, recursos de coesão sequencial (articuladores) e referencial (léxica e pronominal), construções passivas e impessoais, discurso direto e indireto e outros recursos expressivos adequados ao gênero textual.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP12",
+    description:
+      "Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF07LP12",
+    description:
+      "Reconhecer recursos de coesão referencial: substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP37",
+    description:
+      "Analisar, em diferentes textos, os efeitos de sentido decorrentes do uso de recursos linguístico-discursivos de prescrição, causalidade, sequências descritivas e expositivas e ordenação de eventos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF01LP15",
+    description:
+      "Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF02LP10",
+    description:
+      "Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF06LP10",
+    description:
+      "Identificar sintagmas nominais e verbais como constituintes imediatos da oração.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP24",
+    description:
+      "Identificar funções do texto dramático (escrito para ser encenado) e sua organização por meio de diálogos entre personagens e marcadores das falas das personagens e de cena.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP26",
+    description:
+      "Reconhecer a estrutura de hipertexto em textos de divulgação científica e proceder à remissão a conceitos e relações por meio de notas de rodapés ou boxes.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP07",
+    description:
+      "Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP30",
+    description:
+      "Analisar a estrutura de hipertexto e hiperlinks em textos de divulgação científica que circulam na Web e proceder à remissão a conceitos e relações por meio de links.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF08LP03",
+    description:
+      "Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP03",
+    description:
+      "Produzir artigos de opinião, tendo em vista o contexto de produção dado, assumindo posição diante de tema polêmico, argumentando de acordo com a estrutura própria desse tipo de texto e utilizando diferentes tipos de argumentos – de autoridade, comprovação, exemplificação princípio etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP12",
+    description:
+      "Produzir resenhas críticas, vlogs, vídeos, podcasts variados e produções e gêneros próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), que apresentem/descrevam e/ou avaliem produções culturais (livro, filme, série, game, canção, disco, videoclipe etc.) ou evento (show, sarau, slam etc.), tendo em vista o contexto de produção dado, as características do gênero, os recursos das mídias envolvidas e a textualização adequada dos textos e/ou produções.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP25",
+    description:
+      "Reconhecer e utilizar os critérios de organização tópica (do geral para o específico, do específico para o geral etc.), as marcas linguísticas dessa organização (marcadores de ordenação e enumeração, de explicação, definição e exemplificação, por exemplo) e os mecanismos de paráfrase, de maneira a organizar mais adequadamente a coesão e a progressão temática de seus textos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF89LP29",
+    description:
+      "Utilizar e perceber mecanismos de progressão temática, tais como retomadas anafóricas (“que, cujo, onde”, pronomes do caso reto e oblíquos, pronomes demonstrativos, nomes correferentes etc.), catáforas (remetendo para adiante ao invés de retomar o já dito), uso de organizadores textuais, de coesivos etc., e analisar os mecanismos de reformulação e paráfrase utilizados nos textos de divulgação do conhecimento.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP22",
+    description:
+      "Produzir, revisar e editar textos reivindicatórios ou propositivos sobre problemas que afetam a vida escolar ou da comunidade, justificando pontos de vista, reivindicações e detalhando propostas (justificativa, objetivos, ações previstas etc.), levando em conta seu contexto de produção e as características dos gêneros em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP23",
+    description:
+      "Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF67LP10",
+    description:
+      "Produzir notícia impressa tendo em vista características do gênero – título ou manchete com verbo no tempo presente, linha fina (opcional), lide, progressão dada pela ordem decrescente de importância dos fatos, uso de 3ª pessoa, de palavras que indicam precisão –, e o estabelecimento adequado de coesão e produzir notícia para TV, rádio e internet, tendo em vista, além das características do gênero, os recursos de mídias disponíveis e o manejo de recursos de captação e edição de áudio e imagem.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP41",
+    description:
+      "Usar adequadamente ferramentas de apoio a apresentações orais, escolhendo e usando tipos e tamanhos de fontes que permitam boa visualização, topicalizando e/ou organizando o conteúdo em itens, inserindo de forma adequada imagens, gráficos, tabelas, formas e elementos gráficos, dimensionando a quantidade de texto (e imagem) por slide, usando progressivamente e de forma harmônica recursos mais sofisticados como efeitos de transição, slides mestres, layouts personalizados etc.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF15LP08",
+    description:
+      "Utilizar software, inclusive programas de edição de texto, para editar e publicar os textos produzidos, explorando os recursos multissemióticos disponíveis.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF09LP12",
+    description:
+      "Identificar estrangeirismos, caracterizando-os segundo a conservação, ou não, de sua forma gráfica de origem, avaliando a pertinência, ou não, de seu uso.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF35LP11",
+    description:
+      "Ouvir gravações, canções, textos falados em diferentes variedades linguísticas, identificando características regionais, urbanas e rurais da fala e respeitando as diversas variedades linguísticas como características do uso da língua por diferentes grupos regionais ou diferentes culturas locais, rejeitando preconceitos linguísticos.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP55",
+    description:
+      "Reconhecer as variedades da língua falada, o conceito de norma-padrão e o de preconceito linguístico.",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "EF69LP56",
+    description:
+      "Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada.",
+    created: new Date(Date()).toISOString(),
+  },
+];
+
+/* const objectsArray: Array<fieldsDto> = [
+  {
+    id: "LP001",
+    description: "Adesão às práticas de leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP002",
+    description:
+      "Análise de textos legais/normativos, propositivos e reivindicatórios",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP003",
+    description: "Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP004",
+    description: "Apreciação e réplica / Relação entre gêneros e mídias",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP005",
+    description: "Apreciação estética/Estilo",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP006",
+    description:
+      "Argumentação: movimentos argumentativos, tipos de argumento e força argumentativa",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP007",
+    description: "Aspectos não linguísticos (paralinguísticos) no ato da fala",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP008",
+    description: "Características da conversação espontânea",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP009",
+    description: "Coesão",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP010",
+    description: "Compreensão",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP011",
+    description: "Compreensão de textos orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP012",
+    description: "Compreensão em leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP013",
+    description: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP014",
+    description: "Conhecimento do alfabeto do português do Brasil",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP015",
+    description:
+      "Conhecimento do alfabeto do português do Brasil/Ordem alfabética/Polissemia",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP016",
+    description:
+      "Consideração das condições de produção de textos de divulgação científica / Estratégias de escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP017",
+    description:
+      "Consideração das condições de produção / Estratégias de produção: planejamento, textualização e revisão/edição",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP018",
+    description: "Construção composicional",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP019",
+    description:
+      "Construção composicional  / Elementos paralinguísticos e cinésicos Apresentações orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP020",
+    description:
+      "Construção composicional e estilo Gêneros de divulgação científica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP021",
+    description: "Construção da textualidade",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP022",
+    description: "Construção da textualidade Relação entre textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP023",
+    description: "Construção do sistema alfabético",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP024",
+    description: "Construção do sistema alfabético e da ortografia",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP025",
+    description: "Construção do sistema alfabético / Convenções da escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP026",
+    description:
+      "Construção do sistema alfabético / Estabelecimento de relações anafóricas na referenciação e construção da coesão",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP027",
+    description: "Contagem de histórias",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP028",
+    description:
+      "Contexto de produção, circulação e recepção de textos e práticas relacionadas à defesa de direitos e à participação social",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP029",
+    description: "Conversação espontânea",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP030",
+    description: "Correspondência fonema-grafema",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP031",
+    description: "Curadoria de informação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP032",
+    description: "Declamação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP033",
+    description: "Decodificação/Fluência de leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP034",
+    description: "Discurso direto e indireto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP035",
+    description: "Discussão oral",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP036",
+    description: "Edição de textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP037",
+    description: "Efeito de sentido",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP038",
+    description: "Efeitos de sentido",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP039",
+    description: "Efeitos de sentido Exploração da multissemiose",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP040",
+    description: "Elementos notacionais da escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP041",
+    description: "Elementos notacionais da escrita/morfossintaxe",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP042",
+    description: "Escrita autônoma",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP043",
+    description: "Escrita autônoma e compartilhada",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP044",
+    description: "Escrita colaborativa",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP045",
+    description: "Escrita compartilhada",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP046",
+    description: "Escuta atenta",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP047",
+    description: "Escuta de textos orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP048",
+    description:
+      "Escuta / Apreender o sentido geral dos textos Apreciação e réplica Produção/Proposta",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP049",
+    description: "Estilo",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP050",
+    description: "Estratégia de leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP051",
+    description: "Estratégia de leitura Distinção de fato e opinião",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP052",
+    description:
+      "Estratégia de leitura: apreender os sentidos globais do texto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP053",
+    description:
+      "Estratégia de leitura: apreender os sentidos globais do texto / Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP054",
+    description:
+      "Estratégia de leitura: identificação de teses e argumentos / Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP055",
+    description:
+      "Estratégia de produção: planejamento de textos argumentativos e apreciativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP056",
+    description: "Estratégia de produção: planejamento de textos informativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP057",
+    description:
+      "Estratégia de produção: planejamento de textos reivindicatórios ou propositivos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP058",
+    description: "Estratégia de produção: textualização de textos informativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP059",
+    description: "Estratégias de escrita: textualização, revisão e edição",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP060",
+    description: "Estratégias de leitura Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP061",
+    description: "Estratégias de produção",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP062",
+    description:
+      "Estratégias de produção: planejamento de textos argumentativos e apreciativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP063",
+    description: "Estratégias de produção: planejamento de textos informativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP064",
+    description:
+      "Estratégias de produção: planejamento e participação em debates regrados",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP065",
+    description:
+      "Estratégias de produção: planejamento e produção de apresentações orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP066",
+    description:
+      "Estratégias de produção: planejamento, realização e edição de entrevistas orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP067",
+    description:
+      "Estratégias de produção: planejamento, textualização, revisão e edição de textos publicitários",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP068",
+    description:
+      "Estratégias e procedimentos de leitura em textos legais e normativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP069",
+    description:
+      "Estratégias e procedimentos de leitura em textos reivindicatórios ou propositivos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP070",
+    description:
+      "Estratégias e procedimentos de leitura Relação do verbal com outras semioses / Procedimentos e gêneros de apoio à compreensão",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP071",
+    description:
+      "Estratégias, procedimentos de leitura em textos reivindicatórios ou propositivos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP072",
+    description: "Figuras de linguagem",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP073",
+    description: "Fono-ortografia",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP074",
+    description: "Forma de composição de gêneros orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP075",
+    description: "Forma de composição de textos dramáticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP076",
+    description: "Forma de composição de textos poéticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP077",
+    description: "Forma de composição de textos poéticos visuais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP078",
+    description: "Forma de composição do texto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP079",
+    description: "Forma de composição dos textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP080",
+    description:
+      "Forma de composição dos textos  / Adequação do texto às normas de escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP081",
+    description: "Forma de composição dos textos  / Coesão e articuladores",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP082",
+    description:
+      "Forma de composição dos textos / Adequação do texto às normas de escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP083",
+    description: "Forma de composição dos textos / Coesão e articuladores",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP084",
+    description:
+      "Forma de composição dos textos/Adequação do texto às normas de escrita",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP085",
+    description: "Formação de leitor",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP086",
+    description: "Formação do leitor literário",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP087",
+    description: "Formação do leitor literário/ Leitura multissemiótica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP088",
+    description: "Formação do leitor literário/Leitura multissemiótica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP089",
+    description: "Formas de composição de narrativas",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP090",
+    description: "Formas de composição de textos poéticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP091",
+    description: "Formas de composição de textos poéticos visuais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP092",
+    description: "Imagens analíticas em textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP093",
+    description: "Leitura colaborativa e autônoma",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP094",
+    description: "Leitura de imagens em narrativas visuais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP095",
+    description: "Léxico/morfologia",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP096",
+    description: "Marcas linguísticas Intertextualidade",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP097",
+    description: "Modalização",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP098",
+    description: "Morfologia",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP099",
+    description: "Morfologia/Morfossintaxe",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP100",
+    description: "Morfossintaxe",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP101",
+    description: "Movimentos argumentativos e força dos argumentos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP102",
+    description: "Oralidade pública/Intercâmbio conversacional em sala de aula",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP103",
+    description:
+      "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP104",
+    description: "Performances orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP105",
+    description: "Pesquisa",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP106",
+    description: "Planejamento de texto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP107",
+    description: "Planejamento de texto oral Exposição oral",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP108",
+    description: "Planejamento de texto oral / Exposição oral",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP109",
+    description: "Planejamento de texto/Progressão temática e paragrafação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP110",
+    description:
+      "Planejamento de textos de peças publicitárias de campanhas sociais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP111",
+    description: "Planejamento e produção de entrevistas orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP112",
+    description: "Planejamento e produção de texto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP113",
+    description: "Planejamento e produção de textos jornalísticos orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP114",
+    description: "Pontuação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP115",
+    description: "Procedimentos de apoio à compreensão Tomada de nota",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP116",
+    description: "Produção de texto",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP117",
+    description: "Produção de texto oral",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP118",
+    description: "Produção de textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP119",
+    description: "Produção de textos jornalísticos orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP120",
+    description: "Produção de textos orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP121",
+    description: "Produção de textos orais Oralização",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP122",
+    description: "Produção e edição de textos publicitários",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP123",
+    description: "Protocolos de leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP124",
+    description:
+      "Reconstrução da textualidade e compreensão dos efeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP125",
+    description:
+      "Reconstrução da textualidade / Efeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP126",
+    description:
+      "Reconstrução das condições de produção e circulação e adequação do texto à construção composicional e ao estilo de gênero (Lei, código, estatuto, código, regimento etc.)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP127",
+    description: "Reconstrução das condições de produção e recepção de textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP128",
+    description:
+      "Reconstrução das condições de produção e recepção dos textos e adequação do texto à construção composicional e ao estilo de gênero",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP129",
+    description:
+      "Reconstrução das condições de produção, circulação e recepção / Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP130",
+    description:
+      "Reconstrução do contexto de produção, circulação e recepção de textos legais e normativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP131",
+    description:
+      "Reconstrução do contexto de produção, circulação e recepção de textos / Caracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP132",
+    description:
+      "Recursos linguísticos e semióticos que operam nos textos pertencentes aos gêneros literários",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP133",
+    description: "Registro",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP134",
+    description:
+      "Relação do texto com o contexto de produção e experimentação de papéis sociais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP135",
+    description:
+      "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros (carta de solicitação, carta de reclamação, petição on-line, carta aberta, abaixo-assinado, proposta etc.) / Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP136",
+    description:
+      "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros / Apreciação e réplica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP137",
+    description: "Relação entre textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP138",
+    description: "Relato oral/Registro formal e informal",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP139",
+    description: "Revisão de textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP140",
+    description: "Revisão/edição de texto informativo e opinativo",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP141",
+    description:
+      "Segmentação de palavras/Classificação de palavras por número de sílabas",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP142",
+    description: "Semântica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP143",
+    description: "Semântica Coesão",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP144",
+    description: "Sequências textuais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP145",
+    description: "Sinonímia e antonímia/Morfologia/Pontuação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP146",
+    description: "Sintaxe",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP147",
+    description: "Textos dramáticos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP148",
+    description: "Textualização",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP149",
+    description: "Textualização de textos argumentativos e apreciativos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP150",
+    description: "Textualização Progressão temática",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP151",
+    description: "Textualização, revisão e edição",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP152",
+    description:
+      "Textualização, tendo em vista suas condições de produção, as características do gênero em questão, o estabelecimento de coesão, adequação à norma-padrão e o uso adequado de ferramentas de edição",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP153",
+    description:
+      "Usar adequadamente ferramentas de apoio a apresentações orais",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP154",
+    description: "Utilização de tecnologia digital",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP155",
+    description: "Variação linguística  ",
+    created: new Date(Date()).toISOString(),
+  },
+]; */
+
+const unitsArray: Array<fieldsDto> = [
+  {
+    id: "LP01",
+    description: "Escrita (compartilhada e autônoma)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP02",
+    description: "Análise linguística/semiótica (Alfabetização)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP03",
+    description: "Leitura/escuta (compartilhada e autônoma)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP04",
+    description: "Oralidade",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP05",
+    description: "Análise linguística/semiótica (Ortografização)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP06",
+    description: "Produção de textos (escrita compartilhada e autônoma)",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP07",
+    description: "Leitura",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP08",
+    description: "Análise linguística/semiótica",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP09",
+    description: "Produção de textos",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "LP10",
+    description:
+      "Oralidade(Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo)",
+    created: new Date(Date()).toISOString(),
+  },
+];
+
+const fieldsArray: Array<fieldsDto> = [
+  {
+    id: "01",
+    description: "Todos os campos de atuação",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "02",
+    description: "Campo da vida cotidiana",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "03",
+    description: "Campo da vida pública",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "04",
+    description: "Campo das práticas de estudo e pesquisa",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "05",
+    description: "Campo artístico-literário",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "06",
+    description: "Campo jornalístico/midiático",
+    created: new Date(Date()).toISOString(),
+  },
+  {
+    id: "07",
+    description: "Campo de atuação na vida pública",
+    created: new Date(Date()).toISOString(),
+  },
+];
+
+interface competencesdto {
+  id: string;
+  name: string;
+  created?: string;
+}
+
+const competencesArray: Array<competencesdto> = [
+  {
+    id: "LP",
+    name: "Língua Portuguesa",
+  },
+  {
+    id: "AR",
+    name: "Arte",
+  },
+  {
+    id: "EF",
+    name: "Educação Física",
+  },
+  {
+    id: "LI",
+    name: "Língua Inglesa",
+  },
+  {
+    id: "MA",
+    name: "Matemática",
+  },
+  {
+    id: "CI",
+    name: "Ciências",
+  },
+  {
+    id: "GE",
+    name: "Geografia",
+  },
+  {
+    id: "HI",
+    name: "História",
+  },
+  {
+    id: "ER",
+    name: "Ensino Religioso",
+  },
+];
+
+interface groupYearDto {
+  id: string;
+  description: string;
+}
+
+const groupYearArray: Array<groupYearDto> = [
+  {
+    id: "01",
+    description: "1º",
+  },
+  {
+    id: "12",
+    description: "1º, 2º",
+  },
+  {
+    id: "15",
+    description: "1º, 2º, 3º, 4º, 5º",
+  },
+  {
+    id: "02",
+    description: "2º",
+  },
+  {
+    id: "03",
+    description: "3º",
+  },
+  {
+    id: "35",
+    description: "3º, 4º, 5º",
+  },
+  {
+    id: "04",
+    description: "4º",
+  },
+  {
+    id: "5",
+    description: "5º",
+  },
+  {
+    id: "06",
+    description: "6º",
+  },
+  {
+    id: "67",
+    description: "6º, 7º",
+  },
+  {
+    id: "69",
+    description: "6º, 7º, 8º, 9º",
+  },
+  {
+    id: "07",
+    description: "7º",
+  },
+  {
+    id: "08",
+    description: "8º",
+  },
+  {
+    id: "89",
+    description: "8º, 9º",
+  },
+  {
+    id: "09",
+    description: "9º",
+  },
+];
 interface portuguesDto {
   id: string;
   competences: string;
-  group_year_id: string;
   group_years: string;
   field: string;
   unit: string;
@@ -16,14 +3384,12 @@ interface portuguesDto {
 const portuguesSeed: Array<portuguesDto> = [
   {
     id: "EF01LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP03",
     object: "Protocolos de leitura",
-    skill:
-      "(EF01LP01) Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+    skill: "EF01LP01",
     comment:
       "O momento de leitura em voz alta de materiais impressos e digitais, feita pelo professor, terá o papel de modelizar procedimentos de leitura, entre eles, o que se refere a esta habilidade. Esta habilidade também é parte do processo de aquisição do sistema de escrita, porque o procedimento de apontar o que está sendo lido oferece pistas sobre a relação entre fala e escrita.",
     resume:
@@ -31,14 +3397,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP01",
     object: "Correspondência fonema-grafema",
-    skill:
-      "(EF01LP02) Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
+    skill: "EF01LP02",
     comment:
       "A escrita espontânea deve acontecer a partir de textos (listas, trechos de parlendas etc.) desde o início do 1º ano, de modo permanente. Escrevendo e analisando suas produções, pensando como grafar determinadas palavras, tendo escritas convencionais como referência, os estudantes vão, progressivamente, utilizando as letras que representam os fonemas. É possível chegar à compreensão da base alfabética até o final do 2º ano.",
     resume:
@@ -46,14 +3410,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP01",
     object: "Construção do sistema alfabético/ Convenções da escrita",
-    skill:
-      "(EF01LP03) Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
+    skill: "EF01LP03",
     comment:
       "A observação e análise de escritas acontece tanto para reconhecer partes iguais de duas palavras (na lista de nomes: MARIANA e MARIA) quanto para identificar semelhanças gráficas em partes de textos que se relacionam do ponto de vista sonoro, como as rimas de um poema. Os textos de referência para atividades como estas devem ser conhecidos pelos estudantes. O procedimento de comparação é recurso a ser utilizado na produção de novas escritas.",
     resume:
@@ -61,14 +3423,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Conhecimento do alfabeto do português do Brasil",
-    skill:
-      "(EF01LP04) Distinguir as letras do alfabeto de outros sinais gráficos.",
+    skill: "EF01LP04",
     comment:
       "Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras (princípio acrofônico) acontece gradualmente, com reorganizações constantes até a produção de escritas ortográficas. O princípio acrofônico é compreendido em atividades de escrita, quando a escolha da letra e a sua nomeação o evidenciam.",
     resume:
@@ -76,14 +3436,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético",
-    skill:
-      "(EF01LP05) Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
+    skill: "EF01LP05",
     comment:
       "A associação de uma marca gráfica (seja letra ou não) a cada emissão sonora de uma palavra (sílaba oral) já representa indícios do processo de fonetização que, neste momento, não compreende a reanálise da sílaba em unidades menores nem, portanto, o estabelecimento de relação entre fonema-letra/grafema. Aos poucos, por meio da reflexão reiterada sobre a escrita, será possível que isso aconteça, chegando-se ao uso das letras convencionais.",
     resume:
@@ -91,13 +3449,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill: "(EF01LP06) Segmentar oralmente palavras em sílabas.",
+    skill: "EF01LP06",
     comment:
       "Essa habilidade compreende a identificação das emissões vocais que compõem a palavra falada — as sílabas —, o que acontece, no processo de compreensão do sistema, tão logo o estudante compreende a relação entre a fala e a escrita, sendo conhecimento fonológico precoce no processo de alfabetização. Em situações de leitura e escrita, essa habilidade funciona como procedimento de controle do registro e ajuste do falado ao escrito.",
     resume:
@@ -105,13 +3462,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill: "(EF01LP07) Identificar fonemas e sua representação por letras.",
+    skill: "EF01LP07",
     comment:
       "Trata-se de habilidade desenvolvida progressivamente, pelo uso da linguagem em situações de leitura e escrita de textos diversos, especialmente as parlendas, os poemas e as cantigas. À medida em que os estudantes avançam na compreensão do sistema de escrita, vão realizando análises fonológicas cada vez mais ajustadas, tanto na palavra quanto na sílaba, até chegar ao fonema.",
     resume:
@@ -119,14 +3475,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF01LP08) Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
+    skill: "EF01LP08",
     comment:
       "Trata-se de habilidade desenvolvida, progressivamente, pelo uso da linguagem em situações de leitura e escrita de textos diversos. À medida que os estudantes avançam na compreensão do sistema de escrita, vão realizando análises fonológicas cada vez mais ajustadas, tanto na palavra quanto na sílaba, até chegar ao fonema.",
     resume:
@@ -134,14 +3488,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF01LP09) Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas iniciais.",
+    skill: "EF01LP09",
     comment:
       "Esta habilidade remete à análise fonológica que deve ser orientada no processo de alfabetização. A progressão evolui da análise de palavras presentes em textos conhecidos para refletir sobre as características do sistema de escrita, para a análise de palavras que compõem, por exemplo, um acervo selecionado para discutir determinada regularidade ortográfica, de modo que a reflexão acontece no âmbito dos estudos sobre a convenção da escrita.",
     resume:
@@ -149,14 +3501,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Conhecimento do alfabeto do português do Brasil",
-    skill:
-      "(EF01LP10) Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+    skill: "EF01LP10",
     comment:
       "Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras acontece, gradualmente, com reorganizações constantes até a produção de escritas ortográficas.",
     resume:
@@ -164,14 +3514,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
-    skill:
-      "(EF01LP11) Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
+    skill: "EF01LP11",
     comment:
       "O trabalho formal com essa habilidade acontece após o momento em que os estudantes compreendem as regras de geração do sistema de escrita. Contudo, no contato com os textos impressos e digitais há uma aproximação a essas habilidades.",
     resume:
@@ -179,15 +3527,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object:
       "Segmentação de palavras/Classificação de palavras por número de sílabas",
-    skill:
-      "(EF01LP12) Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+    skill: "EF01LP12",
     comment:
       "Para segmentar o texto em palavras, o aprendiz deverá articular as referências de palavras que constituiu a partir da fala — baseadas na prosódia — com as referências obtidas a partir dos textos escritos — conjunto de letras delimitado por espaços em branco ou sinais de pontuação. É nessa articulação que se constituem os critérios de segmentação pelo estudante.",
     resume:
@@ -195,14 +3541,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético",
-    skill:
-      "(EF01LP13) Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+    skill: "EF01LP13",
     comment:
       "Esta habilidade remete à análise fonológica que deve ser orientada no processo de alfabetização. A progressão evolui da análise de palavras presentes em textos conhecidos para refletir sobre as características do sistema de escrita, para a análise de palavras que compõem, por exemplo, um acervo selecionado para discutir determinada regularidade ortográfica, de modo que a reflexão acontece no âmbito dos estudos sobre a convenção da escrita.",
     resume:
@@ -210,14 +3554,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Pontuação",
-    skill:
-      "(EF01LP14) Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
+    skill: "EF01LP14",
     comment:
       "Apesar de esta habilidade não se referir aos sinais gráficos de acentuação, é possível inclui-los junto com os sinais de pontuação, como outras marcas gráficas que um texto/palavra apresenta e que o aluno deve reconhecer. Trata-se do início de ampliação organizada do olhar do aluno para além do sistema alfabético de escrita.",
     resume:
@@ -225,14 +3567,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "01",
+    unit: "LP02",
     object: "Sinonímia e antonímia/Morfologia/Pontuação",
-    skill:
-      "(EF01LP15) Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
+    skill: "EF01LP15",
     comment:
       "Esta habilidade prevê reconhecer relações de sinonímia e antonímia por comparação de palavras a partir de uma determinada relação. É importante que a relação seja apresentada em textos, para que o sentido das palavras seja apreendido na acepção adequada.",
     resume:
@@ -240,14 +3580,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF01LP16) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    skill: "EF01LP16",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos.  Atentar para o fato de que o trabalho previsto é em colaboração, e não de modo autônomo.",
     resume:
@@ -255,14 +3593,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "02",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF01LP17) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    skill: "EF01LP17",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero em foco e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser trabalhadas separadamente, e significam organizar as ideias para depois colocá-las no papel. Os gêneros a serem trabalhados englobam aqueles relativos ao campo da vida cotidiana.",
     resume:
@@ -270,14 +3606,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "02",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF01LP18) Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF01LP18",
     comment:
       "O registro realizado coletivamente pelo professor, quando o texto é ditado pelos estudantes, permite observar tanto características do sistema de escrita quanto da textualidade (em especial no caso dos textos que não se sabe de cor). Quando situado em um projeto de escrita, também o contexto de produção e as implicações para o texto são tematizados. O trabalho coletivo e em grupo modeliza procedimentos de escrita e otimiza a circulação de informações.",
     resume:
@@ -285,14 +3619,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "01",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF01LP19) Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.",
+    skill: "EF01LP19",
     comment:
       "Trata-se de habilidade que envolve a leitura e a compreensão do texto a ser recitado, para que o estudante, conhecendo os sentidos do texto, possa ler/recitar/declamar com maior fluência, entonação adequada e utilização de recursos paratextuais. A habilidade favorece, ainda, a reflexão sobre o sistema de escrita, pois a busca pelas rimas propicia o ajuste entre aspectos sonoros e escritos.",
     resume:
@@ -300,14 +3632,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "02",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF01LP20) Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    skill: "EF01LP20",
     comment:
       "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -315,14 +3645,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo da vida pública",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "03",
+    unit: "LP01",
     object: "Escrita compartilhada",
-    skill:
-      "(EF01LP21) Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF01LP21",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo da atuação cidadã em jogo e dois vetores do processo de escrita (situação/tema ou assunto). A habilidade prevê a colaboração dos colegas e professores na produção do texto, que envolve organizar as ideias e utilizar a consciência do que significa viver em comunidade para depois escrevê-las em formato de lista.",
     resume:
@@ -330,14 +3658,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "04",
+    unit: "LP01",
     object: "Produção de textos",
-    skill:
-      "(EF01LP22) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, diagramas, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF01LP22",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo investigativo e três vetores do processo de escrita (situação/tema ou assunto/finalidade). E envolve ao menos duas operações distintas: planejar e produzir, que podem ser tratadas em separado, e significam organizar as ideias para depois colocá-las no papel. A ajuda do professor refere-se à atuação como escriba do texto, podendo orientar o trabalho das duplas.",
     resume:
@@ -345,14 +3671,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "01",
+    field: "04",
+    unit: "LP04",
     object: "Planejamento de texto oral Exposição oral",
-    skill:
-      "(EF01LP23) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF01LP23",
     comment:
       "O foco desta habilidade é a produção de áudios ou vídeos de gêneros investigativos a serem veiculados em mídias digitais. E envolve duas operações complexas sucessivas — planejar e produzir textos desses gêneros — articuladas com três vetores da produção textual: a situação comunicativa; o tema ou assunto; a finalidade da produção. Observar que o trabalho é em colaboração e com a ajuda do professor, tanto para a pesquisa e estudos realizados quanto para a produção do texto oral.",
     resume:
@@ -360,15 +3684,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "04",
+    unit: "LP02",
     object:
       "Forma de composição dos textos/Adequação do texto às normas de escrita",
-    skill:
-      "(EF01LP24) Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    skill: "EF01LP24",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -376,14 +3698,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo artístico-literário",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "01",
+    field: "05",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF01LP25) Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor, histórias imaginadas ou baseadas em livros de imagens, observando a forma de composição de textos narrativos (personagens, enredo, tempo e espaço).",
+    skill: "EF01LP25",
     comment:
       "Esta habilidade diz respeito a produzir recontagens de histórias, ou seja, a partir das informações previamente adquiridas, elaborar narrativas. Ela prevê que o professor seja o responsável pelo registro das histórias dos alunos. O desenvolvimento dessa pode ser iniciada antes de o aluno saber escrever.",
     resume:
@@ -391,14 +3711,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF01LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "01",
-    group_years: "1º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "01",
+    field: "05",
+    unit: "LP02",
     object: "Formas de composição de narrativas",
-    skill:
-      "(EF01LP26) Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.",
+    skill: "EF01LP26",
     comment:
       "Esta habilidade refere-se a reconhecer — na leitura ou escuta — elementos básicos constitutivos dos textos narrativos do campo artístico-literário. Seu desenvolvimento permite ao aluno aprofundar a compreensão de narrativas e desenvolver capacidades de análise e crítica.",
     resume:
@@ -406,14 +3724,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "01",
+    unit: "LP03",
     object: "Decodificação/Fluência de leitura",
-    skill:
-      "(EF12LP01) Ler palavras novas com precisão na decodificação, no caso de palavras de uso frequente, ler globalmente, por memorização.",
+    skill: "EF12LP01",
     comment:
       "A habilidade pode orientar a leitura de duas maneiras: a) quando se trata de alunos que estão em processo de construção do sistema, por meio da leitura colaborativa de textos conhecidos de memória, realizando ajuste do texto falado ao seu registro gráfico; b) quando se trata dos alunos que já compreenderam o sistema (o que pode ocorrer até o final do 2º ano), com precisão na decodificação.",
     resume:
@@ -421,14 +3737,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "01",
+    unit: "LP03",
     object: "Formação de leitor",
-    skill:
-      "(EF12LP02) Buscar, selecionar e ler, com a mediação do professor (leitura compartilhada), textos que circulam em meios impressos ou digitais, de acordo com as necessidades e interesses.",
+    skill: "EF12LP02",
     comment:
       "No trabalho com leitura, é preciso ensinar procedimentos e comportamentos leitores: ambos implicam a mobilização das diversas habilidades de leitura.A leitura compartilhada é uma atividade que potencializa esse trabalho: explicita como agem os leitores proficientes na leitura.Ao selecionar temas pertinentes para o ensino, convém considerar os que são do interesse dos alunos e os que são relevantes para a compreensão da realidade vivida.",
     resume:
@@ -436,15 +3750,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Todos os campos de atuação",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "01",
+    unit: "LP01",
     object:
       "Construção do sistema alfabético/ Estabelecimento de relações anafóricas na referenciação e construção da coesão",
-    skill:
-      "(EF12LP03) Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação.",
+    skill: "EF12LP03",
     comment:
       "Esta habilidade consiste em observar e reproduzir pequenos textos, e é útil como recurso para chamar a atenção do aluno para aspectos como pontuação, acentuação, presença de letra maiúscula, paragrafação e distribuição gráfica de suas partes, entre outros.",
     resume:
@@ -452,14 +3764,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF12LP04) Ler e compreender, em colaboração com os colegas e com a ajuda do professor ou já com certa autonomia, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    skill: "EF12LP04",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o desenvolvimento de habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos.No que se refere à progressão da aprendizagem, atentar para o fato de que a formulação da habilidade já implica um critério: o grau de autonomia do aluno (leitura em colaboração; leitura autônoma).",
     resume:
@@ -467,14 +3777,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "02",
+    unit: "LP01",
     object: "Escrita compartilhada",
-    skill:
-      "(EF12LP05) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, (re)contagens de histórias, poemas e outros textos versificados (letras de canção, quadrinhas, cordel), poemas visuais, tiras e histórias em quadrinhos, dentre outros gêneros do campo artístico-literário, considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF12LP05",
     comment:
       "Esta é uma habilidade diretamente relacionada à construção da textualidade. Articula a produção do texto com o gênero do campo artístico-literário e dois vetores do processo de escrita (situação/finalidade), comportando ao menos duas etapas — planejamento e escrita, que significam organizar as ideias para depois colocá-las no papel — passíveis de tratamento em etapas sucessivas. Poderá ser desmembrada em habilidades que prevejam: a) planejar e recontar histórias; b) planejar e produzir escrita das histórias recontadas, por ditado ao professor e/ou colegas; c) planejar e escrever textos versificados conhecidos de memória (coletivamente, em duplas ou de modo autônomo), como letras de canção, quadrinhas e cordel. Todas as habilidades podem indicar a revisão processual do texto.",
     resume:
@@ -482,14 +3790,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "12",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF12LP06) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, recados, avisos, convites, receitas, instruções de montagem, dentre outros gêneros do campo da vida cotidiana, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF12LP06",
     comment:
       "Trata-se de uma habilidade que articula escrita e oralização da escrita, considerando, ainda, o gênero do campo da vida cotidiana a ser produzido e três vetores da produção, seja escrita, seja oral (situação/tema ou assunto/finalidade).",
     resume:
@@ -497,14 +3803,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "12",
+    field: "02",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF12LP07) Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido.",
+    skill: "EF12LP07",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível reproduzi-los em atividades de escrita e reescrita, assim como de criá-los em atividades de produção de textos. Esta habilidade envolve, portanto, a oralização dos textos previstos, com o objetivo de evidenciar seus padrões rítmicos e sonoros.",
     resume:
@@ -512,14 +3816,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF12LP08) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF12LP08",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo jornalístico (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê tanto a colaboração quanto a realização com autonomia, o que pode ser tomado, nos currículos locais, como critério para a progressão da aprendizagem ao longo dos dois primeiros anos.",
     resume:
@@ -527,14 +3829,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF12LP09) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF12LP09",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo publicitário (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê apenas a realização em colaboração. Assim, pode-se considerar o movimento metodológico básico, excluindo-se a realização com autonomia. (trabalho coletivo ® grupos ® duplas).",
     resume:
@@ -542,14 +3842,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF12LP10) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, cartazes, avisos, folhetos, regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF12LP10",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da atuação cidadã (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê apenas a realização em colaboração, excluindo-se a realização com autonomia.",
     resume:
@@ -557,14 +3855,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP01",
     object: "Escrita compartilhada",
-    skill:
-      "(EF12LP11) Escrever, em colaboração com os colegas e com a ajuda do professor, fotolegendas em notícias, manchetes e lides em notícias, álbum de fotos digital noticioso e notícias curtas para público infantil, digitais ou impressos, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF12LP11",
     comment:
       "Esta é uma habilidade que articula a produção textual com os gêneros do campo jornalístico em foco e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -572,14 +3868,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP01",
     object: "Escrita compartilhada",
-    skill:
-      "(EF12LP12) Escrever, em colaboração com os colegas e com a ajuda do professor, slogans, anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil, dentre outros gêneros do campo publicitário, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    skill: "EF12LP12",
     comment:
       "Trata-se de uma habilidade que articula a produção de textos dos gêneros do campo publicitário em foco a três vetores do processo de escrita (situação/tema ou assunto/finalidade). A habilidade prevê a colaboração dos colegas e professores na produção do texto, que envolve organizar as ideias e utilizar a criatividade para depois escrevê-las.",
     resume:
@@ -587,14 +3881,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF12LP13) Planejar, em colaboração com os colegas e com a ajuda do professor, slogans e peça de campanha de conscientização destinada ao público infantil que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF12LP13",
     comment:
       "Esta habilidade incide sobre a produção de textos (orais/escritos) do gênero campanha de conscientização.  A habilidade articula as atividades escolares relativas a três vetores próprios da produção textual: situação de comunicação, tema ou assunto e finalidade. Além disso, requer duas operações: planejar e produzir os textos dos gêneros estudados.",
     resume:
@@ -602,14 +3894,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF12LP14) Identificar e reproduzir, em fotolegendas de notícias, álbum de fotos digital noticioso, cartas de leitor (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    skill: "EF12LP14",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos de expressão que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -617,14 +3907,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF12LP15) Identificar a forma de composição de slogans publicitários.",
+    skill: "EF12LP15",
     comment:
       "Esta habilidade articula-se com a (EF12LP16) e só se desenvolve adequadamente no interior de práticas de leitura e análise de textos publicitários. Seu foco é reconhecer recursos linguístico-discursivos envolvidos em slogans, garantindo ao aluno não só compreender melhor as particularidades dos textos desse campo, mas, ainda, empregar os recursos correspondentes em suas próprias produções.",
     resume:
@@ -632,14 +3920,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "12",
+    field: "03",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF12LP16) Identificar e reproduzir, em anúncios publicitários e textos de campanhas de conscientização destinados ao público infantil (orais e escritos, digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros, inclusive o uso de imagens.",
+    skill: "EF12LP16",
     comment:
       "Estreitamente articulada à (EF12LP15), esta habilidade tem como foco que o aluno reconheça recursos gráficos próprios dos gêneros mencionados, com vistas à sua apropriação. Seu desenvolvimento só se dá no interior de práticas de leitura, análise e produção desses textos, permitindo que o aluno venha a empregá-los adequadamente em sua própria escrita.",
     resume:
@@ -647,14 +3933,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "04",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF12LP17) Ler e compreender, em colaboração com os colegas e com a ajuda do professor, enunciados de tarefas escolares, diagramas, curiosidades, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, entre outros gêneros do campo investigativo, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF12LP17",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros investigativos (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. A habilidade prevê tanto a colaboração quanto a realização autônoma. Assim, é preciso considerar a gradação ao longo dos dois anos.",
     resume:
@@ -662,14 +3946,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "12",
+    field: "05",
+    unit: "LP03",
     object: "Apreciação estética/Estilo",
-    skill:
-      "(EF12LP18) Apreciar poemas e outros textos versificados, observando rimas, sonoridades, jogos de palavras, reconhecendo seu pertencimento ao mundo imaginário e sua dimensão de encantamento, jogo e fruição.",
+    skill: "EF12LP18",
     comment:
       "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos diferentes gêneros poéticos.  A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam da leitura colaborativa para a autônoma.",
     resume:
@@ -677,14 +3959,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF12LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "12",
-    group_years: "1º, 2º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "12",
+    field: "05",
+    unit: "LP02",
     object: "Formas de composição de textos poéticos",
-    skill:
-      "(EF12LP19) Reconhecer, em textos versificados, rimas, sonoridades, jogos de palavras, palavras, expressões, comparações, relacionando-as com sensações e associações.",
+    skill: "EF12LP19",
     comment:
       "Esta habilidade refere-se a — no processo de leitura de textos — identificar recursos linguísticos e discursivos que constituem os gêneros poéticos previstos. Fundamental para o desenvolvimento dessa habilidade é a oralização de tais textos, sem o que os aspectos relacionados à sonoridade e ao ritmo não podem ser observados.",
     resume:
@@ -692,14 +3972,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP03",
     object: "Reconstrução das condições de produção e recepção de textos",
-    skill:
-      "(EF15LP01) Identificar a função social de textos que circulam em campos da vida social dos quais participa cotidianamente (a casa, a rua, a comunidade, a escola) e nas mídias impressa, de massa e digital, reconhecendo para que foram produzidos, onde circulam, quem os produziu e a quem se destinam.",
+    skill: "EF15LP01",
     comment:
       "Esta habilidade refere-se à necessidade de o aluno identificar que os textos possuem funções diretamente relacionadas aos diversos campos de atuação da vida social em que se inserem e às diferentes mídias. Trata-se, portanto, de uma habilidade mais ampla, na qual se estudam os textos para procurar características dos gêneros e para estabelecer relações entre eles, os campos de atuação e sua organização interna.",
     resume:
@@ -707,14 +3985,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill:
-      "(EF15LP02) Estabelecer expectativas em relação ao texto que vai ler (pressuposições antecipadoras dos sentidos, da forma e da função social do texto), apoiando-se em seus conhecimentos prévios sobre as condições de produção e recepção desse texto, o gênero, o suporte e o universo temático, bem como sobre saliências textuais, recursos gráficos, imagens, dados da própria obra (índice, prefácio etc.), confirmando antecipações e inferências realizadas antes e durante a leitura de textos, checando a adequação das hipóteses realizadas.",
+    skill: "EF15LP02",
     comment:
       "O foco é a realização de antecipações, inferências e verificações ao longo do processo de leitura, a partir tanto da recuperação do contexto de produção e de recepção do texto a ser lido quanto do universo temático em jogo. É possível articular essas informações com pistas fornecidas pelo próprio texto, para realizar previsões sobre o conteúdo. Durante a leitura do texto, essa articulação permite inferir dados implícitos e verificar antecipações e inferências realizadas.",
     resume:
@@ -722,13 +3998,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill: "(EF15LP03) Localizar informações explícitas em textos.",
+    skill: "EF15LP03",
     comment:
       "As informações explícitas em um texto são aquelas que estão, literalmente, expressas no texto, seja ele oral ou escrito. Localizá-las, portanto, no caso do texto escrito, requer do aluno que leia o enunciado e a identifique. Muitos consideram essa habilidade como a menos complexa. É preciso considerar, no entanto, que localizar informações não ocorre no vazio, mas a partir do texto. Assim, é tarefa que pode ser tão complexa quanto o próprio texto.",
     resume:
@@ -736,14 +4011,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill:
-      "(EF15LP04) Identificar o efeito de sentido produzido pelo uso de recursos expressivos gráfico-visuais em textos multissemióticos.",
+    skill: "EF15LP04",
     comment:
       "Os textos das diferentes esferas de atividade costumam apresentar diferentes recursos gráfico-visuais: boxes de complementação, linkagem ou de remissão; infográficos; negrito, itálico, letra capitular; uso de notas de rodapé; hiperlinks; som e movimento; cores, imagens; entre outros. A compreensão adequada do texto depende da identificação dos efeitos de sentido produzidos pelo uso de tais recursos, o que implica articulá-los ao texto verbal.",
     resume:
@@ -751,14 +4024,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP06",
     object: "Planejamento de texto",
-    skill:
-      "(EF15LP05) Planejar, com a ajuda do professor, o texto que será produzido, considerando a situação comunicativa, os interlocutores (quem escreve/para quem escreve); a finalidade ou o propósito (escrever para quê); a circulação (onde o texto vai circular); o suporte (qual é o portador do texto); a linguagem, organização e forma do texto e seu tema, pesquisando em meios impressos ou digitais, sempre que for preciso, informações necessárias à produção do texto, organizando em tópicos os dados e as fontes pesquisadas.",
+    skill: "EF15LP05",
     comment:
       "O foco da habilidade é o planejamento, entendido como etapa inicial do processo de produção do texto. Planejar diz respeito, então, a organizar ideias da pré-escrita levando em conta diversos fatores, como o objetivo do texto final, o público leitor etc. Trata-se de uma habilidade fundamental para que o aluno reconheça e considere os diferentes vetores da escrita. A habilidade pode ser desmembrada, nesse caso, envolvendo os dois tipos de planejamento e prevendo progressão (com e sem ajuda): a) planejar o conteúdo do texto de acordo com o gênero: criação do conteúdo temático (gêneros como: contos em geral, crônicas etc.) ou de pesquisa desse conteúdo (textos nos gêneros: notícia, verbetes, artigos em geral etc.); b) planejar o texto parte a parte, na ordem demandada pelo gênero trabalhado.",
     resume:
@@ -766,14 +4037,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP06",
     object: "Revisão de textos",
-    skill:
-      "(EF15LP06) Reler e revisar o texto produzido com a ajuda do professor e a colaboração dos colegas, para corrigi-lo e aprimorá-lo, fazendo cortes, acréscimos, reformulações, correções de ortografia e pontuação.",
+    skill: "EF15LP06",
     comment:
       "O foco da habilidade está nas etapas finais do processo de produção escrita, necessárias ao aprimoramento do texto. Reler e revisar diz respeito a observar a própria produção com atenção a detalhes de edição e aprimoramento do texto. Pode-se desmembrar a habilidade para contemplar a revisão processual e final, com e sem colaboração. É indicado hierarquizar a revisão de aspectos ligados à coerência (informações livres de contradições, completude de ideias etc.) e ao uso de elementos coesivos, como pontuação e organizadores textuais (presença de marcadores de tempo e outros que indiquem a progressão do texto), assim como dos aspectos ortográficos.",
     resume:
@@ -781,14 +4050,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP06",
     object: "Edição de textos",
-    skill:
-      "(EF15LP07) Editar a versão final do texto, em colaboração com os colegas e com a ajuda do professor, ilustrando, quando for o caso, em suporte adequado, manual ou digital.",
+    skill: "EF15LP07",
     comment:
       "O foco da habilidade incide sobre os cuidados com a circulação/publicação do texto em suportes impressos ou digitais. Editar, nesse caso, consiste em dar os toques finais à versão final de um texto produzido no que diz respeito à sua estruturação e também nos elementos que o rodeiam, seja em suporte manual ou digital. A habilidade pode ser antecipada por outras, que prevejam a edição do texto em parceria.",
     resume:
@@ -796,14 +4063,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP06",
     object: "Utilização de tecnologia digital",
-    skill:
-      "(EF15LP08) Utilizar software, inclusive programas de edição de texto, para editar e publicar os textos produzidos, explorando os recursos multissemióticos disponíveis.",
+    skill: "EF15LP08",
     comment:
       "O foco desta habilidade é o conhecimento e o domínio de ferramentas digitais na edição e publicação de textos. Assim, está estreitamente associada à habilidade (EF15LP07), na medida em que pressupõe a atividade de edição de texto (o que significa realizar a observação atenta de sua produção, fazendo as revisões e ajustes necessários) e de publicação do texto (ou seja, deixar a produção disponível para o acesso do leitor). Esta habilidade envolve a previsão de habilidades específicas para uso do software e para o gênero produzido/editado, considerando cada ano, assim como a utilização do software com ou sem ajuda do professor.",
     resume:
@@ -811,14 +4076,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP04",
     object: "Oralidade pública/Intercâmbio conversacional em sala de aula",
-    skill:
-      "(EF15LP09) Expressar-se em situações de intercâmbio oral com clareza, preocupando-se em ser compreendido pelo interlocutor e usando a palavra com tom de voz audível, boa articulação e ritmo adequado.",
+    skill: "EF15LP09",
     comment:
       "O desenvolvimento da habilidade requer a indicação dos discursos que devem ser aprendidos, de modo que as especificidades dos textos orais que circulam nessas situações tornem-se objeto de ensino. Considerar que expor oralmente o resultado de pesquisa realizada requer saberes diferenciados daqueles em que a proposta é opinar para tomar decisão coletiva, ou mesmo debater sobre aspectos controversos de um tema.",
     resume:
@@ -826,14 +4089,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP04",
     object: "Escuta atenta",
-    skill:
-      "(EF15LP10) Escutar, com atenção, falas de professores e colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    skill: "EF15LP10",
     comment:
       "Esta é uma habilidade muito relevante como suporte para a progressão nos estudos. E, ao contrário do que muitos supõem, pode e deve ser ensinada. A escuta atenta poderá ser desenvolvida em situações comunicativas (seminários, mesas-redondas, entre outras) que envolvam gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
     resume:
@@ -841,14 +4102,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP04",
     object: "Características da conversação espontânea",
-    skill:
-      "(EF15LP11) Reconhecer características da conversação espontânea presencial, respeitando os turnos de fala, selecionando e utilizando, durante a conversação, formas de tratamento adequadas, de acordo com a situação e a posição do interlocutor.",
+    skill: "EF15LP11",
     comment:
       "Fundamental para o convívio cotidiano, fora e dentro da escola, esta habilidade refere-se a saber organizar a sua fala no gênero indicado, considerando as características do contexto no qual está sendo produzida: a) que se organiza em tantos turnos quantos forem os interlocutores; b) que a efetividade da compreensão mútua depende da escuta efetiva do outro, como balizador da organização da próxima fala; c) que as escolhas dos recursos textuais e paratextuais precisam ser adequadas às intenções de significação e ao contexto da situação de comunicação.",
     resume:
@@ -856,14 +4115,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP04",
     object: "Aspectos não linguísticos (paralinguísticos) no ato da fala",
-    skill:
-      "(EF15LP12) Atribuir significado a aspectos não linguísticos (paralinguísticos) observados na fala, como direção do olhar, riso, gestos, movimentos da cabeça (de concordância ou discordância), expressão corporal, tom de voz.",
+    skill: "EF15LP12",
     comment:
       "A habilidade envolve o reconhecimento e a análise das expressões corporais associadas à fala, com o objetivo de determinar seu papel na construção dos sentidos dos textos orais.",
     resume:
@@ -871,14 +4128,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "01",
+    unit: "LP04",
     object: "Relato oral/Registro formal e informal",
-    skill:
-      "(EF15LP13) Identificar finalidades da interação oral em diferentes contextos comunicativos (solicitar informações, apresentar opiniões, informar, relatar experiências etc.).",
+    skill: "EF15LP13",
     comment:
       "Fundamental para o desenvolvimento da proficiência oral, esta habilidade efetiva-se em situações como: solicitar informações em espaços públicos, seminários, mesas-redondas, rodas de conversas etc. E envolve  gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
     resume:
@@ -886,14 +4141,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "02",
+    unit: "LP03",
     object: "Leitura de imagens em narrativas visuais",
-    skill:
-      "(EF15LP14) Construir o sentido de histórias em quadrinhos e tirinhas, relacionando imagens e palavras e interpretando recursos gráficos (tipos de balões, de letras, onomatopeias).",
+    skill: "EF15LP14",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características dos gêneros quadrinho e tirinha (organização interna; marcas linguísticas; conteúdo temático) dos textos a serem lidos. Quanto ao nível de autonomia, considera-se que é uma habilidade prevista para os 5 anos iniciais; assim, o ideal é prever leituras e análise em colaboração e, gradativamente, alcançar a autonomia.",
     resume:
@@ -901,14 +4154,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "05",
+    unit: "LP03",
     object: "Formação do leitor literário",
-    skill:
-      "(EF15LP15) Reconhecer que os textos literários fazem parte do mundo do imaginário e apresentam uma dimensão lúdica, de encantamento, valorizando-os, em sua diversidade cultural, como patrimônio artístico da humanidade.",
+    skill: "EF15LP15",
     comment:
       "A habilidade incide sobre a distinção entre textos literários e não literários, o que envolve a compreensão da natureza e dos objetivos das diferentes práticas de leitura, assim como dos pactos de leitura que se estabelecem. No que se refere ao nível de autonomia, atentar para o fato de que a formulação da habilidade prevê a progressão de sua aprendizagem ao longo dos anos iniciais.",
     resume:
@@ -916,14 +4167,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "05",
+    unit: "LP03",
     object: "Leitura colaborativa e autônoma",
-    skill:
-      "(EF15LP16) Ler e compreender, em colaboração com os colegas e com a ajuda do professor e, mais tarde, de maneira autônoma, textos narrativos de maior porte como contos (populares, de fadas, acumulativos, de assombração etc.) e crônicas.",
+    skill: "EF15LP16",
     comment:
       "Trata-se de uma habilidade complexa, que envolve tanto o trabalho com as habilidades de leitura como um todo quanto as características dos gêneros e dos textos literários narrativos de maior extensão. No que se refere ao nível de autonomia, atentar para o fato de que a formulação da habilidade prevê a progressão de sua aprendizagem ao longo dos anos iniciais.",
     resume:
@@ -931,14 +4180,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "05",
+    unit: "LP03",
     object: "Apreciação estética/Estilo",
-    skill:
-      "(EF15LP17) Apreciar poemas visuais e concretos, observando efeitos de sentido criados pelo formato do texto na página, distribuição e diagramação das letras, pelas ilustrações e por outros efeitos visuais.",
+    skill: "EF15LP17",
     comment:
       "Estreitamente associada à habilidade (EF12LP18), esta é uma habilidade complexa. Envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos poemas visuais e concretos.   A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
     resume:
@@ -946,14 +4193,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "15",
+    field: "05",
+    unit: "LP03",
     object: "Formação do leitor literário/Leitura multissemiótica",
-    skill:
-      "(EF15LP18) Relacionar texto com ilustrações e outros recursos gráficos.",
+    skill: "EF15LP18",
     comment:
       "Esta é uma habilidade complexa, que envolve o desenvolvimento das habilidades de leitura como um todo e as características de gêneros e textos diversos, incluindo recursos gráficos ou ilustrações. É especialmente importante na leitura de textos literários.  A formulação da habilidade supõe a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
     resume:
@@ -961,14 +4206,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF15LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "15",
-    group_years: "1º; 2º; 3º; 4º; 5º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "15",
+    field: "05",
+    unit: "LP04",
     object: "Contagem de histórias",
-    skill:
-      "(EF15LP19) Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor.",
+    skill: "EF15LP19",
     comment:
       "A habilidade envolve a leitura compreensiva e o estudo da obra a ser recontada, visando a apropriação de recursos como a entonação expressiva e a prosódia, que ajustam os discursos orais ao contexto.",
     resume:
@@ -976,14 +4219,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP01",
     object: "Construção do sistema alfabético/ Convenções da escrita",
-    skill:
-      "(EF02LP01) Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação.",
+    skill: "EF02LP01",
     comment:
       "A habilidade envolve diferentes conhecimentos gramaticais. Em relação ao uso da letra maiúscula em substantivos próprios, a análise da ocorrência nos nomes da turma e nos textos lidos pelo professor e acompanhado pelo grupo, e/ou lidos autonomamente, pode ser orientada. Já o uso da pontuação pode ser facilitado pelo ensino organizado em sequências didáticas que envolvam a análise das ocorrências e o uso da pontuação primeiro em situação de produção de texto e, em um segundo momento, de revisão textual.",
     resume:
@@ -991,14 +4232,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF02LP02) Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras.",
+    skill: "EF02LP02",
     comment:
       "Atividades para analisar partes de palavras e montar outras podem acontecer com textos conhecidos pelos estudantes, como os nomes da classe, situação em que a segmentação é favorecida pelo aspecto da contextualização e compreensão do princípio do sistema alfabético de que, ao mudar determinada parte de um nome, muda-se o nome (MARIO/MARI/ARI/IAM, RIAM).",
     resume:
@@ -1006,14 +4245,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF02LP03) Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra).",
+    skill: "EF02LP03",
     comment:
       "No que envolve as regulares diretas, o desenvolvimento da habilidade acontece pela prática da leitura e escrita de modo permanente. No caso das regulares contextuais, é pertinente a construção de regras de observação das semelhanças e diferenças; portanto, a habilidade pressupõe outras distintas, que envolvem procedimento de análise e registro das descobertas.",
     resume:
@@ -1021,14 +4258,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF02LP04) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, identificando que existem vogais em todas as sílabas.",
+    skill: "EF02LP04",
     comment:
       "Esta habilidade faz parte da compreensão do sistema de escrita e envolve a compreensão da ordem das letras na palavra e na sílaba, o que não costuma ser evidente para os estudantes. Recomenda-se que se priorize a análise e comparação entre escritas estáveis e as do aluno e, além disso, a análise de escritas diferentes de uma mesma palavra, realizadas em momentos distintos pelo aluno.",
     resume:
@@ -1036,14 +4271,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF02LP05) Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).",
+    skill: "EF02LP05",
     comment:
       "Essa habilidade envolve conhecimento das ocorrências de nasalização em grande parte das palavras da língua portuguesa. A análise, comparação e estabelecimento de diferenças são recomendadas neste caso, além das atividades de leitura e escrita.",
     resume:
@@ -1051,14 +4284,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Conhecimento do alfabeto do português do Brasil",
-    skill:
-      "(EF02LP06) Perceber o princípio acrofônico que opera nos nomes das letras do alfabeto.",
+    skill: "EF02LP06",
     comment:
       "Parei Trata-se de habilidade que se efetiva pelo contato com o material impresso e/ou digital, tanto pela prática de leitura do professor acompanhada pelo estudante, quanto pelo exercício de ler, ainda que sem saber, em interação com os colegas ou, ainda, nas atividades de escrita. A progressão da identificação das letras acontece, gradualmente, com reorganizações constantes até a produção de escritas ortográficas. O princípio acrofônico é compreendido em atividades de escrita, quando a escolha da letra e a sua nomeação o evidenciam.",
     resume:
@@ -1066,14 +4297,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
-    skill:
-      "(EF02LP07) Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.",
+    skill: "EF02LP07",
     comment:
       "Esta habilidade implica no reconhecimento das diferentes formas de registro gráfico das letras. Trata-se de habilidade a ser desenvolvida tão logo a compreensão do sistema de escrita tenha acontecido, e não antes disso. Na leitura, o reconhecimento da letra de imprensa maiúscula e minúscula é fundamental; mas, na escrita, a solicitação deve envolver apenas o uso de maiúscula. Na letra cursiva, a escrita deve envolver as duas modalidades.",
     resume:
@@ -1081,15 +4310,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object:
       "Segmentação de palavras/Classificação de palavras por número de sílabas",
-    skill:
-      "(EF02LP08) Segmentar corretamente as palavras ao escrever frases e textos.",
+    skill: "EF02LP08",
     comment:
       "Para segmentar o texto em palavras, o aluno deverá articular as referências de palavras que constituiu a partir da fala — baseadas na prosódia — com as obtidas a partir dos textos escritos — conjunto de letras delimitado por espaços em branco e/ou sinais de pontuação. É nessa articulação que se constituem os critérios a serem mobilizados pelo estudante nas práticas de leitura e escrita.",
     resume:
@@ -1097,14 +4324,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Pontuação",
-    skill:
-      "(EF02LP09) Usar adequadamente ponto final, ponto de interrogação e ponto de exclamação.",
+    skill: "EF02LP09",
     comment:
       "Esta habilidade inclui os seguintes aspectos: identificar os sinais gráficos que chamamos de sinais de pontuação; reconhecer — na leitura — sua função; usar, na produção escrita, esses sinais, para garantir legibilidade e provocar os efeitos de sentido desejados. Considerar, ainda, que este é um momento propício à organização inicial desse saber: pela análise dos efeitos de sentido provocados na leitura de textos, especialmente os conhecidos.",
     resume:
@@ -1112,14 +4337,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Sinonímia e antonímia/Morfologia/Pontuação",
-    skill:
-      "(EF02LP10) Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-.",
+    skill: "EF02LP10",
     comment:
       "Esta habilidade avança em relação à (EF01LP15), pois, por um lado, propõe analisar a diferença entre os sinônimos no que se refere ao contexto de uso; por outro, solicita formar o antônimo por prefixação definida. Essa tarefa supõe desconstruir a ideia de que os sentidos entre sinônimos são sempre idênticos. Além disso, apresenta ao aluno uma das possibilidades de formação do antônimo, a partir do acréscimo de um prefixo dado.",
     resume:
@@ -1127,14 +4350,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "01",
+    unit: "LP02",
     object: "Morfologia",
-    skill:
-      "(EF02LP11) Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho.",
+    skill: "EF02LP11",
     comment:
       "Esta habilidade implica em compreender os conceitos de aumentativo e diminutivo e do modo como são constituídos lexicalmente na sua forma regular: com as terminações -ão/-zão; -inho/-zinho.",
     resume:
@@ -1142,14 +4363,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF02LP12) Ler e compreender com certa autonomia cantigas, letras de canção, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    skill: "EF02LP12",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com certa autonomia, o que supõe a possibilidade de trabalho em colaboração.",
     resume:
@@ -1157,14 +4376,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF02LP13) Planejar e produzir bilhetes e cartas, em meio impresso e/ou digital, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF02LP13",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo da vida cotidiana e três vetores da produção do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser abordadas em separado, e significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1172,14 +4389,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF02LP14) Planejar e produzir pequenos relatos de observação de processos, de fatos, de experiências pessoais, mantendo as características do gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF02LP14",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero de relatos de observação de processos e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas: planejar e produzir, que podem ser tratadas em momentos sucessivos, e significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1187,14 +4402,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF02LP15) Cantar cantigas e canções, obedecendo ao ritmo e à melodia.",
+    skill: "EF02LP15",
     comment:
       "Trata-se de habilidade que envolve a oralização de textos. Deve ser antecedida pela leitura compreensiva, de modo que, tendo entendido o texto, o estudante possa cantar obedecendo ao ritmo e à melodia. A habilidade favorece, ainda, o desenvolvimento da fluência leitora, fundamental neste ano do ciclo.",
     resume:
@@ -1202,14 +4415,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF02LP16) Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails, receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
+    skill: "EF02LP16",
     comment:
       "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -1217,14 +4428,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "02",
+    unit: "LP02",
     object: "Forma de composição do texto",
-    skill:
-      "(EF02LP17) Identificar e reproduzir, em relatos de experiências pessoais, a sequência dos fatos, utilizando expressões que marquem a passagem do tempo (“antes”, “depois”, “ontem”, “hoje”, “amanhã”, “outro dia”, “antigamente”, “há muito tempo” etc.), e o nível de informatividade necessário.",
+    skill: "EF02LP17",
     comment:
       "Esta habilidade refere-se a reconhecer, na leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -1232,14 +4441,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida pública",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "03",
+    unit: "LP01",
     object: "Escrita compartilhada",
-    skill:
-      "(EF02LP18) Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF02LP18",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros de divulgação de eventos nos formatos em questão e dois vetores do processo de escrita (situação/tema ou assunto). A habilidade envolve duas operações distintas, que podem ser trabalhadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1247,14 +4454,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "02",
+    field: "03",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF02LP19) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, notícias curtas para público infantil, para compor jornal falado que possa ser repassado oralmente ou em meio digital, em áudio ou vídeo, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF02LP19",
     comment:
       "O foco da habilidade é a produção de gêneros jornalísticos, como a notícia, visando-se a transmissão oral direta ou em ambientes digitais. A habilidade articula a produção prevista a dois vetores (situação comunicativa; tema ou assunto) e requer duas operações sequenciadas: planejar e produzir texto para ser oralizado.",
     resume:
@@ -1262,14 +4467,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP03",
     object: "Imagens analíticas em textos",
-    skill:
-      "(EF02LP20) Reconhecer a função de textos utilizados para apresentar informações coletadas em atividades de pesquisa (enquetes, pequenas entrevistas, registros de experimentações).",
+    skill: "EF02LP20",
     comment:
       "Trata-se de reconhecer que os textos utilizados para apresentar informações coletadas em atividades de pesquisa possuem funções relacionadas ao campo de atuação ao qual pertencem. Assim, é necessário caracterizar o campo de atuação dos textos referidos e sua respectiva função, analisar o tipo de informações que os textos apresentam e identificar a função específica de cada gênero. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
     resume:
@@ -1277,14 +4480,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP03",
     object: "Pesquisa",
-    skill:
-      "(EF02LP21) Explorar, com a mediação do professor, textos informativos de diferentes ambientes digitais de pesquisa, conhecendo suas possibilidades.",
+    skill: "EF02LP21",
     comment:
       "Trata-se de estudar textos informativos de ambientes digitais, como revistas, jornais, sites especializados e orientados para crianças e blogs confiáveis. O objetivo é a exploração de recursos, como hiperlinks para outros textos e para vídeos, o modo de organização das informações e as possibilidades e limites dos recursos próprios da ferramenta e do site específico.",
     resume:
@@ -1292,14 +4493,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP01",
     object: "Produção de textos",
-    skill:
-      "(EF02LP22) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF02LP22",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros do campo investigativo em foco e dois vetores do processo de escrita (tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1307,14 +4506,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP01",
     object: "Escrita autônoma",
-    skill:
-      "(EF02LP23) Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado.",
+    skill: "EF02LP23",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero de registro de observação de resultados de pesquisa. Envolve ao menos duas operações distintas — planejar e produzir —,  que podem ser tratadas em separado, e significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1322,14 +4519,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP04",
     object: "Planejamento de texto oral Exposição oral",
-    skill:
-      "(EF02LP24) Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, relatos de experimentos, registros de observação, entrevistas, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
+    skill: "EF02LP24",
     comment:
       "O foco desta habilidade é a (re)produção oral, para mídias digitais, de textos de gêneros investigativos. E envolve duas operações complexas sucessivas — planejar e produzir textos desses gêneros — articuladas com três vetores da produção textual: a situação comunicativa; o tema ou assunto; a finalidade da produção. A habilidade requer a análise de textos orais do gênero previsto, além de duas operações de produção de textos: planejar e produzir.",
     resume:
@@ -1337,15 +4532,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "04",
+    unit: "LP02",
     object:
       "Forma de composição dos textos/Adequação do texto às normas de escrita",
-    skill:
-      "(EF02LP25) Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    skill: "EF02LP25",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -1353,14 +4546,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "05",
+    unit: "LP03",
     object: "Formação do leitor literário",
-    skill:
-      "(EF02LP26) Ler e compreender, com certa autonomia, textos literários, de gêneros variados, desenvolvendo o gosto pela leitura.",
+    skill: "EF02LP26",
     comment:
       "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características de gêneros literários diversos, inclusive dramáticos e poéticos. Está estreitamente relacionada à habilidade (EF35LP21), podendo-se dizer que se trata da mesma habilidade considerada em um grau menor de autonomia por conta do nível de ensino em jogo.  A formulação da habilidade supõe a previsão curricular de estratégias didáticas que progridam do trabalho em colaboração para a conquista da autonomia.",
     resume:
@@ -1368,14 +4559,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo artístico-literário",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "02",
+    field: "05",
+    unit: "LP01",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF02LP27) Reescrever textos narrativos literários lidos pelo professor.",
+    skill: "EF02LP27",
     comment:
       "Esta habilidade diz respeito a escrever textos baseados em narrativas literárias lidas pelo professor, ou seja, a partir das informações previamente adquiridas. Ela está estreitamente relacionada à habilidade (EF01LP25), estabelecendo com ela uma relação de progressão: o que aprendeu a produzir coletivamente e com a intervenção do professor como escriba no ano anterior, o aluno começa a empreender individualmente e com alguma autonomia.",
     resume:
@@ -1383,14 +4572,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "05",
+    unit: "LP02",
     object: "Formas de composição de narrativas",
-    skill:
-      "(EF02LP28) Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes.",
+    skill: "EF02LP28",
     comment:
       "Esta habilidade articula-se com a (EF01LP26), referindo-se a aspectos semelhantes aos nela definidos. Além disso, implica em identificar trechos de textos lidos que possam caracterizar elementos das narrativas ficcionais literárias. Seu desenvolvimento permite ao aluno aprofundar a compreensão de narrativas e desenvolver capacidades de análise e crítica.",
     resume:
@@ -1398,14 +4585,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF02LP29",
-    competences: "Língua Portuguesa",
-    group_year_id: "02",
-    group_years: "2º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Alfabetização)",
+    competences: "LP",
+    group_years: "02",
+    field: "05",
+    unit: "LP02",
     object: "Formas de composição de textos poéticos visuais",
-    skill:
-      "(EF02LP29) Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais.",
+    skill: "EF02LP29",
     comment:
       "O foco desta habilidade é perceber — no processo de leitura e estudo de poemas visuais — as figuras que o poema compõe no espaço que ocupa, verificando se o formato e/ou a disposição das letras provocam efeitos de sentido peculiares.",
     resume:
@@ -1413,14 +4598,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF03LP01) Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n).",
+    skill: "EF03LP01",
     comment:
       "Esta habilidade trata dos casos em que o contexto interno da palavra é que determina que letra usar em sua grafia nos casos citados pela habilidade. Levar o aluno a construir regras é a estratégia indicada, e pode ocorrer pela análise comparativa das ocorrências em listas de palavras, favorecendo a antecipação do contexto em que é correto usar uma ou outra letra (ex: M/P/B), o que o contribui para a compreensão da regra.",
     resume:
@@ -1428,14 +4611,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF03LP02) Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.",
+    skill: "EF03LP02",
     comment:
       "Para desenvolver esta habilidade, que diz respeito a reconhecer, compreender e registrar palavras com diferentes esquemas silábicos, é indicado que não haja controle das escritas espontâneas dos alunos desde o 1º ano. Durante o processo de produção, escrevendo o que desejam, eles entram em contato com dúvidas ortográficas, o que é positivo para a aprendizagem.",
     resume:
@@ -1443,14 +4624,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF03LP03) Ler e escrever corretamente palavras com os dígrafos lh, nh, ch.",
+    skill: "EF03LP03",
     comment:
       "Para a efetivação da habilidade, que consiste em compreender e registrar a grafia de diferentes palavras, é preciso analisar listas de palavras com ocorrências que possam gerar dúvidas, seja por grafia semelhantes (nh/lh), seja por sons semelhantes (ch/x).",
     resume:
@@ -1458,14 +4637,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
-    skill:
-      "(EF03LP04) Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.",
+    skill: "EF03LP04",
     comment:
       "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
     resume:
@@ -1473,15 +4650,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object:
       "Segmentação de palavras/Classificação de palavras por número de sílabas",
-    skill:
-      "(EF03LP05) Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas.",
+    skill: "EF03LP05",
     comment:
       "Esta habilidade requer ao aluno reconhecer e dividir as sílabas das palavras, classificando-as conforme orientação.",
     resume:
@@ -1489,14 +4664,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético",
-    skill:
-      "(EF03LP06) Identificar a sílaba tônica em palavras, classificando-as em oxítonas, paroxítonas e proparoxítonas.",
+    skill: "EF03LP06",
     comment:
       "Esta habilidade requer a análise de grupos de palavras, com reconhecimento e separação das sílabas existentes, para identificar aquela que é pronunciada com maior intensidade. O objetivo visado é o de proceder a uma classificação das palavras que é fundamental para a compreensão de algumas das regras da acentuação gráfica.",
     resume:
@@ -1504,14 +4677,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Pontuação",
-    skill:
-      "(EF03LP07) Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão.",
+    skill: "EF03LP07",
     comment:
       "Esta habilidade prevê a ampliação do estudo dos recursos de pontuação em relação à habilidade (EF02LP09), incluindo a pontuação de discurso direto — dois pontos e travessão. Da mesma forma, o estudo prevê: identificar os sinais gráficos que estão sendo incluídos; reconhecer — na leitura — a sua função; usá-los no texto para apresentar expressividade, legibilidade e provocar os efeitos de sentido desejados.",
     resume:
@@ -1519,14 +4690,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF03LP08) Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação.",
+    skill: "EF03LP08",
     comment:
       "A habilidade prevê aprender as classes gramaticais das palavras indicadas (substantivos e verbos) e identificar as funções sintáticas que elas podem assumir nos enunciados. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
     resume:
@@ -1534,14 +4703,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Morfossintaxe",
-    skill:
-      "(EF03LP09) Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.",
+    skill: "EF03LP09",
     comment:
       "A habilidade prevê reconhecer o adjetivo como a classe de palavra que atribui características aos substantivos. É interessante prever um trabalho reflexivo, com base em inventários, de observação, análise, comparação e levantamento de regularidades que caracterizem essa classe de palavras; usar os saberes gramaticais como ferramentas de constituição da legibilidade do texto.",
     resume:
@@ -1549,14 +4716,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF03LP10) Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.",
+    skill: "EF03LP10",
     comment:
       "Trata-se de reconhecer — ainda que de modo não sistematizado — que há palavras que derivam de outras e que têm o seu sentido modificado pelo acréscimo de afixos ou no início ou no final delas. Esses afixos possuem sentidos regulares, sendo possível identificar o significado de uma palavra derivada se a primitiva e o afixo forem conhecidos.",
     resume:
@@ -1564,14 +4729,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF03LP11) Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico- visuais, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP11",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos injuntivos instrucionais a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -1579,14 +4742,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF03LP12) Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP12",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características dos gêneros carta pessoal e diário (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -1594,14 +4755,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF03LP13) Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP13",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero de cartas pessoais e diário e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, passíveis de abordagem em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1609,14 +4768,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP01",
     object: "Escrita colaborativa",
-    skill:
-      "(EF03LP14) Planejar e produzir textos injuntivos instrucionais, com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico-visuais, considerando a situação comunicativa e o tema/ assunto do texto.",
+    skill: "EF03LP14",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero injuntivo instrucional e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel. A habilidade ainda prevê que, na produção, levem-se em conta aspectos gráfico-visuais que possam ajudar na compreensão do texto.",
     resume:
@@ -1624,14 +4781,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF03LP15) Assistir, em vídeo digital, a programa de culinária infantil e, a partir dele, planejar e produzir receitas em áudio ou vídeo.",
+    skill: "EF03LP15",
     comment:
       "A habilidade envolve a recepção atenta e a análise de receitas transmitidas em mídia digital, além de duas outras operações complexas e articuladas entre si: planejar e produzir textos do mesmo gênero.",
     resume:
@@ -1639,11 +4794,10 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP05",
     object: "Forma de composição do texto",
     skill:
       '(EF03LP16) Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução – "modo de fazer").',
@@ -1654,14 +4808,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "02",
+    unit: "LP05",
     object: "Forma de composição do texto",
-    skill:
-      "(EF03LP17) Identificar e reproduzir, em gêneros epistolares e diários, a formatação própria desses textos (relatos de acontecimentos, expressão de vivências, emoções, opiniões ou críticas) e a diagramação específica dos textos desses gêneros (data, saudação, corpo do texto, despedida, assinatura).",
+    skill: "EF03LP17",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -1669,14 +4821,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF03LP18) Ler e compreender, com autonomia, cartas dirigidas a veículos da mídia impressa ou digital (cartas de leitor e de reclamação a jornais, revistas) e notícias, dentre outros gêneros do campo jornalístico, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP18",
     comment:
       "O foco dessa habilidade é a compreensão de textos de diferentes gêneros do campo jornalístico (com destaque para as cartas à redação e para as notícias). As convenções de cada gênero, a situação comunicativa e o tema/assunto do texto constituem-se como vetores da compreensão visada. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas de leitura e produção de textos do campo jornalístico/midiático, nas quais possa observar os vetores mencionados em ação, assim como refletir a respeito de seu papel na (re)construção dos sentidos do texto.",
     resume:
@@ -1684,14 +4834,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF03LP19) Identificar e discutir o propósito do uso de recursos de persuasão (cores, imagens, escolha de palavras, jogo de palavras, tamanho de letras) em textos publicitários e de propaganda, como elementos de convencimento.",
+    skill: "EF03LP19",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos publicitários e de propaganda a serem lidos. No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
     resume:
@@ -1699,14 +4847,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF03LP20) Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campopo lítico-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP20",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com os gêneros de cartas em questão e dois vetores do processo de escrita (situação/tema ou assunto). Pode ser articulada à análise das matérias a serem comentadas nas cartas. A habilidade prevê a produção de textos do campo político-cidadão, que envolvem organizar as ideias e utilizar a consciência cidadã para depois escrevê-las.",
     resume:
@@ -1714,14 +4860,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF03LP21) Produzir anúncios publicitários, textos de campanhas de conscientização destinados ao público infantil, observando os recursos de persuasão utilizados nos textos publicitários e de propaganda (cores, imagens, slogan, escolha de palavras, jogo de palavras, tamanho e tipo de letras, diagramação).",
+    skill: "EF03LP21",
     comment:
       "Trata-se de uma habilidade que articula a produção de gêneros publicitários ao uso de recursos de persuasão apropriados e diz respeito a organizar as ideias e utilizar a criatividade para depois escrevê-las. A habilidade pode ser desmembrada para incluir a análise dos gêneros, o estudo dos recursos de persuasão e outros aspectos relacionados à característica multimodal dos textos desses gêneros.",
     resume:
@@ -1729,14 +4873,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP04",
     object: "Planejamento e produção de texto",
-    skill:
-      "(EF03LP22) Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.",
+    skill: "EF03LP22",
     comment:
       "O foco da habilidade está na oralização de textos destinados a telejornais infantis. A produção visada está articulada a quatro vetores: a situação comunicativa, o plano geral do texto próprio do gênero visado, o tema e a finalidade. Além disso, as atividades previstas compreendem duas operações sequenciais complexas: o planejamento e a execução.  A habilidade requer, ainda, a análise da mídia e dos textos/gêneros que nela circulam.",
     resume:
@@ -1744,14 +4886,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "03",
+    unit: "LP05",
     object: "Forma de composição dos textos",
-    skill:
-      "(EF03LP23) Analisar o uso de adjetivos em cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), digitais ou impressas.",
+    skill: "EF03LP23",
     comment:
       "Esta habilidade articula-se às (EF35LP16) e (EF12LP14), que também envolvem gêneros do jornalismo impresso ou digital. Visa identificar e analisar, no processo de leitura, o papel dos adjetivos na (re)construção de sentidos de cartas do leitor ou de reclamação, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -1759,14 +4899,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "04",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF03LP24) Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP24",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos de relatos e pesquisas a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -1774,14 +4912,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "03",
+    field: "04",
+    unit: "LP06",
     object: "Produção de textos",
-    skill:
-      "(EF03LP25) Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF03LP25",
     comment:
       "Esta é uma habilidade que articula a produção textual com o gênero de apresentação de resultados de observações e pesquisas e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -1789,15 +4925,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "03",
+    field: "04",
+    unit: "LP05",
     object:
       "Forma de composição dos textos\nAdequação do texto às normas de escrita",
-    skill:
-      "(EF03LP26) Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.",
+    skill: "EF03LP26",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -1805,14 +4939,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF03LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "03",
-    group_years: "3º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "03",
+    field: "05",
+    unit: "LP04",
     object: "Performances orais",
-    skill:
-      "(EF03LP27) Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.",
+    skill: "EF03LP27",
     comment:
       "Trata-se de habilidade que envolve a leitura e compreensão do texto a ser recitado, para que o aluno, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com maior fluência, ritmo e entonação adequada.",
     resume:
@@ -1820,14 +4952,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Decodificação/Fluência de leitura",
-    skill:
-      "(EF35LP01) Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado.",
+    skill: "EF35LP01",
     comment:
       "Ler fluentemente requer do aluno um conjunto de habilidades que vão das relativas à aquisição do sistema de escrita às de compreensão, apreciação e réplica do leitor aos textos. Não se trata de oralizar o texto rapidamente e sem erro na articulação dos sons, mas de ler um texto em voz alta sem embaraço e com compreensão. A leitura se dá na relação entre texto e leitor; assim, o texto precisa ser adequado às possibilidades e interesses do leitor.",
     resume:
@@ -1835,14 +4965,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Formação de leitor",
-    skill:
-      "(EF35LP02) Selecionar livros da biblioteca e/ou do cantinho de leitura da sala de aula e/ou disponíveis em meios digitais para leitura individual, justificando a escolha e compartilhando com os colegas sua opinião, após a leitura.",
+    skill: "EF35LP02",
     comment:
       "A habilidade trata de comportamentos leitores fundamentais, que implicam tanto saber frequentar espaços nos quais circulem materiais de leitura — impressos e/ou digitais — quanto estabelecer critérios de apreciação estética desses materiais, para possibilitar a socialização das opiniões com terceiros. Para o desenvolvimento desta habilidade, são fundamentais a frequentação de espaços destinados à leitura e a participação em atividades como a roda de leitores.",
     resume:
@@ -1850,14 +4978,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Compreensão",
-    skill:
-      "(EF35LP03) Identificar a ideia central do texto, demonstrando compreensão global.",
+    skill: "EF35LP03",
     comment:
       "Trata-se de uma habilidade complexa, de redução do conteúdo do texto. Por meio dela, o aluno articula as informações dos diferentes trechos, identifica as partes mais relevantes com base em pistas fornecidas pelo próprio texto e, por meio desse processo de sumarização, identifica a ideia central.Para realizar essa tarefa, é necessário mobilizar outras habilidades, como as de localização, inferenciação e construção de informações.",
     resume:
@@ -1865,13 +4991,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill: "(EF35LP04) Inferir informações implícitas nos textos lidos.",
+    skill: "EF35LP04",
     comment:
       "Os sentidos dos textos são compostos também por informações subentendidas e/ou pressupostas, que, mesmo não estando explícitas, significam. Portanto, pode-se afirmar que é impossível compreender os textos sem realizar inferências.Realizar uma inferência é estabelecer, no processo de leitura, uma ligação entre uma ideia expressa no texto e outra que o leitor pode ativar com base em conhecimentos prévios ou no contexto.",
     resume:
@@ -1879,14 +5004,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill:
-      "(EF35LP05) Inferir o sentido de palavras ou expressões desconhecidas em textos, com base no contexto da frase ou do texto.",
+    skill: "EF35LP05",
     comment:
       "Esta é uma habilidade diretamente relacionada ao desenvolvimento da competência lexical, ou seja, do domínio do aluno sobre os sentidos, a forma, as funções e os usos das palavras. É uma habilidade fundamental tanto para a oralidade quanto para a escrita, seja do ponto de vista da compreensão, seja em termos de produção.",
     resume:
@@ -1894,14 +5017,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP03",
     object: "Estratégia de leitura",
-    skill:
-      "(EF35LP06) Recuperar relações entre partes de um texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos) que contribuem para a continuidade do texto.",
+    skill: "EF35LP06",
     comment:
       "Esta habilidade consiste em utilizar os conhecimentos gramaticais e textuais já internalizados para, em situações epilinguísticas (de uso), constituir os sentidos do texto escrito, consolidá-los e/ou resolver problemas de compreensão. Os recursos citados garantem a coesão (e a coerência) do texto, contribuindo para estabelecer a continuidade dos enunciados por meio da recuperação do referente.",
     resume:
@@ -1909,14 +5030,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP06",
     object: "Construção do sistema alfabético/ Convenções da escrita",
-    skill:
-      "(EF35LP07) Utilizar, ao produzir um texto, conhecimentos linguísticos e gramaticais, tais como ortografia, regras básicas de concordância nominal e verbal, pontuação (ponto final, ponto de exclamação, ponto de interrogação, vírgulas em enumerações) e pontuação do discurso direto, quando for o caso.",
+    skill: "EF35LP07",
     comment:
       "Trata-se de uma habilidade complexa, que envolve todo um conjunto de habilidades de análise linguística (ortográfica, morfossintática, sintática e semântica) e de conhecimentos específicos a elas associados, para serem adequadamente colocadas em produções textuais dos alunos. A habilidade poderá ser antecedida por outras, que envolvam a análise dos recursos citados em textos lidos de modo independente (por exemplo, ao analisar a presença de pontuação e os efeitos de sentido decorrentes do seu uso). O trabalho pode ser previsto tanto em colaboração quanto com autonomia, progressivamente, a partir do momento em que os alunos compreendam as regras do sistema de escrita.",
     resume:
@@ -1924,15 +5043,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP06",
     object:
       "Construção do sistema alfabético/ Estabelecimento de relações anafóricas na referenciação e construção da coesão",
-    skill:
-      "(EF35LP08) Utilizar, ao produzir um texto, recursos de referenciação (por substituição lexical ou por pronomes pessoais, possessivos e demonstrativos), vocabulário apropriado ao gênero, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível suficiente de informatividade.",
+    skill: "EF35LP08",
     comment:
       "Esta é uma habilidade fundamental para a construção do texto, especialmente no que diz respeito à coesão e à coerência. Seu foco é usar o recurso da referenciação em situação de produção de textos. Assim, é possível propor habilidades que antecedam a autonomia no uso dos recursos de produção textual e envolvam, por exemplo, analisar a presença de referenciação em textos lidos, observando os efeitos de sentido produzidos. É possível desmembrar a habilidade propondo habilidades específicas para o uso da referenciação e dos organizadores textuais (tempo, causa etc.).",
     resume:
@@ -1940,14 +5057,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP06",
     object: "Planejamento de texto/Progressão temática e paragrafação",
-    skill:
-      "(EF35LP09) Organizar o texto em unidades de sentido, dividindo-o em parágrafos segundo as normas gráficas e de acordo com as características do gênero textual.",
+    skill: "EF35LP09",
     comment:
       "Esta é uma habilidade fundamental para a construção do texto, especialmente no que diz respeito à articulação entre suas partes. Envolve conhecer as características do gênero para organizar o texto em unidades de sentido de modo coeso e coerente, ou seja, dividir o texto em parágrafos, respeitando as normas da pontuação, o encadeamento das ideias e a hierarquia das informações presentes, de acordo com as características do gênero e a finalidade comunicativa.",
     resume:
@@ -1955,14 +5070,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP04",
     object: "Forma de composição de gêneros orais",
-    skill:
-      "(EF35LP10) Identificar gêneros do discurso oral, utilizados em diferentes situações e contextos comunicativos, e suas características linguístico-expressivas e composicionais (conversação espontânea, conversação telefônica, entrevistas pessoais, entrevistas no rádio ou na TV, debate, noticiário de rádio e TV, narração de jogos esportivos no rádio e TV, aula, debate etc.).",
+    skill: "EF35LP10",
     comment:
       "Necessária à compreensão da lógica e da dinâmica dos intercâmbios orais, esta habilidade efetiva-se em situações como seminários, mesas-redondas, rodas de conversa, programas de TV etc., que envolvam gêneros como: exposição oral, discussão argumentativa e/ou debate, entrevista oral etc.",
     resume:
@@ -1970,14 +5083,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP04",
     object: "Variação linguística",
-    skill:
-      "(EF35LP11) Ouvir gravações, canções, textos falados em diferentes variedades linguísticas, identificando características regionais, urbanas e rurais da fala e respeitando as diversas variedades linguísticas como características do uso da língua por diferentes grupos regionais ou diferentes culturas locais, rejeitando preconceitos linguísticos.",
+    skill: "EF35LP11",
     comment:
       "Esta é uma habilidade fundamental para a construção da ética necessária ao convívio republicano, na medida em que estimula a curiosidade, o reconhecimento e o respeito relativos à variação linguística local e nacional. Pressupõe a eleição de gêneros que circulem em variadas situações de comunicação. Pode haver impregnação com a escrita, como ouvir canções com legendas, participar de saraus lendo e oralizando textos etc. Tais situações devem contemplar produções locais e de diferentes regiões do país, favorecendo o convívio respeitoso com a diversidade linguística, de modo a legitimar os diferentes falares do Brasil, sem sobrepor uma variedade à outra.",
     resume:
@@ -1985,14 +5096,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF35LP12) Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema.",
+    skill: "EF35LP12",
     comment:
       "A habilidade implica no uso do dicionário para resolver problemas de ortografia, o que pode ou não envolver a identificação da acepção correspondente ao uso que gerou a busca. Utilizar o dicionário requer a familiarização com procedimentos de busca.",
     resume:
@@ -2000,14 +5109,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF35LP13) Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial que não representa fonema.",
+    skill: "EF35LP13",
     comment:
       "A habilidade diz respeito a reconhecer e lembrar dos registros corretos das grafias de algumas das ocorrências irregulares presentes na língua. O tratamento pela memorização permite aos estudantes reter imagens visuais das palavras.",
     resume:
@@ -2015,14 +5122,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF35LP14) Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico.",
+    skill: "EF35LP14",
     comment:
       "A habilidade prevê aprender as classes gramaticais das palavras indicadas (pronomes pessoais, possessivos e demonstrativos) e identificar os papéis que desempenham na constituição da coesão do texto. É essencial prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
     resume:
@@ -2030,14 +5135,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo da vida pública",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "03",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF35LP15) Opinar e defender ponto de vista sobre tema polêmico relacionado a situações vivenciadas na escola e/ou na comunidade, utilizando registro formal e estrutura adequada à argumentação, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF35LP15",
     comment:
       "Esta habilidade consiste em expressar pontos de vista sobre temas controversos da vivência do aluno (como o bullying, o uso da tecnologia na sala de aula etc.) e argumentar para legitimar essas opiniões. A habilidade articula a produção de textos opinativos a dois vetores do processo de escrita (situação/tema ou assunto) e ao uso adequado do registro formal e dos recursos de argumentação. Convém considerar que a análise de diferentes pontos de vista sobre temas/questões polêmicas precede a emissão de opinião.",
     resume:
@@ -2045,14 +5148,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "03",
+    unit: "LP05",
     object: "Forma de composição dos textos",
-    skill:
-      "(EF35LP16) Identificar e reproduzir, em notícias, manchetes, lides e corpo de notícias simples para público infantil e cartas de reclamação (revista infantil), digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
+    skill: "EF35LP16",
     comment:
       "Relacionada à (EF03LP23), esta habilidade tem como foco reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem alguns gêneros jornalísticos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -2060,14 +5161,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "04",
+    unit: "LP03",
     object: "Pesquisa",
-    skill:
-      "(EF35LP17) Buscar e selecionar, com o apoio do professor, informações de interesse sobre fenômenos sociais e naturais, em textos que circulam em meios impressos ou digitais.",
+    skill: "EF35LP17",
     comment:
       "Esta habilidade focaliza o trabalho de busca e seleção de textos sobre fenômenos sociais e naturais digitais e impressos. Isso supõe a discussão de procedimentos e de critérios de seleção dos textos nos diferentes ambientes, sempre com auxílio do professor, considerando tanto a especificidade de salas de leitura, bibliotecas escolares, públicas e pessoais, quanto ambientes digitais.",
     resume:
@@ -2075,14 +5174,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "04",
+    unit: "LP04",
     object: "Escuta de textos orais",
-    skill:
-      "(EF35LP18) Escutar, com atenção, apresentações de trabalhos realizadas por colegas, formulando perguntas pertinentes ao tema e solicitando esclarecimentos sempre que necessário.",
+    skill: "EF35LP18",
     comment:
       "A habilidade tem como foco a escuta atenta e responsiva de apresentações orais em contexto escolar. A escuta — que tem como finalidade primeira a compreensão do texto oral — dá suporte tanto à formulação de perguntas para esclarecimentos, por exemplo, quanto à construção de respostas/explicações, considerando o uso progressivo de justificativas para a emissão de opinião.",
     resume:
@@ -2090,14 +5187,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "04",
+    unit: "LP04",
     object: "Compreensão de textos orais",
-    skill:
-      "(EF35LP19) Recuperar as ideias principais em situações formais de escuta de exposições, apresentações e palestras.",
+    skill: "EF35LP19",
     comment:
       "Trata-se de habilidade que envolve a escuta atenta e responsiva de apresentações orais em contexto escolar.",
     resume:
@@ -2105,14 +5200,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "04",
+    unit: "LP04",
     object: "Planejamento de texto oral\nExposição oral",
-    skill:
-      "(EF35LP20) Expor trabalhos ou pesquisas escolares, em sala de aula, com apoio de recursos multissemióticos (imagens, diagrama, tabelas etc.), orientando-se por roteiro escrito, planejando o tempo de fala e adequando a linguagem à situação comunicativa.",
+    skill: "EF35LP20",
     comment:
       "A habilidade tem como foco a exposição oral de pesquisas em contexto escolar. E requer o estudo de textos desse gênero, de modo a permitir ao aluno reconhecer a articulação entre a fala e o uso de roteiro escrito e recursos multissemióticos próprios ou compatíveis com o gênero previsto.",
     resume:
@@ -2120,14 +5213,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP03",
     object: "Formação do leitor literário",
-    skill:
-      "(EF35LP21) Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores.",
+    skill: "EF35LP21",
     comment:
       "Trata-se de uma habilidade complexa. Para o seu desenvolvimento, é importante considerar:  a) o trabalho com as habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários;  c) as características de gêneros literários diversos, inclusive dramáticos e poéticos. A formulação da habilidade pressupõe o planejamento curricular de níveis menores de autonomia nos dois primeiros anos e de estratégias didáticas capazes de conduzir à autonomia nos três últimos.",
     resume:
@@ -2135,14 +5226,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP03",
     object: "Formação do leitor literário/ Leitura multissemiótica",
-    skill:
-      "(EF35LP22) Perceber diálogos em textos narrativos, observando o efeito de sentido de verbos de enunciação e, se for o caso, o uso de variedades linguísticas no discurso direto.",
+    skill: "EF35LP22",
     comment:
       "O foco dessa habilidade é a apreensão, pelo aluno leitor, dos efeitos de sentido produzidos em textos narrativos por: a) verbos introdutórios da fala de terceiros (verbos de enunciação ou dicendi) em casos de discurso citado (discurso direto; indireto; indireto livre); b) uso de variedades linguísticas na representação dessas falas no discurso direto. O desenvolvimento dessa habilidade é fundamental para a compreensão do caráter e da dinâmica de personagens numa trama, assim como da organização  textual da narrativa. Mas pressupõe um trabalho prévio tanto com o discurso citado quanto com variação linguística.",
     resume:
@@ -2150,25 +5239,21 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP03",
     object: "Apreciação estética/Estilo",
-    skill:
-      "(EF35LP23) Apreciar poemas e outros textos versificados, observando rimas, aliterações e diferentes modos de divisão dos versos, estrofes e refrões e seu efeito de sentido.",
+    skill: "EF35LP23",
   },
   {
     id: "EF35LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP03",
     object: "Textos dramáticos",
-    skill:
-      "(EF35LP24) Identificar funções do texto dramático (escrito para ser encenado) e sua organização por meio de diálogos entre personagens e marcadores das falas das personagens e de cena.",
+    skill: "EF35LP24",
     comment:
       "Esta é uma habilidade complexa, que envolve: a) o desenvolvimento das habilidades de leitura como um todo; b) o caráter não utilitário (lúdico/estético) dos textos literários; c) as características dos diferentes gêneros dramáticos.   A formulação da habilidade supõe tanto a formação de um repertório literário específico como a previsão curricular de estratégias didáticas que progridam da leitura colaborativa para a autônoma, ao longo dos três últimos anos.",
     resume:
@@ -2176,14 +5261,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP06",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF35LP25) Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens.",
+    skill: "EF35LP25",
     comment:
       "Esta habilidade é mais complexa, pois envolve produzir narrativas de conteúdo temático, o que pode ser planejado de forma coletiva ou mais autônoma, garantindo progressão vertical no ano. Ela prevê que o aluno se utilize de recursos de descrição e narração para criar esses textos. A habilidade se relaciona à (EF15LP05) e (EF02LP27).",
     resume:
@@ -2191,14 +5274,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP06",
     object: "Escrita autônoma e compartilhada",
-    skill:
-      "(EF35LP26) Ler e compreender, com certa autonomia, narrativas ficcionais que apresentem cenários e personagens, observando os elementos da estrutura narrativa: enredo, tempo, espaço, personagens, narrador e a construção do discurso indireto e discurso direto.",
+    skill: "EF35LP26",
     comment:
       "O foco dessa habilidade é a apreensão, por meio da leitura compreensiva, da organização discursiva e textual de gêneros narrativos, especialmente no que diz respeito aos aspectos mencionados. Trata-se, portanto, de uma habilidade complexa, que: a) articula a produção de gêneros narrativos a sua leitura e análise prévias; b) toma o estudo e/ou análise desses gêneros como pré-requisito para a escrita de textos narrativos.",
     resume:
@@ -2206,14 +5287,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP06",
     object: "Escrita autônoma",
-    skill:
-      "(EF35LP27) Ler e compreender, com certa autonomia, textos em versos, explorando rimas, sons e jogos de palavras, imagens poéticas (sentidos figurados) e recursos visuais e sonoros.",
+    skill: "EF35LP27",
     comment:
       "O foco dessa habilidade é a apreensão, por meio da leitura compreensiva, de recursos expressivos – inclusive visuais e sonoros –  próprios de gêneros poéticos. Trata-se, portanto, de uma habilidade complexa, que: a) articula a produção de gêneros poéticos a sua leitura e análise prévias; b) toma o estudo e/ou análise desses gêneros como pré-requisito para a escrita de textos narrativos.",
     resume:
@@ -2221,14 +5300,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP04",
     object: "Declamação",
-    skill:
-      "(EF35LP28) Declamar poemas, com entonação, postura e interpretação adequadas.",
+    skill: "EF35LP28",
     comment:
       "Trata-se de habilidade que envolve leitura e compreensão dos textos selecionados, para que o estudante, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com fluência, ritmo e entonação adequados. Sugere-se que a atividade esteja inserida em projeto/sequência de estudo de textos nos gêneros citados para apresentação em sarau, slam etc.",
     resume:
@@ -2236,14 +5313,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP29",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP05",
     object: "Formas de composição de narrativas",
-    skill:
-      "(EF35LP29) Identificar, em narrativas, cenário, personagem central, conflito gerador, resolução e o ponto de vista com base no qual histórias são narradas, diferenciando narrativas em primeira e terceira pessoas.",
+    skill: "EF35LP29",
     comment:
       "Esta habilidade articula-se com a (EF01LP26) e com a (EF35LP28), na medida em que também visa narrativas literárias. Seu foco, no entanto, está no reconhecimento global da organização da narrativa e, em particular, do ponto de vista em que os textos lidos/escutados foram narrados, assim como na identificação da pessoa do discurso que os sustenta.",
     resume:
@@ -2251,14 +5326,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP30",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP05",
     object: "Discurso direto e indireto",
-    skill:
-      "(EF35LP30) Diferenciar discurso indireto e discurso direto, determinando o efeito de sentido de verbos de enunciação e explicando o uso de variedades linguísticas no discurso direto, quando for o caso.",
+    skill: "EF35LP30",
     comment:
       "Esta habilidade refere-se a reconhecer as diferenças e semelhanças entre discurso direto e indireto, focalizando não apenas a pontuação, mas o uso dos verbos dicendi em cada caso; e implica compreender que a presença, na fala de personagens, de variedades linguísticas diferentes daquela em que o texto é narrado produz efeitos de sentido relevantes.",
     resume:
@@ -2266,14 +5339,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF35LP31",
-    competences: "Língua Portuguesa",
-    group_year_id: "35",
-    group_years: "3º, 4º, 5º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "35",
+    field: "05",
+    unit: "LP05",
     object: "Forma de composição de textos poéticos",
-    skill:
-      "(EF35LP31) Identificar, em textos versificados, efeitos de sentido decorrentes do uso de recursos rítmicos e sonoros e de metáforas.",
+    skill: "EF35LP31",
     comment:
       "Esta é uma habilidade diretamente relacionada à (EF12LP19). Trata-se de — no processo de leitura e estudo de textos poéticos — reconhecer recursos linguísticos e discursivos que constituem os gêneros mencionados. Seu desenvolvimento demanda o recurso a práticas de oralização dos textos mencionados, sem o que os aspectos relacionados à sonoridade e ao ritmo não podem ser observados.",
     resume:
@@ -2281,14 +5352,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF04LP01) Grafar palavras utilizando regras de correspondência fonema--grafema regulares diretas e contextuais.",
+    skill: "EF04LP01",
     comment:
       "Esta habilidade consiste em entender e registrar corretamente os tipos de palavras previstas. As regulares diretas são (P, B, F, V, T, D) aquelas cujos sons são parecidos. As contextuais são aquelas em que o contexto interno da palavra é que determina que letra usar (R/RR, M/N, NH).",
     resume:
@@ -2296,14 +5365,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF04LP02) Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou).",
+    skill: "EF04LP02",
     comment:
       "Relacionada à aprendizagem da ortografia, essa atividade pressupõe que o aluno já saiba escrever alfabeticamente. Seu foco é o domínio de convenções e normas relacionadas à grafia de vogais como /e/ e /o/ que, na língua oral, são reduzidas a /i/ e /u/ em final de sílabas VV e CVV. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas significativas de leitura e/ou escrita em que a grafia de palavras também seja objeto de observação e reflexão.",
     resume:
@@ -2311,15 +5378,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object:
       "Conhecimento do alfabeto do português do Brasil/Ordem alfabética/Polissemia",
-    skill:
-      "(EF04LP03) Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta.",
+    skill: "EF04LP03",
     comment:
       "Localizar palavras em um dicionário é uma habilidade estreitamente associada a práticas de leitura e produção de textos. Trata-se de uma habilidade instrumental, que visa responder a problemas tanto de compreensão quanto relativos à repetição inadequada de palavras no texto produzido, garantindo a coesão e a coerência. É, ainda, fundamental para o prosseguimento dos estudos, considerando a necessidade de leitura de textos de todos os demais componentes curriculares. Seu desenvolvimento demanda o convívio cotidiano com dicionários e atividades de análise, estudo e uso desse instrumento.",
     resume:
@@ -2327,14 +5392,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
-    skill:
-      "(EF04LP04) Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s).",
+    skill: "EF04LP04",
     comment:
       "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
     resume:
@@ -2342,14 +5405,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Pontuação",
-    skill:
-      "(EF04LP05) Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto.",
+    skill: "EF04LP05",
     comment:
       "Em relação à habilidade (EF03LP07), esta prevê a ampliação do estudo dos recursos de pontuação, incluindo o uso de vírgula em enumerações e em separação de vocativo e aposto. Da mesma forma, o estudo prevê: identificar os novos sinais gráficos; reconhecer — na leitura — a sua função; usá-los no texto para garantir legibilidade e para provocar os efeitos de sentido desejados.",
     resume:
@@ -2357,14 +5418,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia/Morfossintaxe",
-    skill:
-      "(EF04LP06) Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal).",
+    skill: "EF04LP06",
     comment:
       "Intimamente relacionada à (EF05LP06), esta habilidade envolve trabalhar com substantivos e pronomes pessoais ligados ao verbo, assim como identificar a necessidade de estabelecer a concordância verbal entre eles na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras e suas funções no enunciado; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
     resume:
@@ -2372,14 +5431,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Morfossintaxe",
-    skill:
-      "(EF04LP07) Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal).",
+    skill: "EF04LP07",
     comment:
       "A habilidade prevê reconhecer a necessidade de estabelecer a concordância nominal na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e levantamento de regularidades que caracterizem as classes de palavras; e usar os saberes gramaticais como ferramentas de constituição da legibilidade do texto.",
     resume:
@@ -2387,14 +5444,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF04LP08) Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas).",
+    skill: "EF04LP08",
     comment:
       "Corresponde às regularidades morfológicas abordadas na habilidade EF05LP01.",
     resume:
@@ -2402,14 +5457,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF04LP09) Ler e compreender, com autonomia, boletos, faturas e carnês, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero (campos, itens elencados, medidas de consumo, código de barras) e considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF04LP09",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -2417,14 +5470,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF04LP10) Ler e compreender, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF04LP10",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo cotidiano (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -2432,14 +5483,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida cotidiana",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "02",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF04LP11) Planejar e produzir, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e com a estrutura própria desses textos (problema, opinião, argumentos), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF04LP11",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero de cartas pessoais e de reclamação e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -2447,14 +5496,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "04",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF04LP12) Assistir, em vídeo digital, a programa infantil com instruções de montagem, de jogos e brincadeiras e, a partir dele, planejar e produzir tutoriais em áudio ou vídeo.",
+    skill: "EF04LP12",
     comment:
       "A habilidade envolve a recepção atenta e a compreensão de textos instrucionais veiculados em mídia digital, além de duas outras operações complexas: planejar e produzir tutoriais.",
     resume:
@@ -2462,14 +5509,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "02",
+    unit: "LP05",
     object: "Forma de composição do texto",
-    skill:
-      "(EF04LP13) Identificar e reproduzir, em textos injuntivos instrucionais (instruções de jogos digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e formato específico dos textos orais ou escritos desses gêneros (lista/ apresentação de materiais e instruções/passos de jogo).",
+    skill: "EF04LP13",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -2477,14 +5522,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF04LP14) Identificar, em notícias, fatos, participantes, local e momento/tempo da ocorrência do fato noticiado.",
+    skill: "EF04LP14",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características da notícia (organização interna; marcas linguísticas; conteúdo temático). No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
     resume:
@@ -2492,14 +5535,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF04LP15) Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.).",
+    skill: "EF04LP15",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com outras habilidades de leitura quanto as características dos textos mencionados (organização interna; marcas linguísticas; conteúdo temático). No que se refere ao nível de autonomia, os currículos locais podem prever se, ao final do ano, os alunos deverão alcançar o trabalho autônomo ou não. Em caso positivo, é importante indicar os procedimentos a serem adotados.",
     resume:
@@ -2507,14 +5548,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida pública",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "03",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF04LP16) Produzir notícias sobre fatos ocorridos no universo escolar, digitais ou impressas, para o jornal da escola, noticiando os fatos e seus atores e comentando decorrências, de acordo com as convenções do gênero notícia e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF04LP16",
     comment:
       "Esta habilidade articula a produção de notícias a dois vetores do processo de escrita (situação/tema ou assunto) e ao tratamento da matéria de acordo com as convenções do gênero. Ela prevê a produção de textos do gênero notícia, o que envolve organizar as ideias e utilizar informações coletadas por pesquisa para depois escrever fatos do entorno do aluno (como coisas relevantes socialmente que aconteceram na escola ou na comunidade).",
     resume:
@@ -2522,14 +5561,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "04",
+    field: "03",
+    unit: "LP04",
     object: "Planejamento e produção de texto",
-    skill:
-      "(EF04LP17) Produzir jornais radiofônicos ou televisivos e entrevistas veiculadas em rádio, TV e na internet, orientando-se por roteiro ou texto e demonstrando conhecimento dos gêneros jornal falado/televisivo e entrevista.",
+    skill: "EF04LP17",
     comment:
       "A habilidade focaliza a produção de materiais jornalísticos (orais e/ou escritos) para diferentes mídias. A produção visada está articulada às características dos gêneros previstos. A habilidade requer a análise da mídia e dos textos/gêneros que nele circulam. Embora vise diretamente a produção, implica o planejamento necessário das atividades.",
     resume:
@@ -2537,14 +5574,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "03",
+    unit: "LP05",
     object: "Forma de composição dos textos",
-    skill:
-      "(EF04LP18) Analisar o padrão entonacional e a expressão facial e corporal de âncoras de jornais radiofônicos ou televisivos e de entrevistadores/entrevistados.",
+    skill: "EF04LP18",
     comment:
       "Esta habilidade relaciona-se com a (EF05LP21), na medida em que prevê o estudo de aspectos relativos a comunicações orais (algumas entrevistas, vídeos de vloggers) ou oralizadas (fala de âncora ou locutor de notícias, por exemplo). Seu desenvolvimento possibilita a compreensão mais crítica e aprofundada dos textos ouvidos pelo aluno e põe em jogo a relação entre entonação, gesticulação, olhares, tom de voz, expressões faciais, meneios de cabeça, de um lado, e, de outro, os efeitos de sentido assim produzidos, evidenciando valores éticos, estéticos e políticos veiculados na fala.",
     resume:
@@ -2552,14 +5587,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF04LP19) Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto.",
+    skill: "EF04LP19",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos textos expositivos de divulgação científica para crianças a serem lidos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
     resume:
@@ -2567,14 +5600,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP03",
     object: "Imagens analíticas em textos",
-    skill:
-      "(EF04LP20) Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações.",
+    skill: "EF04LP20",
     comment:
       "Esta habilidade refere-se à necessidade de o aluno reconhecer que os textos podem ser compostos por diferentes recursos semióticos, os quais também compõem os sentidos do texto, caracterizando-o como multissemiótico.  O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
     resume:
@@ -2582,14 +5613,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP06",
     object: "Produção de textos",
-    skill:
-      "(EF04LP21) Planejar e produzir textos sobre temas de interesse, com base em resultados de observações e pesquisas em fontes de informações impressas ou eletrônicas, incluindo, quando pertinente, imagens e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF04LP21",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o tema do interesse do aluno, que seja baseado em fontes de informação e pesquisa confiáveis, e dois vetores do processo de escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -2597,14 +5626,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP06",
     object: "Escrita autônoma",
-    skill:
-      "(EF04LP22) Planejar e produzir, com certa autonomia, verbetes de enciclopédia infantil, digitais ou impressos, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    skill: "EF04LP22",
     comment:
       "Esta habilidade articula a produção textual com o gênero verbete de enciclopédia e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -2612,14 +5639,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP05",
     object: "Forma de composição dos textos\nCoesão e articuladores",
-    skill:
-      "(EF04LP23) Identificar e reproduzir, em verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica desse gênero (título do verbete, definição, detalhamento, curiosidades), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF04LP23",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -2627,15 +5652,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP05",
     object:
       "Forma de composição dos textos\nAdequação do texto às normas de escrita",
-    skill:
-      "(EF04LP24) Identificar e reproduzir, em seu formato, tabelas, diagramas e gráficos em relatórios de observação e pesquisa, como forma de apresentação de dados e informações.",
+    skill: "EF04LP24",
     comment:
       "Esta habilidade articula-se com a (EF03LP26) e refere-se — no processo de leitura de estudo — a reconhecer recursos discursivos definidos nos gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -2643,14 +5666,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "04",
+    field: "04",
+    unit: "LP06",
     object: "Escrita autônoma",
-    skill:
-      "(EF04LP25) Representar cenas de textos dramáticos, reproduzindo as falas das personagens, de acordo com as rubricas de interpretação e movimento indicadas pelo autor.",
+    skill: "EF04LP25",
     comment:
       "O foco dessa habilidade está na oralização de textos dramatúrgicos de acordo com as indicações autorais constantes das rubricas. Pressupõe a leitura compreensiva e o estudo prévios do texto a ser representado, com ênfase sobre as relações que se podem estabelecer entre a escrita e a fala. Seu desenvolvimento demanda a participação do aluno em práticas de leitura e análise de textos dramáticos.",
     resume:
@@ -2658,14 +5679,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "05",
+    unit: "LP05",
     object: "Forma de composição de textos poéticos visuais",
-    skill:
-      "(EF04LP26) Observar, em poemas concretos, o formato, a distribuição e a diagramação das letras do texto na página.",
+    skill: "EF04LP26",
     comment:
       "Estreitamente relacionada à (EF02LP29), esta habilidade consiste no processo de leitura e estudo de textos, em: a) identificar a relação existente entre o poema concreto e o espaço no qual se insere, seja ele a página de um livro, de um site ou a tela de um projetor; b) analisar os efeitos de sentido produzidos pelo modo de ocupação desse espaço. O foco é a distribuição, o tipo e o tamanho das letras no espaço, assim como a diagramação.",
     resume:
@@ -2673,14 +5692,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF04LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "04",
-    group_years: "4º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "04",
+    field: "05",
+    unit: "LP05",
     object: "Forma de composição de textos dramáticos",
-    skill:
-      "(EF04LP27) Identificar, em textos dramáticos, marcadores das falas das personagens e de cena.",
+    skill: "EF04LP27",
     comment:
       "Trata-se de habilidade que envolve a leitura e compreensão do texto a ser recitado, para que o aluno, conhecendo os efeitos de sentido em jogo, possa ler/recitar/cantar com maior fluência, ritmo e entonação adequada.",
     resume:
@@ -2688,14 +5705,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Construção do sistema alfabético e da ortografia",
-    skill:
-      "(EF05LP01) Grafar palavras utilizando regras de correspondência fonema-grafema regulares, contextuais e morfológicas e palavras de uso frequente com correspondências irregulares.",
+    skill: "EF05LP01",
     comment:
       "A habilidade diz respeito a compreender e registrar corretamente os casos das palavras previstas. As contextuais são aquelas em que o contexto interno da palavra é que determina que letra usar, sendo necessária a análise de ocorrências para a construção da regra. As morfológicas são aquelas em que o conhecimento de determinado aspecto gramatical contribui para saber como grafar a palavra. Ex.: adjetivos como: manhoso/guloso e outros são grafados com S, entre outras. As palavras de uso frequente com correspondências irregulares devem ser memorizadas, conforme habilidade (EF35LP13).",
     resume:
@@ -2703,15 +5718,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object:
       "Conhecimento do alfabeto do português do Brasil/Ordem alfabética/Polissemia",
-    skill:
-      "(EF05LP02) Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual.",
+    skill: "EF05LP02",
     comment:
       "A habilidade implica em saber que uma palavra pode ter vários significados, em função de vários aspectos relacionados com o contexto de uso: gíria, tempo, registro linguístico —  literário, usual, acadêmico, científico etc. Sendo assim, é fundamental considerar essas variáveis, seja na leitura de um texto (reconhecendo o sentido correspondente ao contexto), seja na elaboração de um texto (empregando-a de acordo com as intenções de significação).",
     resume:
@@ -2719,14 +5732,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Conhecimento das diversas grafias do alfabeto/ Acentuação",
-    skill:
-      "(EF05LP03) Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas.",
+    skill: "EF05LP03",
     comment:
       "Esta habilidade requer do aluno: identificar as sílabas das palavras; reconhecer qual sílaba é tônica; identificar quais têm vogais abertas e quais têm vogais fechadas; reconhecer sinais gráficos como o acento agudo e o circunflexo; relacionar o primeiro com vogais abertas e o segundo, com as fechadas. Depois disso, requer que os alunos identifiquem as regularidades da acentuação apontadas na habilidade.",
     resume:
@@ -2734,14 +5745,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Pontuação",
-    skill:
-      "(EF05LP04) Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses.",
+    skill: "EF05LP04",
     comment:
       "Esta habilidade prevê a ampliação do estudo dos recursos de pontuação previstos na habilidade (EF04LP05), contemplando o estudo de novos usos da vírgula, dos dois pontos, ponto e vírgula, reticências, aspas e parênteses. Da mesma forma, prevê: identificar os novos sinais gráficos; reconhecer, na leitura, a sua função; usá-los no texto para garantir legibilidade e para provocar os efeitos de sentido desejados.",
     resume:
@@ -2749,14 +5758,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF05LP05) Identificar a expressão de presente, passado e futuro em tempos verbais do modo indicativo.",
+    skill: "EF05LP05",
     comment:
       "No trabalho com esta habilidade, é interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com os tempos verbais e usar tais saberes como ferramentas de constituição da legibilidade do texto. Além disso, é possível propor que, na produção escrita, o estudante utilize esse saber para garantir a manutenção do tempo verbal predominante, o que confere coesão e coerência ao texto. Esses saberes devem servir de ferramenta para tomar decisões sobre a legibilidade do texto produzido, especialmente durante a revisão processual coletiva.",
     resume:
@@ -2764,14 +5771,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF05LP06) Flexionar, adequadamente, na escrita e na oralidade, os verbos em concordância com pronomes pessoais/nomes sujeitos da oração.",
+    skill: "EF05LP06",
     comment:
       "Esta habilidade está estreitamente relacionada à (EF04LP06) e envolve trabalhar com verbos e pronomes pessoais sujeito, assim como identificar a necessidade de estabelecer a concordância verbal na constituição da coesão e da coerência do texto. É interessante prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades no trabalho com as classes de palavras e suas funções no enunciado; e usar os saberes gramaticais como ferramentas de constituição da legibilidade.",
     resume:
@@ -2779,14 +5784,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF05LP07) Identificar, em textos, o uso de conjunções e a relação que estabelecem entre partes do texto: adição, oposição, tempo, causa, condição, finalidade.",
+    skill: "EF05LP07",
     comment:
       "A habilidade prevê trabalhar com a compreensão das relações que as conjunções estabelecem entre segmentos do texto e analisar que o seu uso inadequado pode produzir sentidos não desejados. É essencial prever um trabalho reflexivo de observação, análise, comparação e derivação de regularidades de uso dessa classe de palavras; e usar tais saberes como ferramentas de constituição da legibilidade do texto.",
     resume:
@@ -2794,14 +5797,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "01",
+    unit: "LP05",
     object: "Morfologia",
-    skill:
-      "(EF05LP08) Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adição de prefixo e de sufixo.",
+    skill: "EF05LP08",
     comment:
       "Trata-se de reconhecer — com maior sistematização em relação à habilidade (EF03LP10) — que há palavras que derivam de outras e que têm o seu sentido modificado pelo acréscimo de afixos ou no início ou no final delas. Esses afixos possuem sentidos regulares, sendo possível identificar o significado de uma palavra derivada se a primitiva e o afixo forem conhecidos. Além disso, há, ainda, as palavras compostas por justaposição e aglutinação. É interessante a reflexão a partir de inventários, prevendo-se o uso desse saber para resolver problemas de compreensão vocabular.",
     resume:
@@ -2809,14 +5810,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF05LP09) Ler e compreender, com autonomia, textos instrucional de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF05LP09",
     comment:
       "Trata-se de uma habilidade que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos instrucionais de regras de jogo a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -2824,14 +5823,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF05LP10) Ler e compreender, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF05LP10",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros do campo da vida cotidiana (organização interna; marcas linguísticas; conteúdo temático) e dos textos específicos a serem lidos. Atentar para o fato de que o trabalho previsto é com autonomia.",
     resume:
@@ -2839,14 +5836,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF05LP11) Registrar, com autonomia, anedotas, piadas e cartuns, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF05LP11",
     comment:
       "O foco dessa habilidade é o registro escrito de textos de gêneros orais lúdicos e/ou humorísticos da vida cotidiana. Trata-se de uma habilidade complexa, que: a) articula a produção desses gêneros a sua prévia escuta atenta; b) toma o estudo desses gêneros como pré-requisito para o registro escrito de piadas e cartuns, entre outros. Seu desenvolvimento requer a participação direta e sistemática do aluno em práticas orais e escritas nas quais esses gêneros: a) estejam envolvidos; b) sejam discutidos e analisados do ponto de vista dos objetivos em jogo nos textos, das situações a que estejam associados e das convenções discursivas e textuais que os configuram.",
     resume:
@@ -2854,14 +5849,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Escrita\n(compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP01",
     object: "Escrita colaborativa",
-    skill:
-      "(EF05LP12) Planejar e produzir, com autonomia, textos instrucionais de regras de jogo, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero e considerando a situação comunicativa e a finalidade do texto.",
+    skill: "EF05LP12",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero de textos instrucionais de regras de jogo e dois vetores do processo de escrita (situação/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -2869,14 +5862,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP04",
     object: "Produção de texto oral",
-    skill:
-      "(EF05LP13) Assistir, em vídeo digital, a postagem de vlog infantil de críticas de brinquedos e livros de literatura infantil e, a partir dele, planejar e produzir resenhas digitais em áudio ou vídeo.",
+    skill: "EF05LP13",
     comment:
       "A habilidade envolve recepção atenta e compreensão de comentários críticos orais veiculados em vlogs infantis. Além disso, compreende duas outras operações complexas: planejar e produzir resenhas digitais.",
     resume:
@@ -2884,14 +5875,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida cotidiana",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "02",
+    unit: "LP05",
     object: "Forma de composição do texto",
-    skill:
-      "(EF05LP14) Identificar e reproduzir, em textos de resenha crítica de brinquedos ou livros de literatura infantil, a formatação própria desses textos (apresentação e avaliação do produto).",
+    skill: "EF05LP14",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos, de modo que seja possível empregá-los adequadamente nos textos  a serem produzidos.",
     resume:
@@ -2899,14 +5888,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF05LP15) Ler/assistir e compreender, com autonomia, notícias, reportagens, vídeos em vlogs argumentativos, dentre outros gêneros do campo político-cidadão, de acordo com as convenções dos gêneros e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF05LP15",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com outras habilidades de leitura e de oralidade (como a escuta atenta e crítica) quanto as características dos textos mencionados (organização interna; marcas linguísticas; conteúdo temático), inclusive quando forem multissemióticos. A habilidade prevê apenas desempenhos autônomos, o que confere maior importância, nos currículos locais, ao planejamento da progressão da aprendizagem no ensino da leitura.",
     resume:
@@ -2914,14 +5901,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF05LP16) Comparar informações sobre um mesmo fato veiculadas em diferentes mídias e concluir sobre qual é mais confiável e por quê.",
+    skill: "EF05LP16",
     comment:
       "A habilidade envolve a análise de textos de diferentes mídias, considerando-se as especificações dos gêneros em que são organizados, bem como as finalidades e intencionalidades das mídias utilizadas. No que se refere ao nível de autonomia, convém que os currículos considerem o repertório inicial dos alunos para decidir se, ao final do quinto ano, alcançarão o trabalho autônomo ou não.",
     resume:
@@ -2929,14 +5914,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP06",
     object: "Escrita colaborativa",
-    skill:
-      "(EF05LP17) Produzir roteiro para edição de uma reportagem digital sobre temas de interesse da turma, a partir de buscas de informações, imagens, áudios e vídeos na internet, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF05LP17",
     comment:
       "Esta habilidade articula a produção de roteiros de reportagem às convenções do gênero e a dois vetores do processo de escrita (situação/tema ou assunto). Ela prevê a produção de textos para reportagem digital, o que envolve organizar as ideias e utilizar as informações coletadas por pesquisa para depois escrevê-las.",
     resume:
@@ -2944,14 +5927,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP04",
     object: "Planejamento e produção de texto",
-    skill:
-      "(EF05LP18) Roteirizar, produzir e editar vídeo para vlogs argumentativos sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos, de acordo com as convenções do gênero e considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
+    skill: "EF05LP18",
     comment:
       "Esta é uma habilidade complexa, que envolve três etapas distintas de produções orais argumentativas para vlogs. Ainda, articula esse trabalho com os gêneros visados e três vetores da produção: a situação comunicativa, o tema e a finalidade.",
     resume:
@@ -2959,14 +5940,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP04",
     object: "Produção de texto",
-    skill:
-      "(EF05LP19) Argumentar oralmente sobre acontecimentos de interesse social, com base em conhecimentos sobre fatos divulgados em TV, rádio, mídia impressa e digital, respeitando pontos de vista diferentes.",
+    skill: "EF05LP19",
     comment:
       "Muito relevante para a participação no espaço público e o exercício da cidadania, esta habilidade tem como foco a argumentação oral na discussão de questões controversas.",
     resume:
@@ -2974,14 +5953,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP05",
     object: "Forma de composição dos textos",
-    skill:
-      "(EF05LP20) Analisar a validade e força de argumentos em argumentações sobre produtos de mídia para público infantil (filmes, desenhos animados, HQs, games etc.), com base em conhecimentos sobre os mesmos.",
+    skill: "EF05LP20",
     comment:
       "O desenvolvimento desta habilidade está intimamente associado à recepção atenta e crítica a discursos sobre produtos de mídia para o público infantil. Compreende refletir e analisar os textos midiáticos referidos, com o objetivo de reconhecer a força dos argumentos e seu poder de persuasão na apresentação de tais produtos. Coloca-se como condição para o desenvolvimento dessa habilidade o conhecimento do produto pelo estudante.",
     resume:
@@ -2989,14 +5966,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo da vida pública",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "03",
+    unit: "LP05",
     object: "Forma de composição dos textos",
-    skill:
-      "(EF05LP21) Analisar o padrão entonacional, a expressão facial e corporal e as escolhas de variedade e registro linguísticos de vloggers de vlogs opinativos ou argumentativos.",
+    skill: "EF05LP21",
     comment:
       "Esta habilidade relaciona-se com a (EF04LP18), na medida em que prevê o estudo de aspectos relativos a comunicações orais (algumas entrevistas, vídeos de vloggers) ou oralizadas (fala de âncora ou locutor de notícias, por exemplo). Seu desenvolvimento permite ao aluno perceber e avaliar o papel persuasivo do padrão entonacional, da expressão corporal e da variedade linguística selecionada no discurso argumentativo de vloggers.",
     resume:
@@ -3004,14 +5979,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "04",
+    unit: "LP03",
     object: "Compreensão em leitura",
-    skill:
-      "(EF05LP22) Ler e compreender verbetes de dicionário, identificando a estrutura, as informações gramaticais (significado de abreviaturas) e as informações semânticas.",
+    skill: "EF05LP22",
     comment:
       "Trata-se de uma habilidade complexa, que precisa considerar tanto o trabalho com as habilidades de leitura quanto as características de cada um dos gêneros (organização interna; marcas linguísticas; conteúdo temático) e dos verbetes específicos a serem lidos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
     resume:
@@ -3019,14 +5992,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura/escuta (compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "04",
+    unit: "LP03",
     object: "Imagens analíticas em textos",
-    skill:
-      "(EF05LP23) Comparar informações apresentadas em gráficos ou tabelas.",
+    skill: "EF05LP23",
     comment:
       "Trata-se de ler e interpretar dados de gráficos e tabelas, compreendendo as diferenças e semelhanças de apresentação correspondentes a cada um. A habilidade supõe a leitura e interpretação dos dados de cada um dos gêneros mencionados, para, depois, realizar a comparação entre ambos. O grau de autonomia esperada no desenvolvimento desta habilidade deve ser articulado com o repertório suposto para o aluno no nível de ensino em foco.",
     resume:
@@ -3034,14 +6005,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos\n(escrita compartilhada e autônoma)",
+    competences: "LP",
+    group_years: "05",
+    field: "04",
+    unit: "LP06",
     object: "Produção de textos",
-    skill:
-      "(EF05LP24) Planejar e produzir texto sobre tema de interesse, organizando resultados de pesquisa em fontes de informação impressas ou digitais, incluindo imagens e gráficos ou tabelas, considerando a situação comunicativa e o tema/assunto do texto.",
+    skill: "EF05LP24",
     comment:
       "Esta é uma habilidade que articula a produção textual com o tema de interesse do aluno ao organizar resultados de pesquisa e dois vetores do processo de produção escrita (situação/tema ou assunto). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -3049,14 +6018,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "05",
+    field: "05",
+    unit: "LP04",
     object: "Performances orais",
-    skill:
-      "(EF05LP25) Planejar e produzir, com certa autonomia, verbetes de dicionário, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    skill: "EF05LP25",
     comment:
       "Trata-se de uma habilidade que articula a produção textual com o gênero verbete de dicionário e três vetores do processo de escrita (situação/tema ou assunto/finalidade). Envolve ao menos duas operações distintas, que podem ser tratadas em separado: planejar e produzir, que significam organizar as ideias para depois colocá-las no papel.",
     resume:
@@ -3064,15 +6031,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "04",
+    unit: "LP05",
     object:
       "Forma de composição dos textos \nAdequação do texto às normas de escrita",
-    skill:
-      "(EF05LP26) Utilizar, ao produzir o texto, conhecimentos linguísticos e gramaticais: regras sintáticas de concordância nominal e verbal, convenções de escrita de citações, pontuação (ponto final, dois-pontos, vírgulas em enumerações) e regras ortográficas.",
+    skill: "EF05LP26",
     comment:
       "Esta habilidade refere-se a utilizar conhecimentos linguísticos e gramaticais, gerais e específicos, de gêneros que envolvem o uso tanto da norma quanto de citações padronizadas, como relatórios de experimentos, de observação e pesquisa, entrevistas etc. Seu desenvolvimento envolve o engajamento do aluno em práticas de leitura e/ou produção dos gêneros e textos mencionados; e demanda a aprendizagem prévia dos conhecimentos linguísticos relacionados.",
     resume:
@@ -3080,14 +6045,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "04",
+    unit: "LP05",
     object: "Forma de composição dos textos \nCoesão e articuladores",
-    skill:
-      "(EF05LP27) Utilizar, ao produzir o texto, recursos de coesão pronominal (pronomes anafóricos) e articuladores de relações de sentido (tempo, causa, oposição, conclusão, comparação), com nível adequado de informatividade.",
+    skill: "EF05LP27",
     comment:
       "Esta habilidade refere-se a reconhecer, no processo de leitura, recursos linguísticos e discursivos que constituem os gêneros previstos na habilidade (EF04LP23), de modo que seja possível empregá-los adequadamente nos textos a serem produzidos.",
     resume:
@@ -3095,14 +6058,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF05LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "05",
-    group_years: "5º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica (Ortografização)",
+    competences: "LP",
+    group_years: "05",
+    field: "05",
+    unit: "LP05",
     object: "Forma de composição de textos poéticos visuais",
-    skill:
-      "(EF05LP28) Observar, em ciberpoemas e minicontos infantis em mídia digital, os recursos multissemióticos presentes nesses textos digitais.",
+    skill: "EF05LP28",
     comment:
       "Esta habilidade refere-se a — no processo de leitura e estudo de textos — identificar de que modo o espaço é ocupado por ciberpoemas e minicontos disponibilizados nas mídias digitais infantis, quais recursos multissemióticos os constituem e que efeitos de sentido foram por eles provocados.",
     resume:
@@ -3110,15 +6071,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "06",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF06LP01) Reconhecer a impossibilidade de uma neutralidade absoluta no relato de fatos e identificar diferentes graus de parcialidade/ imparcialidade dados pelo recorte feito e pelos efeitos de sentido advindos de escolhas feitas pelo autor, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos e tornar-se consciente das escolhas feitas enquanto produtor de textos.",
+    skill: "EF06LP01",
     comment:
       'O desenvolvimento desta habilidade promove uma visão crítica de gêneros jornalísticos como a notícia e a reportagem, considerados mais objetivos. Por meio da análise de escolhas de palavras entre pares de alternativas como "manifestantes"/"baderneiros", "moleque"/"garoto", "parece"/"é", pode-se evidenciar a visão do jornalista sobre o fato relatado. Também cabe analisar imagens e recursos de outras linguagens que integram esses textos.',
     resume:
@@ -3126,15 +6085,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "06",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF06LP02) Estabelecer relação entre os diferentes gêneros jornalísticos, compreendendo a centralidade da notícia.",
+    skill: "EF06LP02",
     comment:
       "Esta habilidade refere-se ao fato de gêneros, como a crônica, a charge, a reportagem, o editorial, o artigo de opinião, a carta de leitor, entre outros, serem produções que dialogam (mantêm relação de intertextualidade) com o que foi noticiado: o aprofundamento sobre um fato ou assunto, uma opinião ou crítica são feitos em torno de algo que é/foi notícia. Supõe-se habilidades voltadas a reconhecer as características de cada um desses gêneros de textos.",
     resume:
@@ -3142,14 +6099,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Léxico/morfologia",
-    skill:
-      "(EF06LP03) Analisar diferenças de sentido entre palavras de uma série sinonímica.",
+    skill: "EF06LP03",
     comment:
       'Esta é uma habilidade bastante relevante para a compreensão das relações semânticas que podem se estabelecer entre as palavras da língua. Seu foco está no reconhecimento do sentido singular que cada palavra de uma série sinonímica pode aportar (como nas palavras "país", "pátria", "nação", "terra natal" etc.), em relação às demais da mesma série. Trata-se, portanto, de compreender a sinonímia como uma relação de proximidade de sentido, e não de equivalência.',
     resume:
@@ -3157,14 +6112,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP04) Analisar a função e as flexões de substantivos e adjetivos e de verbos nos modos Indicativo, Subjuntivo e Imperativo: afirmativo e negativo.",
+    skill: "EF06LP04",
     comment:
       "Esta habilidade pressupõe a construção prévia ou conexa de conhecimentos morfossintáticos relacionados a três classes de palavras (substantivos; adjetivos; verbos) e a modos verbais e categorias gramaticais a elas relacionadas. Convém lembrar, ainda, que as concordâncias verbal e nominal, assim como a manutenção e a correlação dos tempos verbais implicadas nesta habilidade colaboram para a coesão e a coerência. A habilidade é importante sobretudo na escrita, para efetivar intenções de significação. Demanda a análise dos tópicos mencionados em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos coesivos produzidos pelas funções e flexões de substantivos, adjetivos e verbos.",
     resume:
@@ -3172,14 +6125,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP05) Identificar os efeitos de sentido dos modos verbais, considerando o gênero textual e a intenção comunicativa.",
+    skill: "EF06LP05",
     comment:
       "A habilidade refere-se ao estudo dos modos verbais — indicativo, subjuntivo e imperativo — de forma que o aluno consiga identificar os sentidos essenciais de cada um. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos esteja relacionada aos efeitos produzidos pelos modos verbais.",
     resume:
@@ -3187,14 +6138,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP06) Empregar, adequadamente, as regras de concordância nominal (relações entre os substantivos e seus determinantes) e as regras de concordância verbal (relações entre o verbo e o sujeito simples e composto).",
+    skill: "EF06LP06",
     comment:
       "Esta habilidade tem como foco as concordâncias nominal e verbal, na produção de textos orais ou escritos de qualquer campo de atuação ou gênero em que a norma-padrão é requerida. Requer discussões sobre variação linguística e práticas orais, de leitura e/ou produção de textos, especialmente em situações públicas e formais. Pressupõe, ainda, o domínio e/ou estudo conexo das regras dos dois tipos de concordância mencionados, de classes de palavras (nome e verbo) e de categorias gramaticais a ela relacionadas. (Estreitamente relacionada à EF69LP56, EF06LP11, EF07LP10 e EF08LP04).",
     resume:
@@ -3202,14 +6151,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP07) Identificar, em textos, períodos compostos por orações separadas por vírgula sem a utilização de conectivos, nomeando-os como períodos compostos por coordenação.",
+    skill: "EF06LP07",
     comment:
       "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na identificação e classificação de períodos compostos por  coordenação assindética (sem conectivos). Requer a observação da organização sintática do texto e reflexões a respeito, identificando períodos compostos por coordenação assindética, apreendendo o princípio de sua organização interna e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -3217,14 +6164,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP08) Identificar, em texto ou sequência textual, orações como unidades constituídas em torno de um núcleo verbal e períodos como conjunto de orações conectadas.",
+    skill: "EF06LP08",
     comment:
       "O foco desta habilidade está na percepção da oração e do período como unidades básicas da organização sintática do texto, assim como no reconhecimento da função do verbo como núcleo oracional. Requer a observação da organização sintática do texto e reflexões a respeito, identificando orações e períodos e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -3232,14 +6177,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF06LP09) Classificar, em texto ou sequência textual, os períodos simples compostos.",
+    skill: "EF06LP09",
     comment:
       "O foco desta habilidade está na percepção dos períodos simples e dos períodos compostos como unidades da organização sintática do texto. Requer observação da organização do texto e reflexões a respeito, identificando períodos simples e compostos e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -3247,14 +6190,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Sintaxe",
-    skill:
-      "(EF06LP10) Identificar sintagmas nominais e verbais como constituintes imediatos da oração.",
+    skill: "EF06LP10",
     comment:
       "Considerando a oração como uma unidade básica da organização sintática do texto, esta habilidade se refere à identificação dos constituintes imediatos (sujeito/predicado) que a estruturam. Trata-se, portanto, de uma habilidade fundamental para o desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção do texto e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -3262,14 +6203,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Elementos notacionais da escrita/morfossintaxe",
-    skill:
-      "(EF06LP11) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: tempos verbais, concordância nominal e verbal, regras ortográficas, pontuação etc.",
+    skill: "EF06LP11",
     comment:
       "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero, como utilização adequada dos tempos verbais, concordância, ortografia, pontuação etc. Pressupõe discussões sobre variação linguística e práticas de leitura e/ou produção de textos, especialmente em situações públicas e formais. Requer, ainda, domínio e/ou estudo conexo de tópicos de análise linguística como os mencionados. (Estreitamente relacionada à EF69LP56).",
     resume:
@@ -3277,14 +6216,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF06LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "06",
-    group_years: "6º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "06",
+    field: "01",
+    unit: "LP08",
     object: "Semântica Coesão",
-    skill:
-      "(EF06LP12) Utilizar, ao produzir texto, recursos de coesão referencial (nome e pronomes), recursos semânticos de sinonímia, antonímia e homonímia e mecanismos de representação de diferentes vozes (discurso direto e indireto).",
+    skill: "EF06LP12",
     comment:
       "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é o emprego de recursos de coesão (referencial) e semânticos na produção, escrita ou oral. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações; (4) ajudam a identificar as diferentes vozes do texto e a produzir efeitos de sentido, como o da impessoalidade. Ela demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
     resume:
@@ -3292,15 +6229,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF67LP01) Analisar a estrutura e funcionamento dos hiperlinks em textos noticiosos publicados na Web e vislumbrar possibilidades de uma escrita hipertextual.",
+    skill: "EF67LP01",
     comment:
       "A habilidade consiste em aprender que, no ambiente virtual, um texto pode apresentar, seja no corpo do texto, seja na página em que figura,  links que levam a outros conteúdos. Uma notícia, por exemplo, pode remeter a outras notícias e a reportagens anteriores, inserindo-se em uma série de textos jornalísticos sobre um mesmo fato; ou um link pode levar o leitor a outros textos de destaque do dia. Assim, matérias noticiosas se inserem em diferentes redes de relações. A análise sugerida pode ser associada a pequenos exercícios voltados à produção de hipertextos, em que será necessário que o aluno defina, em um texto produzido por ele, palavras-chave que levarão a outros links, observando a relevância e a relação dos textos que decidir linkar ao seu, a fim de vislumbrar essa possibilidade de escrita, como prevê a habilidade.",
     resume:
@@ -3308,14 +6243,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Apreciação e réplica",
-    skill:
-      "(EF67LP02) Explorar o espaço reservado ao leitor nos jornais, revistas, impressos e on-line, sites noticiosos etc., destacando notícias, fotorreportagens, entrevistas, charges, assuntos, temas, debates em foco, posicionando-se de maneira ética e respeitosa frente a esses textos e opiniões a eles relacionadas, e publicar notícias, notas jornalísticas, fotorreportagem de interesse geral nesses espaços do leitor.",
+    skill: "EF67LP02",
     comment:
       "Esta habilidade favorece uma participação mais qualificada do adolescente nos espaços jornalísticos/midiáticos citados. Supõe investir em habilidades voltadas à análise de textos de gêneros próprios desse campo — dos mais informativos aos mais argumentativos —, na curadoria de textos fidedignos. Pode ser articulada com a produção de textos orais e escritos, visto que faz referência ao posicionamento do leitor frente ao que lê/escuta.",
     resume:
@@ -3323,14 +6256,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF67LP03) Comparar informações sobre um mesmo fato divulgadas em diferentes veículos e mídias, analisando e avaliando a confiabilidade.",
+    skill: "EF67LP03",
     comment:
       "Trata-se de uma habilidade complexa que consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados;2. apurar informações, desenvolvendo procedimentos de curadoria;3. e posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.Pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01).",
     resume:
@@ -3338,14 +6269,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Estratégia de leitura Distinção de fato e opinião",
-    skill:
-      "(EF67LP04) Distinguir, em segmentos descontínuos de textos, fato da opinião enunciada em relação a esse mesmo fato.",
+    skill: "EF67LP04",
     comment:
       'Diferenciar fato de opinião supõe habilidades de análise de marcas de subjetividade que o autor escolhe deixar no texto, como "pistas" que possibilitam identificar o que é apreciação e o que é fato. Por exemplo, o uso de adjetivos (inadmissível, louvável), advérbios (obviamente) e modos e tempos verbais, verbos modais (poder/dever etc.) podem ser "pistas" do exercício de modalização do autor.',
     resume:
@@ -3353,15 +6282,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object:
       "Estratégia de leitura: identificação de teses e argumentos\nApreciação e réplica",
-    skill:
-      "(EF67LP05) Identificar e avaliar teses/opiniões/posicionamentos explícitos e argumentos em textos argumentativos (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), manifestando concordância ou discordância.",
+    skill: "EF67LP05",
     comment:
       "Esta habilidade diz respeito tanto às situações de leitura quanto às de produção de textos, na medida em que identificar e avaliar teses, opiniões e posicionamentos sobre o que se lê/ouve são essenciais ao posicionamento crítico que se expressa em textos orais e escritos sobre o que foi lido/escutado. Nos 6º e 7º anos, há a expectativa de que os alunos possam reconhecer, analisar e se posicionar em relação aos textos argumentativos de terceiros.",
     resume:
@@ -3369,14 +6296,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF67LP06) Identificar os efeitos de sentido provocados pela seleção lexical, topicalização de elementos e seleção e hierarquização de informações, uso de 3ª pessoa etc.",
+    skill: "EF67LP06",
     comment:
       "Esta habilidade implica em reconhecer os efeitos de sentido provocados por recursos léxicos empregados em textos do campo jornalístico/midiático. Para isso, deve-se analisar a coerência desses efeitos tanto em relação às intenções presumidas do texto quanto à finalidade do gênero e características dos espaços de circulação do texto.",
     resume:
@@ -3384,14 +6309,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF67LP07) Identificar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e perceber seus efeitos de sentido.",
+    skill: "EF67LP07",
     comment:
       "Esta habilidade envolve a observação e o reconhecimento do modo como os recursos linguísticos ou de outras linguagens são usados para construir os discursos persuasivos em textos argumentativos.",
     resume:
@@ -3399,14 +6322,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido Exploração da multissemiose",
-    skill:
-      "(EF67LP08) Identificar os efeitos de sentido devidos à escolha de imagens estáticas, sequenciação ou sobreposição de imagens, definição de figura/fundo, ângulo, profundidade e foco, cores/tonalidades, relação com o escrito (relações de reiteração, complementação ou oposição) etc. em notícias, reportagens, fotorreportagens, foto-denúncias, memes, gifs, anúncios publicitários e propagandas publicados em jornais, revistas, sites na internet etc.",
+    skill: "EF67LP08",
     comment:
       'Esta habilidade refere-se à abordagem dos gêneros jornalísticos e publicitários citados, considerando o diálogo entre as linguagens que compõem cada um desses gêneros de textos. Estudar a relação entre o texto verbal que compõe uma notícia e a(s) foto(s) selecionada(s) para compor essa notícia pode levar à percepção das escolhas feitas nessa composição e dos efeitos de sentido que isso produz: por exemplo, se a notícia se refere a um acontecimento envolvendo uma personalidade e é acompanhada de uma foto dessa personalidade, o modo como a imagem é "captada" pode fazer com que ela pareça  vítima, dissimulada ou culpada de algo — imagem que pode reiterar ou se contrapor ao que é noticiado.',
     resume:
@@ -3414,14 +6335,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP09",
     object: "Estratégias de produção: planejamento de textos informativos",
-    skill:
-      "(EF67LP09) Planejar notícia impressa e para circulação em outras mídias (rádio ou TV/vídeo), tendo em vista as condições de produção, do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do fato a ser noticiado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes, análise de documentos, cobertura de eventos etc.–, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc. e a previsão de uma estrutura hipertextual (no caso de publicação em sites ou blogs noticiosos).",
+    skill: "EF67LP09",
     comment:
       "Esta habilidade trata do processo implicado na prática de produzir notícias. Refere-se a procedimentos e ações necessários para planejar um texto, considerando as condições de produção e circulação, decisões quanto ao fato/assunto e seu recorte e os objetivos, além do uso de procedimentos e estratégias de curadoria de informação.",
     resume:
@@ -3429,15 +6348,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP09",
     object:
       "Textualização, tendo em vista suas condições de produção, as características do gênero em questão, o estabelecimento de coesão,\nadequação à norma-padrão e o uso adequado de ferramentas de edição",
-    skill:
-      "(EF67LP10) Produzir notícia impressa tendo em vista características do gênero – título ou manchete com verbo no tempo presente, linha fina (opcional), lide, progressão dada pela ordem decrescente de importância dos fatos, uso de 3ª pessoa, de palavras que indicam precisão –, e o estabelecimento adequado de coesão e produzir notícia para TV, rádio e internet, tendo em vista, além das características do gênero, os recursos de mídias disponíveis e o manejo de recursos de captação e edição de áudio e imagem.",
+    skill: "EF67LP10",
     comment:
       "A habilidade trata do processo implicado na prática de produzir notícias e está articulada à (EF69LP06), no que se refere à necessidade de planejar o texto a ser produzido. Para a elaboração do texto, conforme orienta esta habilidade, é preciso considerar o modo como se organiza a notícia e os recursos das diferentes linguagens que podem ser usadas (a verbal, a imagética – imagens estáticas e em movimento presentes em fotos, vídeos, infográficos etc. que compõem o gênero), tendo em vista a textualização (construção do texto).",
     resume:
@@ -3445,15 +6362,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP09",
     object:
       "Estratégias de produção: planejamento de textos argumentativos e apreciativos",
-    skill:
-      "(EF67LP11) Planejar resenhas, vlogs, vídeos e podcasts variados, e textos e vídeos de apresentação e apreciação próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), dentre outros, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha de uma produção ou evento cultural para analisar – livro, filme, série, game, canção, videoclipe, fanclipe, show, saraus, slams etc. – da busca de informação sobre a produção ou evento escolhido, da síntese de informações sobre a obra/evento e do elenco/seleção de aspectos, elementos ou recursos que possam ser destacados positiva ou negativamente ou da roteirização do passo a passo do game para posterior gravação dos vídeos.",
+    skill: "EF67LP11",
     comment:
       "A habilidade contempla uma das operações do processo de produção de textos – o planejamento, que deve ser realizado considerando o contexto de produção (interlocutores, intencionalidades etc.). Planejar, nesses gêneros, envolve: seleção de fato/assunto/objeto cultural a ser tratado, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte. Diferentemente dos textos noticiosos, aqui, trata-se de planejar textos que exigem posicionamento crítico; a preparação de argumentos; a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
     resume:
@@ -3461,14 +6376,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP09",
     object: "Textualização de textos argumentativos e apreciativos",
-    skill:
-      "(EF67LP12) Produzir resenhas críticas, vlogs, vídeos, podcasts variados e produções e gêneros próprios das culturas juvenis (algumas possibilidades: fanzines, fanclipes, e-zines, gameplay, detonado etc.), que apresentem/descrevam e/ou avaliem produções culturais (livro, filme, série, game, canção, disco, videoclipe etc.) ou evento (show, sarau, slam etc.), tendo em vista o contexto de produção dado, as características do gênero, os recursos das mídias envolvidas e a textualização adequada dos textos e/ou produções.",
+    skill: "EF67LP12",
     comment:
       "A habilidade envolve os procedimentos de produção de textos – definir contexto de produção, planejar, produzir e revisar –, com a diferença de que se tratam de gêneros argumentativos do campo jornalístico-midiático, que exigem posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
     resume:
@@ -3476,14 +6389,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP09",
     object: "Produção e edição de textos publicitários",
-    skill:
-      "(EF67LP13) Produzir, revisar e editar textos publicitários, levando em conta o contexto de produção dado, explorando recursos multissemióticos, relacionando elementos verbais e visuais, utilizando adequadamente estratégias discursivas de persuasão e/ou convencimento e criando título ou slogan que façam o leitor motivar-se a interagir com o texto produzido e se sinta atraído pelo serviço, ideia ou produto em questão.",
+    skill: "EF67LP13",
     comment:
       "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes e mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e à produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte. ; (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros publicitários.",
     resume:
@@ -3491,14 +6402,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "67",
+    field: "06",
+    unit: "LP04",
     object: "Planejamento e produção de entrevistas orais",
-    skill:
-      "(EF67LP14) Definir o contexto de produção da entrevista (objetivos, o que se pretende conseguir, porque aquele entrevistado etc.), levantar informações sobre o entrevistado e sobre o acontecimento ou tema em questão, preparar o roteiro de perguntar e realizar entrevista oral com envolvidos ou especialistas relacionados com o fato noticiado ou com o tema em pauta, usando roteiro previamente elaborado e formulando outras perguntas a partir das respostas dadas e, quando for o caso, selecionar partes, transcrever e proceder a uma edição escrita do texto, adequando-o a seu contexto de publicação, à construção composicional do gênero e garantindo a relevância das informações mantidas e a continuidade temática.",
+    skill: "EF67LP14",
     comment:
       'Esta habilidade trata do processo implicado na produção de entrevistas: planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação etc.), produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens e aos aplicativos necessários, em caso de textos em áudio e vídeo) e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que circulará, e realizar ajustes necessários, com ou sem aplicativos). A habilidade também refere-se a entrevistas que são coletadas em áudio e depois transcritas e retextualizadas como entrevista escrita, o que supõe, no processo de retextualização ("transformação" de um texto oral em um texto escrito), uma revisão voltada para eliminação de elementos próprios das situações de fala, como a repetição de certas palavras (como né, aí), a oscilação e reformulação etc.',
     resume:
@@ -3506,15 +6415,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "03",
+    unit: "LP07",
     object:
       "Estratégias e procedimentos de leitura em textos legais e normativos",
-    skill:
-      "(EF67LP15) Identificar a proibição imposta ou o direito garantido, bem como as circunstâncias de sua aplicação, em artigos relativos a normas, regimentos escolares, regimentos e estatutos da sociedade civil, regulamentações para o mercado publicitário, Código de Defesa do Consumidor, Código Nacional de Trânsito, ECA, Constituição, dentre outros.",
+    skill: "EF67LP15",
     comment:
       "A habilidade consiste em distinguir o que é proibição imposta do que são direitos garantidos e compreender os contextos de aplicação da norma ou direito em textos jurídicos, normativos e reguladores elaborados para diferentes âmbitos da vida em sociedade. A esta habilidade, articulam-se as de análise das características dos gêneros da natureza indicada, que passam, por exemplo, pelo reconhecimento de como se organizam (os títulos, capítulos, artigos, parágrafos, incisos etc.), dos recursos linguísticos usados para identificar o que é proibição e o que é direito (que implica observar a linguagem jurídica e o vocabulário recorrente — por exemplo, uso de palavras como garantia, direito, obrigação ou o uso predominante do tempo presente do indicativo e, em menor frequência, do futuro do indicativo, e os efeitos de sentido provocados por esses usos).",
     resume:
@@ -3522,15 +6429,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "03",
+    unit: "LP07",
     object:
       "Contexto de produção, circulação e recepção de textos e práticas relacionadas à defesa de direitos e à participação social",
-    skill:
-      "(EF67LP16) Explorar e analisar espaços de reclamação de direitos e de envio de solicitações (tais como ouvidorias, SAC, canais ligados a órgãos públicos, plataformas do consumidor, plataformas de reclamação), bem como de textos pertencentes a gêneros que circulam nesses espaços, reclamação ou carta de reclamação, solicitação ou carta de solicitação, como forma de ampliar as possibilidades de produção desses textos em casos que remetam a reivindicações que envolvam a escola, a comunidade ou algum de seus membros como forma de se engajar na busca de solução de problemas pessoais, dos outros e coletivos.",
+    skill: "EF67LP16",
     comment:
       "Esta habilidade consiste em conhecer as características dos espaços de circulação de gêneros que impliquem a solicitação e/ou reclamação de direitos, a participação na vida da comunidade, do estado ou país — e textos que possibilitem essas ações —, o que permite aos alunos que organizem o seu discurso (oral ou escrito) utilizando recursos adequados aos interlocutores, com vistas a atingir seus objetivos. É habilidade fundamental para o exercício da cidadania.",
     resume:
@@ -3538,15 +6443,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "03",
+    unit: "LP07",
     object:
       "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros (carta de solicitação, carta de reclamação, petição on-line, carta aberta, abaixo-assinado, proposta etc.)\nApreciação e réplica",
-    skill:
-      "(EF67LP17) Analisar, a partir do contexto de produção, a forma de organização das cartas de solicitação e de reclamação (datação, forma de início, apresentação contextualizada do pedido ou da reclamação, em geral, acompanhada de explicações, argumentos e/ou relatos do problema, fórmula de finalização mais ou menos cordata, dependendo do tipo de carta e subscrição) e algumas das marcas linguísticas relacionadas à argumentação, explicação ou relato de fatos, como forma de possibilitar a escrita fundamentada de cartas como essas ou de postagens em canais próprios de reclamações e solicitações em situações que envolvam questões relativas à escola, à comunidade ou a algum dos seus membros.",
+    skill: "EF67LP17",
     comment:
       'Esta é uma habilidade que vincula a leitura analítica de cartas de solicitação e de reclamação à produção posterior de textos dos mesmos gêneros. Seu foco é a análise tanto da forma de organização dessas cartas quanto de seus mecanismos argumentativos. E está diretamente relacionada à capacidade de (re)construção dos sentidos do texto e de sua coesão e coerência, em aspectos como a ordem de apresentação das informações e ideias e a sua "costura". O que envolve o estudo de diferentes tipos de organizadores textuais, com ênfase nos argumentativos.',
     resume:
@@ -3554,15 +6457,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "03",
+    unit: "LP07",
     object:
       "Estratégias, procedimentos de leitura em textos reivindicatórios ou propositivos",
-    skill:
-      "(EF67LP18) Identificar o objeto da reclamação e/ou da solicitação e sua sustentação, explicação ou justificativa, de forma a poder analisar a pertinência da solicitação ou justificação.",
+    skill: "EF67LP18",
     comment:
       "Trata-se de uma habilidade complexa que envolve duas operações distintas: identificar e analisar, em textos reivindicatórios, a pertinência de reclamações ou pedidos. Supõe, portanto, a capacidade de:a) diferenciar “partes” essenciais do conteúdo desses textos: o objeto da reclamação ou do pedido, de um lado, e o/s argumento/s que os valida/m, de outro;b) reconhecer a pertinência da reclamação ou do pedido, considerando-se o contexto de produção: quem e para quem se reclama/solicita, quais os interesses em jogo etc.",
     resume:
@@ -3570,15 +6471,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "03",
+    unit: "LP09",
     object:
       "Estratégia de produção: planejamento de textos reivindicatórios ou propositivos",
-    skill:
-      "(EF67LP19) Realizar levantamento de questões, problemas que requeiram a denúncia de desrespeito a direitos, reivindicações, reclamações, solicitações que contemplem a comunidade escolar ou algum de seus membros e examinar normas e legislações.",
+    skill: "EF67LP19",
     comment:
       "A habilidade refere-se à investigação de problemas que levarão à produção de gêneros reivindicatórios ou propositivos. Entre esta habilidade, prevista para o 6º e o 7º ano, e a habilidade (EF89LP21), prevista para os dois últimos anos, e que também faz referência ao levantamento de questões ou problemas, há uma progressão suposta, (1) nos procedimentos envolvidos na investigação e na ampliação de alcance do público; (2) na geração de dados e na função deles para a produção de gêneros mais ou menos complexos. Supõe a leitura analítica de textos normativos e legais.",
     resume:
@@ -3586,14 +6485,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP07",
     object: "Curadoria de informação",
-    skill:
-      "(EF67LP20) Realizar pesquisa, a partir de recortes e questões definidos previamente, usando fontes indicadas e abertas.",
+    skill: "EF67LP20",
     comment:
       "A habilidade refere-se à curadoria de informação no campo das práticas de estudo e pesquisa. Supõe o desenvolvimento das diferentes dimensões do pensamento científico, crítico e criativo. Por exemplo, para realizar uma pesquisa científica, é necessário pensar no objeto a ser investigado, no recorte temático (com elaboração de questões e hipóteses) que orientará a busca e seleção de informações que podem solucionar um problema proposto etc.",
     resume:
@@ -3601,14 +6498,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP09",
     object: "Estratégias de escrita: textualização, revisão e edição",
-    skill:
-      "(EF67LP21) Divulgar resultados de pesquisas por meio de apresentações orais, painéis, artigos de divulgação científica, verbetes de enciclopédia, podcasts científicos etc.",
+    skill: "EF67LP21",
     comment:
       "Esta habilidade se refere à apropriação de diferentes modos de divulgar pesquisas realizadas. Supõe o estudo das especificidades dos gêneros e da adequação de um ou outro ao contexto de produção, com destaque para a natureza dos resultados, as intencionalidades e o público provável. Envolve as operações de planejamento, produção e revisão do texto no gênero escolhido (apresentação, painel, artigo etc) para divulgar os resultados.",
     resume:
@@ -3616,14 +6511,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP09",
     object: "Estratégias de escrita: textualização, revisão e edição",
-    skill:
-      "(EF67LP22) Produzir resumos, a partir das notas e/ou esquemas feitos, com o uso adequado de paráfrases e citações.",
+    skill: "EF67LP22",
     comment:
       "Esta habilidade supõe (1) capacidades de leitura para estudo (uso de grifos, produção de marginálias, notas, esquemas) e mobilização de capacidades de leitura como inferências e generalizações, (2) planejamento, produção e revisão de um gênero de apoio à compreensão de textos lidos/conceitos. Na textualização (elaboração do texto), promove o aprendizado de modos de incorporar ao texto as vozes de outros.",
     resume:
@@ -3631,14 +6524,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP04",
     object: "Conversação espontânea",
-    skill:
-      "(EF67LP23) Respeitar os turnos de fala, na participação em conversações e em discussões ou atividades coletivas, na sala de aula e na escola e formular perguntas coerentes e adequadas em momentos oportunos em situações de aulas, apresentação oral, seminário etc.",
+    skill: "EF67LP23",
     comment:
       "Esta habilidade supõe a participação nas diferentes situações orais propostas na BNCC e se articula com todos os campos de atuação. Visa a uma participação, nas interações, de um lado mais respeitosas e éticas, de outro, mais qualificadas (a esse respeito, ver EF89LP27).",
     resume:
@@ -3646,14 +6537,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP04",
     object: "Procedimentos de apoio à compreensão Tomada de nota",
-    skill:
-      "(EF67LP24) Tomar nota de aulas, apresentações orais, entrevistas (ao vivo, áudio, TV, vídeo), identificando e hierarquizando as informações principais, tendo em vista apoiar o estudo e a produção de sínteses e reflexões pessoais ou outros objetivos em questão.",
+    skill: "EF67LP24",
     comment:
       "Nesta habilidade, a tomada de notas tem como finalidade principal o registro pessoal visando a reflexões pessoais sobre o registrado. Supõe a capacidade de identificar informações relevantes e sintetizá-las em notas de modo coerente, garantindo a possibilidade de retomada das ideias pelo(a) seu(sua) autor(a).",
     resume:
@@ -3661,14 +6550,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP08",
     object: "Textualização Progressão temática",
-    skill:
-      "(EF67LP25) Reconhecer e utilizar os critérios de organização tópica (do geral para o específico, do específico para o geral etc.), as marcas linguísticas dessa organização (marcadores de ordenação e enumeração, de explicação, definição e exemplificação, por exemplo) e os mecanismos de paráfrase, de maneira a organizar mais adequadamente a coesão e a progressão temática de seus textos.",
+    skill: "EF67LP25",
     comment:
       "Esta habilidade refere-se tanto ao reconhecimento de critérios utilizados na organização interna dos textos (dividir o texto em tópicos que permitam a compreensão do tema/assunto; utilizar uma ordem e uma hierarquia ao apresentá-los no texto; estabelecer as relações adequadas entre as informações), quanto à identificação das marcas linguísticas empregadas para tanto: em primeiro/segundo lugar; isto é, ou seja, por exemplo; para finalizar/concluindo etc. Além disso, refere-se à compreensão dos mecanismos de paráfrase (dizer o mesmo que foi dito anteriormente, de outra forma, em uma explicação, por exemplo), identificando as marcas linguísticas utilizadas para apresentá-la (dito de outra forma/em outras palavras). Esses aspectos contribuem para que o texto seja coeso e coerente. Esta habilidade refere-se, ainda, ao emprego dos aspectos indicados na elaboração dos textos próprios.",
     resume:
@@ -3676,14 +6563,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "04",
+    unit: "LP08",
     object: "Textualização",
-    skill:
-      "(EF67LP26) Reconhecer a estrutura de hipertexto em textos de divulgação científica e proceder à remissão a conceitos e relações por meio de notas de rodapés ou boxes.",
+    skill: "EF67LP26",
     comment:
       "Estreitamente associada à leitura, esta habilidade envolve o reconhecimento da estrutura do hipertexto em gêneros de divulgação científica veiculados em ambientes digitais, assim como a capacidade de acessar e articular textos periféricos, como notas de rodapé e boxes, com o texto principal. Consiste em compreender que notas de rodapé e boxes mantém relações de complementaridade e/ou contraponto com o texto principal, compondo com ele um todo solidário. Supõe, ainda, que a análise empreendida na leitura de hipertextos em ambiente digital pode favorecer a produção destes.",
     resume:
@@ -3691,14 +6576,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "05",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF67LP27) Analisar, entre os textos literários e entre estes e outras manifestações artísticas (como cinema, teatro, música, artes visuais e midiáticas), referências explícitas ou implícitas a outros textos, quanto aos temas, personagens e recursos literários e semióticos",
+    skill: "EF67LP27",
     comment:
       "Esta habilidade refere-se ao estudo comparado de obras literárias entre si e delas com outras manifestações de arte: a análise das relações interdiscursivas e intertextuais (os diálogos) entre esses diferentes textos. Muitas obras literárias clássicas, por exemplo, sofrem adaptações para produções em outras linguagens, como Dom Casmurro, de Machado de Assis, que inspirou HQs, canções e minisséries contemporâneas, por exemplo, ou canções que inspiraram a produção de contos (como as canções de Chico Buarque que inspiraram um livro de contos). Essa habilidade de identificar e analisar os diálogos estabelecidos entre os vários produtos culturais favorece a ampliação de repertório, que contribui para que os alunos estabeleçam mais relações entre os textos e, portanto, construam mais sentidos sobre o que leem.",
     resume:
@@ -3706,14 +6589,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "05",
+    unit: "LP07",
     object: "Estratégias de leitura Apreciação e réplica",
-    skill:
-      "(EF67LP28) Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes –, romances infantojuvenis, contos populares, contos de terror, lendas brasileiras, indígenas e africanas, narrativas de aventuras, narrativas de enigma, mitos, crônicas, autobiografias, histórias em quadrinhos, mangás, poemas de forma livre e fixa (como sonetos e cordéis), vídeo-poemas, poemas visuais, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    skill: "EF67LP28",
     comment:
       "A habilidade refere-se a procedimentos e estratégias que podem ser usados para compreender e apreciar diferentes gêneros literários, considerando as suas marcas específicas. Esse tipo de leitura favorece a fruição literária — que significa ler sem qualquer compromisso com avaliações ou apresentações formais sobre o lido. Entretanto, cabe lembrar que, para fruir melhor o texto, é essencial ter vivenciado experiências prazerosas de leitura e conversa sobre textos desses gêneros, em que  o caráter criativo dos discursos literários tenham sido evidenciados.",
     resume:
@@ -3721,15 +6602,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP29",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "67",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução da textualidade\nEfeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
-    skill:
-      "(EF67LP29) Identificar, em texto dramático, personagem, ato, cena, fala e indicações cênicas e a organização do texto: enredo, conflitos, ideias principais, pontos de vista, universos de referência.",
+    skill: "EF67LP29",
     comment:
       'Esta habilidade supõe distinguir os elementos constitutivos do gênero texto dramático, seja em relação à sua forma e aos recursos usados nessa forma de se estruturar (as rubricas, a marcação das personagens, a divisão em cenas e atos etc.), seja em relação ao seu conteúdo (à história que quer "mostrar": quem são essas personagens, que ideias e visões de mundo defendem, como se relacionam, que conflitos são gerados nessa relação etc.).',
     resume:
@@ -3737,14 +6616,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP30",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "05",
+    unit: "LP09",
     object: "Construção da textualidade Relação entre textos",
-    skill:
-      "(EF67LP30) Criar narrativas ficcionais, tais como contos populares, contos de suspense, mistério, terror, humor, narrativas de enigma, crônicas, histórias em quadrinhos, dentre outros, que utilizem cenários e personagens realistas ou de fantasia, observando os elementos da estrutura narrativa próprios ao gênero pretendido, tais como enredo, personagens, tempo, espaço e narrador, utilizando tempos verbais adequados à narração de fatos passados, empregando conhecimentos sobre diferentes modos de se iniciar uma história e de inserir os discursos direto e indireto.",
+    skill: "EF67LP30",
     comment:
       "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários narrativos. A produção, aqui, também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
     resume:
@@ -3752,14 +6629,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP31",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "67",
+    field: "05",
+    unit: "LP09",
     object: "Construção da textualidade Relação entre textos",
-    skill:
-      "(EF67LP31) Criar poemas compostos por versos livres e de forma fixa (como quadras e sonetos), utilizando recursos visuais, semânticos e sonoros, tais como cadências, ritmos e rimas, e poemas visuais e vídeo-poemas, explorando as relações entre imagem e texto verbal, a distribuição da mancha gráfica (poema visual) e outros recursos visuais e sonoros.",
+    skill: "EF67LP31",
     comment:
       "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários líricos. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
     resume:
@@ -3767,14 +6642,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP32",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Fono-ortografia",
-    skill:
-      "(EF67LP32) Escrever palavras com correção ortográfica, obedecendo as convenções da língua escrita.",
+    skill: "EF67LP32",
     comment:
       "Esta é uma habilidade diretamente relacionada a contextos de produção e revisão de textos escritos. Seu foco é a obediência às convenções ortográficas do português, o que demanda o envolvimento sistemático em práticas de produção nas quais esse tipo de conhecimento seja requisitado e o domínio e/ou o estudo concomitante dessas convenções.",
     resume:
@@ -3782,13 +6655,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP33",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Elementos notacionais da escrita",
-    skill: "(EF67LP33) Pontuar textos adequadamente.",
+    skill: "EF67LP33",
     comment:
       "Esta habilidade se refere ao emprego de regras e normas de pontuação em textos de qualquer gênero ou campo de atuação. Demanda o envolvimento frequente e sistemático em práticas públicas e formais de leitura e/ou produção de textos escritos em que a pontuação correta deve ser observada: e-mail de trabalho, entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática etc.",
     resume:
@@ -3796,14 +6668,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP34",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Léxico/morfologia",
-    skill:
-      "(EF67LP34) Formar antônimos com acréscimo de prefixos que expressam noção de negação.",
+    skill: "EF67LP34",
     comment:
       "Esta é uma habilidade  bastante relevante para a compreensão das relações semânticas que podem se estabelecer entre as palavras da língua. Trata-se de compreender a antonímia como um processo de estabelecimento de oposição de sentidos entre palavras; seu foco está no reconhecimento da função de certos prefixos nesse processo. (Relaciona-se com a habilidade EF06LP03 e todas as demais que envolvem processos de formação de palavras, especialmente os derivativos).",
     resume:
@@ -3811,14 +6681,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP35",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Léxico/morfologia",
-    skill:
-      "(EF67LP35) Distinguir palavras derivadas por acréscimo de afixos e palavras compostas.",
+    skill: "EF67LP35",
     comment:
       "Esta é uma habilidade fundamental para a compreensão dos diferentes processos morfológicos e semânticos de formação das palavras. O foco está na distinção entre mecanismos de derivação e de composição, necessária a qualquer estudo e/ou análise do léxico. Pressupõe conhecimentos prévios relativos a classes de palavras e às categorias gramaticais a que elas se associam.",
     resume:
@@ -3826,14 +6694,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP36",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Coesão",
-    skill:
-      "(EF67LP36) Utilizar, ao produzir texto, recursos de coesão referencial (léxica e pronominal) e sequencial e outros recursos expressivos adequados ao gênero textual.",
+    skill: "EF67LP36",
     comment:
       "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é a adequação expressiva, no emprego de recursos de coesão (referencial e sequencial), ao gênero textual produzido. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações. A habilidade também demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
     resume:
@@ -3841,14 +6707,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP37",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Sequências textuais",
-    skill:
-      "(EF67LP37) Analisar, em diferentes textos, os efeitos de sentido decorrentes do uso de recursos linguístico-discursivos de prescrição, causalidade, sequências descritivas e expositivas e ordenação de eventos.",
+    skill: "EF67LP37",
     comment:
       "A habilidade refere-se ao estudo necessário à resolução de problemas de compreensão, seja na leitura, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego dos recursos linguístico-discursivos mencionados referentes ao estabelecimento da progressão temática. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de recursos de prescrição, causalidade, sequências descritivas e expositivas e ordenação de eventos.",
     resume:
@@ -3856,14 +6720,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF67LP38",
-    competences: "Língua Portuguesa",
-    group_year_id: "67",
-    group_years: "6º, 7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "67",
+    field: "01",
+    unit: "LP08",
     object: "Figuras de linguagem",
-    skill:
-      "(EF67LP38) Analisar os efeitos de sentido do uso de figuras de linguagem, como comparação, metáfora, metonímia, personificação, hipérbole, dentre outras.",
+    skill: "EF67LP38",
     comment:
       "O foco desta habilidade está na compreensão e análise de figuras de linguagem, como as mencionadas, em gêneros e textos de qualquer campo de atuação. Trata-se, portanto, de uma habilidade relevante não só para a compreensão, mas, ainda, para a interpretação de textos, na medida em que evidencia mecanismos de (re)construção do texto e de seus sentidos.",
     resume:
@@ -3871,14 +6733,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP07",
     object: "Apreciação e réplica\nRelação entre gêneros e mídias",
-    skill:
-      "(EF69LP01) Diferenciar liberdade de expressão de discursos de ódio, posicionando-se contrariamente a esse tipo de discurso e vislumbrando possibilidades de denúncia quando for o caso.",
+    skill: "EF69LP01",
     comment:
       "Esta habilidade supõe discutir aspectos éticos envolvidos no modo de as pessoas se posicionarem e argumentarem sobre os assuntos ou fatos, com vistas à formação de um sujeito protagonista e ético frente a situações de conflito, em todas as situações de leitura — e também de produção de textos — que implicam posicionamentos e argumentos sobre fatos e assuntos diversos, mais ou menos polêmicos.",
     resume:
@@ -3886,14 +6746,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP07",
     object: "Apreciação e réplica\nRelação entre gêneros e mídias",
-    skill:
-      "(EF69LP02) Analisar e comparar peças publicitárias variadas (cartazes, folhetos, outdoor, anúncios e propagandas em diferentes mídias, spots, jingle, vídeos etc.), de forma a perceber a articulação entre elas em campanhas, as especificidades das várias semioses e mídias, a adequação dessas peças ao público-alvo, aos objetivos do anunciante e/ou da campanha e à construção composicional e estilo dos gêneros em questão, como forma de ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    skill: "EF69LP02",
     comment:
       "Esta habilidade supõe identificar os elementos da linguagem verbal e de outras linguagens e o modo como eles se articulam em diferentes peças publicitárias para produzir os sentidos desejados, considerando o produto em questão e o contexto de produção: quem são os interlocutores e quais as suas intencionalidades. Identificar e conhecer o potencial de significação dos recursos das diferentes linguagens e mídias implica o estudo dos recursos próprios dessas linguagens e mídias.",
     resume:
@@ -3901,14 +6759,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP07",
     object: "Estratégia de leitura: apreender os sentidos globais do texto",
-    skill:
-      "(EF69LP03) Identificar, em notícias, o fato central, suas principais circunstâncias e eventuais decorrências; em reportagens e fotorreportagens o fato ou a temática retratada e a perspectiva de abordagem, em entrevistas os principais temas/subtemas abordados, explicações dadas ou teses defendidas em relação a esses subtemas; em tirinhas, memes, charge, a crítica, ironia ou humor presente.",
+    skill: "EF69LP03",
     comment:
       "O foco está no modo como se constrói o conteúdo de textos nesses gêneros, sempre relacionado às suas finalidades. Esta habilidade mobiliza outras, como identificar marcas de impessoalidade (mais esperada na notícia) e de subjetividade (que é aceitável nas reportagens e esperada nas entrevistas), diferenciar opinião de argumentos (que podem estar presentes em quaisquer dos gêneros citados na descrição da habilidade) e inferir informações acessando conhecimentos prévios sobre o tema/fato/assunto e relacionando com o conteúdo do texto para reconhecer o humor, a crítica e a ironia.",
     resume:
@@ -3916,14 +6772,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF69LP04) Identificar e analisar os efeitos de sentido que fortalecem a persuasão nos textos publicitários, relacionando as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados, como imagens, tempo verbal, jogos de palavras, figuras de linguagem etc., com vistas a fomentar práticas de consumo conscientes.",
+    skill: "EF69LP04",
     comment:
       'Esta habilidade contribui para a percepção da finalidade e do "poder" do discurso publicitário: estimular o consumo, podendo induzir ao consumismo, com consequências ambientais e sociais indesejáveis, como o valor do ter em detrimento do ser, que pode resultar em discriminações. Analisar como os recursos das várias linguagens atuam na construção do discurso persuasivo favorece o pensamento crítico em relação ao consumismo e suas consequências.',
     resume:
@@ -3931,14 +6785,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF69LP05) Inferir e justificar, em textos multissemióticos – tirinhas, charges, memes, gifs etc. –, o efeito de humor, ironia e/ou crítica pelo uso ambíguo de palavras, expressões ou imagens ambíguas, de clichês, de recursos iconográficos, de pontuação etc.",
+    skill: "EF69LP05",
     comment:
       'Esta habilidade supõe o estudo dos recursos das diferentes linguagens envolvidas na constituição desses gêneros de textos multissemióticos e a compreensão dos efeitos de sentido que a "combinação" desses recursos produz. Envolve ativar conhecimentos prévios sobre o contexto de produção do texto (por exemplo, sobre o fato a que uma charge se refere) e relacioná-los às ideias expressas no texto para compreender as intencionalidades e construir sentido sobre o que se lê. Para justificar a inferência feita, será necessário explicar e demonstrar as relações estabelecidas.',
     resume:
@@ -3946,15 +6798,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP09",
     object:
       "Relação do texto com o contexto de produção e experimentação de papéis sociais",
-    skill:
-      "(EF69LP06) Produzir e publicar notícias, fotodenúncias, fotorreportagens, reportagens, reportagens multimidiáticas, infográficos, podcasts noticiosos, entrevistas, cartas de leitor, comentários, artigos de opinião de interesse local ou global, textos de apresentação e apreciação de produção cultural – resenhas e outros próprios das formas de expressão das culturas juvenis, tais como vlogs e podcasts culturais, gameplay, detonado etc.– e cartazes, anúncios, propagandas, spots, jingles de campanhas sociais, dentre outros em várias mídias, vivenciando de forma significativa o papel de repórter, de comentador, de analista, de crítico, de editor ou articulista, de booktuber, de vlogger (vlogueiro) etc., como forma de compreender as condições de produção que envolvem a circulação desses textos e poder participar e vislumbrar possibilidades de participação nas práticas de linguagem do campo jornalístico e do campo midiático de forma ética e responsável, levando-se em consideração o contexto da Web 2.0, que amplia a possibilidade de circulação desses textos e “funde” os papéis de leitor e autor, de consumidor e produtor.",
+    skill: "EF69LP06",
     comment:
       "O desenvolvimento da habilidade  implica a vivência de diferentes papéis sociais, como produtor de textos de variados gêneros do campo jornalístico/midiático. Analisar e considerar o contexto em que o texto será produzido e circulará é essencial para garantir a adequação da produção à situação. No que se refere à produção de quaisquer dos gêneros citados, o tratamento ético da informação e/ou a posição ética em relação a ela devem estar previstos.",
     resume:
@@ -3962,14 +6812,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP09",
     object: "Textualização",
-    skill:
-      "(EF69LP07) Produzir textos em diferentes gêneros, considerando sua adequação ao contexto produção e circulação – os enunciadores envolvidos, os objetivos, o gênero, o suporte, a circulação -, ao modo (escrito ou oral; imagem estática ou em movimento etc.), à variedade linguística e/ou semiótica apropriada a esse contexto, à construção da textualidade relacionada às propriedades textuais e do gênero), utilizando estratégias de planejamento, elaboração, revisão, edição, reescrita/redesign e avaliação de textos, para, com a ajuda do professor e a colaboração dos colegas, corrigir e aprimorar as produções realizadas, fazendo cortes, acréscimos, reformulações, correções de concordância, ortografia, pontuação em textos e editando imagens, arquivos sonoros, fazendo cortes, acréscimos, ajustes, acrescentando/ alterando efeitos, ordenamentos etc.",
+    skill: "EF69LP07",
     comment:
       "Esta habilidade refere-se à produção de textos de gêneros variados do campo jornalístico-midiático, levando sempre em conta o contexto de produção (interlocutores, intencionalidades etc.) e as especificidades do gênero escolhido para a produção. Implica apropriar-se dos procedimentos da escrita, envolvendo as operações de contextualização, planejamento, elaboração do texto (textualização) e revisão processual e final.",
     resume:
@@ -3977,14 +6825,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP09",
     object: "Revisão/edição de texto informativo e opinativo",
-    skill:
-      "(EF69LP08) Revisar/editar o texto produzido – notícia, reportagem, resenha, artigo de opinião, dentre outros –, tendo em vista sua adequação ao contexto de produção, a mídia em questão, características do gênero, aspectos relativos à textualidade, a relação entre as diferentes semioses, a formatação e uso adequado das ferramentas de edição (de texto, foto, áudio e vídeo, dependendo do caso) e adequação à norma culta.",
+    skill: "EF69LP08",
     comment:
       "Esta habilidade consiste na revisão e/ou edição de textos diversos, que deve se orientar sempre por critérios de adequação da produção ao contexto (interlocutores, intencionalidade, gênero, espaços/mídias em que circulará etc.), levando em conta, também, o uso das ferramentas de edição variadas em recursos e complexidade, em caso de gêneros multissemióticos (como as produções em vídeo, por exemplo).",
     resume:
@@ -3992,15 +6838,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP09",
     object:
       "Planejamento de textos de peças publicitárias de campanhas sociais",
-    skill:
-      "(EF69LP09) Planejar uma campanha publicitária sobre questões/problemas, temas, causas significativas para a escola e/ou comunidade, a partir de um levantamento de material sobre o tema ou evento, da definição do público-alvo, do texto ou peça a ser produzido – cartaz, banner, folheto, panfleto, anúncio impresso e para internet, spot, propaganda de rádio, TV etc. –, da ferramenta de edição de texto, áudio ou vídeo que será utilizada, do recorte e enfoque a ser dado, das estratégias de persuasão que serão utilizadas etc.",
+    skill: "EF69LP09",
     comment:
       "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Destina-se ao procedimento de planejar o texto, que implica a curadoria de informação e a produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte, levando em conta as especificidades do gênero da campanha publicitária.",
     resume:
@@ -4008,14 +6852,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP10",
     object: "Produção de textos jornalísticos orais",
-    skill:
-      "(EF69LP10) Produzir notícias para rádios, TV ou vídeos, podcasts noticiosos e de opinião, entrevistas, comentários, vlogs, jornais radiofônicos e televisivos, dentre outros possíveis, relativos a fato e temas de interesse pessoal, local ou global e textos orais de apreciação e opinião – podcasts e vlogs noticiosos, culturais e de opinião, orientando-se por roteiro ou texto, considerando o contexto de produção e demonstrando domínio dos gêneros.",
+    skill: "EF69LP10",
     comment:
       "Esta habilidade supõe o trabalho com as etapas de produção de notícias: planejamento, produção e revisão processual e final (em casos em que os textos são gravados previamente). Para o planejamento, será necessário considerar a mídia em que o gênero se realizará (uma notícia para TV, rádio ou ambiente digital), para que o roteiro seja feito considerando os recursos próprios da mídia em jogo.",
     resume:
@@ -4023,14 +6865,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP10",
     object: "Produção de textos jornalísticos orais",
-    skill:
-      "(EF69LP11) Identificar e analisar posicionamentos defendidos e refutados na escuta de interações polêmicas em entrevistas, discussões e debates (televisivo, em sala de aula, em redes sociais etc.), entre outros, e se posicionar frente a eles.",
+    skill: "EF69LP11",
     comment:
       "Esta habilidade supõe a escuta e a produção de textos orais, sempre considerando o contexto. Essas operações cognitivas mobilizam habilidades de análise e de uso de recursos linguísticos e semióticos, como o reconhecimento da posição assumida pelo outro, o movimento argumentativo usado (se negocia com ou refuta outros; se apenas defende sua própria posição), a entonação dada ao que se fala, que sinaliza a apreciação sobre o que se fala etc.",
     resume:
@@ -4038,14 +6878,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade\n*Considerar todas as habilidades dos eixos leitura e produção que se referem a textos ou produções orais, em áudio ou vídeo",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP10",
     object: "Planejamento e produção de textos jornalísticos orais",
-    skill:
-      "(EF69LP12) Desenvolver estratégias de planejamento, elaboração, revisão, edição, reescrita/ redesign (esses três últimos quando não for situação ao vivo) e avaliação de textos orais, áudio e/ou vídeo, considerando sua adequação aos contextos em que foram produzidos, à forma composicional e estilo de gêneros, a clareza, progressão temática e variedade linguística empregada, os elementos relacionados à fala, tais como modulação de voz, entonação, ritmo, altura e intensidade, respiração etc., os elementos cinésicos, tais como postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia etc.",
+    skill: "EF69LP12",
     comment:
       "Esta habilidade consiste em trabalhar, em todas as propostas de produção de textos orais, as etapas da produção, começando pelo planejamento, a partir da análise do contexto de produção (o que se quer dizer, para quem, com que finalidade e como dizer). Considerando os gêneros que podem ser gravados e assistidos/ouvidos posteriormente, é preciso prever o ensino/aprendizagem de uso de aplicativos de captação e edição de áudio e imagem.",
     resume:
@@ -4053,15 +6891,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP04",
     object:
       "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
-    skill:
-      "(EF69LP13) Engajar-se e contribuir com a busca de conclusões comuns relativas a problemas, temas ou questões polêmicas de interesse da turma e/ou de relevância social.",
+    skill: "EF69LP13",
     comment:
       "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Articula-se com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito.",
     resume:
@@ -4069,15 +6905,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP04",
     object:
       "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
-    skill:
-      "(EF69LP14) Formular perguntas e decompor, com a ajuda dos colegas e dos professores, tema/questão polêmica, explicações e ou argumentos relativos ao objeto de discussão para análise mais minuciosa e buscar em fontes diversas informações ou dados que permitam analisar partes da questão e compartilhá-los com a turma.",
+    skill: "EF69LP14",
     comment:
       "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Articula-se com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito. Como envolve a busca de informação em fontes variadas, também se conecta às habilidades de curadoria da informação, que implica saber diferenciar sites e/ou fontes confiáveis de não confiáveis, por exemplo.",
     resume:
@@ -4085,15 +6919,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP04",
     object:
       "Participação em discussões orais de temas controversos de interesse da turma e/ou de relevância social",
-    skill:
-      "(EF69LP15) Apresentar argumentos e contra-argumentos coerentes, respeitando os turnos de fala, na participação em discussões sobre temas controversos e/ou polêmicos.",
+    skill: "EF69LP15",
     comment:
       "Esta habilidade refere-se à participação dos alunos em discussões de temas controversos que sejam de seu interesse e/ou tenham relevância social. Essa habilidade se articula com habilidades do campo da vida pública e também das práticas de estudo e pesquisa, visto que conduz os alunos a se inteirar de problemas e temas de seu entorno imediato e mediato, investigá-los para compreendê-los e tomar uma posição em discussões a respeito. Também é conexa a habilidades de identificação e análise dos movimentos argumentativos que se pode adotar em uma situação de argumentação (sustentar, refutar, negociar), dos tipos de argumentação (exemplificação, autoridade etc.) e dos recursos linguísticos usados na apresentação e articulação desses argumentos, bem como de modos de participação respeitosa e ética, em situações de debate.",
     resume:
@@ -4101,14 +6933,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP08",
     object: "Construção composicional",
-    skill:
-      "(EF69LP16) Analisar e utilizar as formas de composição dos gêneros jornalísticos da ordem do relatar, tais como notícias (pirâmide invertida no impresso X blocos noticiosos hipertextuais e hipermidiáticos no digital, que também pode contar com imagens de vários tipos, vídeos, gravações de áudio etc.), da ordem do argumentar, tais como artigos de opinião e editorial (contextualização, defesa de tese/opinião e uso de argumentos) e das entrevistas: apresentação e contextualização do entrevistado e do tema, estrutura pergunta e resposta etc.",
+    skill: "EF69LP16",
     comment:
       "O foco desta habilidade está no estudo da forma de composição dos gêneros jornalísticos narrativos e argumentativos, assim como de entrevistas. Implica relacionar as formas de composição do gênero mencionadas na habilidade às especificidades do campo de atuação em que circulam, assim como aos temas e finalidades dos gêneros e às peculiaridades da mídia em que são publicadas.",
     resume:
@@ -4116,14 +6946,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP08",
     object: "Estilo",
-    skill:
-      "(EF69LP17) Perceber e analisar os recursos estilísticos e semióticos dos gêneros jornalísticos e publicitários, os aspectos relativos ao tratamento da informação em notícias, como a ordenação dos eventos, as escolhas lexicais, o efeito de imparcialidade do relato, a morfologia do verbo, em textos noticiosos e argumentativos, reconhecendo marcas de pessoa, número, tempo, modo, a distribuição dos verbos nos gêneros textuais (por exemplo, as formas de pretérito em relatos; as formas de presente e futuro em gêneros argumentativos; as formas de imperativo em gêneros publicitários), o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e as estratégias de persuasão e apelo ao consumo com os recursos linguístico-discursivos utilizados (tempo verbal, jogos de palavras, metáforas, imagens).",
+    skill: "EF69LP17",
     comment:
       "Esta é uma habilidade bastante complexa, cujo foco são as características, o funcionamento e os recursos — linguísticos e semióticos — próprios de gêneros jornalísticos narrativos e argumentativos. Envolve, ainda, duas operações distintas e sucessivas: perceber e analisar os efeitos de sentido produzidos pelos recursos linguísticos e semióticos mencionados, assim como pelas estratégias persuasivas em jogo, de modo que se possa identificar intencionalidades variadas presentes em textos desses gêneros.",
     resume:
@@ -4131,14 +6959,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP08",
     object: "Estilo",
-    skill:
-      "(EF69LP18) Utilizar, na escrita/reescrita de textos argumentativos, recursos linguísticos que marquem as relações de sentido entre parágrafos e enunciados do texto e operadores de conexão adequados aos tipos de argumento e à forma de composição de textos argumentativos, de maneira a garantir a coesão, a coerência e a progressão temática nesses textos (“primeiramente, mas, no entanto, em primeiro/segundo/terceiro lugar, finalmente, em conclusão” etc.).",
+    skill: "EF69LP18",
     comment:
       'A habilidade envolve o uso de recursos textuais que estabeleçam relações adequadas entre as partes do texto, de modo a conferir-lhe legibilidade e tratamento adequado do conteúdo (discussão da questão polêmica, posicionamento assumido e razões apresentadas para tanto). Esta habilidade é necessária para estabelecer-se a progressão e a unidade temática — o "fio da meada" — do texto, assim como sua coesão e coerência.',
     resume:
@@ -4146,14 +6972,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "06",
+    unit: "LP08",
     object: "Efeito de sentido",
-    skill:
-      "(EF69LP19) Analisar, em gêneros orais que envolvam argumentação, os efeitos de sentido de elementos típicos da modalidade falada, como a pausa, a entonação, o ritmo, a gestualidade e expressão facial, as hesitações etc.",
+    skill: "EF69LP19",
     comment:
       "Trata-se de habilidade que consiste em analisar os recursos típicos da fala do ponto de vista dos efeitos de sentido que, em uma dada situação comunicativa, podem provocar sobre a argumentação pretendida. Requer a observação dos recursos linguísticos em jogo e dos efeitos de sentido que produzem em diferentes situações de comunicação.",
     resume:
@@ -4161,15 +6985,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP07",
     object:
       "Reconstrução das condições de produção e circulação e adequação do texto à construção composicional e ao estilo de gênero\n(Lei, código, estatuto, código, regimento etc.)",
-    skill:
-      "(EF69LP20) Identificar, tendo em vista o contexto de produção, a forma de organização dos textos normativos e legais, a lógica de hierarquização de seus itens e subitens e suas partes: parte inicial (título – nome e data – e ementa), blocos de artigos (parte, livro, capítulo, seção, subseção), artigos (caput e parágrafos e incisos) e parte final (disposições pertinentes à sua implementação) e analisar efeitos de sentido causados pelo uso de vocabulário técnico, pelo uso do imperativo, de palavras e expressões que indicam circunstâncias, como advérbios e locuções adverbiais, de palavras que indicam generalidade, como alguns pronomes indefinidos, de forma a poder compreender o caráter imperativo, coercitivo e generalista das leis e de outras formas de regulamentação.",
+    skill: "EF69LP20",
     comment:
       "Esta habilidade refere-se ao reconhecimento das especificidades dos textos normativos e legais, marcados por um conteúdo de caráter coercitivo ou normativo: como se organizam? que recursos linguísticos são comuns nesses gêneros de textos? Além da presença de verbos no imperativo, advérbios ou locuções, pode ser observado o uso de verbos e substantivos que trazem uma carga semântica com esse caráter, como dever/poder/ser, obrigação/direito/garantia etc.",
     resume:
@@ -4177,14 +6999,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP07",
     object: "Apreciação e réplica",
-    skill:
-      "(EF69LP21) Posicionar-se em relação a conteúdos veiculados em práticas não institucionalizadas de participação social, sobretudo àquelas vinculadas a manifestações artísticas, produções culturais, intervenções urbanas e práticas próprias das culturas juvenis que pretendam denunciar, expor uma problemática ou “convocar” para uma reflexão/ação, relacionando esse texto/produção com seu contexto de produção e relacionando as partes e semioses presentes para a construção de sentidos.",
+    skill: "EF69LP21",
     comment:
       "Esta habilidade supõe um trabalho de reconhecimento dessas práticas no entorno, na região e/ou em localidades remotas, bem como de análise das suas especificidades por meio do estudo dos recursos das diferentes linguagens em que se constituem os gêneros envolvidos, o que dará subsídios ao aluno para formar opiniões sobre seus conteúdos. Por exemplo: o grafitar, como uma prática de letramento, se caracteriza pelo quê? Que recursos utiliza e como pode usá-los para fazer a crítica?",
     resume:
@@ -4192,14 +7012,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP09",
     object: "Textualização, revisão e edição",
-    skill:
-      "(EF69LP22) Produzir, revisar e editar textos reivindicatórios ou propositivos sobre problemas que afetam a vida escolar ou da comunidade, justificando pontos de vista, reivindicações e detalhando propostas (justificativa, objetivos, ações previstas etc.), levando em conta seu contexto de produção e as características dos gêneros em questão.",
+    skill: "EF69LP22",
     comment:
       "Relacionada às habilidades (EF67LP19) e (EF89LP21), esta habilidade se refere à realização de uma investigação das necessidades da escola e/ou da comunidade para levantamento de questões, prioridades e problemas relevantes que levarão à produção colaborativa de textos reivindicatórios. Essa investigação fornecerá elementos para planejar ações e dará contexto para as produções de textos. As habilidades relativas à produção de textos argumentativos também são mobilizadas.",
     resume:
@@ -4207,14 +7025,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP09",
     object: "Textualização, revisão e edição",
-    skill:
-      "(EF69LP23) Contribuir com a escrita de textos normativos, quando houver esse tipo de demanda na escola – regimentos e estatutos de organizações da sociedade civil do âmbito da atuação das crianças e jovens (grêmio livre, clubes de leitura, associações culturais etc.) – e de regras e regulamentos nos vários âmbitos da escola – campeonatos, festivais, regras de convivência etc., levando em conta o contexto de produção e as características dos gêneros em questão.",
+    skill: "EF69LP23",
     comment:
       "Esta habilidade supõe a escrita colaborativa de textos normativos diretamente relacionados às práticas escolares, com seus atores previstos. Escritas dessa natureza implicam uma atuação protagonista dos/as alunos/as na apropriação do espaço escolar em diferentes dimensões e favorecem uma participação que envolve direitos e responsabilidades.",
     resume:
@@ -4222,14 +7038,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP04",
     object: "Discussão oral",
-    skill:
-      "(EF69LP24) Discutir casos, reais ou simulações, submetidos a juízo, que envolvam (supostos) desrespeitos a artigos, do ECA, do Código de Defesa do Consumidor, do Código Nacional de Trânsito, de regulamentações do mercado publicitário etc., como forma de criar familiaridade com textos legais – seu vocabulário, formas de organização, marcas de estilo etc. -, de maneira a facilitar a compreensão de leis, fortalecer a defesa de direitos, fomentar a escrita de textos normativos (se e quando isso for necessário) e possibilitar a compreensão do caráter interpretativo das leis e as várias perspectivas que podem estar em jogo.",
+    skill: "EF69LP24",
     comment:
       "Esta habilidade supõe a participação em situações (como discussões coletivas e em grupos, debates) em que esteja em foco analisar casos sob a ótica da legalidade e do direito. É pressuposto dessas situações o conhecimento e a compreensão de textos legais e normativos que servirão tanto para analisar o caso quanto para elaborar argumentos sólidos que apoiem a sua análise.",
     resume:
@@ -4237,14 +7051,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP04",
     object: "Discussão oral",
-    skill:
-      "(EF69LP25) Posicionar-se de forma consistente e sustentada em uma discussão, assembleia, reuniões de colegiados da escola, de agremiações e outras situações de apresentação de propostas e defesas de opiniões, respeitando as opiniões contrárias e propostas alternativas e fundamentando seus posicionamentos, no tempo de fala previsto, valendo-se de sínteses e propostas claras e justificadas.",
+    skill: "EF69LP25",
     comment:
       "Esta habilidade supõe a participação em diferentes situações orais, em que se  espera o posicionamento crítico em relação à questão em foco. O uso de recursos linguísticos e semióticos (outras linguagens), como de palavras que explicitam a posição assumida (se de oposição ou negociação, por exemplo) e o uso de entonação que deixe em evidência a apreciação do falante em relação ao que é dito são algumas das competências mobilizadas.",
     resume:
@@ -4252,14 +7064,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP04",
     object: "Registro",
-    skill:
-      "(EF69LP26) Tomar nota em discussões, debates, palestras, apresentação de propostas, reuniões, como forma de documentar o evento e apoiar a própria fala (que pode se dar no momento do evento ou posteriormente, quando, por exemplo, for necessária a retomada dos assuntos tratados em outros contextos públicos, como diante dos representados).",
+    skill: "EF69LP26",
     comment:
       "Esta habilidade supõe o trabalho com a tomada de notas para diferentes fins: (1) para alimentar outras produções escritas com a finalidade de documentar processos e resultados de reuniões, tais como atas e notas de reunião; (2) para registro pessoal, visando a reflexão sobre o registrado; (3) como apoio à fala durante a participação em situações orais como discussões, debates, seminários.",
     resume:
@@ -4267,15 +7077,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP08",
     object:
       "Análise de textos legais/normativos, propositivos e reivindicatórios",
-    skill:
-      "(EF69LP27) Analisar a forma composicional de textos pertencentes a gêneros normativos/ jurídicos e a gêneros da esfera política, tais como propostas, programas políticos (posicionamento quanto a diferentes ações a serem propostas, objetivos, ações previstas etc.), propaganda política (propostas e sua sustentação, posicionamento quanto a temas em discussão) e textos reivindicatórios: cartas de reclamação, petição (proposta, suas justificativas e ações a serem adotadas) e suas marcas linguísticas, de forma a incrementar a compreensão de textos pertencentes a esses gêneros e a possibilitar a produção de textos mais adequados e/ou fundamentados quando isso for requerido.",
+    skill: "EF69LP27",
     comment:
       "Trata-se de habilidade de leitura para estudo das especificidades dos textos normativos jurídicos e reivindicatórios, visando à produção de textos dessa natureza, essenciais para a vida pública, especialmente em situações de defesa ou de debates sobre direitos do cidadão. Supõe-se o estudo desses gêneros no que diz respeito ao conteúdo — como pode se organizar e ser construído com os recursos linguísticos adequados, tendo em vista os objetivos pretendidos.",
     resume:
@@ -4283,14 +7091,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "03",
+    unit: "LP08",
     object: "Modalização",
-    skill:
-      "(EF69LP28) Observar os mecanismos de modalização adequados aos textos jurídicos, as modalidades deônticas, que se referem ao eixo da conduta (obrigatoriedade/permissibilidade) como, por exemplo: Proibição: “Não se deve fumar em recintos fechados.”; Obrigatoriedade: “A vida tem que valer a pena.”; Possibilidade: “É permitido a entrada de menores acompanhados de adultos responsáveis”, e os mecanismos de modalização adequados aos textos políticos e propositivos, as modalidades apreciativas, em que o locutor exprime um juízo de valor (positivo ou negativo) acerca do que enuncia. Por exemplo: “Que belo discurso!”, “Discordo das escolhas de Antônio.” “Felizmente, o buraco ainda não causou acidentes mais graves.”",
+    skill: "EF69LP28",
     comment:
       'Esta habilidade amplia a (EF89LP16). Além de identificar recursos empregados em textos dos gêneros citados que representam valores e posições, abrange modalidades deônticas, como "É proibido pisar na grama", "Saia, agora!", "Se quiser, pode usar o meu carro".  Envolve reconhecer os recursos linguísticos empregados nesses casos, compreender os efeitos de sentido produzidos por eles e analisar a coerência desses efeitos tanto com as intenções de significação pretendidas, quanto com a especificidade do gênero, considerando o campo de atuação, finalidade e espaço de circulação.',
     resume:
@@ -4298,15 +7104,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP29",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object:
       "Reconstrução das condições de produção e recepção dos textos e adequação do texto à construção composicional e ao estilo de gênero",
-    skill:
-      "(EF69LP29) Refletir sobre a relação entre os contextos de produção dos gêneros de divulgação científica – texto didático, artigo de divulgação científica, reportagem de divulgação científica, verbete de enciclopédia (impressa e digital), esquema, infográfico (estático e animado), relatório, relato multimidiático de campo, podcasts e vídeos variados de divulgação científica etc. – e os aspectos relativos à construção composicional e às marcas linguística características desses gêneros, de forma a ampliar suas possibilidades de compreensão (e produção) de textos pertencentes a esses gêneros.",
+    skill: "EF69LP29",
     comment:
       "Esta habilidade promove o desenvolvimento de capacidades de leitura relativas à compreensão e apreciação dos textos, considerando o contexto de produção de textos de divulgação científica: interlocutores envolvidos, intencionalidades relativas ao gênero selecionado e apreciações implícitas e explícitas sobre o tema tratado, observáveis pela análise dos recursos das linguagens utilizadas. Esta habilidade favorece habilidades de produção de textos dessa esfera.",
     resume:
@@ -4314,14 +7118,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP30",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF69LP30) Comparar, com a ajuda do professor, conteúdos, dados e informações de diferentes fontes, levando em conta seus contextos de produção e referências, identificando coincidências, complementaridades e contradições, de forma a poder identificar erros/imprecisões conceituais, compreender e posicionar-se criticamente sobre os conteúdos e informações em questão.",
+    skill: "EF69LP30",
     comment:
       "A habilidade implica mobilizar/desenvolver estratégias e ferramentas de curadoria: busca e seleção de fontes confiáveis, uso de recursos de apoio à compreensão — como tomada de notas, produção de esquemas etc. —, bem como análise das informações e generalizações, visando à formulação de apreciações éticas e estéticas expressas em textos de gêneros diversos (comentários, reportagens de divulgação, resenhas críticas etc.).",
     resume:
@@ -4329,14 +7131,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP31",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object: "Apreciação e réplica",
-    skill:
-      "(EF69LP31) Utilizar pistas linguísticas – tais como “em primeiro/segundo/terceiro lugar”, “por outro lado”, “dito de outro modo”, isto é”, “por exemplo” – para compreender a hierarquização das proposições, sintetizando o conteúdo dos textos.",
+    skill: "EF69LP31",
     comment:
       "A observação das pistas linguísticas referidas na habilidade pode favorecer a percepção das informações, ideias e/ou argumentos que o autor considera mais relevantes, bem como a identificação de ideias centrais e periféricas, orientando na produção de resumos, esquemas, gráficos etc.",
     resume:
@@ -4344,15 +7144,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP32",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object:
       "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
-    skill:
-      "(EF69LP32) Selecionar informações e dados relevantes de fontes diversas (impressas, digitais, orais etc.), avaliando a qualidade e a utilidade dessas fontes, e organizar, esquematicamente, com ajuda do professor, as informações necessárias (sem excedê-las) com ou sem apoio de ferramentas digitais, em quadros, tabelas ou gráficos.",
+    skill: "EF69LP32",
     comment:
       "A habilidade implica mobilizar/desenvolver estratégias e ferramentas de curadoria: busca e seleção de fontes confiáveis, uso de recursos de apoio à compreensão — como tomada de notas, produção de esquemas etc. —, bem como análise das informações e generalizações, visando à formulação de apreciações éticas e estéticas expressas em textos de gêneros diversos (comentários, reportagens de divulgação, resenhas críticas etc.).",
     resume:
@@ -4360,15 +7158,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP33",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object:
       "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
-    skill:
-      "(EF69LP33) Articular o verbal com os esquemas, infográficos, imagens variadas etc. na (re)construção dos sentidos dos textos de divulgação científica e retextualizar do discursivo para o esquemático – infográfico, esquema, tabela, gráfico, ilustração etc. – e, ao contrário, transformar o conteúdo das tabelas, esquemas, infográficos, ilustrações etc. em texto discursivo, como forma de ampliar as possibilidades de compreensão desses textos e analisar as características das multissemioses e dos gêneros em questão.",
+    skill: "EF69LP33",
     comment:
       'Esta habilidade supõe relacionar as partes verbais (texto verbal), não-verbais (imagens) e híbridas (imagens e textos verbais de um infográfico, por exemplo) que compõem um texto de divulgação, identificando a relação de sentidos que estabelecem entre as partes. Um gráfico, por exemplo, pode complementar uma informação dada pelo texto escrito, ou um esquema ou uma ilustração podem exemplificar a informação verbal. Também supõe o uso dessas linguagens não-verbais como formas de "retextualizar" o dito verbalmente. Ou seja, sugere um trabalho em que o aluno "transforme" em gráfico, por exemplo, um texto verbal e vice-versa, o que possibilita se apropriar de diferentes formas de dizer o que pretende recorrendo a diferentes linguagens.',
     resume:
@@ -4376,15 +7172,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP34",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP07",
     object:
       "Estratégias e procedimentos de leitura Relação do verbal com outras semioses\nProcedimentos e gêneros de apoio à compreensão",
-    skill:
-      "(EF69LP34) Grifar as partes essenciais do texto, tendo em vista os objetivos de leitura, produzir marginálias (ou tomar notas em outro suporte), sínteses organizadas em itens, quadro sinóptico, quadro comparativo, esquema, resumo ou resenha do texto lido (com ou sem comentário/análise), mapa conceitual, dependendo do que for mais adequado, como forma de possibilitar uma maior compreensão do texto, a sistematização de conteúdos e informações e",
+    skill: "EF69LP34",
     comment:
       'Esta habilidade refere-se ao uso de estratégias e procedimentos envolvidos na leitura para estudo (grifar, anotar nas margens etc.) que se desdobram na produção de diferentes tipos de textos, conhecidos na área como "gêneros de apoio à compreensão" (resumos, quadros, esquemas, resenhas, paráfrases etc.). As operações envolvidas na produção de um resumo a partir de uma artigo científico, por exemplo, são resultado de um exercício de retextualização.',
     resume:
@@ -4392,15 +7186,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP35",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP09",
     object:
       "Consideração das condições de produção de textos de divulgação científica \nEstratégias de escrita",
-    skill:
-      "(EF69LP35) Planejar textos de divulgação científica, a partir da elaboração de esquema que considere as pesquisas feitas anteriormente, de notas e sínteses de leituras ou de registros de experimentos ou de estudo de campo, produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigo de divulgação científica, artigo de opinião, reportagem científica, verbete de enciclopédia, verbete de enciclopédia digital colaborativa , infográfico, relatório, relato de experimento científico, relato (multimidiático) de campo, tendo em vista seus contextos de produção, que podem envolver a disponibilização de informações e conhecimentos em circulação em um formato mais acessível para um público específico ou a divulgação de conhecimentos advindos de pesquisas bibliográficas, experimentos científicos e estudos de campo realizados.",
+    skill: "EF69LP35",
     comment:
       "Esta habilidade se refere ao planejamento da produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros, considerando as especificidades dos textos de divulgação científica. Propõe projetos interdisciplinares.",
     resume:
@@ -4408,14 +7200,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP36",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP09",
     object: "Estratégias de escrita: textualização, revisão e edição",
-    skill:
-      "(EF69LP36) Produzir, revisar e editar textos voltados para a divulgação do conhecimento e de dados e resultados de pesquisas, tais como artigos de divulgação científica, verbete de enciclopédia, infográfico, infográfico animado, podcast ou vlog científico, relato de experimento, relatório, relatório multimidiático de campo, dentre outros, considerando o contexto de produção e as regularidades dos gêneros em termos de suas construções composicionais e estilos.",
+    skill: "EF69LP36",
     comment:
       "Esta habilidade se refere à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros, considerando as especificidades dos textos de divulgação científica. Propõe projetos interdisciplinares.",
     resume:
@@ -4423,14 +7213,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP37",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP09",
     object: "Estratégias de produção",
-    skill:
-      "(EF69LP37) Produzir roteiros para elaboração de vídeos de diferentes tipos (vlog científico, vídeo-minuto, programa de rádio, podcasts) para divulgação de conhecimentos científicos e resultados de pesquisa, tendo em vista seu contexto de produção, os elementos e a construção composicional dos roteiros.",
+    skill: "EF69LP37",
     comment:
       "Esta habilidade se refere à produção de textos como um processo que envolve etapas diferentes: definir contexto de produção, planejar, produzir e revisar. Mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, na fase de planejamento; e (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros. Propõe projetos interdisciplinares.",
     resume:
@@ -4438,15 +7226,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP38",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP04",
     object:
       "Estratégias de produção: planejamento e produção de apresentações orais",
-    skill:
-      "(EF69LP38) Organizar os dados e informações pesquisados em painéis ou slides de apresentação, levando em conta o contexto de produção, o tempo disponível, as características do gênero apresentação oral, a multissemiose, as mídias e tecnologias que serão utilizadas, ensaiar a apresentação, considerando também elementos paralinguísticos e cinésicos e proceder à exposição oral de resultados de estudos e pesquisas, no tempo determinado, a partir do planejamento e da definição de diferentes formas de uso da fala – memorizada, com apoio da leitura ou fala espontânea.",
+    skill: "EF69LP38",
     comment:
       "Esta habilidade refere-se especificamente às etapas de planejamento, elaboração/preparação e realização de apresentações orais resultantes de pesquisas realizadas. Dá ênfase ao preparo do falante, em relação aos materiais que poderão funcionar como um apoio à audiência e/ou ao falante/apresentador, ajudando-o no encadeamento das ideias durante a realização da apresentação. Aprendizagens para o uso de aplicativos de apresentação devem ser previstas.",
     resume:
@@ -4454,14 +7240,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP39",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP04",
     object: "Estratégias de produção",
-    skill:
-      "(EF69LP39) Definir o recorte temático da entrevista e o entrevistado, levantar informações sobre o entrevistado e sobre o tema da entrevista, elaborar roteiro de perguntas, realizar entrevista, a partir do roteiro, abrindo possibilidades para fazer perguntas a partir da resposta, se o contexto permitir, tomar nota, gravar ou salvar a entrevista e usar adequadamente as informações obtidas, de acordo com os objetivos estabelecidos.",
+    skill: "EF69LP39",
     comment:
       "No contexto desta habilidade, diferentemente do que se verifica no campo jornalístico/midiático, a entrevista é mais um meio do que um fim. Nesse campo, em geral, o objetivo é usá-la como um instrumento para coletar dados no interior de uma pesquisa. Esse tipo de entrevista também envolve as etapas de planejamento (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de perguntas etc.) e de realização da entrevista.",
     resume:
@@ -4469,15 +7253,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP40",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP08",
     object:
       "Construção composicional \nElementos paralinguísticos e cinésicos Apresentações orais",
-    skill:
-      "(EF69LP40) Analisar, em gravações de seminários, conferências rápidas, trechos de palestras, dentre outros, a construção composicional dos gêneros de apresentação – abertura/saudação, introdução ao tema, apresentação do plano de exposição, desenvolvimento dos conteúdos, por meio do encadeamento de temas e subtemas (coesão temática), síntese final e/ou conclusão, encerramento –, os elementos paralinguísticos (tais como: tom e volume da voz, pausas e hesitações – que, em geral, devem ser minimizadas –, modulação de voz e entonação, ritmo, respiração etc.) e cinésicos (tais como: postura corporal, movimentos e gestualidade significativa, expressão facial, contato de olho com plateia, modulação de voz e entonação, sincronia da fala com ferramenta de apoio etc.), para melhor performar apresentações orais no campo da divulgação do conhecimento.",
+    skill: "EF69LP40",
     comment:
       "O foco desta habilidade é a capacidade de analisar a construção composicional de gêneros de apresentação oral formal, com vistas à utilização desse conhecimento em apresentações próprias no campo da divulgação de conhecimento. Isso implica observação, reflexão e análise da organização geral de seminários, palestras ou conferências, tanto do ponto de vista linguístico quanto paralinguístico.",
     resume:
@@ -4485,14 +7267,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP41",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP08",
     object: "Usar adequadamente ferramentas de apoio a apresentações orais",
-    skill:
-      "(EF69LP41) Usar adequadamente ferramentas de apoio a apresentações orais, escolhendo e usando tipos e tamanhos de fontes que permitam boa visualização, topicalizando e/ou organizando o conteúdo em itens, inserindo de forma adequada imagens, gráficos, tabelas, formas e elementos gráficos, dimensionando a quantidade de texto (e imagem) por slide, usando progressivamente e de forma harmônica recursos mais sofisticados como efeitos de transição, slides mestres, layouts personalizados etc.",
+    skill: "EF69LP41",
     comment:
       "Diretamente relacionada ao letramento digital e articulando oralidade e escrita, esta habilidade refere-se, fundamentalmente, ao emprego de aplicativos, como Powerpoint e Prezi, como suporte de apresentações orais (com textos condensados e em tópicos, imagens, gráficos, tabelas etc.) de estudos realizados nos diferentes componentes, por meio de práticas de apresentação oral que demandem o uso desses recursos.",
     resume:
@@ -4500,15 +7280,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP42",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP08",
     object:
       "Construção composicional e estilo Gêneros de divulgação científica",
-    skill:
-      "(EF69LP42) Analisar a construção composicional dos textos pertencentes a gêneros relacionados à divulgação de conhecimentos: título, (olho), introdução, divisão do texto em subtítulos, imagens ilustrativas de conceitos, relações, ou resultados complexos (fotos, ilustrações, esquemas, gráficos, infográficos, diagramas, figuras, tabelas, mapas) etc., exposição, contendo definições, descrições, comparações, enumerações, exemplificações e remissões a conceitos e relações por meio de notas de rodapé, boxes ou links; ou título, contextualização do campo, ordenação temporal ou temática por tema ou subtema, intercalação de trechos verbais com fotos, ilustrações, áudios, vídeos etc. e reconhecer traços da linguagem dos textos de divulgação científica, fazendo uso consciente das estratégias de impessoalização da linguagem (ou de pessoalização, se o tipo de publicação e objetivos assim o demandarem, como em alguns podcasts e vídeos de divulgação científica), 3ª pessoa, presente atemporal, recurso à citação, uso de vocabulário técnico/especializado etc., como forma de ampliar suas capacidades de compreensão e produção de textos nesses gêneros.",
+    skill: "EF69LP42",
     comment:
       "O foco desta habilidade é o estudo de recursos textuais e discursivos utilizados na elaboração de textos de divulgação de conhecimentos, bem como a sua aplicação em produções próprias. Sua formulação enfatiza a necessidade de articulação entre os recursos verbais e não verbais, na construção efetiva dos sentidos. Demanda observação dos recursos em foco para que se possa refletir a respeito deles.",
     resume:
@@ -4516,14 +7294,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP43",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo das práticas de estudo e pesquisa",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "04",
+    unit: "LP08",
     object: "Marcas linguísticas Intertextualidade",
-    skill:
-      "(EF69LP43) Identificar e utilizar os modos de introdução de outras vozes no texto – citação literal e sua formatação e paráfrase –, as pistas linguísticas responsáveis por introduzir no texto a posição do autor e dos outros autores citados (“Segundo X; De acordo com Y; De minha/nossa parte, penso/amos que”...) e os elementos de normatização (tais como as regras de inclusão e formatação de citações e paráfrases, de organização de referências bibliográficas) em textos científicos, desenvolvendo reflexão sobre o modo como a intertextualidade e a retextualização ocorrem nesses textos.",
+    skill: "EF69LP43",
     comment:
       "Esta habilidade articula leitura e produção de textos, visando modos de introduzir vozes em textos científicos produzidos pelos alunos. Envolve, ainda, duas operações distintas: identificar e utilizar. A identificação e o uso desses modos de citar terceiros têm a finalidade de evidenciar como o autor de textos científicos dialoga com as vozes que traz para seu texto (discordando ou concordando) e como as apresenta  em seu texto (em discurso direto ou indireto, por exemplo).",
     resume:
@@ -4531,15 +7307,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP44",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
-    skill:
-      "(EF69LP44) Inferir a presença de valores sociais, culturais e humanos e de diferentes visões de mundo, em textos literários, reconhecendo nesses textos formas de estabelecer múltiplos olhares sobre as identidades, sociedades e culturas e considerando a autoria e o contexto social e histórico de sua produção.",
+    skill: "EF69LP44",
     comment:
       "Essa habilidade se refere ao reconhecimento dos textos literários como parte do patrimônio cultural da humanidade, representativos de culturas e valores dos diferentes grupos sociais. Envolve, ainda, resgatar as condições de produção, circulação e recepção desses textos, para, a partir disso, associá-los a uma autoria, mobilizar conhecimentos de mundo e atribuir sentidos a eles. Seu desenvolvimento demanda a participação em práticas frequentes e sistemáticas de leitura de textos literários de diferentes gêneros, épocas e contextos culturais.",
     resume:
@@ -4547,15 +7321,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP45",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
-    skill:
-      "(EF69LP45) Posicionar-se criticamente em relação a textos pertencentes a gêneros como quarta-capa, programa (de teatro, dança, exposição etc.), sinopse, resenha crítica, comentário em blog/vlog cultural etc., para selecionar obras literárias e outras manifestações artísticas (cinema, teatro, exposições, espetáculos, CD´s, DVD´s etc.), diferenciando as sequências descritivas e avaliativas e reconhecendo-os como gêneros que apoiam a escolha do livro ou produção cultural e consultando-os no momento de fazer escolhas, quando for o caso.",
+    skill: "EF69LP45",
     comment:
       "Estreitamente relacionada a EF69LP46, essa habilidade consiste em apropriar-se de comportamentos próprios de leitores autônomos que selecionam o que ler / ver / ouvir, consultando textos que descrevem ou opinam sobre obras literárias e de outras linguagens. Também supõe, de um lado, diferenciar descrição de opinião expressa sobre o produto; de outro, reconhecer e fazer uso, em textos orais ou escritos, dos recursos do discurso argumentativo. Seu desenvolvimento demanda a participação efetiva do aluno em práticas de leitura e reflexão como as mencionadas.",
     resume:
@@ -4563,15 +7335,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP46",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução das condições de produção, circulação e recepção\nApreciação e réplica",
-    skill:
-      "(EF69LP46) Participar de práticas de compartilhamento de leitura/recepção de obras literárias/ manifestações artísticas, como rodas de leitura, clubes de leitura, eventos de contação de histórias, de leituras dramáticas, de apresentações teatrais, musicais e de filmes, cineclubes, festivais de vídeo, saraus, slams, canais de booktubers, redes sociais temáticas (de leitores, de cinéfilos, de música etc.), dentre outros, tecendo, quando possível, comentários de ordem estética e afetiva",
+    skill: "EF69LP46",
     comment:
       "Essa habilidade supõe reconhecer as especificidades da participação em cada prática, apropriando-se dos diferentes gêneros orais ou escritos nelas envolvidos. Favorece o desenvolvimento de procedimentos, comportamentos e capacidades de leitura de apreciação e réplica sobre os produtos culturais mais diversos, sendo condição, portanto, para o desenvolvimento de EF69LP45 e EF69LP49.",
     resume:
@@ -4579,38 +7349,32 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP47",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução da textualidade e compreensão dos efeitos\nde sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
-    skill:
-      "(EF69LP47) Analisar, em textos narrativos ficcionais, as diferentes formas de composição próprias de cada gênero, os recursos coesivos que constroem a passagem do tempo e articulam suas partes, a escolha lexical típica de cada gênero para a caracterização dos cenários e dos personagens e os efeitos de sentido decorrentes dos tempos verbais, dos tipos de discurso, dos verbos de enunciação e das variedades linguísticas (no discurso direto, se houver) empregados, identificando o enredo e o foco narrativo e percebendo como se estrutura a narrativa nos diferentes gêneros e os efeitos de sentido decorrentes do foco narrativo típico de cada gênero, da caracterização dos espaços físico e psicológico e dos tempos cronológico e psicológico, das diferentes vozes no texto (do narrador, de personagens em discurso direto e indireto), do uso de pontuação expressiva, palavras e expressões conotativas e processos figurativos e do uso de recursos linguístico-gramaticais próprios a cada gênero narrativo.",
+    skill: "EF69LP47",
   },
   {
     id: "EF69LP48",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução da textualidade e compreensão dos efeitos\nde sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
-    skill:
-      "(EF69LP48) Interpretar, em poemas, efeitos produzidos pelo uso de recursos expressivos sonoros (estrofação, rimas, aliterações etc), semânticos (figuras de linguagem, por exemplo), gráfico- espacial (distribuição da mancha gráfica no papel), imagens e sua relação com o texto verbal.",
+    skill: "EF69LP48",
   },
   {
     id: "EF69LP49",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP07",
     object: "Adesão às práticas de leitura",
-    skill:
-      "(EF69LP49) Mostrar-se interessado e envolvido pela leitura de livros de literatura e por outras produções culturais do campo e receptivo a textos que rompam com seu universo de expectativas, que representem um desafio em relação às suas possibilidades atuais e suas experiências anteriores de leitura, apoiando-se nas marcas linguísticas, em seu conhecimento sobre os gêneros e a temática e nas orientações dadas pelo professor.",
+    skill: "EF69LP49",
     comment:
       "Esta habilidade supõe o compromisso do aluno com a sua formação como leitor literário, pronto para vivenciar experiências de leitura mais desafiadoras. Implica um trabalho de mediação de leitura mais intenso, que favoreça a ativação de conhecimentos prévios pelo aluno. Pode envolver o planejamento de leituras anteriores e também ao longo da leitura desafiadora (que pode ser com apoio de textos em outras linguagens) para garantir o conhecimento prévio necessário para a compreensão do texto. Por exemplo, em caso de uma obra que envolva um discurso literário em que o tempo é tratado de forma não linear e sem sinais explícitos para indicar essa oscilação, recorrer a um trecho de um filme em que isso acontece, para depois voltar à escrita e comparar, pode ser uma estratégia motivadora para o aluno.",
     resume:
@@ -4618,14 +7382,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP50",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP09",
     object: "Relação entre textos",
-    skill:
-      "(EF69LP50) Elaborar texto teatral, a partir da adaptação de romances, contos, mitos, narrativas de enigma e de aventura, novelas, biografias romanceadas, crônicas, dentre outros, indicando as rubricas para caracterização do cenário, do espaço, do tempo; explicitando a caracterização física e psicológica dos personagens e dos seus modos de ação; reconfigurando a inserção do discurso direto e dos tipos de narrador; explicitando as marcas de variação linguística (dialetos, registros e jargões) e retextualizando o tratamento da temática.",
+    skill: "EF69LP50",
     comment:
       'Esta habilidade supõe um exercício de adaptação, de retextualização e de "transformação" de um gênero em outro, guardando a originalidade do tratamento temático. Ainda que seja uma ação de retextualização, as habilidades relacionadas às operações de produção textual (planejamento, produção e revisão) também devem estar vinculadas a esta habilidade. É possível articulá-la, ainda, com habilidades de análise de adaptações dessa mesma natureza.',
     resume:
@@ -4633,15 +7395,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP51",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP09",
     object:
       "Consideração das condições de produção\nEstratégias de produção: planejamento, textualização e revisão/edição",
-    skill:
-      "(EF69LP51) Engajar-se ativamente nos processos de planejamento, textualização, revisão/ edição e reescrita, tendo em vista as restrições temáticas, composicionais e estilísticas dos textos pretendidos e as configurações da situação de produção – o leitor pretendido, o suporte, o contexto de circulação do texto, as finalidades etc. – e considerando a imaginação, a estesia e a verossimilhança próprias ao texto literário.",
+    skill: "EF69LP51",
     comment:
       "Esta habilidade se refere ao comprometimento dos/as alunos/as com a experimentação de produções literárias. Supõe desenvolver capacidades de compreensão das especificidades dos gêneros literários e de análise dos recursos linguísticos e semióticos usados na construção dos sentidos dos textos, que devem estar a serviço da fruição. Através de organizações variadas da turma, a colaboração pode ser estimulada: produções coletivas, em grupos, duplas ou individuais.",
     resume:
@@ -4649,14 +7409,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP52",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP04",
     object: "Produção de textos orais",
-    skill:
-      "(EF69LP52) Representar cenas ou textos dramáticos, considerando, na caracterização dos personagens, os aspectos linguísticos e paralinguísticos das falas (timbre e tom de voz, pausas e hesitações, entonação e expressividade, variedades e registros linguísticos), os gestos e os deslocamentos no espaço cênico, o figurino e a maquiagem e elaborando as rubricas indicadas pelo autor por meio do cenário, da trilha sonora e da exploração dos modos de interpretação.",
+    skill: "EF69LP52",
     comment:
       "Esta habilidade supõe fazer uso das informações das rubricas dos textos dramáticos para mobilizar recursos de diferentes linguagens, visando a produção dos sentidos intencionados: além da oralização dramatizada do texto verbal (com gestos, movimentos, expressões faciais), o figurino das personagens, os efeitos de luz e de som, o cenário etc., também ajudam a produzir efeitos de sentido em uma peça teatral.",
     resume:
@@ -4664,14 +7422,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP53",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP04",
     object: "Produção de textos orais Oralização",
-    skill:
-      "(EF69LP53) Ler em voz alta textos literários diversos – como contos de amor, de humor, de suspense, de terror; crônicas líricas, humorísticas, críticas; bem como leituras orais capituladas (compartilhadas ou não com o professor) de livros de maior extensão, como romances, narrativas de enigma, narrativas de aventura, literatura infantojuvenil, – contar/recontar histórias tanto da tradição oral (causos, contos de esperteza, contos de animais, contos de amor, contos de encantamento, piadas, dentre outros) quanto da tradição literária escrita, expressando a compreensão e interpretação do texto por meio de uma leitura ou fala expressiva e fluente, que respeite o ritmo, as pausas, as hesitações, a entonação indicados tanto pela pontuação quanto por outros recursos gráfico-editoriais, como negritos, itálicos, caixa-alta, ilustrações etc., gravando essa leitura ou esse conto/reconto, seja para análise posterior, seja para produção de audiobooks de textos literários diversos ou de podcasts de leituras dramáticas com ou sem efeitos especiais e ler e/ou declamar poemas diversos, tanto de forma livre quanto de forma fixa (como quadras, sonetos, liras, haicais etc.), empregando os recursos linguísticos, paralinguísticos e cinésicos necessários aos efeitos de sentido pretendidos, como o ritmo e a entonação, o emprego de pausas e prolongamentos, o tom e o timbre vocais, bem como eventuais recursos de gestualidade e pantomima que convenham ao gênero poético e à situação de compartilhamento em questão.",
+    skill: "EF69LP53",
     comment:
       "O proposto por esta habilidade é alcançar uma leitura expressiva do que se lê, o que supõe um trabalho cuidadoso de compreensão leitora. Só é possível ler com expressividade, interpretando os sentimentos de narradores, eu lírico e personagens quando compreendemos os textos lidos e tecemos apreciações a respeito. Prevê-se o uso de recursos de outras linguagens (corporal, gestual, musical etc.) na construção da interpretação dada ao texto.",
     resume:
@@ -4679,15 +7435,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP54",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Campo artístico-literário",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "05",
+    unit: "LP08",
     object:
       "Recursos linguísticos e semióticos que operam nos textos pertencentes aos gêneros literários",
-    skill:
-      "(EF69LP54) Analisar os efeitos de sentido decorrentes da interação entre os elementos linguísticos e os recursos paralinguísticos e cinésicos, como as variações no ritmo, as modulações no tom de voz, as pausas, as manipulações do estrato sonoro da linguagem, obtidos por meio da estrofação, das rimas e de figuras de linguagem como as aliterações, as assonâncias, as onomatopeias, dentre outras, a postura corporal e a gestualidade, na declamação de poemas, apresentações musicais e teatrais, tanto em gêneros em prosa quanto nos gêneros poéticos, os efeitos de sentido decorrentes do emprego de figuras de linguagem, tais como comparação, metáfora, personificação, metonímia, hipérbole, eufemismo, ironia, paradoxo e antítese e os efeitos de sentido decorrentes do emprego de palavras e expressões denotativas e conotativas (adjetivos, locuções adjetivas, orações subordinadas adjetivas etc.), que funcionam como modificadores, percebendo sua função na caracterização dos espaços, tempos, personagens e ações próprios de cada gênero narrativo.",
+    skill: "EF69LP54",
     comment:
       "O foco desta habilidade está no reconhecimento, pelo aluno, da interação que se estabelece entre os aspectos linguísticos que constituem os textos do campo artístico-literário — organizados em prosa ou em verso (poemas, contos, textos teatrais etc.) — e os recursos paralinguísticos (voz, gestos e movimentação) que podem/devem ser mobilizados na oralização deles (declamações, representações, leituras dramáticas etc.), de modo a preservar seus efeitos de sentido, por meio da prática frequente e sistemática de leitura, estudo e oralização de textos do campo literário.",
     resume:
@@ -4695,14 +7449,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP55",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "01",
+    unit: "LP08",
     object: "Variação linguística",
-    skill:
-      "(EF69LP55) Reconhecer as variedades da língua falada, o conceito de norma-padrão e o de preconceito linguístico.",
+    skill: "EF69LP55",
     comment:
       'Reconhecer e combater o preconceito linguístico pressupõe a capacidade de perceber não só as semelhanças e diferenças entre as variedades da língua falada como, ainda, o prestígio social associado à escrita e, em particular, à norma-padrão. Esta é uma habilidade fundamental, relacionada a todas as demais que envolvem o domínio de normas urbanas de prestígio e/ou se referem a expressar-se, oralmente ou por escrito, "com correção". Seu desenvolvimento demanda convívio cotidiano com a variação linguística (no tempo, no espaço e na vida social), de forma que o aluno possa perceber as características principais de cada variedade e sua adequação ao contexto de origem. Só assim ele poderá compreender a legitimidade da diversidade linguística e ultrapassar a perspectiva cientificamente equivocada da variação como desvio ou erro, de forma a combater a discriminação pela língua.',
     resume:
@@ -4710,14 +7462,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF69LP56",
-    competences: "Língua Portuguesa",
-    group_year_id: "69",
-    group_years: "6º; 7º; 8º; 9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "69",
+    field: "01",
+    unit: "LP08",
     object: "Variação linguística",
-    skill:
-      "(EF69LP56) Fazer uso consciente e reflexivo de regras e normas da norma-padrão em situações de fala e escrita nas quais ela deve ser usada.",
+    skill: "EF69LP56",
     comment:
       'Esta habilidade se refere ao uso da norma-padrão nas situações, gêneros e textos em que ela é requerida. Seu desenvolvimento  é indissociável tanto do estudo da variação linguística quanto da compreensão dos valores socialmente atribuídos às diferentes variedades. Ela demanda o envolvimento frequente e sistemático do aluno em práticas públicas e formais de leitura e/ou produção de textos, orais e/ou escritos, em que a "correção" deve ser observada. Exemplos de situações orais formais: palestras, seminários, apresentações orais, debates. Exemplos de situações escritas formais: entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática.',
     resume:
@@ -4725,15 +7475,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "07",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF07LP01) Distinguir diferentes propostas editoriais – sensacionalismo, jornalismo investigativo etc. –, de forma a identificar os recursos utilizados para impactar/chocar o leitor que podem comprometer uma análise crítica da notícia e do fato noticiado.",
+    skill: "EF07LP01",
     comment:
       "Esta habilidade implica analisar como as escolhas de palavras e outros recursos semióticos (imagens, cores, fontes de letra etc.) ajudam a produzir sentidos. Também possibilita o desenvolvimento de um olhar crítico sobre esse campo de atuação, uma vez que, por meio da análise de primeiras páginas, das escolhas do que vira manchete e do modo como são formuladas, por exemplo, é possível perceber a que tipo de jornalismo se dedica o jornal ou programa — o que contribui para a percepção de que não existe jornalismo neutro.",
     resume:
@@ -4741,15 +7489,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "07",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF07LP02) Comparar notícias e reportagens sobre um mesmo fato divulgadas em diferentes mídias, analisando as especificidades das mídias, os processos de (re)elaboração dos textos e a convergência das mídias em notícias ou reportagens multissemióticas.",
+    skill: "EF07LP02",
     comment:
       "Comparar o modo como os diferentes jornais e mídias abordam um mesmo fato envolve analisar escolhas linguísticas e semióticas, com o objetivo de inferir-se a visão de cada um deles. Esta habilidade também implica conhecer os recursos de linguagem próprios de cada mídia, de modo que o aluno possa perceber as diferenças entre uma notícia impressa e uma radiofônica ou televisiva, por exemplo, conhecimentos que serão importantes para a produção de textos.",
     resume:
@@ -4757,14 +7503,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Léxico/morfologia",
-    skill:
-      "(EF07LP03) Formar, com base em palavras primitivas, palavras derivadas com os prefixos e sufixos mais produtivos no português.",
+    skill: "EF07LP03",
     comment:
       "Esta é uma habilidade fundamental para a compreensão dos processos derivacionais de formação das palavras. O foco está na compreensão e no uso adequado de prefixos e de sufixos. Pressupõe conhecimentos prévios relativos a classes de palavras e às categorias gramaticais a que elas se associam. (Relaciona-se com a habilidade EF07LP35).",
     resume:
@@ -4772,14 +7516,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP04) Reconhecer, em textos, o verbo como o núcleo das orações.",
+    skill: "EF07LP04",
     comment:
       "O foco desta habilidade é a identificação do núcleo da oração, considerada como uma unidade básica da organização sintática do texto. Está, portanto, diretamente relacionada ao desenvolvimento de outras habilidades de análise com foco na sintaxe da oração e do período. Ela requer observar a organização sintática do texto e refletir a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4787,14 +7529,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP05) Identificar, em orações de textos lidos ou de produção própria, verbos de predicação completa e incompleta: intransitivos e transitivos.",
+    skill: "EF07LP05",
     comment:
       "O foco desta habilidade é a identificação de verbos transitivos e intransitivos em orações de textos lidos ou próprios. Está, portanto, diretamente relacionada ao desenvolvimento de outras habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP04 e EF07LP07). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4802,14 +7542,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP06) Empregar as regras básicas de concordância nominal e verbal em situações comunicativas e na produção de textos.",
+    skill: "EF07LP06",
     comment:
       "Esta habilidade tem foco no domínio das concordâncias nominal e verbal, nas situações públicas e formais de comunicação oral e de produção de textos em que a norma-padrão é requerida. Seu desenvolvimento demanda a participação frequente e sistemática do aluno nas situações referidas, assim como o estudo prévio ou concomitante dos dois tipos de concordância, das classes de palavras (nome e verbo) e das categorias gramaticais nelas envolvidas. (É um desdobramento de EF06LP06, à qual está, portanto, diretamente relacionada).",
     resume:
@@ -4817,14 +7555,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP07) Identificar, em textos lidos ou de produção própria, a estrutura básica da oração: sujeito, predicado, complemento (objetos direto e indireto).",
+    skill: "EF07LP07",
     comment:
       "Esta habilidade se refere à identificação da estrutura básica da oração em textos lidos ou próprios. Está, portanto,  diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido, a partir do reconhecimento e diferenciação de sujeito, predicado e complementos. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4832,14 +7568,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP08) Identificar, em textos lidos ou de produção própria, adjetivos que ampliam o sentido do substantivo sujeito ou complemento verbal.",
+    skill: "EF07LP08",
     comment:
       "Esta habilidade se refere à identificação do papel dos adjetivos na ampliação de sentidos do núcleo do sujeito ou dos complementos verbais. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP09). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um trabalho prévio com classes de palavras e com as funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4847,14 +7581,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP09) Identificar, em textos lidos ou de produção própria, advérbios e locuções adverbiais que ampliam o sentido do verbo núcleo da oração.",
+    skill: "EF07LP09",
     comment:
       "O foco desta habilidade é a identificação do papel dos advérbios e locuções adverbiais na ampliação de sentidos do núcleo do predicado oracional. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF07LP08). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4862,14 +7594,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP10) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: modos e tempos verbais, concordância nominal e verbal, pontuação etc.",
+    skill: "EF07LP10",
     comment:
       "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero. Requer discussões sobre variação linguística e práticas de leitura e/ou produção de textos, especialmente em situações públicas e formais. Pressupõe, ainda, domínio e/ou estudo conexo de tópicos de análise linguística como os mencionados. (Estreitamente relacionada a EF69LP56 e a EF06LP11).",
     resume:
@@ -4877,14 +7607,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF07LP11) Identificar, em textos lidos ou de produção própria, períodos compostos nos quais duas orações são conectadas por vírgula, ou por conjunções que expressem soma de sentido (conjunção “e”) ou oposição de sentidos (conjunções “mas”, “porém”).",
+    skill: "EF07LP11",
     comment:
       "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na identificação e classificação de períodos compostos por coordenação aditiva ou adversativa, tanto sindéticas (com conectivos) quanto assindéticas (conectadas por vírgulas). Requer a observação da organização sintática do texto, reflexões a respeito e identificação de períodos compostos por coordenação sindética e assindética, além de apreender o princípio de sua organização interna e as relações de sentido o que implica  perceber seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -4892,14 +7620,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Semântica Coesão",
-    skill:
-      "(EF07LP12) Reconhecer recursos de coesão referencial: substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos).",
+    skill: "EF07LP12",
     comment:
       "Esta habilidade tem como foco o reconhecimento de dois recursos básicos de coesão referencial: as substituições lexicais e as pronominais. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Implica atividades diversificadas e sistemáticas de leitura e produção e pressupõe conhecimentos prévios sobre substantivos e pronomes, assim como sobre as categorias gramaticais a que essas classes de palavras estão associadas.",
     resume:
@@ -4907,14 +7633,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Coesão",
-    skill:
-      "(EF07LP13) Estabelecer relações entre partes do texto, identificando substituições lexicais (de substantivos por sinônimos) ou pronominais (uso de pronomes anafóricos – pessoais, possessivos, demonstrativos), que contribuem para a continuidade do texto.",
+    skill: "EF07LP13",
     comment:
       "Esta habilidade tem como foco o (re)estabelecimento de relações entre partes do texto. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Seu desenvolvimento adequado só se dá no interior de atividades diversificadas e sistemáticas de leitura e produção. Pressupõe conhecimentos prévios sobre substantivos e pronomes, além de categorias gramaticais a que essas classes de palavras estão associadas (e relaciona-se com a habilidade EF07LP12).",
     resume:
@@ -4922,14 +7646,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF07LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "07",
-    group_years: "7º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "07",
+    field: "01",
+    unit: "LP08",
     object: "Modalização",
-    skill:
-      "(EF07LP14) Identificar, em textos, os efeitos de sentido do uso de estratégias de modalização e argumentatividade.",
+    skill: "EF07LP14",
     comment:
       "O foco desta habilidade está na identificação de estratégias argumentativas e de modalização, em textos dos mais diversos gêneros, relacionados a qualquer campo de atuação. Trata-se de uma habilidade necessária à compreensão (a) das atitudes que o locutor/escritor pode assumir em relação àquilo que diz (estratégias de modalização), como parte de seu ponto de vista particular; (b) dos recursos de que ele se vale para convencer ou persuadir o ouvinte/leitor. (É condição necessária para o desenvolvimento da habilidade EF08LP16).",
     resume:
@@ -4937,15 +7659,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "08",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF08LP01) Identificar e comparar as várias editorias de jornais impressos e digitais e de sites noticiosos, de forma a refletir sobre os tipos de fato que são noticiados e comentados, as escolhas sobre o que noticiar e o que não noticiar e o destaque/enfoque dado e a fidedignidade da informação.",
+    skill: "EF08LP01",
     comment:
       "Esta habilidade favorece o desenvolvimento de uma atitude crítica em relação ao campo jornalístico, uma vez que supõe reconhecer as diferentes propostas editoriais visando públicos distintos. Supõe, além de habilidades de análise de elementos linguísticos e semióticos, a compreensão da importância de buscar diferentes fontes de informação para verificação da sua confiabilidade.",
     resume:
@@ -4953,14 +7673,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "08",
+    field: "06",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF08LP02) Justificar diferenças ou semelhanças no tratamento dado a uma mesma informação veiculada em textos diferentes, consultando sites e serviços de checadores de fatos.",
+    skill: "EF08LP02",
     comment:
       "Esta habilidade pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01). Ela consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados;2. apurar informações, desenvolvendo procedimentos de curadoria;3. posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.A habilidade prevê que, para que se faça essa análise, sejam utilizados sites especializados em checar fatos.",
     resume:
@@ -4968,14 +7686,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "08",
+    field: "06",
+    unit: "LP09",
     object: "Textualização de textos argumentativos e apreciativos",
-    skill:
-      "(EF08LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, a defesa de um ponto de vista, utilizando argumentos e contra-argumentos e articuladores de coesão que marquem relações de oposição, contraste, exemplificação, ênfase.",
+    skill: "EF08LP03",
     comment:
       "A habilidade envolve procedimentos de produção textual: definir contexto de produção, planejar, produzir e revisar. Tais procedimentos são apontados em (EF67LP09) e (EF67LP10), com a diferença de que, aqui, se trata de gênero argumentativo do campo jornalístico-midiático, que exige posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
     resume:
@@ -4983,14 +7699,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Fono-ortografia",
-    skill:
-      "(EF08LP04) Utilizar, ao produzir texto, conhecimentos linguísticos e gramaticais: ortografia, regências e concordâncias nominal e verbal, modos e tempos verbais, pontuação etc.",
+    skill: "EF08LP04",
     comment:
       "Esta habilidade se refere à mobilização de conhecimentos linguísticos e gramaticais específicos na produção de textos de qualquer campo de atuação ou gênero em que a norma-padrão é requerida. É indissociável de discussões sobre variação linguística e de análise de textos, especialmente em situações públicas e formais. Pressupõe, ainda, domínio e/ou estudo conexo de tópicos de ortografia, de classes de palavras (nome e verbo) e de categorias gramaticais a ela relacionadas. (Estreitamente relacionada a EF69LP56, EF06LP11 e EF07LP10).",
     resume:
@@ -4998,14 +7712,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/ semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Léxico/morfologia",
-    skill:
-      "(EF08LP05) Analisar processos de formação de palavras por composição (aglutinação e justaposição), apropriando-se de regras básicas de uso do hífen em palavras compostas.",
+    skill: "EF08LP05",
     comment:
       "Com foco nos processos de composição, esta é uma habilidade fundamental para a compreensão dos processos morfológicos e semânticos de formação das palavras, assim como de regras básicas de uso do hífen em palavras compostas. Seu desenvolvimento pressupõe conhecimentos prévios relativos às classes de palavras e às categorias gramaticais a que elas se associam. (Relaciona-se com as habilidades EF07LP03 e EF07LP35).",
     resume:
@@ -5013,14 +7725,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP06) Identificar, em textos lidos ou de produção própria, os termos constitutivos da oração (sujeito e seus modificadores, verbo e seus complementos e modificadores).",
+    skill: "EF08LP06",
     comment:
       "Esta habilidade se refere ao reconhecimento da estrutura básica de uma oração em textos lidos ou próprios. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período. Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -5028,14 +7738,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP07) Diferenciar, em textos lidos ou de produção própria, complementos diretos e indiretos de verbos transitivos, apropriando-se da regência de verbos de uso frequente.",
+    skill: "EF08LP07",
     comment:
       "A habilidade refere-se ao estudo da regência de verbos de uso frequente, analisando os efeitos de sentido que podem ser provocados ou pelo uso indevido de preposições, ou por inadequações na escolha delas. Abrange a análise do emprego desses complementos em textos de todos os campos de atuação, por meio de leituras de diferentes gêneros, nas quais a regência verbal possa ser observada e analisada em contextos e usos diversos.",
     resume:
@@ -5043,14 +7751,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP08) Identificar, em textos lidos ou de produção própria, verbos na voz ativa e na voz passiva, interpretando os efeitos de sentido de sujeito ativo e passivo (agente da passiva).",
+    skill: "EF08LP08",
     comment:
       "A habilidade refere-se ao estudo das vozes do verbo, com foco nos efeitos de sentido provocados pelo uso de uma ou de outra, tanto na leitura quanto em produções próprias. Abrange a análise do emprego desses verbos em gêneros e textos de todos os campos de atuação. Isso implica leituras e/ou produções nas quais a (re)construção dos sentidos do texto envolva as diferenças entre as vozes do verbo.",
     resume:
@@ -5058,14 +7764,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP09) Interpretar efeitos de sentido de modificadores (adjuntos adnominais – artigos definido ou indefinido, adjetivos, expressões adjetivas) em substantivos com função de sujeito ou de complemento verbal, usando-os para enriquecer seus próprios textos.",
+    skill: "EF08LP09",
     comment:
       "A habilidade refere-se ao estudo dos modificadores, incluindo os determinantes (artigos, numerais e pronomes), na perspectiva dos sentidos que eles imprimem aos substantivos, tanto na leitura quanto em produções próprias. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de modificadores do sujeito ou do objeto (direto ou indireto).",
     resume:
@@ -5073,14 +7777,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP10) Interpretar, em textos lidos ou de produção própria, efeitos de sentido de modificadores do verbo (adjuntos adverbiais – advérbios e expressões adverbiais), usando-os para enriquecer seus próprios textos.",
+    skill: "EF08LP10",
     comment:
       "A habilidade refere-se ao estudo dos sentidos que os modificadores (adjuntos adverbiais, advérbios e expressões adverbiais), imprimem aos verbos, sendo importante considerá-los tanto no processo de leitura de um texto quanto nas produções próprias. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de modificadores verbais.",
     resume:
@@ -5088,14 +7790,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP11) Identificar, em textos lidos ou de produção própria, agrupamento de orações em períodos, diferenciando coordenação de subordinação.",
+    skill: "EF08LP11",
     comment:
       "O foco desta habilidade (diretamente relacionada à apreensão da organização sintática do texto) está na percepção do período como agrupamento de orações, com base em dois princípios distintos: a coordenação e a subordinação. Requer a observação da organização sintática do texto e reflexões a respeito, identificando agrupamentos de orações, apreendendo o princípio de sua organização interna e percebendo seu papel na (re)construção dos sentidos do texto. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -5103,14 +7803,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP12) Identificar, em textos lidos, orações subordinadas com conjunções de uso frequente, incorporando-as às suas próprias produções.",
+    skill: "EF08LP12",
     comment:
       "A habilidade refere-se ao estudo da organização do enunciado em períodos compostos por subordinação, tanto no processo de leitura quanto no de produção, procurando analisar os sentidos produzidos por esse tipo de organização sintática. Abrange a análise do emprego deles em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções em processos de subordinação.",
     resume:
@@ -5118,14 +7816,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF08LP13) Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial: conjunções e articuladores textuais.",
+    skill: "EF08LP13",
     comment:
       "A habilidade refere-se à compreensão das relações de sentido estabelecidas entre trechos do texto pelas conjunções e articuladores textuais, seja na leitura e compreensão de um texto, seja em produções próprias. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções e por diferentes articuladores textuais.",
     resume:
@@ -5133,14 +7829,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Semântica",
-    skill:
-      "(EF08LP14) Utilizar, ao produzir texto, recursos de coesão sequencial (articuladores) e referencial (léxica e pronominal), construções passivas e impessoais, discurso direto e indireto e outros recursos expressivos adequados ao gênero textual.",
+    skill: "EF08LP14",
     comment:
       "Trata-se de uma habilidade essencial para o desenvolvimento da competência em escrita, mas também se aplica à análise da coesão textual em atividades de leitura. Seu foco é o emprego da adequação expressiva de recursos de coesão (referencial e sequencial) na produção escrita ou oral. Envolve o uso de recursos da língua que: (1) evitam a repetição indesejada de palavras; (2) ajudam o leitor a resgatar, durante a leitura, o objeto/fato/assunto de que o texto trata; (3) ajudam a compreender a ordem de acontecimento das ações; (4) ajudam a identificar as diferentes vozes do texto e a produzir efeitos de sentido, como o da impessoalidade. Também demanda a análise da situação de comunicação, das características do gênero e das intenções e/ou objetivos a serem perseguidos.",
     resume:
@@ -5148,14 +7842,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Coesão",
-    skill:
-      "(EF08LP15) Estabelecer relações entre partes do texto, identificando o antecedente de um pronome relativo ou o referente comum de uma cadeia de substituições lexicais.",
+    skill: "EF08LP15",
     comment:
       "Esta habilidade tem como foco o (re)estabelecimento de relações entre partes do texto, com base na identificação do antecedente de um pronome relativo ou do referente comum a diversos termos do texto. Trata-se de uma habilidade essencial para a (re)construção do texto e para a conquista de níveis superiores de proficiência em escrita, em qualquer campo de atuação e em qualquer gênero. Implica conhecimentos prévios sobre pronomes relativos e sobre as categorias gramaticais a que essa classe de palavras está associada (pressupõe as habilidades EF07LP12 e EF07LP13).",
     resume:
@@ -5163,14 +7855,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF08LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "08",
-    group_years: "8º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "08",
+    field: "01",
+    unit: "LP08",
     object: "Modalização",
-    skill:
-      "(EF08LP16) Explicar os efeitos de sentido do uso, em textos, de estratégias de modalização e argumentatividade (sinais de pontuação, adjetivos, substantivos, expressões de grau, verbos e perífrases verbais, advérbios etc.).",
+    skill: "EF08LP16",
     comment:
       "O foco desta habilidade está na explicação dos efeitos de sentido produzidos por estratégias argumentativas e/ou de modalização, em textos dos mais diversos gêneros, relacionados a qualquer campo de atuação. Trata-se de uma habilidade necessária à compreensão (a) das atitudes que o locutor/escritor pode assumir em relação àquilo que diz (estratégias de modalização), como parte de seu ponto de vista particular; (b) dos recursos de que ele se vale para convencer ou persuadir o ouvinte/leitor. (Relaciona-se com a habilidade EF07LP14).",
     resume:
@@ -5178,15 +7868,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF89LP01) Analisar os interesses que movem o campo jornalístico, os efeitos das novas tecnologias no campo e as condições que fazem da informação uma mercadoria, de forma a poder desenvolver uma atitude crítica frente aos textos jornalísticos.",
+    skill: "EF89LP01",
     comment:
       "O desenvolvimento desta habilidade demanda abordagens do jornalismo em diferentes mídias, apontando-se para a relação entre o campo jornalístico e o publicitário, por exemplo, uma vez que a venda de anúncios é fundamental para instituições e programas jornalísticos. Essa relação entre os campos acarreta interesses que podem impactar a escolha do que será destaque ou a abordagem que será dada a um fato ou assunto.",
     resume:
@@ -5194,15 +7882,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF89LP02) Analisar diferentes práticas (curtir, compartilhar, comentar, curar etc.) e textos pertencentes a diferentes gêneros da cultura digital (meme, gif, comentário, charge digital etc.) envolvidos no trato com a informação e opinião, de forma a possibilitar uma presença mais crítica e ética nas redes.",
+    skill: "EF89LP02",
     comment:
       "A esta habilidade podem se associar aprendizagens que favoreçam o protagonismo discursivo potencializado pela chamada web 2.0, que ampliou os modos de participação dos sujeitos como leitores e produtores de textos. Supõe-se o desenvolvimento da habilidade de reconhecer as intencionalidades do outro (por meio da análise dos recursos usados na produção dos sentidos do que o outro disse) e de se posicionar criticamente em relação ao que lê — o que significa desenvolver habilidades para uma participação qualificada do adolescente e do jovem.",
     resume:
@@ -5210,15 +7896,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object:
       "Estratégia de leitura: apreender os sentidos globais do texto\nApreciação e réplica",
-    skill:
-      "(EF89LP03) Analisar textos de opinião (artigos de opinião, editoriais, cartas de leitores, comentários, posts de blog e de redes sociais, charges, memes, gifs etc.) e posicionar-se de forma crítica e fundamentada, ética e respeitosa frente a fatos e opiniões relacionados a esses textos.",
+    skill: "EF89LP03",
     comment:
       'Esta habilidade supõe reconhecer como opinião e argumentação se constroem com recursos das diferentes linguagens que constituem os gêneros referidos na habilidade, buscar informações para aprofundar o conhecimento sobre o assunto/fato que é objeto de crítica e selecionar argumentos relevantes, que fundamentem seu posicionamento, pautados no respeito ao outro. O desenvolvimento desta habilidade é importante também para a produção de textos, uma vez que a análise tem como fim uma "resposta do leitor".',
     resume:
@@ -5226,15 +7910,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object:
       "Estratégia de leitura: apreender os sentidos globais do texto\nApreciação e réplica",
-    skill:
-      "(EF89LP04) Identificar e avaliar teses/opiniões/posicionamentos explícitos e implícitos, argumentos e contra-argumentos em textos argumentativos do campo (carta de leitor, comentário, artigo de opinião, resenha crítica etc.), posicionando-se frente à questão controversa de forma sustentada.",
+    skill: "EF89LP04",
     comment:
       "Esta habilidade diz respeito tanto às situações de leitura quanto às de produção de textos, na medida em que identificar e avaliar teses, opiniões, posicionamentos, argumentos e contra-argumentos sobre o que se lê/ouve são essenciais ao posicionamento crítico que se expressa em textos orais e escritos sobre o que foi lido/escutado. Nos 8º e 9º anos, espera-se que, ao se posicionarem, os alunos possam apresentar argumentos que justifiquem o posicionamento assumido com relação aos textos argumentativos analisados.",
     resume:
@@ -5242,14 +7924,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF89LP05) Analisar o efeito de sentido produzido pelo uso, em textos, de recurso a formas de apropriação textual (paráfrases, citações, discurso direto, indireto ou indireto livre).",
+    skill: "EF89LP05",
     comment:
       "Esta habilidade diz respeito a perceber, em se tratando de textos jornalísticos, como os autores incorporam, em seus textos, os discursos de outros, e possibilita compreender, por exemplo, a relevância que essas vozes assumem no discurso do jornalista e como são usadas para dar ênfase ao recorte ou enfoque escolhido, sinalizando a não neutralidade de textos supostamente objetivos, como as notícias.",
     resume:
@@ -5257,14 +7937,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido",
-    skill:
-      "(EF89LP06) Analisar o uso de recursos persuasivos em textos argumentativos diversos (como a elaboração do título, escolhas lexicais, construções metafóricas, a explicitação ou a ocultação de fontes de informação) e seus efeitos de sentido.",
+    skill: "EF89LP06",
     comment:
       "Esta habilidade envolve as seguintes operações mentais: observar, reconhecer e compreender o modo como os recursos linguísticos ou de outras linguagens são usados na construção de discursos persuasivos em textos argumentativos. Implica uma progressão em relação à habilidade (EF67LP07).",
     resume:
@@ -5272,14 +7950,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP07",
     object: "Efeitos de sentido Exploração da multissemiose",
-    skill:
-      "(EF89LP07) Analisar, em notícias, reportagens e peças publicitárias em várias mídias, os efeitos de sentido devidos ao tratamento e à composição dos elementos nas imagens em movimento, à performance, à montagem feita (ritmo, duração e sincronização entre as linguagens – complementaridades, interferências etc.) e ao ritmo, melodia, instrumentos e sampleamentos das músicas e efeitos sonoros.",
+    skill: "EF89LP07",
     comment:
       "A habilidade se trata de observar como os recursos das diferentes linguagens se articulam para produzir sentidos. Por exemplo, entender, em uma peça publicitária para televisão, como imagem em movimento, cenário, luzes, fundo musical e texto verbal se articulam para produzir um certo efeito de prazer ou de tensão, dependendo daquilo que se quer expressar; ou como, em uma reportagem ou notícia radiofônica, a entonação, as pausas, os efeitos sonoros etc., ajudam a produzir este ou aquele efeito.",
     resume:
@@ -5287,14 +7963,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP09",
     object: "Estratégia de produção: planejamento de textos informativos",
-    skill:
-      "(EF89LP08) Planejar reportagem impressa e em outras mídias (rádio ou TV/vídeo, sites), tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. – a partir da escolha do fato a ser aprofundado ou do tema a ser focado (de relevância para a turma, escola ou comunidade), do levantamento de dados e informações sobre o fato ou tema – que pode envolver entrevistas com envolvidos ou com especialistas, consultas a fontes diversas, análise de documentos, cobertura de eventos etc. -, do registro dessas informações e dados, da escolha de fotos ou imagens a produzir ou a utilizar etc., da produção de infográficos, quando for o caso, e da organização hipertextual (no caso a publicação em sites ou blogs noticiosos ou mesmo de jornais impressos, por meio de boxes variados).",
+    skill: "EF89LP08",
     comment:
       "Do mesmo modo que o desenvolvimento da habilidade (EF67LP09), esta habilidade trata do processo implicado na prática de produzir textos: definir/considerar as condições em que o texto será produzido; planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte); produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens); e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que vai circular, e realizar ajustes necessários, aplicando os conhecimentos construídos sobre os recursos linguísticos e semióticos). Nesta habilidade, o foco é desenvolver, principalmente, a habilidade de planejamento.",
     resume:
@@ -5302,14 +7976,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP09",
     object: "Estratégia de produção: textualização de textos informativos",
-    skill:
-      "(EF89LP09) Produzir reportagem impressa, com título, linha fina (optativa), organização composicional (expositiva, interpretativa e/ou opinativa), progressão temática e uso de recursos linguísticos compatíveis com as escolhas feitas e reportagens multimidiáticas, tendo em vista as condições de produção, as características do gênero, os recursos e mídias disponíveis, sua organização hipertextual e o manejo adequado de recursos de captação e edição de áudio e imagem e adequação à norma-padrão.",
+    skill: "EF89LP09",
     comment:
       "A habilidade trata do processo implicado na prática de produzir textos: definir/considerar o contexto em que o texto será produzido e circulará, planejar (seleção de fato/assunto, escolha do gênero, curadoria de informação, elaboração de esquema do texto a ser produzido parte a parte), produzir (elaboração do texto, recorrendo aos recursos das diferentes a linguagens) e, implicitamente, revisar (avaliar a adequação do texto, considerando o contexto em que irá circular, e realizar ajustes necessários, aplicando os conhecimentos construídos sobre os recursos linguísticos e semióticos).",
     resume:
@@ -5317,15 +7989,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP09",
     object:
       "Estratégia de produção: planejamento de textos argumentativos e apreciativos",
-    skill:
-      "(EF89LP10) Planejar artigos de opinião, tendo em vista as condições de produção do texto – objetivo, leitores/espectadores, veículos e mídia de circulação etc. –, a partir da escolha do tema ou questão a ser discutido(a), da relevância para a turma, escola ou comunidade, do levantamento de dados e informações sobre a questão, de argumentos relacionados a diferentes posicionamentos em jogo, da definição – o que pode envolver consultas a fontes diversas, entrevistas com especialistas, análise de textos, organização esquemática das informações e argumentos – dos (tipos de) argumentos e estratégias que pretende utilizar para convencer os leitores.",
+    skill: "EF89LP10",
     comment:
       "A habilidade contempla uma das operações do processo de produção de textos: o planejamento, que deve ser realizado considerando o contexto de produção (interlocutores, intencionalidades etc). Como se trata de gênero que, nesse campo, exigem posicionamento crítico e opinativo, o planejamento envolve a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos, além de consulta a outras fontes/gêneros para construção do repertório temático. Orienta-se que se tenha especial atenção à escolha e relevância dos temas a serem planejados e produzidos e ao estudo das marcas linguísticas do artigo de opinião.",
     resume:
@@ -5333,15 +8003,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP09",
     object:
       "Estratégias de produção: planejamento, textualização, revisão e edição de textos publicitários",
-    skill:
-      "(EF89LP11) Produzir, revisar e editar peças e campanhas publicitárias, envolvendo o uso articulado e complementar de diferentes peças publicitárias: cartaz, banner, indoor, folheto, panfleto, anúncio de jornal/revista, para internet, spot, propaganda de rádio, TV, a partir da escolha da questão/problema/causa significativa para a escola e/ou a comunidade escolar, da definição do público-alvo, das peças que serão produzidas, das estratégias de persuasão e convencimento que serão utilizadas.",
+    skill: "EF89LP11",
     comment:
       "Esta habilidade refere-se à produção de textos como um processo que envolve etapas diferentes e mobiliza variadas habilidades, como (1) as relativas à curadoria de informação e à produção de roteiros e enquetes para pesquisa, considerando o contexto de produção definido, e a esquematização (o esboço) do texto, parte a parte; (2) as habilidades voltadas à aplicação dos recursos linguísticos e semióticos, na elaboração e revisão dos gêneros publicitários e suas diferentes peças.",
     resume:
@@ -5349,15 +8017,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP04",
     object:
       "Estratégias de produção: planejamento e participação em debates regrados",
-    skill:
-      "(EF89LP12) Planejar coletivamente a realização de um debate sobre tema previamente definido, de interesse coletivo, com regras acordadas e planejar, em grupo, participação em debate a partir do levantamento de informações e argumentos que possam sustentar o posicionamento a ser defendido (o que pode envolver entrevistas com especialistas, consultas a fontes diversas, o registro das informações e dados obtidos etc.), tendo em vista as condições de produção do debate – perfil dos ouvintes e demais participantes, objetivos do debate, motivações para sua realização, argumentos e estratégias de convencimento mais eficazes etc. e participar de debates regrados, na condição de membro de uma equipe de debatedor, apresentador/mediador, espectador (com ou sem direito a perguntas), e/ou de juiz/avaliador, como forma de compreender o funcionamento do debate, e poder participar de forma convincente, ética, respeitosa e crítica e desenvolver uma atitude de respeito e diálogo para com as ideias divergentes.",
+    skill: "EF89LP12",
     comment:
       "Esta habilidade consiste em promover a vivência de diferentes papéis em um debate regrado: debatedor, apresentador/mediador, espectador (com ou sem direito a perguntas), e/ou de juiz/avaliador. Supõe um trabalho coletivo (para definição de questões gerais), em grupo (para definição de responsabilidades e planejamento da atuação) e individual, embora como parte de um grupo/coletivo (na vivência do papel definido).",
     resume:
@@ -5365,15 +8031,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP13",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP04",
     object:
       "Estratégias de produção: planejamento, realização e edição de entrevistas orais",
-    skill:
-      "(EF89LP13) Planejar entrevistas orais com pessoas ligadas ao fato noticiado, especialistas etc., como forma de obter dados e informações sobre os fatos cobertos sobre o tema ou questão discutida ou temáticas em estudo, levando em conta o gênero e seu contexto de produção, partindo do levantamento de informações sobre o entrevistado e sobre a temática e da elaboração de um roteiro de perguntas, garantindo a relevância das informações mantidas e a continuidade temática, realizar entrevista e fazer edição em áudio ou vídeo, incluindo uma contextualização inicial e uma fala de encerramento para publicação da entrevista isoladamente ou como parte integrante de reportagem multimidiática, adequando-a a seu contexto de publicação e garantindo a relevância das informações mantidas e a continuidade temática.",
+    skill: "EF89LP13",
     comment:
       "Esta habilidade trata de tomar a entrevista tanto como texto autônomo quanto como um instrumento de coleta de informações para serem incorporadas a notícias. Cabe, em qualquer das situações, contemplar todo o processo implicado na produção de entrevistas: planejar (seleção de assunto e de quem será entrevistado, curadoria de informação etc.), produzir (elaboração do texto, recorrendo aos recursos das diferentes linguagens e aos aplicativos necessários, em caso de textos em áudio e vídeo) e, implicitamente, revisar (avaliar a adequação da entrevista ao meio em que circulará, se autônoma, ou selecionar e organizar os trechos relevantes para compor a notícia ou reportagem).",
     resume:
@@ -5381,15 +8045,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP14",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP08",
     object:
       "Argumentação: movimentos argumentativos, tipos de argumento e força argumentativa",
-    skill:
-      "(EF89LP14) Analisar, em textos argumentativos e propositivos, os movimentos argumentativos de sustentação, refutação e negociação e os tipos de argumentos, avaliando a força/tipo dos argumentos utilizados.",
+    skill: "EF89LP14",
     comment:
       'A habilidade tem como foco a análise do funcionamento próprio de textos argumentativos/propositivos. Envolve reconhecer a posição do autor sobre a questão controversa; os argumentos sustentados; a conexão entre as ideias, muitas vezes evidenciada por recursos linguísticos ("É certo que/Por outro lado" etc.); a organização dos argumentos (hierarquização ou enumeração de motivos para sustentar uma posição, por exemplo).',
     resume:
@@ -5397,14 +8059,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP15",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP08",
     object: "Estilo",
-    skill:
-      "(EF89LP15) Utilizar, nos debates, operadores argumentativos que marcam a defesa de ideia e de diálogo com a tese do outro: concordo, discordo, concordo parcialmente, do meu ponto de vista, na perspectiva aqui assumida etc.",
+    skill: "EF89LP15",
     comment:
       "O foco desta habilidade está no domínio de operadores argumentativos em produções orais. A habilidade envolve compreensão do conteúdo temático e da questão controversa em jogo no debate, assim como da posição a ser assumida. Além disso, supõe a compreensão da posição contrária à defendida, de modo que seja possível colocar-se no lugar do opositor e negociar com ele (exercício de alteridade).",
     resume:
@@ -5412,14 +8072,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP16",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "06",
+    unit: "LP08",
     object: "Modalização",
-    skill:
-      "(EF89LP16) Analisar a modalização realizada em textos noticiosos e argumentativos, por meio das modalidades apreciativas, viabilizadas por classes e estruturas gramaticais como adjetivos, locuções adjetivas, advérbios, locuções adverbiais, orações adjetivas e adverbiais, orações relativas restritivas e explicativas etc., de maneira a perceber a apreciação ideológica sobre os fatos noticiados ou as posições implícitas ou assumidas.",
+    skill: "EF89LP16",
     comment:
       "Esta habilidade tem como foco a modalização em textos jornalísticos narrativos e argumentativos. Isso implica: (a) o reconhecimento dos recursos linguísticos empregados; (b) a compreensão dos efeitos de sentido produzidos por meio desses recursos, assim como de seu enquadramento ideológico; (c) a análise da coerência desses efeitos em relação às intenções pretendidas.",
     resume:
@@ -5427,15 +8085,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP17",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos legais e normativos",
-    skill:
-      "(EF89LP17) Relacionar textos e documentos legais e normativos de importância universal, nacional ou local que envolvam direitos, em especial, de crianças, adolescentes e jovens – tais como a Declaração dos Direitos Humanos, a Constituição Brasileira, o ECA -, e a regulamentação da organização escolar – por exemplo, regimento escolar -, a seus contextos de produção, reconhecendo e analisando possíveis motivações, finalidades e sua vinculação com experiências humanas e fatos históricos e sociais, como forma de ampliar a compreensão dos direitos e deveres, de fomentar os princípios democráticos e uma atuação pautada pela ética da responsabilidade (o outro tem direito a uma vida digna tanto quanto eu tenho).",
+    skill: "EF89LP17",
     comment:
       "Esta habilidade supõe conhecer as histórias de luta de diferentes setores e grupos da sociedade (representantes de minorias) que, ao longo dos anos, conseguiram normatizar os seus direitos essenciais, como o direito à vida, à alimentação, educação, saúde e moradia. É essencial para ampliar a consciência sobre os direitos humanos em vários âmbitos da vida em sociedade e sobre o compromisso de uma atuação no coletivo, em defesa do Estado de direito.",
     resume:
@@ -5443,15 +8099,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP18",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP07",
     object:
       "Contexto de produção, circulação e recepção de textos e práticas relacionadas à defesa de direitos e à participação social",
-    skill:
-      "(EF89LP18) Explorar e analisar instâncias e canais de participação disponíveis na escola (conselho de escola, outros colegiados, grêmio livre), na comunidade (associações, coletivos, movimentos, etc.), no munícipio ou no país, incluindo formas de participação digital, como canais e plataformas de participação (como portal e-cidadania), serviços, portais e ferramentas de acompanhamentos do trabalho de políticos e de tramitação de leis, canais de educação política, bem como de propostas e proposições que circulam nesses canais, de forma a participar do debate de ideias e propostas na esfera social e a engajar-se com a busca de soluções para problemas ou questões que envolvam a vida da escola e da comunidade.",
+    skill: "EF89LP18",
     comment:
       "Esta habilidade diz respeito a conhecer as características dos espaços de circulação de gêneros que impliquem solicitação e/ou reclamação de direitos, participação na vida política da escola, comunidade, estado ou país — e textos que possibilitem essas ações —, o que permite aos alunos que organizem o seu discurso (oral ou escrito) utilizando recursos adequados aos interlocutores, com vistas a atingir seus objetivos. São habilidades fundamentais para o exercício da cidadania.",
     resume:
@@ -5459,15 +8113,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP19",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP07",
     object:
       "Relação entre contexto de produção e características composicionais e estilísticas dos gêneros\nApreciação e réplica",
-    skill:
-      "(EF89LP19) Analisar, a partir do contexto de produção, a forma de organização das cartas abertas, abaixo-assinados e petições on-line (identificação dos signatários, explicitação da reivindicação feita, acompanhada ou não de uma breve apresentação da problemática e/ou de justificativas que visam sustentar a reivindicação) e a proposição, discussão e aprovação de propostas políticas ou de soluções para problemas de interesse público, apresentadas ou lidas nos canais digitais de participação, identificando suas marcas linguísticas, como forma de possibilitar a escrita ou subscrição consciente de abaixo-assinados e textos dessa natureza e poder se posicionar de forma crítica e fundamentada frente às propostas",
+    skill: "EF89LP19",
     comment:
       "Trata-se de habilidade de leitura para estudo das especificidades dos textos normativos jurídicos e reivindicatórios, visando à produção de textos dessa natureza, essenciais para a vida pública, especialmente em situações de defesa ou de debates sobre direitos do cidadão. Supõe-se o estudo desses gêneros no que diz respeito ao conteúdo — como pode se organizar e ser construído com os recursos linguísticos adequados, tendo em vista os objetivos pretendidos.",
     resume:
@@ -5475,15 +8127,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP20",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP07",
     object:
       "Estratégias e procedimentos de leitura em textos reivindicatórios ou propositivos",
-    skill:
-      "(EF89LP20) Comparar propostas políticas e de solução de problemas, identificando o que se pretende fazer/implementar, por que (motivações, justificativas), para que (objetivos, benefícios e consequências esperados), como (ações e passos), quando etc. e a forma de avaliar a eficácia da proposta/solução, contrastando dados e informações de diferentes fontes, identificando coincidências, complementaridades e contradições, de forma a poder compreender e posicionar-se criticamente sobre os dados e informações usados em fundamentação de propostas e analisar a coerência entre os elementos, de forma a tomar decisões fundamentadas.",
+    skill: "EF89LP20",
     comment:
       "Esta habilidade implica mobilizar capacidades de leitura, tais como localização de informação, inferências e generalizações, bem como apreciações valorativas fundamentadas sobre as propostas políticas e soluções de problemas que resultem em tomadas de decisão. As habilidades relativas à curadoria de informações também se articulam a esta habilidade.",
     resume:
@@ -5491,15 +8141,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP21",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP09",
     object:
       "Estratégia de produção: planejamento de textos reivindicatórios ou propositivos",
-    skill:
-      "(EF89LP21) Realizar enquetes e pesquisas de opinião, de forma a levantar prioridades, problemas a resolver ou propostas que possam contribuir para melhoria da escola ou da comunidade, caracterizar demanda/necessidade, documentando-a de diferentes maneiras por meio de diferentes procedimentos, gêneros e mídias e, quando for o caso, selecionar informações e dados relevantes de fontes pertinentes diversas (sites, impressos, vídeos etc.), avaliando a qualidade e a utilidade dessas fontes, que possam servir de contextualização e fundamentação de propostas, de forma a justificar a proposição de propostas, projetos culturais e ações de intervenção.",
+    skill: "EF89LP21",
     comment:
       "A habilidade refere-se à investigação de problemas e questões que levarão à produção de gêneros reivindicatórios ou propositivos. Esta habilidade, prevista para os dois últimos anos, sinaliza uma progressão em relação à habilidade (EF67LP19), indicada para o 6º e 7º anos, que também faz referência a levantamento de questões ou problemas. A progressão suposta está (1) nos procedimentos envolvidos na investigação e na ampliação de alcance do público; (2) na geração de dados e na função deles para a produção de gêneros mais ou menos complexos. Supõe a leitura analítica de textos normativos e legais.",
     resume:
@@ -5507,26 +8155,22 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP22",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP04",
     object:
       "Escuta\nApreender o sentido geral dos textos Apreciação e réplica Produção/Proposta",
-    skill:
-      "(EF89LP22) Compreender e comparar as diferentes posições e interesses em jogo em uma discussão ou apresentação de propostas, avaliando a validade e força dos argumentos e as consequências do que está sendo proposto e, quando for o caso, formular e negociar propostas de diferentes naturezas relativas a interesses coletivos envolvendo a escola ou comunidade escolar.",
+    skill: "EF89LP22",
   },
   {
     id: "EF89LP23",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP08",
     object: "Movimentos argumentativos e força dos argumentos",
-    skill:
-      "(EF89LP23) Analisar, em textos argumentativos, reivindicatórios e propositivos, os movimentos argumentativos utilizados (sustentação, refutação e negociação), avaliando a força dos argumentos utilizados.",
+    skill: "EF89LP23",
     comment:
       'A habilidade implica reconhecer, inicialmente, a especificidade dos movimentos argumentativos, indicando: (a) que a sustentação de uma posição supõe a apresentação de argumentos que fundamentem a posição defendida; (b) que a refutação implica a desqualificação da posição oposta à defendida no texto; (c) que a negociação requer a criação de um efeito de que o argumentador reconhece o valor de algum aspecto da posição contrária, validando-os, de modo a "quebrar" um pouco a resistência do oponente, aproximando-o da sua posição. Para tanto, é preciso identificar: a posição do autor sobre a questão em pauta; os argumentos e contra-argumentos apresentados; os recursos linguísticos usados para introduzir os diferentes movimentos argumentativos ("É certo que/Por outro lado" etc.). Finalmente, avaliar a força dos argumentos empregados no texto implica conhecer o tema e realizar reflexões não superficiais sobre ele.',
     resume:
@@ -5534,14 +8178,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP24",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP07",
     object: "Curadoria de informação",
-    skill:
-      "(EF89LP24) Realizar pesquisa, estabelecendo o recorte das questões, usando fontes abertas e confiáveis.",
+    skill: "EF89LP24",
     comment:
       "Esta habilidade se refere à curadoria de informação, com vistas à ampliação e qualificação da participação dos jovens nas diferentes esferas da vida pública. Por exemplo, para saber sobre seus direitos em alguma dimensão da vida pública, o aluno terá que buscar textos legais ou que circularam na mídia (reportagens, notícias, artigos de opinião etc.), nos quais possa fundamentar uma reivindicação ou reclamação.",
     resume:
@@ -5549,14 +8191,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP25",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP09",
     object: "Estratégias de escrita: textualização, revisão e edição",
-    skill:
-      "(EF89LP25) Divulgar o resultado de pesquisas por meio de apresentações orais, verbetes de enciclopédias colaborativas, reportagens de divulgação científica, vlogs científicos, vídeos de diferentes tipos etc.",
+    skill: "EF89LP25",
     comment:
       "Esta habilidade refere-se à apropriação de diferentes modos de divulgar pesquisas realizadas. Supõe o estudo das especificidades dos gêneros e da adequação de um ou outro ao contexto de produção, com destaque para a natureza dos resultados, as intencionalidades e o público provável. Envolve as operações de planejamento, produção e revisão do texto no gênero escolhido para divulgar os resultados.",
     resume:
@@ -5564,14 +8204,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP26",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP09",
     object: "Estratégias de escrita: textualização, revisão e edição",
-    skill:
-      "(EF89LP26) Produzir resenhas, a partir das notas e/ou esquemas feitos, com o manejo adequado das vozes envolvidas (do resenhador, do autor da obra e, se for o caso, também dos autores citados na obra resenhada), por meio do uso de paráfrases, marcas do discurso reportado e citações.",
+    skill: "EF89LP26",
     comment:
       "Esta habilidade se refere aos procedimentos de planejamento e à elaboração de resenhas resultantes de variadas leituras de estudo, com cuidado para o tratamento dos dados e das informações coletadas durante a curadoria da informação. Envolve aprender a usar as vozes do/a aluno/a e das fontes consultadas na construção dos sentidos que se pretende. Por exemplo, se a intenção é reforçar uma determinada ideia ou posição, predominarão no texto vozes que reforcem essa ideia ou posição.",
     resume:
@@ -5579,14 +8217,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP27",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP04",
     object: "Conversação espontânea",
-    skill:
-      "(EF89LP27) Tecer considerações e formular problematizações pertinentes, em momentos oportunos, em situações de aulas, apresentação oral, seminário etc.",
+    skill: "EF89LP27",
     comment:
       "Esta habilidade é solicitada em situações orais diversas, em contextos mais ou menos formais, em que se espera uma participação mais ativa da audiência. Supõe uma participação qualificada, apoiada em informações ouvidas ou coletadas e analisadas. A expressão corporal, o contato visual com o interlocutor, a entonação, além do respeito ao turno do outro e da postura ética devem ser foco da aprendizagem nessas participações.",
     resume:
@@ -5594,14 +8230,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP28",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Oralidade",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP04",
     object: "Procedimentos de apoio à compreensão Tomada de nota",
-    skill:
-      "(EF89LP28) Tomar nota de videoaulas, aulas digitais, apresentações multimídias, vídeos de divulgação científica, documentários e afins, identificando, em função dos objetivos, informações principais para apoio ao estudo e realizando, quando necessário, uma síntese final que destaque e reorganize os pontos ou conceitos centrais e suas relações e que, em alguns casos, seja acompanhada de reflexões pessoais, que podem conter dúvidas, questionamentos, considerações etc.",
+    skill: "EF89LP28",
     comment:
       "Esta habilidade supõe o trabalho com a tomada de notas para diferentes fins: (1) para alimentar outras produções escritas com a finalidade de documentar processos e resultados do que foi apreendido a partir do conteúdo assistido; (2) para registro pessoal, visando a reflexão sobre o registrado; (3) como apoio à fala durante a participação em situações orais como discussões, debates, seminários.",
     resume:
@@ -5609,14 +8243,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP29",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP08",
     object: "Textualização Progressão temática",
-    skill:
-      "(EF89LP29) Utilizar e perceber mecanismos de progressão temática, tais como retomadas anafóricas (“que, cujo, onde”, pronomes do caso reto e oblíquos, pronomes demonstrativos, nomes correferentes etc.), catáforas (remetendo para adiante ao invés de retomar o já dito), uso de organizadores textuais, de coesivos etc., e analisar os mecanismos de reformulação e paráfrase utilizados nos textos de divulgação do conhecimento.",
+    skill: "EF89LP29",
     comment:
       "Esta habilidade refere-se ao campo de atuação na vida pública e, mais especificamente, aos textos de divulgação do conhecimento. Remete aos estudos de como acontece, em tais textos, a progressão do tema, considerando elementos específicos de coesão, seja referencial, seja sequencial; ou, ainda, o uso de organizadores textuais (os conectivos empregados no interior de e entre frases), por meio de leitura e produção de textos, nos quais seja possível perceber os mecanismos em questão e refletir a seu respeito.",
     resume:
@@ -5624,14 +8256,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP30",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP08",
     object: "Textualização",
-    skill:
-      "(EF89LP30) Analisar a estrutura de hipertexto e hiperlinks em textos de divulgação científica que circulam na Web e proceder à remissão a conceitos e relações por meio de links.",
+    skill: "EF89LP30",
     comment:
       "Esta habilidade (assim como a EF67LP26) supõe que a análise empreendida na leitura de hipertextos em ambiente digital poderá favorecer a produção deles. Consiste em compreender que os links em textos de divulgação científica, em ambiente digital, levam a outros conteúdos que mantêm uma relação direta com o assunto tratado no hipertexto de origem, seja de complementariedade, seja de aprofundamento. Requer a observação, a reflexão e a análise de hipertextos.",
     resume:
@@ -5639,14 +8269,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP31",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo de atuação na vida pública",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "03",
+    unit: "LP08",
     object: "Modalização",
-    skill:
-      "(EF89LP31) Analisar e utilizar modalização epistêmica, isto é, modos de indicar uma avaliação sobre o valor de verdade e as condições de verdade de uma proposição, tais como os asseverativos – quando se concorda com (“realmente, evidentemente, naturalmente, efetivamente, claro, certo, lógico, sem dúvida” etc.) ou discorda de (“de jeito nenhum, de forma alguma”) uma ideia; e os quase-asseverativos, que indicam que se considera o conteúdo como quase certo (“talvez, assim, possivelmente, provavelmente, eventualmente”).",
+    skill: "EF89LP31",
     comment:
       "Trata-se de analisar os efeitos de sentido produzidos pelos recursos empregados — a modalização epistêmica —, considerando a sua coerência tanto com as intenções presumidas do texto, quanto com a especificidade do gênero, considerando campo de atuação, finalidade e espaço de circulação. Além disso, está associada aos textos argumentativos e às habilidades que envolvem o reconhecimento dos movimentos de sustentação, refutação e argumentação (relaciona-se com a habilidade EF89LP23).",
     resume:
@@ -5654,14 +8282,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP32",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "05",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF89LP32) Analisar os efeitos de sentido decorrentes do uso de mecanismos de intertextualidade (referências, alusões, retomadas) entre os textos literários, entre esses textos literários e outras manifestações artísticas (cinema, teatro, artes visuais e midiáticas, música), quanto aos temas, personagens, estilos, autores etc., e entre o texto original e paródias, paráfrases, pastiches, trailer honesto, vídeos-minuto, vidding, dentre outros.",
+    skill: "EF89LP32",
     comment:
       'Assim como a habilidade (EF67LP27), esta habilidade supõe o estudo comparado das obras literárias entre si e com outras linguagens, mas significa uma progressão em relação à anterior por priorizar, para além da identificação das relações intertextuais, a análise dos efeitos de sentido produzidos por elas, implicando, inclusive, o estudo de gêneros multimidiáticos que são uma "resposta" do público em relação às produções baseadas no original, como é o caso do trailer honesto e do vidding (que são produções feitas por fãs das obras de literatura, cinema etc.)',
     resume:
@@ -5669,14 +8295,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP33",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "05",
+    unit: "LP07",
     object: "Estratégias de leitura Apreciação e réplica",
-    skill:
-      "(EF89LP33) Ler, de forma autônoma, e compreender – selecionando procedimentos e estratégias de leitura adequados a diferentes objetivos e levando em conta características dos gêneros e suportes – romances, contos contemporâneos, minicontos, fábulas contemporâneas, romances juvenis, biografias romanceadas, novelas, crônicas visuais, narrativas de ficção científica, narrativas de suspense, poemas de forma livre e fixa (como haicai), poema concreto, ciberpoema, dentre outros, expressando avaliação sobre o texto lido e estabelecendo preferências por gêneros, temas, autores.",
+    skill: "EF89LP33",
     comment:
       "A habilidade refere-se a procedimentos e estratégias que podem ser usados para compreender e apreciar diferentes gêneros literários, considerando as suas marcas específicas. Esse tipo de leitura favorece a fruição literária — que significa ler sem qualquer compromisso com avaliações ou apresentações formais sobre o lido. Entretanto, cabe lembrar que, para fruir melhor o texto, é essencial ter vivenciado experiências prazerosas de leitura e conversa sobre textos desses gêneros, em que  o caráter criativo dos discursos literários tenham sido evidenciados.",
     resume:
@@ -5684,15 +8308,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP34",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo artístico-literário",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "89",
+    field: "05",
+    unit: "LP07",
     object:
       "Reconstrução da textualidade e compreensão dos efeitos de sentidos provocados pelos usos de recursos linguísticos e multissemióticos",
-    skill:
-      "(EF89LP34) Analisar a organização de texto dramático apresentado em teatro, televisão, cinema, identificando e percebendo os sentidos decorrentes dos recursos linguísticos e semióticos que sustentam sua realização como peça teatral, novela, filme etc.",
+    skill: "EF89LP34",
     comment:
       "Esta habilidade implica comparar a realização do texto dramático em diferentes contextos. Ou seja, analisar as as diferenças e semelhanças entre um texto dramático criado para o palco, para o cinema e para a TV ou o rádio, por exemplo; com que recursos se pode contar em cada caso e como eles ajudam a produzir os sentidos pretendidos.",
     resume:
@@ -5700,14 +8322,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP35",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "05",
+    unit: "LP09",
     object: "Construção da textualidade",
-    skill:
-      "(EF89LP35) Criar contos ou crônicas (em especial, líricas), crônicas visuais, minicontos, narrativas de aventura e de ficção científica, dentre outros, com temáticas próprias ao gênero, usando os conhecimentos sobre os constituintes estruturais e recursos expressivos típicos dos gêneros narrativos pretendidos, e, no caso de produção em grupo, ferramentas de escrita colaborativa.",
+    skill: "EF89LP35",
     comment:
       "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários em prosa. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte.",
     resume:
@@ -5715,14 +8335,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP36",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Campo artístico-literário",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "89",
+    field: "05",
+    unit: "LP09",
     object: "Relação entre textos",
-    skill:
-      "(EF89LP36) Parodiar poemas conhecidos da literatura e criar textos em versos (como poemas concretos, ciberpoemas, haicais, liras, microrroteiros, lambe-lambes e outros tipos de poemas), explorando o uso de recursos sonoros e semânticos (como figuras de linguagem e jogos de palavras) e visuais (como relações entre imagem e texto verbal e distribuição da mancha gráfica), de forma a propiciar diferentes efeitos de sentido.",
+    skill: "EF89LP36",
     comment:
       "Esta habilidade visa à experimentação do fazer literário pelo/a aluno nos gêneros literários líricos. A produção aqui também deve ser entendida como processo que envolve as operações de planejamento, produção e revisão dos textos, por meio da criação de oficinas literárias, em parceria com profissionais da biblioteca/sala de leitura e com professores/as de Arte. O diferencial desta habilidade em relação à habilidade do 6º e 7º anos, que também sugere o trabalho com gêneros líricos, se dá pelo fato de que, aqui, há necessariamente um trabalho intertextual exigido, visto que sugere o trabalho com paródias de textos conhecidos.",
     resume:
@@ -5730,14 +8348,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF89LP37",
-    competences: "Língua Portuguesa",
-    group_year_id: "89",
-    group_years: "8º, 9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "89",
+    field: "01",
+    unit: "LP08",
     object: "Figuras de linguagem",
-    skill:
-      "(EF89LP37) Analisar os efeitos de sentido do uso de figuras de linguagem como ironia, eufemismo, antítese, aliteração, assonância, dentre outras.",
+    skill: "EF89LP37",
     comment:
       "O foco desta habilidade está na compreensão e análise de figuras de linguagem como as mencionadas, em gêneros e textos de qualquer campo de atuação. Trata-se, portanto, de uma habilidade relevante não só para a compreensão, mas, ainda, para a interpretação de textos, na medida em que evidencia mecanismos de (re)construção do texto e de seus sentidos.",
     resume:
@@ -5745,15 +8361,13 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP01",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "09",
+    field: "06",
+    unit: "LP07",
     object:
       "Reconstrução do contexto de produção, circulação e recepção de textos\nCaracterização do campo jornalístico e relação entre os gêneros em circulação, mídias e práticas da cultura digital",
-    skill:
-      "(EF09LP01) Analisar o fenômeno da disseminação de notícias falsas nas redes sociais e desenvolver estratégias para reconhecê-las, a partir da verificação/avaliação do veículo, fonte, data e local da publicação, autoria, URL, da análise da formatação, da comparação de diferentes fontes, da consulta a sites de curadoria que atestam a fidedignidade do relato dos fatos e denunciam boatos etc.",
+    skill: "EF09LP01",
     comment:
       "Esta habilidade envolve procedimentos de pesquisa, como escolher palavras ou frases-chave adequadas para um resultado mais eficaz, bem como capacidades de leitura, como levantar hipóteses, localizar informações (expressas em diferentes linguagens) e compará-las, realizar inferências e checar hipóteses a partir dessas comparações. Favorece, ainda, o pensamento crítico e o posicionamento ético em relação ao compartilhamento das notícias falsas.",
     resume:
@@ -5761,14 +8375,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP02",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Leitura",
+    competences: "LP",
+    group_years: "09",
+    field: "06",
+    unit: "LP07",
     object: "Relação entre textos",
-    skill:
-      "(EF09LP02) Analisar e comentar a cobertura da imprensa sobre fatos de relevância social, comparando diferentes enfoques por meio do uso de ferramentas de curadoria.",
+    skill: "EF09LP02",
     comment:
       "Esta habilidade pode ser articulada ao trabalho com a habilidade que sugere a comparação das propostas editoriais dos jornais (EF07LP01). Ela consiste em:1. analisar os efeitos de sentido produzidos pelos recursos linguísticos usados nos textos;2. apurar informações, desenvolvendo procedimentos de curadoria;3. posicionar-se em relação aos enfoques dados aos fatos/assuntos veiculados, produzindo textos escritos ou orais.",
     resume:
@@ -5776,14 +8388,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP03",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Campo jornalístico/midiático",
-    unit: "Produção de textos",
+    competences: "LP",
+    group_years: "09",
+    field: "06",
+    unit: "LP09",
     object: "Textualização de textos argumentativos e apreciativos",
-    skill:
-      "(EF09LP03) Produzir artigos de opinião, tendo em vista o contexto de produção dado, assumindo posição diante de tema polêmico, argumentando de acordo com a estrutura própria desse tipo de texto e utilizando diferentes tipos de argumentos – de autoridade, comprovação, exemplificação princípio etc.",
+    skill: "EF09LP03",
     comment:
       "A habilidade envolve os procedimentos apontados em (EF67LP09) e (EF67LP10): definir contexto de produção, planejar, produzir e revisar. Aqui, no entanto, se trata de gênero argumentativo do campo jornalístico-midiático, que exige posicionamento crítico, a preparação de argumentos, a escolha do movimento argumentativo e outras habilidades próprias de gêneros argumentativos. Vale enfatizar a importância de se considerar como objeto de apreciação produtos representativos das culturas juvenis. Recomenda-se que o tratamento ético em relação à informação e o posicionamento crítico em relação a ela devem ser foco de discussão nesse caso.",
     resume:
@@ -5791,14 +8401,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP04",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Fono-ortografia",
-    skill:
-      "(EF09LP04) Escrever textos corretamente, de acordo com a norma-padrão, com estruturas sintáticas complexas no nível da oração e do período.",
+    skill: "EF09LP04",
     comment:
       'Esta habilidade se refere ao uso da norma-padrão nas situações, gêneros e textos em que ela é requerida e tem como foco específico o uso de estruturas sintáticas complexas, no nível da oração e do período. Requer o estudo da variação linguística e da compreensão dos valores socialmente atribuídos às diferentes variedades, e demanda o envolvimento frequente e sistemático em práticas públicas e formais de leitura e/ou produção de textos, orais e/ou escritos, em que a "correção" (adequação) deve ser observada. Exemplos de situações orais formais: palestras, seminários, apresentações orais, debates. Exemplos de situações escritas formais: entrevistas, notícias, artigo de divulgação científica, reportagem multimidiática. (Estreitamente relacionada a EF08LP04).',
     resume:
@@ -5806,14 +8414,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP05",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF09LP05) Identificar, em textos lidos e em produções próprias, orações com a estrutura sujeito-verbo de ligação-predicativo.",
+    skill: "EF09LP05",
     comment:
       "O foco desta habilidade é a identificação da estrutura sintática própria de orações cujo núcleo é um verbo de ligação. Está, portanto, diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF0LP906). Requer a observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e das funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -5821,14 +8427,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP06",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF09LP06) Diferenciar, em textos lidos e em produções próprias, o efeito de sentido do uso dos verbos de ligação “ser”, “estar”, “ficar”, “parecer” e “permanecer”.",
+    skill: "EF09LP06",
     comment:
       "O foco desta habilidade é a identificação do papel dos verbos de ligação na produção de efeitos de sentido específicos. Está, portanto,  diretamente relacionada ao desenvolvimento de todas as demais habilidades de análise com foco na sintaxe da oração e do período (especialmente EF09LP05). Requer observação da organização sintática do texto e reflexões a respeito do papel dela na construção da textualidade e na produção de efeitos de sentido. Envolve, ainda, um conhecimento prévio de classes de palavras e funções e categorias gramaticais associadas a cada uma delas.",
     resume:
@@ -5836,14 +8440,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP07",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF09LP07) Comparar o uso de regência verbal e regência nominal na norma-padrão com seu uso no português brasileiro coloquial oral.",
+    skill: "EF09LP07",
     comment:
       'Esta habilidade possibilita refletir sobre diferenças entre a norma-padrão e outras variedades da língua. Um exemplo comum é a regência do verbo assistir (com o sentido de ver algo). De acordo com a norma-padrão, esse verbo é regido pela preposição "a": "Ele assistiu ao filme ontem". Entretanto, hoje, até mesmo em textos jornalísticos encontramos o uso do verbo sem essa regência: "Ele assistiu o filme ontem". A habilidade, portanto, demanda a análise comparativa de enunciados em que as regências nominal e verbal obedeçam regras de diferentes normas.',
     resume:
@@ -5851,14 +8453,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP08",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Morfossintaxe",
-    skill:
-      "(EF09LP08) Identificar, em textos lidos e em produções próprias, a relação que conjunções (e locuções conjuntivas) coordenativas e subordinativas estabelecem entre as orações que conectam.",
+    skill: "EF09LP08",
     comment:
       "A habilidade refere-se ao estudo das relações de sentido estabelecidas entre trechos do texto pelas conjunções e locuções conjuntivas, em períodos compostos por coordenação e/ou subordinação, seja na leitura, seja na produção de textos próprios. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo o envolvimento do aluno em práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelas conjunções em processos de subordinação.",
     resume:
@@ -5866,14 +8466,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP09",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Elementos notacionais da escrita/morfossintaxe",
-    skill:
-      "(EF09LP09) Identificar efeitos de sentido do uso de orações adjetivas restritivas e explicativas em um período composto.",
+    skill: "EF09LP09",
     comment:
       "A habilidade refere-se ao estudo necessário para a resolução de problemas de compreensão encontrados, seja na leitura, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego de orações adjetivas restritivas e explicativas em períodos compostos. Abrange a análise do emprego desses recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo contraponto entre orações adjetivas restritivas e explicativas.",
     resume:
@@ -5881,14 +8479,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP10",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Coesão",
-    skill:
-      "(EF09LP10) Comparar as regras de colocação pronominal na norma-padrão com o seu uso no português brasileiro coloquial.",
+    skill: "EF09LP10",
     comment:
       "A habilidade refere-se ao estudo de como acontece a colocação pronominal em diferentes variedades linguísticas (realizadas em diferentes camadas sociais e/ou em distintas regiões/estados do país), em contraposição às regras da norma-padrão. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pela colocação pronominal.",
     resume:
@@ -5896,14 +8492,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP11",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Coesão",
-    skill:
-      "(EF09LP11) Inferir efeitos de sentido decorrentes do uso de recursos de coesão sequencial (conjunções e articuladores textuais).",
+    skill: "EF09LP11",
     comment:
       "A habilidade refere-se ao estudo necessário para a resolução de problemas de compreensão encontrados, seja na leitura de um texto, seja na produção/revisão de textos próprios, derivados da presença e/ou emprego de recursos de coesão sequencial. Abrange a análise do emprego dos recursos em textos de todos os campos de atuação, pressupondo práticas de leitura e/ou produção nas quais a (re)construção dos sentidos do texto esteja relacionada aos efeitos produzidos pelo uso de recursos de coesão sequencial, como conjunções e articuladores textuais.",
     resume:
@@ -5911,14 +8505,12 @@ const portuguesSeed: Array<portuguesDto> = [
   },
   {
     id: "EF09LP12",
-    competences: "Língua Portuguesa",
-    group_year_id: "09",
-    group_years: "9º",
-    field: "Todos os campos de atuação",
-    unit: "Análise linguística/semiótica",
+    competences: "LP",
+    group_years: "09",
+    field: "01",
+    unit: "LP08",
     object: "Variação linguística",
-    skill:
-      "(EF09LP12) Identificar estrangeirismos, caracterizando-os segundo a conservação, ou não, de sua forma gráfica de origem, avaliando a pertinência, ou não, de seu uso.",
+    skill: "EF09LP12",
     comment:
       "Esta é uma habilidade que envolve duas operações distintas: identificar e avaliar estrangeirismos, do ponto de vista da pertinência de seu emprego na leitura e/ou produção, reconhecendo os termos e analisando sua adequação.",
     resume:
@@ -5937,87 +8529,109 @@ const portuguesSeed: Array<portuguesDto> = [
    "skill": "(EF01LP01) Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
    "comment": "O momento de leitura em voz alta de materiais impressos e digitais, feita pelo professor, terá o papel de modelizar procedimentos de leitura, entre eles, o que se refere a esta habilidade. Esta habilidade também é parte do processo de aquisição do sistema de escrita, porque o procedimento de apontar o que está sendo lido oferece pistas sobre a relação entre fala e escrita.",
    "resume": "Para contextualizar o desenvolvimento dessa habilidade, o currículo pode orientar que a prática de leitura se desenvolva em situações significativas, em que o ato de refletir sobre as características do sistema de escrita (por exemplo, saber a direção em que se lê) aconteça de modo a trazer para os estudantes o papel da leitura na vida. Nesse processo, podem ajudar projetos e\/ou sequências didáticas que proponham, por exemplo, a oralização de textos (como preparar-se para apresentar ou gravar uma leitura — cantiga, poema etc. —  para pais ou colegas). Os objetivos poderão orientar atividade de leitura feita pelo professor e acompanhada pelo aluno em material impresso ou projetada por aparelhos eletrônicos."
-
-   const alice = await prisma.user.upsert({
-    where: { id: 'EF01LP01' },
-    update: {},
-    create: {
-      competences: {
-        create:{
-
-      }} 'alice@prisma.io',
-      name: 'Alice',
-      posts: {
-        create: {
-          title: 'Check out Prisma with Next.js',
-          content: 'https://www.prisma.io/nextjs',
-          published: true,
-        },
-      },
-    },
-  })
  */
 
 async function main() {
-  portuguesSeed.map(
-    async (item: portuguesDto) =>
-      await prisma.apprendiceship.create({
-        data: {
-          id: item.id,
-          competence: {
-            create: {
-              id: "LP",
-              name: item.competences,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          group_year: {
-            create: {
-              id: item.group_year_id,
-              description: item.group_years,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          field: {
-            create: {
-              description: item.field,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          unit: {
-            create: {
-              description: item.unit,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          object: {
-            create: {
-              description: item.object,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          skill: {
-            create: {
-              description: item.skill,
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          comment: {
-            create: {
-              comment: item.comment || "N/A",
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          resume: {
-            create: {
-              description: item.resume || "N/A",
-              created: new Date(Date()).toISOString(),
-            },
-          },
-          created: new Date(Date()).toISOString(),
+  competencesArray.map(async (competence: competencesdto) => {
+    await prisma.competences.create({
+      data: {
+        id: competence.id,
+        name: competence.name,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+
+  groupYearArray.map(async (groupYear: groupYearDto) => {
+    await prisma.group_years.create({
+      data: {
+        id: groupYear.id,
+        description: groupYear.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+
+  fieldsArray.map(async (field: fieldsDto) => {
+    await prisma.fields.create({
+      data: {
+        id: field.id,
+        description: field.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+
+  unitsArray.map(async (unit: fieldsDto) => {
+    await prisma.units.create({
+      data: {
+        id: unit.id,
+        description: unit.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+
+  /*  objectsArray.map(async (object: fieldsDto) => {
+    await prisma.objects.create({
+      data: {
+        id: object.id,
+        description: object.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  }); */
+
+  skillsArray.map(async (skill: fieldsDto) => {
+    await prisma.skills.create({
+      data: {
+        id: skill.id,
+        description: skill.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+  /*   portuguesSeed.map(async (line: portuguesDto) => {
+    await prisma.apprendiceship.upsert({
+      where: { id: line.id },
+      update: {},
+      create: {
+        id: line.id,
+        competence: {
+          connect: { id: "LP" },
         },
-      })
-  );
+        group_year: {
+          connect: { id: line.group_years },
+        },
+        field: {
+          connect: { id: line.field },
+        },
+        unit: {
+          connect: { id: line.unit },
+        },
+        object: {
+          create: { description: line.object },
+        },
+        skill: {
+          connect: { id: line.skill },
+        },
+        comment: {
+          create: {
+            comment: line?.comment || "",
+            created: new Date(Date()).toISOString(),
+          },
+        },
+        resume: {
+          create: {
+            description: line?.resume || "",
+            created: new Date(Date()).toISOString(),
+          },
+        },
+        created: new Date(Date()).toISOString(),
+      },
+    });
+    console.log(`${line.id} finished!`);
+  }); */
 }
 
 main()

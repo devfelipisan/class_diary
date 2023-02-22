@@ -11,9 +11,10 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { description } = req.body;
+    const { id, description } = req.body;
     const newAxios = await prisma.axes.create({
       data: {
+        id,
         description,
         created: new Date(Date()).toISOString(),
       },

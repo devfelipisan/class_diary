@@ -1,5 +1,4 @@
 import { prisma } from "@/prisma/client";
-import { v4 as uuidv4 } from "uuid";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -15,7 +14,7 @@ export default async function handler(
     const { id, description } = req.body;
     const newSkill = await prisma.skills.create({
       data: {
-        id: uuidv4(),
+        id,
         description,
         created: new Date(Date()).toISOString(),
       },

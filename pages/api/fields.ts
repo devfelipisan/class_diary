@@ -1,5 +1,4 @@
 import { prisma } from "@/prisma/client";
-import { v4 as uuidv4 } from "uuid";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -12,10 +11,10 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { description } = req.body;
+    const { id, description } = req.body;
     const newField = prisma.fields.create({
       data: {
-        id: uuidv4(),
+        id,
         description,
         created: new Date(Date()).toISOString(),
       },

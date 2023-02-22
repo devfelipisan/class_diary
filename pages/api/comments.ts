@@ -15,7 +15,7 @@ export default async function handler(
     const { comment } = req.body;
     const newComment = await prisma.comments.create({
       data: {
-        id: uuidv4()
+        id: uuidv4(),
         comment,
         created: new Date(Date()).toISOString(),
       },

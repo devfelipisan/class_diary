@@ -5,61 +5,58 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface student_dto {
+interface fieldDto {
   id: string;
-  name: string;
-}
-
-type students_dto = Array<student_dto>;
-
-function factorialOf(n: students_dto | null) {
-  return n;
+  description: string;
+  created: string;
 }
 
 export default function Home() {
-  const [students, setStudents] = useState<students_dto | null>(null);
-  const memorizedCard: students_dto | null = useMemo(
-    () => factorialOf(students),
-    [students]
-  );
+  const [keyFinder, setKeyFinder] = useState<string>("");
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [skills, setSkills] = useState<Array<fieldDto>>();
+
+  async function fetching(keyFinder: string) {
+    const response = await fetch("/api/skills", {
+      cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        description: keyFinder,
+      }),
+    });
+    const data: Array<fieldDto> = await response.json();
+
+    setSkills(data);
+  }
 
   useEffect(() => {
-    async function fetchUsers() {
-      const response = await fetch("/api/students");
-      const data = await response.json();
-      setStudents(data);
+    if (isFetching && keyFinder !== "") {
+      fetching(keyFinder);
+      setIsFetching(false);
     }
-    fetchUsers();
-  }, []);
+    if (!keyFinder) {
+      setSkills(undefined);
+    }
+  }, [isFetching, keyFinder]);
 
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        {/* <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div> */}
+      <div className={(styles.description, styles.scroller)}>
+        {skills &&
+          skills.map((item: fieldDto) => (
+            <div className={styles.card} key={item.id}>
+              <span className={styles.truncate}>
+                {item.id} - {item.description}
+              </span>
+            </div>
+          ))}
       </div>
-
       <div className={styles.center}>
         <Paper
           sx={{
@@ -73,18 +70,17 @@ export default function Home() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="palavra chave"
             inputProps={{ "aria-label": "palavra chave" }}
+            value={keyFinder}
+            onChange={(e: any) => {
+              setIsFetching(true);
+              setKeyFinder(e.target.value);
+            }}
           />
           <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
         </Paper>
       </div>
-      {memorizedCard &&
-        memorizedCard.map((item: student_dto) => (
-          <div className={styles.grid} key={item.id}>
-            {item.name}
-          </div>
-        ))}
     </main>
   );
 }

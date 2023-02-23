@@ -7,8 +7,8 @@
     "build": "next build && prisma migrate deploy",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "&& prisma generate",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma migrate deploy && next build",
     "postvercel-build": "prisma db seed"
   },
   "prisma": {

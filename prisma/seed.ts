@@ -13986,7 +13986,7 @@ const portuguesSeed: Array<portuguesDto> = [
 ];
 
 async function main() {
-  /*   competencesArray.map(async (competence: competencesdto) => {
+  competencesArray.map(async (competence: competencesdto) => {
     await prisma.competences.create({
       data: {
         id: competence.id,
@@ -14024,7 +14024,7 @@ async function main() {
         created: new Date(Date()).toISOString(),
       },
     });
-  }); */
+  });
 
   skillsArray.map(async (skill: fieldsDto) => {
     await prisma.skills.upsert({

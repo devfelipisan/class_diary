@@ -7811,7 +7811,7 @@ const skillsArray: Array<fieldsDto> = [
   },
 ];
 
-/* const objectsArray: Array<fieldsDto> = [
+const objectsArray: Array<fieldsDto> = [
   {
     id: "LP001",
     description: "Adesão às práticas de leitura",
@@ -8630,7 +8630,7 @@ const skillsArray: Array<fieldsDto> = [
     description: "Variação linguística  ",
     created: new Date(Date()).toISOString(),
   },
-]; */
+];
 
 const unitsArray: Array<fieldsDto> = [
   {
@@ -13987,8 +13987,10 @@ const portuguesSeed: Array<portuguesDto> = [
 
 async function main() {
   competencesArray.map(async (competence: competencesdto) => {
-    await prisma.competences.create({
-      data: {
+    await prisma.competences.upsert({
+      where: { id: competence.id },
+      update: { name: competence.name },
+      create: {
         id: competence.id,
         name: competence.name,
         created: new Date(Date()).toISOString(),
@@ -13997,8 +13999,10 @@ async function main() {
   });
 
   groupYearArray.map(async (groupYear: groupYearDto) => {
-    await prisma.group_years.create({
-      data: {
+    await prisma.group_years.upsert({
+      where: { id: groupYear.id },
+      update: { description: groupYear.description },
+      create: {
         id: groupYear.id,
         description: groupYear.description,
         created: new Date(Date()).toISOString(),
@@ -14007,8 +14011,10 @@ async function main() {
   });
 
   fieldsArray.map(async (field: fieldsDto) => {
-    await prisma.fields.create({
-      data: {
+    await prisma.fields.upsert({
+      where: { id: field.id },
+      update: { description: field.description },
+      create: {
         id: field.id,
         description: field.description,
         created: new Date(Date()).toISOString(),
@@ -14017,8 +14023,12 @@ async function main() {
   });
 
   unitsArray.map(async (unit: fieldsDto) => {
-    await prisma.units.create({
-      data: {
+    await prisma.units.upsert({
+      where: { id: unit.id },
+      update: {
+        description: unit.description,
+      },
+      create: {
         id: unit.id,
         description: unit.description,
         created: new Date(Date()).toISOString(),
@@ -14040,10 +14050,40 @@ async function main() {
     });
   });
 
+  objectsArray.map(async (object: fieldsDto) => {
+    await prisma.objects.upsert({
+      where: { id: object.id },
+      update: {
+        description: object.description,
+      },
+      create: {
+        id: object.id,
+        description: object.description,
+        created: new Date(Date()).toISOString(),
+      },
+    });
+  });
+
   /* portuguesSeed.map(async (line: portuguesDto) => {
     await prisma.apprendiceship.upsert({
       where: { id: line.id },
-      update: {},
+      update: {
+        competence: {
+          connect: { id: line.competences },
+        },
+        group_year: {
+          connect: { id: line.group_years },
+        },
+        field: {
+          connect: { id: line.field },
+        },
+        unit: {
+          connect: { id: line.unit },
+        },
+        skill: {
+          connect: { id: line.skill },
+        },
+      },
       create: {
         id: line.id,
         competence: {

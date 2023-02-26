@@ -1,24 +1,20 @@
 "use client";
 
 import styles from "./page.module.css";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import React, { useEffect, useState } from "react";
 
-interface fieldDto {
+/* interface fieldDto {
   id: string;
   description: string;
   created: string;
-}
+} */
 
 export default function Home() {
-  const [keyFinder, setKeyFinder] = useState<string>("");
+  /*   const [keyFinder, setKeyFinder] = useState<string>("");
   const [isFetching, setIsFetching] = useState<boolean>(false);
-  const [skills, setSkills] = useState<Array<fieldDto>>();
+  const [skills, setSkills] = useState<Array<fieldDto>>(); */
 
-  async function fetching(keyFinder: string) {
+  /* async function fetching(keyFinder: string) {
     const response = await fetch("/api/skills", {
       cache: "no-store",
       method: "POST",
@@ -33,9 +29,9 @@ export default function Home() {
     const data: Array<fieldDto> = await response.json();
 
     setSkills(data);
-  }
+  } */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (isFetching && keyFinder !== "") {
       fetching(keyFinder);
       setIsFetching(false);
@@ -43,11 +39,12 @@ export default function Home() {
     if (!keyFinder) {
       setSkills(undefined);
     }
-  }, [isFetching, keyFinder]);
+  }, [isFetching, keyFinder]); */
 
   return (
     <main className={styles.main}>
-      <div className={(styles.description, styles.scroller)}>
+      <p>Hello World</p>
+      {/*   <div className={(styles.description, styles.scroller)}>
         {skills &&
           skills.map((item: fieldDto) => (
             <div className={styles.card} key={item.id}>
@@ -80,7 +77,7 @@ export default function Home() {
             <SearchIcon />
           </IconButton>
         </Paper>
-      </div>
+      </div> */}
     </main>
   );
 }

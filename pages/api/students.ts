@@ -12,7 +12,7 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { name } = req.body;
+    const { name, birthday } = req.body;
     const newStudents = await prisma.students.create({
       data: {
         id: uuidv4(),

@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        "full-screen": "85vh",
+        "50%": "50vh",
+        "30%": "30vh",
       },
     },
   },

@@ -31,37 +31,37 @@ export default function ClientComponent() {
 
   return (
     <Fragment>
-      <div className="flex-col m-3 max-h-50%">
-        <div className="flex justify-center">
-          <h1>Matrícula de aluno</h1>
-        </div>
-        <form onSubmit={(e: any) => handleSubmit(e)}>
-          <div>
-            <label htmlFor="name">Nome: </label>
-            <input
-              name="name"
-              required
-              id="name"
-              type="text"
-              className="border-spacing-5 m-2 rounded-md p-2 border-b-2 hover:bg-gradient-to-t from-indigo-50"
-              onChange={handleNameChange}
-            />
+      <div>
+        <form className="flex justify-center mt-10">
+          <div className="bg-gray-50 p-8 rounded-lg">
+            <h1 className="text-center mb-4">Novo aluno</h1>
+            <div className="flex-col space-x-2 p-2 bg-white rounded-md">
+              <input
+                //value={description}
+                //onChange={(e) => setDescription(e.currentTarget.value)}
+                name="name"
+                required
+                onChange={handleNameChange}
+                type="text"
+                placeholder="Nome Completo"
+                className="w-full outline-none"
+              />
+
+              <div>
+                <input
+                  type="date"
+                  className="px-2 py-1 mx-2 my-1 rounded-md"
+                  onChange={handleBirthdayChange}
+                />
+                <button
+                  className="bg-green-500 px-2 py-1 rounded-md text-white font-semibold"
+                  onClick={(e) => handleSubmit(e)}
+                >
+                  Matricular
+                </button>
+              </div>
+            </div>
           </div>
-          <div>
-            <label>Data de aniversário: </label>
-            <input
-              type="date"
-              className="border-spacing-5 m-2 p-2 rounded-md border-b-2"
-              onChange={handleBirthdayChange}
-            />
-          </div>
-          <button
-            className="bg-indigo-100 rounded-md px-4 py-1 hover:bg-gradient-to-t from-indigo-200"
-            type="submit"
-            onClick={(e: any) => handleSubmit(e)}
-          >
-            Matricular
-          </button>
         </form>
       </div>
     </Fragment>

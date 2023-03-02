@@ -2,11 +2,7 @@
 
 import React, { Fragment, useState } from "react";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function ClientComponent(props: Props) {
+export default function ClientComponent() {
   const [name, setName] = useState<string>();
   const [birthday, setBirthday] = useState<string>();
 
@@ -67,7 +63,6 @@ export default function ClientComponent(props: Props) {
             Matricular
           </button>
         </form>
-        {props.children}
       </div>
     </Fragment>
   );

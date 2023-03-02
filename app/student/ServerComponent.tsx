@@ -1,8 +1,8 @@
 import { StudentDto, getStudent } from "@/pages/getStudents";
-import React, { Fragment, ReactComponentElement } from "react";
+import React, { Fragment } from "react";
 import "./page.module.css";
 
-const ServerComponent = async (): Promise<ReactComponentElement<any>> => {
+const ServerComponent = async () => {
   const studentList: Array<StudentDto> = await getStudent();
   return (
     <Fragment>

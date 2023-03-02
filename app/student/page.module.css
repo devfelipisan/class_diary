@@ -1,0 +1,24 @@
+.scroller {
+  width: 95vw;
+  height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+/* width */
+.scroller::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.scroller::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.scroller::-webkit-scrollbar-thumb {
+  background: rgba(22, 19, 230, 0.63);
+  border-radius: 10px;
+}

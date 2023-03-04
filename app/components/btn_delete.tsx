@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { deleteStudent } from "@/pages/getStudents";
 
 interface Props {

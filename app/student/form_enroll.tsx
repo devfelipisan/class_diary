@@ -2,7 +2,7 @@
 
 import React, { Fragment, useState } from "react";
 
-export default function ClientComponent() {
+export default function FormEnroll() {
   const [name, setName] = useState<string>();
   const [birthday, setBirthday] = useState<string>();
 
@@ -35,10 +35,12 @@ export default function ClientComponent() {
         <form className="flex justify-center mt-10">
           <div className="bg-gray-50 p-8 rounded-lg">
             <h1 className="text-center mb-4">Novo aluno</h1>
-            <div className="flex-col space-x-2 p-2 bg-white rounded-md">
+            <div className="flex space-x-2 p-2 bg-white rounded-md">
+              <label htmlFor="name">Nome: </label>
               <input
                 //value={description}
                 //onChange={(e) => setDescription(e.currentTarget.value)}
+                id="name"
                 name="name"
                 required
                 onChange={handleNameChange}
@@ -46,20 +48,24 @@ export default function ClientComponent() {
                 placeholder="Nome Completo"
                 className="w-full outline-none"
               />
+            </div>
 
-              <div>
-                <input
-                  type="date"
-                  className="px-2 py-1 mx-2 my-1 rounded-md"
-                  onChange={handleBirthdayChange}
-                />
-                <button
-                  className="bg-green-500 px-2 py-1 rounded-md text-white font-semibold"
-                  onClick={(e) => handleSubmit(e)}
-                >
-                  Matricular
-                </button>
-              </div>
+            <div className="flex-col space-x-2 p-2 my-2 bg-white rounded-md">
+              <label htmlFor="birthday">Data de nascimento: </label>
+              <input
+                id="birthday"
+                type="date"
+                className="px-2 py-1 mx-2 my-1 rounded-md outline-none"
+                onChange={handleBirthdayChange}
+              />
+            </div>
+            <div className="flex justify-end space-x-2 p-2 my-2">
+              <button
+                className="bg-green-500 px-2 py-1 rounded-md text-white font-semibold"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Matricular
+              </button>
             </div>
           </div>
         </form>

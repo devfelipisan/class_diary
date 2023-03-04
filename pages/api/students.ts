@@ -22,4 +22,14 @@ export default async function handler(
     });
     return res.status(201).json(newStudents);
   }
+
+  if (req.method == "DELETE") {
+    const { id } = req.body;
+    const deleteStudent = await prisma.students.delete({
+      where: {
+        id,
+      },
+    });
+    res.json(deleteStudent);
+  }
 }

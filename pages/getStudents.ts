@@ -19,3 +19,11 @@ export async function createStudent(body: StudentDto) {
     .then((res) => console.log(res.json))
     .catch((err) => console.log(err));
 }
+
+export async function deleteStudent(userId: string) {
+  await fetch("http://localhost:3000/api/students", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: userId }),
+  });
+}

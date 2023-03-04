@@ -5,13 +5,13 @@ export interface StudentDto {
 }
 
 export default async function getStudent(): Promise<Array<StudentDto>> {
-  const response = await fetch("http://localhost:3000/api/students");
+  const response = await fetch(`${process.env.LOCALHOST}/api/students`);
   const data = await response.json();
   return data;
 }
 
 export async function createStudent(body: StudentDto) {
-  await fetch("http://localhost:3000/api/students", {
+  await fetch(`${process.env.LOCALHOST}/api/students`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -21,7 +21,7 @@ export async function createStudent(body: StudentDto) {
 }
 
 export async function deleteStudent(userId: string) {
-  await fetch("http://localhost:3000/api/students", {
+  await fetch(`${process.env.LOCALHOST}/api/students`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ id: userId }),

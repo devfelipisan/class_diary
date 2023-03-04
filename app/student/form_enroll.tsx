@@ -18,7 +18,7 @@ export default function FormEnroll() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    await fetch("http://localhost:3000/api/students", {
+    await fetch(`${process.env.LOCALHOST}/api/students`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, birthday }),

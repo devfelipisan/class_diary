@@ -1,4 +1,4 @@
-import { getStudent } from "@/pages/getStudents";
+import getStudent from "@/pages/getStudents";
 import React from "react";
 import BtnDelete from "../components/btn_delete";
 import BtnEdit from "../components/btn_edit";

@@ -1,11 +1,10 @@
-import React from "react";
 export interface StudentDto {
   id?: string;
   name: string;
   created?: string;
 }
 
-export async function getStudent(): Promise<Array<StudentDto>> {
+export default async function getStudent(): Promise<Array<StudentDto>> {
   const response = await fetch("http://localhost:3000/api/students");
   const data = await response.json();
   return data;

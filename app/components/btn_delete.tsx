@@ -3,7 +3,7 @@ import React from "react";
 import { deleteStudent } from "@/pages/getStudents";
 
 interface Props {
-  id: string | undefined;
+  id: any;
 }
 
 export default function BtnDelete(props: Props) {

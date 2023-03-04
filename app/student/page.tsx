@@ -1,4 +1,3 @@
-import getStudent from "@/pages/getStudents";
 import React from "react";
 import BtnDelete from "../components/btn_delete";
 import BtnEdit from "../components/btn_edit";
@@ -8,6 +7,12 @@ export interface StudentDto {
   id?: string;
   name: string;
   created?: string;
+}
+
+async function getStudent(): Promise<Array<StudentDto>> {
+  const response = await fetch(`${process.env.API_STUDENTS}/api/students`);
+  const data = await response.json();
+  return data;
 }
 
 export default async function Page() {

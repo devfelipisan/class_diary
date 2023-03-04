@@ -1,9 +1,17 @@
 "use client";
+
 import React from "react";
-import { deleteStudent } from "@/pages/getStudents";
 
 interface Props {
   id: any;
+}
+
+async function deleteStudent(userId: string) {
+  await fetch(`${process.env.API_STUDENTS}/api/students`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: userId }),
+  });
 }
 
 export default function BtnDelete(props: Props) {

@@ -4,7 +4,7 @@ import BtnEdit from "../components/btn_edit";
 import FormEnroll from "./form_enroll";
 
 export interface StudentDto {
-  id?: string;
+  id: string;
   name: string;
   created?: string;
 }

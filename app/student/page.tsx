@@ -9,14 +9,13 @@ export interface StudentDto {
   created?: string;
 }
 
-async function getStudent(): Promise<Array<StudentDto>> {
-  const response = await fetch(`${process.env.API_STUDENTS}/api/students`);
-  const data = await response.json();
-  return data;
-}
-
 export default async function Page() {
-  const studentList: Array<StudentDto> = await getStudent();
+  //const studentList = await GetStudents();
+  const data = await fetch(process.env.API_STUDENTS + "/api/students", {
+    cache: "no-store",
+  });
+  const studentList: Array<StudentDto> = await data.json();
+
   return (
     <div className="h-screen">
       <FormEnroll />
@@ -29,7 +28,7 @@ export default async function Page() {
                 <BtnDelete id={item?.id} />
               </div>
               <p className="bg-gray-200 px-12 py-8 rounded-lg w-80">
-                {item?.name}
+                {item.name}
               </p>
             </div>
           </div>

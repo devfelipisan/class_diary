@@ -11,9 +11,8 @@ export interface StudentDto {
 
 export default async function Page() {
   //const studentList = await GetStudents();
-  const data = await fetch(process.env.API_STUDENTS + "/api/students", {
-    cache: "no-store",
-  });
+  const data = await fetch(process.env.API_STUDENTS + "/api/students");
+  console.log(process.env.API_STUDENTS + "/api/students");
   const studentList: Array<StudentDto> = await data.json();
 
   return (

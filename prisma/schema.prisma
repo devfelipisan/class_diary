@@ -8,10 +8,9 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model apprendiceship {
+model apprendiceship { // tabela de junção para a BNCC
   id            String      @id
   competence    competences @relation(fields: [competence_id], references: [id])
   competence_id String
@@ -34,105 +33,119 @@ model apprendiceship {
   created       DateTime
 }
 
-model competences {
+model competences { // tabela para registro de matéria como "Português, Matemática, História, ..."
   id             String           @id
   name           String
   created        DateTime
   apprendiceship apprendiceship[]
-  presences      presences[]
-  coefficients   coefficients[]
+  //presences      presences[]
+  //coefficients   coefficients[]
 }
 
 //rever id autoincremet, pois do 3 pula para o 13
-model units {
+model units { // tabela para o registro da habilidade sobre um respectivo item na BNCC
   id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model skills {
+model skills { // tabela para o registro da habilidade sobre um respectivo item na BNCC
   id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model resumes {
+model resumes { // tabela para o registro da descrição sobre um respectivo item na BNCC
   id             String           @id @default(uuid())
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model axes {
+model axes { // tabela para o registro de eixo sobre o item respectivo na BNCC
   id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model fields {
+model fields { // tabela para o registro do campo de atuação sobre o item respectivo na BNCC
   id             String           @id
   description    String
   created        DateTime?
   apprendiceship apprendiceship[]
 }
 
-model comments {
+model comments { // tabela para o registro de comentário sobre aquele item da BNCC
   id             String           @id @default(uuid())
   comment        String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model objects {
+model objects { //tabela para o registro de objetos sobre aquele item da BNCC
   id             String           @id @default(uuid())
   description    String
   created        DateTime?
   apprendiceship apprendiceship[]
 }
 
-model group_years {
+model group_years { //tabela para o registro para o agrupamento série sobre aquele item da BNCC
   id             String           @id
   description    String
   created        DateTime
   apprendiceship apprendiceship[]
 }
 
-model students {
-  id           String         @id @default(uuid())
-  name         String
-  created      DateTime
-  presences    presences[]
-  coefficients coefficients[]
-}
-
-model presences {
+model presences { //Tabela de registro de presença do aluno
   id            String      @id @default(uuid())
   student       students    @relation(fields: [student_id], references: [id])
   student_id    String
-  competence    competences @relation(fields: [competence_id], references: [id])
-  competence_id String
+  //competence    competences @relation(fields: [competence_id], references: [id])
+  //competence_id String
   presence      Boolean
   created       DateTime
 }
 
-model coefficients {
+model coefficients { // tabela para o registro de nota do aluno
   id            String      @id @default(uuid())
-  student       students    @relation(fields: [student_id], references: [id])
-  student_id    String
-  teacher       teachers    @relation(fields: [teacher_id], references: [id])
-  teacher_id    String
-  competence    competences @relation(fields: [competence_id], references: [id])
+  //student       students    @relation(fields: [student_id], references: [id])
+  //student_id    String
+  //teacher       teachers    @relation(fields: [teacher_id], references: [id])
+  //teacher_id    String
+  //competence    competences @relation(fields: [competence_id], references: [id])
   competence_id String
   grade         Int
   created       DateTime
 }
 
-model teachers {
+model graduating_class { // tabela para o registro de classe criada
+  id          String          @id @default(uuid())
+  school_year       Int
+  school_series       String
+  //student_id students[] //Uma turma possui um ou mais alunos
+  //teacher_id String
+  //teacher teachers @relation(fields: [teacher_id], references: [id]) // uma turma pode está vinculado a um professor
+}
+// Verificar a lógica quem deve ser criado primeiro e puxar os demais?????
+model students { //tabela para o registro e matrícula do aluno
   id           String         @id @default(uuid())
   name         String
+  birthday     DateTime
   created      DateTime
-  coefficients coefficients[]
+  graduating_class_id    String?
+  //graduating_class  graduating_class? @relation(fields: [graduating_class_id], references: [id]) //um aluno está matriculado em uma única turma
+  presences    presences[]
+  //coefficients coefficients[] //um aluno possui várias notas
+}
+
+model teachers { //tabela para o registro do professor
+  id           String         @id @default(uuid())
+  name         String
+  email         String
+  created      DateTime
+  //coefficients coefficients[]
+  //graduating_class graduating_class[] // um professor pode estar associado a uma ou mais turmas
 }

@@ -16,8 +16,8 @@ export default async function handler(
     const newCoefficient = await prisma.coefficients.create({
       data: {
         id: uuidv4(),
-        student_id,
-        teacher_id,
+        //student_id,
+        //teacher_id,
         competence_id,
         grade,
         created: new Date(Date()).toISOString(),

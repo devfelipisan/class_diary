@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/prisma/client";
+import { Prisma } from "@prisma/client";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,11 +13,12 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { name, birthday } = req.body;
+    const { name, birthday }: Prisma.studentsCreateInput = req.body;
     const newStudents = await prisma.students.create({
       data: {
         id: uuidv4(),
         name: name,
+        birthday: birthday,
         created: new Date(Date()).toISOString(),
       },
     });

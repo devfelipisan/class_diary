@@ -13,13 +13,17 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { school_year, school_series }: Prisma.graduating_classCreateInput =
-      req.body;
+    const { school_year, school_series, student_id } = req.body;
     const newStudents = await prisma.graduating_class.create({
       data: {
         id: uuidv4(),
         school_year,
         school_series,
+        student_id: {
+          connect: {
+            id: student_id,
+          },
+        },
       },
     });
     return res.status(201).json(newStudents);

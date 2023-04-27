@@ -100,6 +100,7 @@ CREATE TABLE "group_years" (
 CREATE TABLE "presences" (
     "id" TEXT NOT NULL,
     "student_id" TEXT NOT NULL,
+    "competence_id" TEXT NOT NULL,
     "presence" BOOLEAN NOT NULL,
     "created" TIMESTAMP(3) NOT NULL,
 
@@ -109,6 +110,8 @@ CREATE TABLE "presences" (
 -- CreateTable
 CREATE TABLE "coefficients" (
     "id" TEXT NOT NULL,
+    "student_id" TEXT NOT NULL,
+    "teacher_id" TEXT NOT NULL,
     "competence_id" TEXT NOT NULL,
     "grade" INTEGER NOT NULL,
     "created" TIMESTAMP(3) NOT NULL,
@@ -121,6 +124,7 @@ CREATE TABLE "graduating_class" (
     "id" TEXT NOT NULL,
     "school_year" INTEGER NOT NULL,
     "school_series" TEXT NOT NULL,
+    "teacher_id" TEXT NOT NULL,
 
     CONSTRAINT "graduating_class_pkey" PRIMARY KEY ("id")
 );
@@ -175,3 +179,21 @@ ALTER TABLE "apprendiceship" ADD CONSTRAINT "apprendiceship_axis_id_fkey" FOREIG
 
 -- AddForeignKey
 ALTER TABLE "presences" ADD CONSTRAINT "presences_student_id_fkey" FOREIGN KEY ("student_id") REFERENCES "students"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "presences" ADD CONSTRAINT "presences_competence_id_fkey" FOREIGN KEY ("competence_id") REFERENCES "competences"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "coefficients" ADD CONSTRAINT "coefficients_student_id_fkey" FOREIGN KEY ("student_id") REFERENCES "students"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "coefficients" ADD CONSTRAINT "coefficients_teacher_id_fkey" FOREIGN KEY ("teacher_id") REFERENCES "teachers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "coefficients" ADD CONSTRAINT "coefficients_competence_id_fkey" FOREIGN KEY ("competence_id") REFERENCES "competences"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "graduating_class" ADD CONSTRAINT "graduating_class_teacher_id_fkey" FOREIGN KEY ("teacher_id") REFERENCES "teachers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "students" ADD CONSTRAINT "students_graduating_class_id_fkey" FOREIGN KEY ("graduating_class_id") REFERENCES "graduating_class"("id") ON DELETE SET NULL ON UPDATE CASCADE;

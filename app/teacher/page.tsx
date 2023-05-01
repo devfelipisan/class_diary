@@ -1,31 +1,20 @@
 "use client";
+import TeachersList from "@/hooks/teacherList";
 import { Prisma } from "@prisma/client";
-import React, { useEffect, useState } from "react";
-import { GetTeachers } from "../../services/teachers";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
   const [data, setData] = useState<
     Prisma.teachersGetPayload<{ select: { id: true; name: true } }> | any
   >();
 
-  async function DataList() {
-    const data:
-      | Prisma.teachersGetPayload<{
-          select: { id: true; name: true };
-        }>
-      | any = await GetTeachers("/api/teachers").then((item) => {
-      return item;
-    });
-    let result = data;
-    setData(result);
-    return result;
-  }
-
-  DataList();
+  const load = useCallback(async () => {
+    setData(await TeachersList());
+  }, []);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    load();
+  }, [load]);
 
   function renderConditional(item: any) {
     return (
@@ -100,7 +89,7 @@ export default function Page() {
   }
   return (
     <React.Fragment>
-      {/*data?.map((item: any) => renderConditional(item))*/}
+      {data?.map((item: any) => renderConditional(item))}
     </React.Fragment>
   );
 }

@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Prisma } from "@prisma/client";
-import { GetTeachers } from "@/services/teachers";
 import SelectMenu from "@/app/components/selectBox";
+import Modal from "@/app/components/modal";
+import TeachersList from "../../../hooks/teacherList";
 
 export default function Page() {
   const [data, setData] =
@@ -12,32 +13,43 @@ export default function Page() {
       select: { id: true; name: true; email: true };
     }>
   >({ id: "00", name: "Selecione...", email: "" });
+  const [open, setOpen] = useState(false);
 
-  async function DataList() {
-    const data: Prisma.teachersGetPayload<{
-      select: { id: true; name: true };
-    }> = await GetTeachers("/api/teachers").then((item) => {
-      return item;
+  const load = useCallback(async () => {
+    setData(await TeachersList());
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  function handleSubmit(e: React.BaseSyntheticEvent) {
+    fetch("/api/graduating_class", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        school_year: parseInt(e.target["school_year"].value),
+        school_series: e.target["school_series"].value,
+        teacher_id: onSelected.id,
+      }),
     });
-    let result = data;
-    setData(result);
-    return result;
-  }
 
-  DataList();
+    //e.currentTarget.reset();
+    setOpen(true);
+  }
 
   return (
     <>
+      <Modal open={open} setOpen={setOpen} title={"Cadastrado com Sucesso"} />
       <div className="mx-auto max-w-2xl text-center">
         <p className="mt-2 text-lg leading-8 text-gray-600">
           Cadastre aqui uma nova turma
         </p>
       </div>
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
           <div className="sm:col-span-3">
             <label

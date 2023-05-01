@@ -6,8 +6,6 @@ export default function Page() {
   const [open, setOpen] = useState(false);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
-    e.preventDefault();
-
     fetch("/api/teachers", {
       method: "post",
       headers: {
@@ -19,8 +17,6 @@ export default function Page() {
         email: e.target["email"].value,
       }),
     });
-
-    e.currentTarget.reset();
     setOpen(true);
   }
   return (

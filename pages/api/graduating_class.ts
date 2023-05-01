@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/prisma/client";
-import { Prisma } from "@prisma/client";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +12,7 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { school_year, school_series, student_id } = req.body;
+    const { school_year, school_series, student_id, teacher_id } = req.body;
     const newStudents = await prisma.graduating_class.create({
       data: {
         id: uuidv4(),
@@ -24,6 +23,7 @@ export default async function handler(
             id: student_id,
           },
         },
+        teacher_id,
       },
     });
     return res.status(201).json(newStudents);

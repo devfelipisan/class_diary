@@ -150,6 +150,12 @@ CREATE TABLE "teachers" (
     CONSTRAINT "teachers_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "students_id_key" ON "students"("id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "teachers_id_key" ON "teachers"("id");
+
 -- AddForeignKey
 ALTER TABLE "apprendiceship" ADD CONSTRAINT "apprendiceship_competence_id_fkey" FOREIGN KEY ("competence_id") REFERENCES "competences"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

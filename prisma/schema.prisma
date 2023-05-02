@@ -139,6 +139,7 @@ model students { //tabela para o registro e matrícula do aluno
   graduating_class  graduating_class? @relation(fields: [graduating_class_id], references: [id]) //um aluno está matriculado em uma única turma
   presences    presences[]
   coefficients coefficients[] //um aluno possui várias notas
+  @@unique([id])
 }
 
 model teachers { //tabela para o registro do professor
@@ -148,4 +149,5 @@ model teachers { //tabela para o registro do professor
   created      DateTime
   coefficients coefficients[]
   graduating_class graduating_class[] // um professor pode estar associado a uma ou mais turmas
+  @@unique([id])
 }

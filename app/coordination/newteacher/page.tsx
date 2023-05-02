@@ -6,7 +6,7 @@ export default function Page() {
   const [open, setOpen] = useState(false);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
-    fetch("/api/teachers", {
+    fetch("/api/teachers/all", {
       method: "post",
       headers: {
         Accept: "application/json",

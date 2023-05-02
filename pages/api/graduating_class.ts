@@ -7,7 +7,15 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const skillsList = await prisma.graduating_class.findMany();
+    const skillsList = await prisma.graduating_class.findMany({
+      select: {
+        id: true,
+        school_series: true,
+        school_year: true,
+        teacher_id: true,
+        teacher: { select: { name: true, email: true } },
+      },
+    });
     return res.status(200).json(skillsList);
   }
 

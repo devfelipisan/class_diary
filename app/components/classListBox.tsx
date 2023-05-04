@@ -15,9 +15,8 @@ interface listBoxProps {
   data: Array<itemListBoxProps> | undefined;
 }
 
-export default function ListBox(props: listBoxProps) {
+export default function ClassListBox(props: listBoxProps) {
   return (
-    // <div className="bg-gradient-to-r from-[#ffffff3d] to-[#ffffff56] rounded-lg px-6 py-24 sm:py-32 lg:px-8">
     <div className="max-h-50 overflow-auto scroll-smooth rounded-lg mt-6 sm:py-18">
       <ul role="list" className="divide-y divide-gray-100">
         {props?.data?.map((person) => (
@@ -28,6 +27,9 @@ export default function ListBox(props: listBoxProps) {
           >
             <div className="flex gap-x-4">
               <div className="min-w-0 flex-auto">
+                <p className="mt-1 text-xs leading-5 text-gray-500">
+                  Professor titular
+                </p>
                 <p className="text-sm font-semibold leading-6 text-gray-900">
                   {person.teacher?.name}
                 </p>
@@ -37,6 +39,9 @@ export default function ListBox(props: listBoxProps) {
               </div>
             </div>
             <div className="hidden sm:flex sm:flex-col sm:items-end">
+              <p className="mt-1 text-xs leading-5 text-gray-500">
+                Detalhes da turma
+              </p>
               <p className="text-sm leading-6 text-gray-900">
                 {`Ano escolar ${person.school_year}`}
               </p>

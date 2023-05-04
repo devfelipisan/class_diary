@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Prisma } from "@prisma/client";
 import SelectMenu from "@/app/components/selectBox";
 import Modal from "@/app/components/modal";
-import ListBox from "@/app/components/listBox";
-import SlideOver from "@/app/components/slideOver";
 import ClassList from "@/hooks/classList";
 import TeachersList from "@/hooks/teacherList";
+import SlideOver from "@/app/components/slideOver";
+import ClassListBox from "@/app/components/classListBox";
 
 export default function Page() {
   const [classData, setClassData] = useState<
@@ -56,8 +56,6 @@ export default function Page() {
     load();
   }, [load]);
 
-  console.log(classData);
-
   function handleSubmit(e: React.BaseSyntheticEvent) {
     fetch("/api/graduating_class", {
       method: "post",
@@ -85,9 +83,9 @@ export default function Page() {
       <SlideOver
         open={openSlideOver}
         setOpen={setOpenSlideOver}
-        title="Listagem de professores"
+        title="Listagem das salas criadas"
       >
-        <ListBox data={classData} />
+        <ClassListBox data={classData} />
       </SlideOver>
       <div className="mx-auto max-w-2xl text-center">
         <p className="mt-2 text-lg leading-8 text-gray-600">
@@ -156,7 +154,7 @@ export default function Page() {
               className="block w-full rounded-md bg-green-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
               onClick={() => setOpenSlideOver(true)}
             >
-              Listar professores
+              Listar turmas criadas
             </button>
           </div>
         </div>

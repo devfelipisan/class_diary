@@ -1,9 +1,22 @@
 "use client";
 import Modal from "@/app/components/modal";
-import React, { useState } from "react";
+import SlideOver from "@/app/components/slideOver";
+import TeachersListBox from "@/app/components/teacherListBox";
+import TeachersList from "@/hooks/teacherList";
+import { Prisma } from "@prisma/client";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
   const [open, setOpen] = useState(false);
+  const [openSlideOver, setOpenSlideOver] = useState(false);
+
+  const [listTeachers, setListTeachers] = useState<
+    Array<
+      Prisma.teachersGetPayload<{
+        select: { id: true; name: true; email: true };
+      }>
+    >
+  >([]);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
     fetch("/api/teachers/all", {
@@ -19,9 +32,27 @@ export default function Page() {
     });
     setOpen(true);
   }
+
+  const load = useCallback(async () => {
+    setListTeachers(await TeachersList());
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  console.log(listTeachers);
+
   return (
     <>
       <Modal open={open} setOpen={setOpen} title={"Cadastrado com Sucesso"} />
+      <SlideOver
+        open={openSlideOver}
+        setOpen={setOpenSlideOver}
+        title="Listagem das salas criadas"
+      >
+        <TeachersListBox data={listTeachers} />
+      </SlideOver>
       <div className="mx-auto max-w-2xl text-center">
         <p className="mt-2 text-lg leading-8 text-gray-600">
           Cadastre aqui um novo professor
@@ -67,13 +98,22 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-1">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="mt-10">
             <button
               type="submit"
               className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Cadastrar novo professor
+            </button>
+          </div>
+          <div className="mt-10">
+            <button
+              type="button"
+              className="block w-full rounded-md bg-green-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+              onClick={() => setOpenSlideOver(true)}
+            >
+              Listar professores cadastrados
             </button>
           </div>
         </div>

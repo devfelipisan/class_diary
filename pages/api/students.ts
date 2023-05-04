@@ -13,12 +13,19 @@ export default async function handler(
   }
 
   if (req.method == "POST") {
-    const { name, birthday }: Prisma.studentsCreateInput = req.body;
+    const {
+      name,
+      birthday,
+      graduating_class_id,
+    }: Prisma.studentsCreateManyInput = req.body;
     const newStudents = await prisma.students.create({
       data: {
         id: uuidv4(),
         name: name,
         birthday: birthday,
+        graduating_class: {
+          connect: { id: graduating_class_id },
+        },
         created: new Date(Date()).toISOString(),
       },
     });

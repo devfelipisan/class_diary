@@ -14,6 +14,7 @@ export default async function handler(
         school_year: true,
         teacher_id: true,
         teacher: { select: { name: true, email: true } },
+        student_id: true,
       },
     });
     return res.status(200).json(skillsList);

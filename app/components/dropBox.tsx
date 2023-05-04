@@ -19,7 +19,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-function renderConditional(data: propsData) {
+export default function DropBox(data: propsData) {
   if (data.option) {
     return (
       <Menu as="div" className="relative inline-block text-left">
@@ -69,19 +69,10 @@ function renderConditional(data: propsData) {
     <a
       key={data.name}
       href={data.href}
-      className={classNames(
-        data.current
-          ? "inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white"
-          : "inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700 hover:text-white",
-        "rounded-md px-3 py-2 text-sm font-medium"
-      )}
+      className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-700 hover:text-white"
       aria-current={data.current ? "page" : undefined}
     >
       {data.name}
     </a>
   );
-}
-
-export default function DropBox(data: propsData) {
-  return renderConditional(data);
 }

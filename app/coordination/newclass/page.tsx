@@ -1,7 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import { Prisma } from "@prisma/client";
-import SelectMenu from "@/app/components/selectBox";
+import SelectMenu from "@/app/components/selectTeachersList";
 import Modal from "@/app/components/modal";
 import ClassList from "@/hooks/classList";
 import TeachersList from "@/hooks/teacherList";
@@ -29,9 +29,11 @@ export default function Page() {
   >();
 
   const [listTeachers, setListTeachers] = useState<
-    Prisma.teachersGetPayload<{
-      select: { id: true; name: true; email: true };
-    }>
+    Array<
+      Prisma.teachersGetPayload<{
+        select: { id: true; name: true; email: true };
+      }>
+    >
   >();
 
   const [onSelected, setOnSelected] = useState<

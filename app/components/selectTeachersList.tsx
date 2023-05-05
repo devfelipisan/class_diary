@@ -1,9 +1,16 @@
 import { Dispatch, Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { Prisma } from "@prisma/client";
 
 interface titleProps {
-  data: { id: string; name: string }[] | undefined | any;
+  data:
+    | Array<
+        Prisma.teachersGetPayload<{
+          select: { id: true; name: true; email: true };
+        }>
+      >
+    | undefined;
   onSelected: Dispatch<any>;
 }
 
@@ -11,7 +18,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function SelectMenu(props: titleProps) {
+export default function SelectTeachersList(props: titleProps) {
   const [selected, setSelected] = useState({ id: "00", name: "Selecione..." });
 
   useEffect(() => {

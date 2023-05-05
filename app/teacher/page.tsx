@@ -2,8 +2,11 @@
 import ClassList from "@/hooks/classList";
 import { Prisma } from "@prisma/client";
 import React, { useCallback, useEffect, useState } from "react";
+import AvailableStudentsListBox from "../components/availableStudentsListBox";
+import SlideOver from "../components/slideOver";
 
 export default function Page() {
+  const [openSlideOver, setOpenSlideOver] = useState(false);
   const [classList, setClassList] = useState<
     Array<
       Prisma.graduating_classGetPayload<{
@@ -12,11 +15,42 @@ export default function Page() {
           school_year: true;
           school_series: true;
           teacher: { select: { name: true } };
-          student_id: { select: { name: true; birthday: true } };
+          student_id: { select: { id: true; name: true; birthday: true } };
         };
       }>
     >
   >();
+  const [onSelected, setOnSelected] = useState<
+    Array<
+      Prisma.graduating_classGetPayload<{
+        select: {
+          id: true;
+          school_year: true;
+          school_series: true;
+          teacher: { select: { name: true } };
+          student_id: { select: { id: true; name: true; birthday: true } };
+        };
+      }>
+    >
+  >();
+
+  function handleSelect(id: string) {
+    const filterItem = classList?.filter(
+      (
+        item: Prisma.graduating_classGetPayload<{
+          select: {
+            id: true;
+            school_year: true;
+            school_series: true;
+            teacher: { select: { name: true } };
+            student_id: { select: { id: true; name: true; birthday: true } };
+          };
+        }>
+      ) => item.id == id
+    );
+    setOnSelected(filterItem);
+    setOpenSlideOver(true);
+  }
 
   const load = useCallback(async () => {
     setClassList(await ClassList());
@@ -26,10 +60,15 @@ export default function Page() {
     load();
   }, [load]);
 
-  console.log(classList);
-
   return (
     <React.Fragment>
+      <SlideOver
+        open={openSlideOver}
+        setOpen={setOpenSlideOver}
+        title="Listagem dos alunos matriculados"
+      >
+        <AvailableStudentsListBox data={onSelected} />
+      </SlideOver>
       {classList?.map(
         (
           item: Prisma.graduating_classGetPayload<{
@@ -104,7 +143,7 @@ export default function Page() {
                   <button
                     type="submit"
                     className="block w-full rounded-md bg-green-600 px-1 py-1 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                    onClick={() => console.log("lista de alunos")}
+                    onClick={() => handleSelect(item.id)}
                   >
                     Exibir alunos
                   </button>

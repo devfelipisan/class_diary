@@ -6,7 +6,7 @@ interface teacherProps {
 interface itemListBoxProps {
   id: string;
   school_series: string;
-  teacher_id: string;
+  teacher_id: string | null;
   teacher: teacherProps | null;
   school_year: number;
 }

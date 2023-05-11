@@ -10,112 +10,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model apprendiceship {
-  id            String      @id
-  competence    competences @relation(fields: [competence_id], references: [id])
-  competence_id String
-  group_year    group_years @relation(fields: [group_year_id], references: [id])
-  group_year_id String
-  unit          units       @relation(fields: [unit_id], references: [id])
-  unit_id       String
-  object        objects     @relation(fields: [object_id], references: [id])
-  object_id     String
-  skill         skills      @relation(fields: [skill_id], references: [id])
-  skill_id      String
-  comment       comments    @relation(fields: [comment_id], references: [id])
-  comment_id    String
-  resume        resumes?    @relation(fields: [resume_id], references: [id])
-  resume_id     String?
-  field         fields?     @relation(fields: [field_id], references: [id])
-  field_id      String?
-  axis          axes?       @relation(fields: [axis_id], references: [id])
-  axis_id       String?
-  created       DateTime
-}
-
 model competences {
-  id             String           @id
-  name           String
-  created        DateTime
-  apprendiceship apprendiceship[]
-  presences      presences[]
-  coefficients   coefficients[]
-}
-
-//rever id autoincremet, pois do 3 pula para o 13
-model units {
-  id             String           @id
-  description    String
-  created        DateTime
-  apprendiceship apprendiceship[]
-}
-
-model skills {
-  id             String           @id
-  description    String
-  created        DateTime
-  apprendiceship apprendiceship[]
-}
-
-model resumes {
-  id             String           @id @default(uuid())
-  description    String
-  created        DateTime
-  apprendiceship apprendiceship[]
-}
-
-model axes {
-  id             String           @id
-  description    String
-  created        DateTime
-  apprendiceship apprendiceship[]
-}
-
-model fields {
-  id             String           @id
-  description    String
-  created        DateTime?
-  apprendiceship apprendiceship[]
-}
-
-model comments {
-  id             String           @id @default(uuid())
-  comment        String
-  created        DateTime
-  apprendiceship apprendiceship[]
-}
-
-model objects {
-  id             String           @id @default(uuid())
-  description    String
-  created        DateTime?
-  apprendiceship apprendiceship[]
-}
-
-model group_years {
-  id             String           @id
-  description    String
-  created        DateTime
-  apprendiceship apprendiceship[]
+  id           String         @id
+  name         String
+  created      DateTime
+  presences    presences[]
+  coefficients coefficients[]
 }
 
 model presences {
   id            String      @id @default(uuid())
-  student       students    @relation(fields: [student_id], references: [id])
-  student_id    String
-  competence    competences @relation(fields: [competence_id], references: [id])
   competence_id String
+  competence    competences @relation(fields: [competence_id], references: [id], onDelete: Cascade)
+  student_id    String
+  student       students    @relation(fields: [student_id], references: [id], onDelete: Cascade)
   presence      Boolean
   created       DateTime
 }
 
 model coefficients {
   id            String      @id @default(uuid())
-  student       students    @relation(fields: [student_id], references: [id])
+  student       students    @relation(fields: [student_id], references: [id], onDelete: Cascade)
   student_id    String
-  teacher       teachers    @relation(fields: [teacher_id], references: [id])
+  teacher       teachers    @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
   teacher_id    String
-  competence    competences @relation(fields: [competence_id], references: [id])
+  competence    competences @relation(fields: [competence_id], references: [id], onDelete: Cascade)
   competence_id String
   grade         Int
   created       DateTime
@@ -127,21 +46,19 @@ model graduating_class {
   school_series String
   student_id    students[] //Uma turma possui um ou mais alunos
   teacher_id    String
-  teacher       teachers   @relation(fields: [teacher_id], references: [id]) // uma turma pode está vinculado a um professor
+  teacher       teachers   @relation(fields: [teacher_id], references: [id], onDelete: Cascade) // uma turma pode está vinculado a um professor
 }
 
 // Verificar a lógica quem deve ser criado primeiro e puxar os demais?????
 model students {
-  id                  String           @id @default(uuid())
+  id                  String            @id @default(uuid())
   name                String
   birthday            DateTime
   created             DateTime
-  graduating_class_id String
-  graduating_class    graduating_class @relation(fields: [graduating_class_id], references: [id]) //um aluno está matriculado em uma única turma
-  presences           presences[]
+  graduating_class_id String?
+  graduating_class    graduating_class? @relation(fields: [graduating_class_id], references: [id], onDelete: SetNull) //um aluno está matriculado em uma única turma
+  presence            presences[]
   coefficients        coefficients[] //um aluno possui várias notas
-
-  @@unique([id])
 }
 
 model teachers {
@@ -151,6 +68,4 @@ model teachers {
   created          DateTime
   coefficients     coefficients[]
   graduating_class graduating_class[] // um professor pode estar associado a uma ou mais turmas
-
-  @@unique([id])
 }

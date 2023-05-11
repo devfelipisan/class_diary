@@ -103,19 +103,19 @@ const graduatingClassArray: Array<graduatingClassDto> = [
     id: "77a67e98-b92e-4a3c-8dcf-aaacb1726614",
     school_series: "1º",
     school_year: 1,
-    teacher_id: "2581b418-15b5-455e-9265-e44474c2b6e5",
+    teacher_id: "3f55b930-652f-48cf-a347-831cdf66001f",
   },
   {
     id: "601a1b0b-b989-49d7-9d3c-b6a9b638b301",
     school_series: "2º",
     school_year: 2,
-    teacher_id: "c78a6aa7-08e7-4d5a-9229-2d721b2508b2",
+    teacher_id: "0eaa8734-56aa-4500-81e7-a04adde658f7",
   },
   {
     id: "b44f6e96-193a-405f-90b6-35c006992930",
     school_series: "3º",
     school_year: 3,
-    teacher_id: "3f55b930-652f-48cf-a347-831cdf66001f",
+    teacher_id: "77bb3075-d8bf-4052-b797-8aec6a11f9e6",
   },
   {
     id: "151b58ea-1929-4ac0-a7e7-cca9d6789c6d",
@@ -478,79 +478,86 @@ const presenseArray: Array<presenceDto> = [
 
 async function main() {
   competencesArray.map(async (competence: competencesdto) => {
+    let { id, name }: competencesdto = competence;
     await prisma.competences.upsert({
-      where: { id: competence.id },
-      update: { name: competence.name },
+      where: { id },
+      update: { name },
       create: {
-        id: competence.id,
-        name: competence.name,
+        id,
+        name,
         created: new Date(Date()).toISOString(),
       },
     });
   });
 
   teachersArray.map(async (teacher: teachersDto) => {
+    let { email, id, name }: teachersDto = teacher;
     await prisma.teachers.upsert({
-      where: { id: teacher.id },
-      update: { name: teacher.name, email: teacher.email },
+      where: { id },
+      update: { name, email },
       create: {
-        id: teacher.id,
-        name: teacher.name,
-        email: teacher.email,
+        id,
+        name,
+        email,
         created: new Date(Date()).toISOString(),
       },
     });
   });
 
   graduatingClassArray.map(async (graduatingClass: graduatingClassDto) => {
+    const { id, school_series, school_year, teacher_id } = graduatingClass;
     await prisma.graduating_class.upsert({
-      where: { id: graduatingClass.id },
+      where: { id },
       update: {
-        school_series: graduatingClass.school_series,
-        school_year: graduatingClass.school_year,
-        teacher_id: graduatingClass.teacher_id,
+        school_series,
+        school_year,
+        teacher_id,
       },
       create: {
-        id: graduatingClass.id,
-        school_series: graduatingClass.school_series,
-        school_year: graduatingClass.school_year,
-        teacher_id: graduatingClass.teacher_id,
+        id,
+        school_series,
+        school_year,
+        teacher_id,
       },
     });
   });
 
   studentsArray.map(async (students: studentsDto) => {
+    let { id, birthday, created, graduating_class_id, name }: studentsDto =
+      students;
     await prisma.students.upsert({
-      where: { id: students.id },
+      where: { id },
       update: {
-        name: students.name,
-        birthday: students.birthday,
-        graduating_class_id: students.graduating_class_id,
-        created: students.created,
+        name,
+        birthday,
+        graduating_class_id,
+        created,
       },
       create: {
-        id: students.id,
-        name: students.name,
-        birthday: students.birthday,
-        graduating_class_id: students.graduating_class_id,
-        created: students.created,
+        id,
+        name,
+        birthday,
+        graduating_class_id,
+        created,
       },
     });
   });
 
   presenseArray.map(async (presences: presenceDto) => {
+    let { competence_id, created, id, presence, student_id }: presenceDto =
+      presences;
     await prisma.presences.upsert({
-      where: { id: presences.id },
+      where: { id },
       update: {
-        competence_id: presences.competence_id,
-        presence: presences.presence,
+        competence_id,
+        presence,
       },
       create: {
-        id: presences.id,
-        student_id: presences.student_id,
-        competence_id: presences.competence_id,
-        presence: presences.presence,
-        created: presences.created,
+        id,
+        student_id,
+        competence_id,
+        presence,
+        created,
       },
     });
   });
@@ -560,7 +567,7 @@ main()
   .then(async () => {
     await prisma.$disconnect();
   })
-  .catch(async (e) => {
+  .catch(async (e: any) => {
     console.error(e);
     await prisma.$disconnect();
     process.exit(1);

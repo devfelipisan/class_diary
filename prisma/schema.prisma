@@ -16,6 +16,8 @@ model competences {
   created      DateTime
   presences    presences[]
   coefficients coefficients[]
+
+  @@unique([id])
 }
 
 model presences {
@@ -26,18 +28,22 @@ model presences {
   student       students    @relation(fields: [student_id], references: [id], onDelete: Cascade)
   presence      Boolean
   created       DateTime
+
+  @@unique([id])
 }
 
 model coefficients {
   id            String      @id @default(uuid())
-  student       students    @relation(fields: [student_id], references: [id], onDelete: Cascade)
   student_id    String
-  teacher       teachers    @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  student       students    @relation(fields: [student_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
   teacher_id    String
-  competence    competences @relation(fields: [competence_id], references: [id], onDelete: Cascade)
+  teacher       teachers    @relation(fields: [teacher_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
   competence_id String
-  grade         Int
+  competence    competences @relation(fields: [competence_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  grade         Float
   created       DateTime
+
+  @@unique([id])
 }
 
 model graduating_class {
@@ -47,6 +53,8 @@ model graduating_class {
   student_id    students[] //Uma turma possui um ou mais alunos
   teacher_id    String
   teacher       teachers   @relation(fields: [teacher_id], references: [id], onDelete: Cascade) // uma turma pode está vinculado a um professor
+
+  @@unique([id])
 }
 
 // Verificar a lógica quem deve ser criado primeiro e puxar os demais?????
@@ -59,6 +67,8 @@ model students {
   graduating_class    graduating_class? @relation(fields: [graduating_class_id], references: [id], onDelete: SetNull) //um aluno está matriculado em uma única turma
   presence            presences[]
   coefficients        coefficients[] //um aluno possui várias notas
+
+  @@unique([id])
 }
 
 model teachers {
@@ -68,4 +78,6 @@ model teachers {
   created          DateTime
   coefficients     coefficients[]
   graduating_class graduating_class[] // um professor pode estar associado a uma ou mais turmas
+
+  @@unique([id])
 }

@@ -59,7 +59,7 @@ export default function Page() {
   }, [load]);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
-    fetch("/api/graduating_class", {
+    fetch("/api/graduating_class/create", {
       method: "post",
       headers: {
         Accept: "application/json",

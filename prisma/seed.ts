@@ -1,50 +1,5 @@
 import { prisma } from "./client";
 
-interface competencesdto {
-  id: string;
-  name: string;
-  created?: string;
-}
-
-const competencesArray: Array<competencesdto> = [
-  {
-    id: "LP",
-    name: "Língua Portuguesa",
-  },
-  {
-    id: "AR",
-    name: "Arte",
-  },
-  {
-    id: "EF",
-    name: "Educação Física",
-  },
-  {
-    id: "LI",
-    name: "Língua Inglesa",
-  },
-  {
-    id: "MA",
-    name: "Matemática",
-  },
-  {
-    id: "CI",
-    name: "Ciências",
-  },
-  {
-    id: "GE",
-    name: "Geografia",
-  },
-  {
-    id: "HI",
-    name: "História",
-  },
-  {
-    id: "ER",
-    name: "Ensino Religioso",
-  },
-];
-
 interface teachersDto {
   id: string;
   name: string;
@@ -477,19 +432,6 @@ const presenseArray: Array<presenceDto> = [
 ];
 
 async function main() {
-  competencesArray.map(async (competence: competencesdto) => {
-    let { id, name }: competencesdto = competence;
-    await prisma.competences.upsert({
-      where: { id },
-      update: { name },
-      create: {
-        id,
-        name,
-        created: new Date(Date()).toISOString(),
-      },
-    });
-  });
-
   teachersArray.map(async (teacher: teachersDto) => {
     let { email, id, name }: teachersDto = teacher;
     await prisma.teachers.upsert({
@@ -544,18 +486,15 @@ async function main() {
   });
 
   presenseArray.map(async (presences: presenceDto) => {
-    let { competence_id, created, id, presence, student_id }: presenceDto =
-      presences;
+    let { created, id, presence, student_id }: presenceDto = presences;
     await prisma.presences.upsert({
       where: { id },
       update: {
-        competence_id,
         presence,
       },
       create: {
         id,
         student_id,
-        competence_id,
         presence,
         created,
       },

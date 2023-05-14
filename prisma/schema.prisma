@@ -10,38 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model competences {
-  id           String         @id
-  name         String
-  created      DateTime
-  presences    presences[]
-  coefficients coefficients[]
-
-  @@unique([id])
-}
-
 model presences {
-  id            String      @id @default(uuid())
-  competence_id String
-  competence    competences @relation(fields: [competence_id], references: [id], onDelete: Cascade)
-  student_id    String
-  student       students    @relation(fields: [student_id], references: [id], onDelete: Cascade)
-  presence      Boolean
-  created       DateTime
-
-  @@unique([id])
-}
-
-model coefficients {
-  id            String      @id @default(uuid())
-  student_id    String
-  student       students    @relation(fields: [student_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  teacher_id    String
-  teacher       teachers    @relation(fields: [teacher_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  competence_id String
-  competence    competences @relation(fields: [competence_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  grade         Float
-  created       DateTime
+  id         String   @id @default(uuid())
+  student_id String
+  student    students @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  presence   Boolean
+  created    DateTime
 
   @@unique([id])
 }
@@ -66,7 +40,6 @@ model students {
   graduating_class_id String?
   graduating_class    graduating_class? @relation(fields: [graduating_class_id], references: [id], onDelete: SetNull) //um aluno está matriculado em uma única turma
   presence            presences[]
-  coefficients        coefficients[] //um aluno possui várias notas
 
   @@unique([id])
 }
@@ -76,7 +49,6 @@ model teachers {
   name             String
   email            String
   created          DateTime
-  coefficients     coefficients[]
   graduating_class graduating_class[] // um professor pode estar associado a uma ou mais turmas
 
   @@unique([id])

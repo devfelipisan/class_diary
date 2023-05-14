@@ -1,5 +1,11 @@
-export default async function ClassList() {
-  const result = fetch("/api/graduating_class").then(
+export default async function ClassList(id?: string) {
+  if (id) {
+    const result = fetch("/api/graduating_class").then(
+      async (response) => await response.json().then((data) => data)
+    );
+    return result;
+  }
+  const result = fetch("/api/graduating_class/all").then(
     async (response) => await response.json().then((data) => data)
   );
 

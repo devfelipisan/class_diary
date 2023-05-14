@@ -26,7 +26,7 @@ export default function SelectClassList(props: titleProps) {
 
   useEffect(() => {
     props.onSelected(selected);
-  }, [selected]);
+  }, [props, selected]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>

@@ -5,6 +5,7 @@ interface propsModal {
   open: boolean;
   setOpen: Dispatch<any>;
   title: string;
+  children?: React.ReactNode;
 }
 
 export default function Modal(props: propsModal) {
@@ -95,6 +96,7 @@ export default function Modal(props: propsModal) {
                     Ok
                   </button>
                 </div>*/}
+                {props.children}
               </Dialog.Panel>
             </Transition.Child>
           </div>

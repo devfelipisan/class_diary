@@ -23,7 +23,7 @@ export default function SelectTeachersList(props: titleProps) {
 
   useEffect(() => {
     props.onSelected(selected);
-  }, [selected]);
+  }, [props, selected]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>

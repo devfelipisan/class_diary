@@ -11,53 +11,58 @@ export default async function handler(
 
   console.log(id);
 
-  if (req.method == "GET" && id != "all") {
-    const studentsList = await prisma.students.findMany({ where: { id } });
-    return res.status(200).json(studentsList);
-  }
+  try {
+    if (req.method == "GET" && id != "all") {
+      const studentsList = await prisma.students.findMany({ where: { id } });
+      return res.status(200).json(studentsList);
+    }
 
-  if (req.method == "GET") {
-    const studentsList = await prisma.students.findMany();
-    return res.status(200).json(studentsList);
-  }
+    if (req.method == "GET") {
+      const studentsList = await prisma.students.findMany();
+      return res.status(200).json(studentsList);
+    }
 
-  if (req.method == "POST" && id == "create") {
-    const {
-      name,
-      birthday,
-      graduating_class_id,
-    }: Prisma.studentsCreateManyInput = req.body;
-    if (graduating_class_id) {
+    if (req.method == "POST" && id == "create") {
+      const {
+        name,
+        birthday,
+        graduating_class_id,
+      }: Prisma.studentsCreateManyInput = req.body;
+
+      if (graduating_class_id) {
+        const newStudents = await prisma.students.create({
+          data: {
+            id: uuidv4(),
+            name: name,
+            birthday: birthday,
+            graduating_class: {
+              connect: { id: graduating_class_id },
+            },
+            created: new Date(Date()).toISOString(),
+          },
+        });
+        return res.status(201).json(newStudents);
+      }
       const newStudents = await prisma.students.create({
         data: {
           id: uuidv4(),
           name: name,
           birthday: birthday,
-          graduating_class: {
-            connect: { id: graduating_class_id },
-          },
           created: new Date(Date()).toISOString(),
         },
       });
       return res.status(201).json(newStudents);
     }
-    const newStudents = await prisma.students.create({
-      data: {
-        id: uuidv4(),
-        name: name,
-        birthday: birthday,
-        created: new Date(Date()).toISOString(),
-      },
-    });
-    return res.status(201).json(newStudents);
-  }
 
-  if (req.method == "DELETE" && id) {
-    const deleteStudent = await prisma.students.delete({
-      where: {
-        id,
-      },
-    });
-    res.status(202).json(deleteStudent);
+    if (req.method == "DELETE" && id) {
+      const deleteStudent = await prisma.students.delete({
+        where: {
+          id,
+        },
+      });
+      return res.status(202).json(deleteStudent);
+    }
+  } catch (e: any) {
+    return res.status(500).json(`${e}`);
   }
 }

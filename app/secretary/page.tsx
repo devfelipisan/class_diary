@@ -1,6 +1,6 @@
 "use client";
 import ClassList from "@/hooks/classList";
-import StudentsList from "@/hooks/studentsList";
+import StudentsList, { StudentsCreate } from "@/hooks/studentsList";
 import { Prisma } from "@prisma/client";
 import React, { useCallback, useEffect, useState } from "react";
 import Modal from "../components/modal";
@@ -47,27 +47,13 @@ export default function Page() {
   }, [load]);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
-    fetch("/api/students", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: e.target["name"].value,
-        birthday: new Date(e.target["birthday"].value).toISOString(),
-        graduating_class_id: onSelected.id,
-      }),
-    });
-
-    console.log(
+    StudentsCreate(
       JSON.stringify({
         name: e.target["name"].value,
         birthday: new Date(e.target["birthday"].value).toISOString(),
         graduating_class_id: onSelected.id,
       })
     );
-
     setOpenModal(true);
   }
 

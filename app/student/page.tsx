@@ -1,6 +1,6 @@
 "use client";
 import ClassList from "@/hooks/classList";
-import { PostPresences } from "@/hooks/presenceRequests";
+import PresenseList, { PostPresences } from "@/hooks/presenceRequests";
 import StudentsList from "@/hooks/studentsList";
 import { Prisma } from "@prisma/client";
 import React, { useCallback, useEffect, useState } from "react";
@@ -11,6 +11,7 @@ export default function Page() {
   const [birthday, setBirthday] = useState(
     new Date().toISOString().slice(0, 10)
   );
+  const [percentualPresence, setPercentualPresence] = useState<string>("0.00%");
   const [classSeries, SetClassSeries] = useState("...");
   const [openModal, setOpenModal] = useState(false);
   const [listStudents, setListStudents] = useState<
@@ -48,6 +49,17 @@ export default function Page() {
     return SetClassSeries(classFounded.school_series);
   }
 
+  async function FindPresences(id: string) {
+    const presencesFounded: Array<
+      Prisma.presencesGetPayload<{
+        select: { id: true; created: true };
+      }>
+    > = await PresenseList(id).then((result) => result);
+    setPercentualPresence(
+      `${((presencesFounded.length / 30) * 100).toFixed(2)}%`
+    );
+  }
+
   useEffect(() => {
     if (onSelected.birthday) {
       setBirthday(new Date(onSelected.birthday).toISOString().slice(0, 10));
@@ -56,6 +68,8 @@ export default function Page() {
     if (onSelected.graduating_class_id) {
       FindClass(onSelected.graduating_class_id);
     }
+
+    FindPresences(onSelected.id);
   }, [onSelected]);
 
   const load = useCallback(async () => {
@@ -84,8 +98,8 @@ export default function Page() {
         title={"Cadastrado com Sucesso"}
       />
       <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div className="sm:col-span-2">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
+          <div className="sm:col-span-3">
             <label className="block text-sm font-semibold leading-6 text-gray-900">
               Nome completo
             </label>
@@ -127,6 +141,25 @@ export default function Page() {
                 id="graduating-class"
                 autoComplete="graduating-class"
                 value={classSeries}
+                disabled
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset bg-gray-200 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="mt-2.5">
+            <label
+              htmlFor="graduating-class"
+              className="block text-sm font-semibold leading-6 text-gray-900"
+            >
+              Percentual de presença
+            </label>
+            <div className="relative mt-2.5">
+              <input
+                type="text"
+                name="graduating-class"
+                id="graduating-class"
+                autoComplete="graduating-class"
+                value={percentualPresence}
                 disabled
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset bg-gray-200 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />

@@ -12,7 +12,7 @@ export default async function PresenseList(id?: string) {
   return result;
 }
 
-export async function PostPresences(body: any) {
+export async function PostPresences(body: string) {
   const result = fetch("/api/presences/create", {
     method: "post",
     headers: {

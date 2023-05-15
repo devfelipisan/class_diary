@@ -21,7 +21,6 @@ export default function ClassListBox(props: listBoxProps) {
       <ul role="list" className="divide-y divide-gray-100">
         {props?.data?.map((person) => (
           <li
-            onClick={() => console.log(person.teacher_id)}
             key={person.id}
             className="flex justify-between gap-x-6 py-5 px-8 cursor-pointer rounded-lg transition duration-500 hover:bg-green-100 hover:text-green-500 focus:bg-green-100 focus:text-green-500 focus:ring-0 dark:hover:bg-green-600 dark:hover:text-green-200 dark:focus:bg-green-600 dark:focus:text-green-200"
           >

@@ -41,8 +41,6 @@ export default function Page() {
     load();
   }, [load]);
 
-  console.log(listTeachers);
-
   return (
     <>
       <Modal

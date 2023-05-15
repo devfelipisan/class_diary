@@ -29,8 +29,6 @@ export default function StudentsListBox(props: listBoxProps) {
   >();
 
   function HandleStudentsDelete() {
-    console.log(person);
-    console.log("confirmado!");
     if (person) {
       StudentsDelete(person.id);
     }

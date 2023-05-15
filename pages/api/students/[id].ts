@@ -9,8 +9,6 @@ export default async function handler(
 ) {
   const id = req.query.id ? req.query.id.toString() : "";
 
-  console.log(id);
-
   try {
     if (req.method == "GET" && id != "all") {
       const studentsList = await prisma.students.findMany({ where: { id } });

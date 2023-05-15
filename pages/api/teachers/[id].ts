@@ -42,6 +42,6 @@ export default async function handler(
         id,
       },
     });
-    res.json(deleteTeacher);
+    res.status(202).json(deleteTeacher);
   }
 }

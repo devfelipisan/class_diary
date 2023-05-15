@@ -70,6 +70,7 @@ export default function Page() {
         open={openModal}
         setOpen={setOpenModal}
         title={"Cadastrado com Sucesso"}
+        type="INFO"
       />
       <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

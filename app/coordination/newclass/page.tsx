@@ -81,6 +81,7 @@ export default function Page() {
         open={openModal}
         setOpen={setOpenModal}
         title={"Cadastrado com Sucesso"}
+        type="INFO"
       />
       <SlideOver
         open={openSlideOver}

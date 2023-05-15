@@ -45,7 +45,12 @@ export default function Page() {
 
   return (
     <>
-      <Modal open={open} setOpen={setOpen} title={"Cadastrado com Sucesso"} />
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        title={"Cadastrado com Sucesso"}
+        type="INFO"
+      />
       <SlideOver
         open={openSlideOver}
         setOpen={setOpenSlideOver}

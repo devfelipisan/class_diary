@@ -17,3 +17,14 @@ export async function StudentsCreate(body: string) {
   });
   return result;
 }
+
+export async function StudentsDelete(id: string) {
+  const result = fetch(`/api/students/${id}`, {
+    method: "delete",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  return result;
+}

@@ -11,7 +11,7 @@ export default async function handler(
   if (req.method == "GET") {
     try {
       if (id == "all") {
-        const skillsList = await prisma.graduating_class.findMany({
+        const graduatinList = await prisma.graduating_class.findMany({
           select: {
             id: true,
             school_series: true,
@@ -21,9 +21,9 @@ export default async function handler(
             student_id: true,
           },
         });
-        return res.status(200).json(skillsList);
+        return res.status(200).json(graduatinList);
       } else {
-        const skillsList = await prisma.graduating_class.findFirst({
+        const graduatinList = await prisma.graduating_class.findFirst({
           where: { id },
           select: {
             id: true,
@@ -34,7 +34,7 @@ export default async function handler(
             student_id: true,
           },
         });
-        return res.status(200).json(skillsList);
+        return res.status(200).json(graduatinList);
       }
     } catch (e: any) {
       return res.status(500).json(`${e}`);
@@ -44,7 +44,7 @@ export default async function handler(
   if (req.method == "POST" && id == "create") {
     const { school_year, school_series, student_id, teacher_id } = req.body;
     if (student_id) {
-      const newStudents = await prisma.graduating_class.create({
+      const newGraduating = await prisma.graduating_class.create({
         data: {
           id: uuidv4(),
           school_year,
@@ -57,9 +57,9 @@ export default async function handler(
           teacher_id,
         },
       });
-      return res.status(201).json(newStudents);
+      return res.status(201).json(newGraduating);
     }
-    const newStudents = await prisma.graduating_class.create({
+    const newGraduating = await prisma.graduating_class.create({
       data: {
         id: uuidv4(),
         school_year,
@@ -67,6 +67,15 @@ export default async function handler(
         teacher_id,
       },
     });
-    return res.status(201).json(newStudents);
+    return res.status(201).json(newGraduating);
+  }
+
+  if (req.method == "DELETE" && id) {
+    const graduatinDelete = await prisma.graduating_class.delete({
+      where: {
+        id,
+      },
+    });
+    return res.status(202).json(graduatinDelete);
   }
 }

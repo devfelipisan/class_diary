@@ -11,3 +11,14 @@ export default async function ClassList(id?: string) {
 
   return result;
 }
+
+export async function ClassDelete(id: string) {
+  const result = fetch(`/api/graduating_class/${id}`, {
+    method: "delete",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  return result;
+}

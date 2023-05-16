@@ -1,7 +1,7 @@
 import { ClassDelete } from "@/hooks/classList";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Prisma } from "@prisma/client";
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import Modal from "./modal";
 
 interface listBoxProps {
@@ -14,12 +14,10 @@ interface listBoxProps {
             teacher: { select: { name: true; email: true } };
             teacher_id: true;
             school_year: true;
-            student_id: true;
           };
         }>
       >
     | undefined;
-  onSelected: Dispatch<any>;
 }
 
 export default function ClassListBox(props: listBoxProps) {
@@ -32,7 +30,6 @@ export default function ClassListBox(props: listBoxProps) {
         teacher: { select: { name: true; email: true } };
         teacher_id: true;
         school_year: true;
-        student_id: true;
       };
     }>
   >();
@@ -52,7 +49,6 @@ export default function ClassListBox(props: listBoxProps) {
         teacher: { select: { name: true; email: true } };
         teacher_id: true;
         school_year: true;
-        student_id: true;
       };
     }>
   ) {

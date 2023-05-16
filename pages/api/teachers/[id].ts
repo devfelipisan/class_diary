@@ -23,7 +23,7 @@ export default async function handler(
     }
   }
 
-  if (req.method == "POST") {
+  if (req.method == "POST" && id == "create") {
     const { name, email }: Prisma.teachersCreateInput = req.body;
     const newTeacher = await prisma.teachers.create({
       data: {

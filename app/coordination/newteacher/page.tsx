@@ -19,7 +19,7 @@ export default function Page() {
   >([]);
 
   function handleSubmit(e: React.BaseSyntheticEvent) {
-    fetch("/api/teachers/all", {
+    fetch("/api/teachers/create", {
       method: "post",
       headers: {
         Accept: "application/json",
